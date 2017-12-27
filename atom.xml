@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jaelynlim.com/"/>
-  <updated>2017-12-27T15:04:33.461Z</updated>
+  <updated>2017-12-27T15:10:34.274Z</updated>
   <id>http://jaelynlim.com/</id>
   
   <author>
@@ -21,16 +21,13 @@
     <link href="http://jaelynlim.com/2017/12/27/hellomyblog/"/>
     <id>http://jaelynlim.com/2017/12/27/hellomyblog/</id>
     <published>2017-12-27T10:56:40.000Z</published>
-    <updated>2017-12-27T15:04:33.461Z</updated>
+    <updated>2017-12-27T15:10:34.274Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="今天算是把我的博客网站建立起来了"><a href="#今天算是把我的博客网站建立起来了" class="headerlink" title="今天算是把我的博客网站建立起来了"></a>今天算是把我的博客网站建立起来了</h2><p>&lt;–! more –&gt;</p><p>花了三天时间，终于搞定了，这也表示我的文章之旅要开始了。<br>enjoy it</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="今天算是把我的博客网站建立起来了"><a href="#今天算是把我的博客网站建立起来了" class="headerlink" title="今天算是把我的博客网站建立起来了"></a>今天算是把我的博客网站建立起来了</h2><a id="more"></a><p>花了三天时间，终于搞定了，这也表示我的文章之旅要开始了。<br>enjoy it</p>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;h2 id=&quot;今天算是把我的博客网站建立起来了&quot;&gt;&lt;a href=&quot;#今天算是把我的博客网站建立起来了&quot; class=&quot;headerlink&quot; title=&quot;今天算是把我的博客网站建立起来了&quot;&gt;&lt;/a&gt;今天算是把我的博客网站建立起来了&lt;/h2&gt;&lt;p&gt;&amp;lt;–! more –&amp;
-      
+      &lt;h2 id=&quot;今天算是把我的博客网站建立起来了&quot;&gt;&lt;a href=&quot;#今天算是把我的博客网站建立起来了&quot; class=&quot;headerlink&quot; title=&quot;今天算是把我的博客网站建立起来了&quot;&gt;&lt;/a&gt;今天算是把我的博客网站建立起来了&lt;/h2&gt;
     
     </summary>
     
@@ -48,14 +45,11 @@
     <published>2017-12-26T08:55:20.000Z</published>
     <updated>2017-12-26T12:40:20.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int a = 1;</span><br><span class="line">int b = 2;</span><br><span class="line"></span><br><span class="line">class text&#123;</span><br><span class="line">     int i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>&lt;–! more –&gt;</p><p>测试<br>测试<br>测试<br>测试<br>测试<br>测试测试<br>测试<br>测试测试<br>测试<br>测试测试<br>测试<br>测试测试<br>测试<br>测试测试<br>测试<br>测试测试<br>测试<br>测试测试<br>测试<br>测试测试<br>测试<br>测试测试<br>测试<br>测试测试<br>测试<br>测试测试<br>测试<br>测试测试<br>测试<br>测试测试<br>测试<br>测试</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int a = 1;</span><br><span class="line">int b = 2;</span><br><span class="line"></span><br><span class="line">class text&#123;</span><br><span class="line">     int i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><a id="more"></a><p>测试<br>测试<br>测试<br>测试<br>测试<br>测试测试<br>测试<br>测试测试<br>测试<br>测试测试<br>测试<br>测试测试<br>测试<br>测试测试<br>测试<br>测试测试<br>测试<br>测试测试<br>测试<br>测试测试<br>测试<br>测试测试<br>测试<br>测试测试<br>测试<br>测试测试<br>测试<br>测试测试<br>测试<br>测试测试<br>测试<br>测试</p>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;h2 id=&quot;测试&quot;&gt;&lt;a href=&quot;#测试&quot; class=&quot;headerlink&quot; title=&quot;测试&quot;&gt;&lt;/a&gt;测试&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span 
-      
+      &lt;h2 id=&quot;测试&quot;&gt;&lt;a href=&quot;#测试&quot; class=&quot;headerlink&quot; title=&quot;测试&quot;&gt;&lt;/a&gt;测试&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;int a = 1;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;int b = 2;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;class text&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     int i;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
