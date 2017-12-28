@@ -5,9 +5,9 @@
   <subtitle>jaelyn-lim</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://jaelynlim.com/"/>
+  <link href="http://jaelyn.coding.me/"/>
   <updated>2017-12-27T15:10:34.274Z</updated>
-  <id>http://jaelynlim.com/</id>
+  <id>http://jaelyn.coding.me/</id>
   
   <author>
     <name>Jaelyn</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>hello my blog</title>
-    <link href="http://jaelynlim.com/2017/12/27/hellomyblog/"/>
-    <id>http://jaelynlim.com/2017/12/27/hellomyblog/</id>
+    <link href="http://jaelyn.coding.me/2017/12/27/hellomyblog/"/>
+    <id>http://jaelyn.coding.me/2017/12/27/hellomyblog/</id>
     <published>2017-12-27T10:56:40.000Z</published>
     <updated>2017-12-27T15:10:34.274Z</updated>
     
@@ -31,17 +31,17 @@
     
     </summary>
     
-      <category term="test" scheme="http://jaelynlim.com/categories/test/"/>
+      <category term="test" scheme="http://jaelyn.coding.me/categories/test/"/>
     
     
-      <category term="Testing" scheme="http://jaelynlim.com/tags/Testing/"/>
+      <category term="Testing" scheme="http://jaelyn.coding.me/tags/Testing/"/>
     
   </entry>
   
   <entry>
     <title>测试一下内容</title>
-    <link href="http://jaelynlim.com/2017/12/26/test/"/>
-    <id>http://jaelynlim.com/2017/12/26/test/</id>
+    <link href="http://jaelyn.coding.me/2017/12/26/test/"/>
+    <id>http://jaelyn.coding.me/2017/12/26/test/</id>
     <published>2017-12-26T08:55:20.000Z</published>
     <updated>2017-12-26T12:40:20.000Z</updated>
     
@@ -53,10 +53,10 @@
     
     </summary>
     
-      <category term="test" scheme="http://jaelynlim.com/categories/test/"/>
+      <category term="test" scheme="http://jaelyn.coding.me/categories/test/"/>
     
     
-      <category term="Testing" scheme="http://jaelynlim.com/tags/Testing/"/>
+      <category term="Testing" scheme="http://jaelyn.coding.me/tags/Testing/"/>
     
   </entry>
   
