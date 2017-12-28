@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    
+  <url>
+    <loc>http://jaelynlim.com/2017/12/27/hellomyblog/</loc>
+    <lastmod>2017-12-27T15:10:34.274Z</lastmod>
+    <data>
+        <display>
+        <title>hello my blog</title>
+        <pubTime>2017-12-27T10:56:40.000Z</pubTime>
+        
+        <tag>Testing</tag>
+         
+         
+           
+             
+              <breadCrumb title="test" url="http://jaelynlim.com/categories/test/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://jaelynlim.com/2017/12/26/test/</loc>
+    <lastmod>2017-12-26T12:40:20.000Z</lastmod>
+    <data>
+        <display>
+        <title>测试一下内容</title>
+        <pubTime>2017-12-26T08:55:20.000Z</pubTime>
+        
+        <tag>Testing</tag>
+         
+         
+           
+             
+              <breadCrumb title="test" url="http://jaelynlim.com/categories/test/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+</urlset>
