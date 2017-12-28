@@ -13,3 +13,5 @@ Disallow: /fancybox/
 
 Sitemap: http://jaelynlim.com/sitemap.xml
 Sitemap: http://jaelynlim.com/baidusitemap.xml
+Sitemap: http://jaelyn.coding.me/sitemap.xml
+Sitemap: http://jaelyn.coding.me/baidusitemap.xml
