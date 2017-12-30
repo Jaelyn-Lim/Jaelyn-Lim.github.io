@@ -3,12 +3,13 @@
 
 
     
+    
   <url>
     <loc>http://jaelyn.coding.me/2017/12/27/hellomyblog/</loc>
-    <lastmod>2017-12-27T15:10:34.274Z</lastmod>
+    <lastmod>2017-12-30T09:54:33.790Z</lastmod>
     <data>
         <display>
-        <title>hello my blog</title>
+        <title>今天算是把我的博客网站建立起来了</title>
         <pubTime>2017-12-27T10:56:40.000Z</pubTime>
         
         <tag>Testing</tag>
@@ -24,25 +25,24 @@
 
     
   <url>
-    <loc>http://jaelyn.coding.me/2017/12/26/test/</loc>
-    <lastmod>2017-12-26T12:40:20.000Z</lastmod>
+    <loc>http://jaelyn.coding.me/2017/12/29/hexoleraningnote/</loc>
+    <lastmod>2017-12-30T09:52:37.000Z</lastmod>
     <data>
         <display>
-        <title>测试一下内容</title>
-        <pubTime>2017-12-26T08:55:20.000Z</pubTime>
+        <title>Hexo + nexT 学习笔记</title>
+        <pubTime>2017-12-29T05:40:19.000Z</pubTime>
         
-        <tag>Testing</tag>
+        <tag>hexo</tag>
          
          
            
              
-              <breadCrumb title="test" url="http://jaelyn.coding.me/categories/test/"/>
+              <breadCrumb title="hexo" url="http://jaelyn.coding.me/categories/hexo/"/>
           
         </display>
     </data>
     </url>
 
-    
     
     
 </urlset>

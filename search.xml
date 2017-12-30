@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[hello my blog]]></title>
-    <url>%2F2017%2F12%2F27%2Fhellomyblog%2F</url>
-    <content type="text"><![CDATA[今天算是把我的博客网站建立起来了 花了三天时间，终于搞定了，这也表示我的文章之旅要开始了。enjoy it]]></content>
+    <title><![CDATA[Hexo + nexT 学习笔记]]></title>
+    <url>%2F2017%2F12%2F29%2Fhexoleraningnote%2F</url>
+    <content type="text"><![CDATA[前言 本文内容主要是个人在学习hexo和next中所遇到的一些“坑”和解决方法,而详细的流程网上有很多，在文章的结尾我会贴出我在学习中查找到的比较好的文章。 注意本文不是详细操作步骤，如果需要详细步骤，请直接翻到文章结尾。 官方文档 Hexo nexT Hexo 和 nexT 的安装 在安装 Hexo 之前，需要确保电脑环境要有 Node.js 和 Git 环境, 当然，为了更好的安装 Hexo 还需要 npm. 下面是我所使用的版本： 安装之后，最常使用的指令如下： 生成静态页面 1hexo g 在本地运行 1hexo s 部署到GitHub pages（coding） 1hexo d 清除生成的静态文件 1hexo clean 打开 GitHub Pages在第一次创建完仓库之后，打开settings选项，向下翻到GitHub Pages选项会发现不能打开，会有一个提示信息： GitHub Pages is currently disabled. You must first add content to your repository before you can publish a GitHub Pages site 是因为该GitHub Pages没有内容，此时只要点击下面的Choose a theme按钮选择一个主题就可以打开和访问了。 SSH 配置先查看本机用户home目录下是否存在.ssh目录1cd ~/.ssh 如果有就不用再创建了，如果想重新创建，可以创建一个不同名字的，也可以将原来的删除，再创建。使用下面指令删除已存在的SSH：12ssh-add -Drm -r ~/.ssh 再创建新的SSH密钥(keys)1$ssh-keygen -t rsa -C &quot;your_email@example.com&quot; 这将按照你提供的邮箱地址，创建一对密钥 将生成的id_rsa.pub文件里面的内容拷贝到GitHub 项目中添加公钥，这里推荐在对应 xxx.github.io 项目中加。（settings-&gt;deploy keys） 最后再用下面指令测试是否连接成功1ssh -T git@github.com 可参考github提示Permission denied (publickey)，如何才能解决？ 同步到GitHub配置站点文件下的_config.xml文件下的deploy信息。 安装hexo-deployer-git插件1npm install hexo-deployer-git --save 关于 https 的问题，如果需要使用自己的域名的话，GitHub pages 是不能打开 Enforce HTTPS 的。所以在配置deploy信息的时候就推荐使用 Clone with SSH 的链接。 绑定域名在source文件夹下面创建CNAME文件（没有后缀），里面填上自己的域名。之后在自己的域名商将自己的域名用CNAME方式指向自己GitHub pages的域名。 个人使用的是腾讯云 最后需要注意，需要在站点文件的_config.xml文件配置中的skip_render添加:12skip_render: - CNAME 表示跳过该文件的渲染。 写文章一般使用1hexo new xxx xxx表示文件的名字，同时也会自动设置为文章标题（后面可改）也可以之间创建.md文件，添加文章头信息： 1234567title: // 文章标题date: // 创建时间updated: //跟新文章的时间tags: // 文章的标签，如果有多个，[tags1, tags2, ...]categories: // 文章分类keywords: // 文章关键词，如果有多个，[key1, key2, ...]description: //文章描述 其中需要注意： 如果想要有updated，需要在主题文件下的_config.xml文件中配置post_meta，将updated_at设置为true。 12345post_meta: item_text: true created_at: true updated_at: true categories: true keywords和description的作用是为了搜索引擎寻找关键字。 配置主题一些我觉得挺好玩的效果 添加 README.md 在站点文件的source目录下添加一个README.md文件，之后修改站点文件下的_config.xml，将skip_render添加README.md，跳过该文件的渲染。 123skip_render: - CNAME - README.md]]></content>
       <categories>
-        <category>test</category>
+        <category>hexo</category>
       </categories>
       <tags>
-        <tag>Testing</tag>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[测试一下内容]]></title>
-    <url>%2F2017%2F12%2F26%2Ftest%2F</url>
-    <content type="text"><![CDATA[测试123456int a = 1;int b = 2;class text&#123; int i;&#125; 测试测试测试测试测试]]></content>
+    <title><![CDATA[今天算是把我的博客网站建立起来了]]></title>
+    <url>%2F2017%2F12%2F27%2Fhellomyblog%2F</url>
+    <content type="text"><![CDATA[花了三天时间，终于搞定了，这也表示我的文章之旅要开始了。enjoy it !]]></content>
       <categories>
         <category>test</category>
       </categories>
