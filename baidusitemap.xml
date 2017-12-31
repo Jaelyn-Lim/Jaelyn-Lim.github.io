@@ -3,10 +3,29 @@
 
 
     
+  <url>
+    <loc>http://jaelyn.coding.me/2017/12/27/hellomyblog/</loc>
+    <lastmod>2017-12-31T10:02:47.282Z</lastmod>
+    <data>
+        <display>
+        <title>今天算是把我的博客网站建立起来了</title>
+        <pubTime>2017-12-27T10:56:40.000Z</pubTime>
+        
+        <tag>diary</tag>
+         
+         
+           
+             
+              <breadCrumb title="diary" url="http://jaelyn.coding.me/categories/diary/"/>
+          
+        </display>
+    </data>
+    </url>
+
     
   <url>
     <loc>http://jaelyn.coding.me/2017/12/29/hexoleraningnote/</loc>
-    <lastmod>2017-12-30T10:05:06.589Z</lastmod>
+    <lastmod>2017-12-31T10:01:56.430Z</lastmod>
     <data>
         <display>
         <title>Hexo + nexT 学习笔记</title>
@@ -17,32 +36,13 @@
          
            
              
-              <breadCrumb title="hexo" url="http://jaelyn.coding.me/categories/hexo/"/>
+              <breadCrumb title="博客技术" url="http://jaelyn.coding.me/categories/%E5%8D%9A%E5%AE%A2%E6%8A%80%E6%9C%AF/"/>
           
         </display>
     </data>
     </url>
 
     
-  <url>
-    <loc>http://jaelyn.coding.me/2017/12/27/hellomyblog/</loc>
-    <lastmod>2017-12-30T09:54:33.790Z</lastmod>
-    <data>
-        <display>
-        <title>今天算是把我的博客网站建立起来了</title>
-        <pubTime>2017-12-27T10:56:40.000Z</pubTime>
-        
-        <tag>Testing</tag>
-         
-         
-           
-             
-              <breadCrumb title="test" url="http://jaelyn.coding.me/categories/test/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
     
 </urlset>

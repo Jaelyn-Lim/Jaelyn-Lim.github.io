@@ -113,7 +113,7 @@
 <meta property="og:image" content="https://jaelyn-blog-txcos-1253450780.cos.ap-guangzhou.myqcloud.com/blog/pageimage2018/hexo-head.jpeg">
 <meta property="og:image" content="https://jaelyn-blog-txcos-1253450780.cos.ap-guangzhou.myqcloud.com/blog/pageimage2018/gitnpmnodeversion.png">
 <meta property="og:image" content="https://jaelyn-blog-txcos-1253450780.cos.ap-guangzhou.myqcloud.com/blog/pageimage2018/cname-dns.png">
-<meta property="og:updated_time" content="2017-12-30T10:05:06.589Z">
+<meta property="og:updated_time" content="2017-12-31T10:01:56.430Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo + nexT 学习笔记">
 <meta name="twitter:description" content="前言   本文内容主要是个人在学习hexo和next中所遇到的一些“坑”和解决方法,而详细的流程网上有很多，在文章的结尾我会贴出我在学习中查找到的比较好的文章。  注意本文不是详细操作步骤，如果需要详细步骤，请直接翻到文章结尾。">
@@ -369,8 +369,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-12-30T18:05:06+08:00">
-                2017-12-30
+              <time title="更新于" itemprop="dateModified" datetime="2017-12-31T18:01:56+08:00">
+                2017-12-31
               </time>
             
           </span>
@@ -388,8 +388,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo</span>
+                  <a href="/categories/博客技术/" itemprop="url" rel="index">
+                    <span itemprop="name">博客技术</span>
                   </a>
                 </span>
 
@@ -424,7 +424,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,022
+                  1,852
                 </span>
               
 
@@ -440,7 +440,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  7
                 </span>
               
             </div>
@@ -519,6 +519,27 @@
 </blockquote>
 <p>最后需要注意，需要在<code>站点文件</code>的<code>_config.xml</code>文件配置中的<code>skip_render</code>添加:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">skip_render:</span><br><span class="line"> - CNAME</span><br></pre></td></tr></table></figure></p>
 <p>表示跳过该文件的渲染。</p>
+<h2 id="nexT-主题配置"><a href="#nexT-主题配置" class="headerlink" title="nexT 主题配置"></a>nexT 主题配置</h2><p>一些我觉得比较实用的效果，参考<a href="https://segmentfault.com/a/1190000009544924" target="_blank" rel="noopener">hexo的next主题个性化配置教程</a>.</p>
+<h3 id="添加-README-md"><a href="#添加-README-md" class="headerlink" title="添加 README.md"></a>添加 README.md</h3><p> 在<code>站点文件</code>的<code>source</code>目录下添加一个<code>README.md</code>文件，之后修改<code>站点文件</code>下的<code>_config.xml</code>，将<code>skip_render</code>添加<code>README.md</code>，跳过该文件的渲染。<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">skip_render:</span><br><span class="line"> - CNAME</span><br><span class="line"> - README.md</span><br></pre></td></tr></table></figure></p>
+<h3 id="Schemes"><a href="#Schemes" class="headerlink" title="Schemes"></a>Schemes</h3><p>个人比较喜欢<code>Gemini</code>样式，相比<code>Pisces</code>样式，该样式不会每篇文章相连过于紧密，会以分块的形式显示出来，比较好看，特别在手机端上效果更显著。具体可以亲自去设置去看看效果。</p>
+<h3 id="live2d"><a href="#live2d" class="headerlink" title="live2d"></a>live2d</h3><p>就是网站右下角的“萌物”小人，具体可以参考<a href="https://github.com/EYHN/hexo-helper-live2d" target="_blank" rel="noopener">hexo-helper-live2d</a>。下面简要介绍我的做法：</p>
+<ol>
+<li><p>在<code>站点文件</code>打开终端输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-helper-live2d</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>站点文件</code>下的<code>_config.xml</code>最后配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">live2d:</span><br><span class="line">  model: z16</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>具体的配置可以看文档，可以修改挺多内容的。模型外观参考<a href="https://huaji8.top/post/live2d-plugin-2.0/" target="_blank" rel="noopener">截图预览</a>.</p>
+</blockquote>
+<h3 id="动态背景"><a href="#动态背景" class="headerlink" title="动态背景"></a>动态背景</h3><p>在<code>主题文件</code>的<code>_config.xml</code>中搜索<code>Canvas-nest</code>可以发现有4个动态背景，可以逐个尝试，也可以同时设置为<code>true</code>，个人只选择了<code>Canvas-nest</code>。</p>
+<h3 id="footer"><a href="#footer" class="headerlink" title="footer"></a>footer</h3><p>可以将网站最下的不想要显示的内容设置为<code>false</code>，在<code>主题文件</code>的<code>_config.xml</code>中搜索<code>footer</code>，我的设置如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">footer:</span><br><span class="line">  # Specify the date when the site was setup.</span><br><span class="line">  # If not defined, current year will be used.</span><br><span class="line">  since: 2017</span><br><span class="line"></span><br><span class="line">  # Icon between year and copyright info.</span><br><span class="line">  icon: user</span><br><span class="line"></span><br><span class="line">  # If not defined, will be used `author` from Hexo main config.</span><br><span class="line">  copyright:</span><br><span class="line">  # -------------------------------------------------------------</span><br><span class="line">  # Hexo link (Powered by Hexo).</span><br><span class="line">  powered: false</span><br><span class="line"></span><br><span class="line">  theme:</span><br><span class="line">    # Theme &amp; scheme info link (Theme - NexT.scheme).</span><br><span class="line">    enable: false</span><br><span class="line">    # Version info of NexT after scheme info (vX.X.X).</span><br><span class="line">    version: false</span><br></pre></td></tr></table></figure></p>
+<h3 id="busuanzi访问人数"><a href="#busuanzi访问人数" class="headerlink" title="busuanzi访问人数"></a>busuanzi访问人数</h3><p>在<code>主题文件</code>的<code>_config.xml</code>中搜索<code>busuanzi_count</code>，修改配置，可以在网站底部和文章中显示访问的人数，我的配置如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">busuanzi_count:</span><br><span class="line">  # count values only if the other configs are false</span><br><span class="line">  enable: true</span><br><span class="line">  # custom uv span for the whole site</span><br><span class="line">  site_uv: true</span><br><span class="line">  site_uv_header: &lt;i class=&quot;fa fa-user&quot;&gt;&lt;/i&gt; 访问人数</span><br><span class="line">  site_uv_footer: |</span><br><span class="line">  # custom pv span for the whole site</span><br><span class="line">  site_pv: true</span><br><span class="line">  site_pv_header: &lt;i class=&quot;fa fa-eye&quot;&gt;&lt;/i&gt; 访问总量</span><br><span class="line">  site_pv_footer:</span><br><span class="line">  # custom pv span for one page only</span><br><span class="line">  page_pv: true</span><br><span class="line">  page_pv_header: &lt;i class=&quot;fa fa-file-o&quot;&gt;&lt;/i&gt; 阅读次数</span><br><span class="line">  page_pv_footer:</span><br></pre></td></tr></table></figure></p>
+<h3 id="显示统计字数"><a href="#显示统计字数" class="headerlink" title="显示统计字数"></a>显示统计字数</h3><p>在<code>主题文件</code>的<code>_config.xml</code>中搜索<code>post_wordcount</code>，修改配置，可以在网站底部和文章中显示所统计的字数，我的配置如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">post_wordcount:</span><br><span class="line">  item_text: true</span><br><span class="line">  wordcount: true</span><br><span class="line">  min2read: true</span><br><span class="line">  totalcount: true</span><br><span class="line">  separated_meta: true</span><br></pre></td></tr></table></figure></p>
+<h3 id="增加本地搜索功能"><a href="#增加本地搜索功能" class="headerlink" title="增加本地搜索功能"></a>增加本地搜索功能</h3><p>在<code>主题文件</code>的<code>_config.xml</code>中搜索<code>local_search</code>，设置为<code>true</code>。</p>
+<h3 id="在文章底部增加版权信息"><a href="#在文章底部增加版权信息" class="headerlink" title="在文章底部增加版权信息"></a>在文章底部增加版权信息</h3><p>在<code>主题文件</code>的<code>_config.xml</code>中搜索<code>post_copyright</code>，设置为<code>true</code>。</p>
 <h2 id="写文章"><a href="#写文章" class="headerlink" title="写文章"></a>写文章</h2><p>一般使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new xxx</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>xxx表示文件的名字，同时也会自动设置为文章标题（后面可改）<br>也可以之间创建<code>.md</code>文件，添加文章头信息：  </p>
@@ -530,10 +551,17 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">post_meta:</span><br><span class="line">  item_text: true</span><br><span class="line">  created_at: true</span><br><span class="line">  updated_at: true</span><br><span class="line">  categories: true</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>keywords</code>和<code>description</code>的作用是为了搜索引擎寻找关键字。</p>
+<blockquote>
+<p>其中<code>description</code>关键字，在主页上显示的时候就会显示这里面的内容，而不是显示前150个字符。还有另一种方法推荐，就是不写<code>description</code>，而是在文章中插入<code>&lt;!-- more --&gt;</code>注释，这样主页就会显示该注释前的内容。</p>
+</blockquote>
 </li>
 </ul>
-<h2 id="配置主题"><a href="#配置主题" class="headerlink" title="配置主题"></a>配置主题</h2><p>一些我觉得挺好玩的效果  </p>
-<h3 id="添加-README-md"><a href="#添加-README-md" class="headerlink" title="添加 README.md"></a>添加 README.md</h3><p> 在<code>站点文件</code>的<code>source</code>目录下添加一个<code>README.md</code>文件，之后修改<code>站点文件</code>下的<code>_config.xml</code>，将<code>skip_render</code>添加<code>README.md</code>，跳过该文件的渲染。<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">skip_render:</span><br><span class="line"> - CNAME</span><br><span class="line"> - README.md</span><br></pre></td></tr></table></figure></p>
+<h2 id="可添加内容"><a href="#可添加内容" class="headerlink" title="可添加内容"></a>可添加内容</h2><p>下面的内容是推广和维护网站相关。</p>
+<h3 id="网站分析"><a href="#网站分析" class="headerlink" title="网站分析"></a>网站分析</h3><p> 个人使用的是<a href="http://mta.qq.com" target="_blank" rel="noopener">腾讯移动分析</a>，而且nexT也可以直接支持，在<code>主题文件</code>的<code>_config.xml</code>中搜索<code>Tencent MTA ID</code>，将自己在网站上注册的 ID 填写上去就可以统计了。</p>
+<h3 id="seo推广"><a href="#seo推广" class="headerlink" title="seo推广"></a>seo推广</h3><p> 这里推荐参考<a href="http://harleywang93.com/2017/03/07/Hexo-GitHub-Coding-Pages-搭建博客/" target="_blank" rel="noopener">Hexo+nexT主题搭建个人博客</a>中seo推广部分。</p>
+<blockquote>
+<p>参考<a href="http://ziyuan.baidu.com" target="_blank" rel="noopener">百度搜索资源平台</a></p>
+</blockquote>
 <h2 id="推荐阅读"><a href="#推荐阅读" class="headerlink" title="推荐阅读"></a>推荐阅读</h2><ul>
 <li><a href="http://www.wuxubj.cn/2016/08/Hexo-nexT-build-personal-blog/index.html" target="_blank" rel="noopener">Hexo+nexT主题搭建个人博客</a></li>
 <li><a href="https://www.jianshu.com/p/e7c58f57f60e" target="_blank" rel="noopener">hexo初探—让写作飞起来</a></li>
@@ -542,6 +570,8 @@
 <li><a href="http://col.dog/2015/11/12/hello-world/" target="_blank" rel="noopener">基于 Hexo 和 GitHub Pages 搭建博客</a></li>
 <li><a href="http://blog.csdn.net/xiaoliuge01/article/details/50997754" target="_blank" rel="noopener">Hexo搭建独立博客，托管到Github和Coding上教程</a></li>
 <li><a href="http://blog.junyu.io/posts/0008-blog-seo.html" target="_blank" rel="noopener">让更多人看到你的博客</a></li>
+<li><a href="http://blog.csdn.net/qq_21165007/article/details/72587999#git报错warning-lf-will-be-replaced-by-crlf问题" target="_blank" rel="noopener">在github上搭建个人网站</a></li>
+<li><a href="https://www.zhihu.com/question/30898326" target="_blank" rel="noopener">如何解决百度爬虫无法爬取搭建在Github上的个人博客的问题？</a></li>
 </ul>
 
       
@@ -691,7 +721,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -702,7 +732,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -758,7 +788,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#官方文档"><span class="nav-number">2.</span> <span class="nav-text">官方文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo-和-nexT-的安装"><span class="nav-number">3.</span> <span class="nav-text">Hexo 和 nexT 的安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打开-GitHub-Pages"><span class="nav-number">4.</span> <span class="nav-text">打开 GitHub Pages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH-配置"><span class="nav-number">5.</span> <span class="nav-text">SSH 配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同步到GitHub"><span class="nav-number">6.</span> <span class="nav-text">同步到GitHub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绑定域名"><span class="nav-number">7.</span> <span class="nav-text">绑定域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写文章"><span class="nav-number">8.</span> <span class="nav-text">写文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置主题"><span class="nav-number">9.</span> <span class="nav-text">配置主题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加-README-md"><span class="nav-number">9.1.</span> <span class="nav-text">添加 README.md</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐阅读"><span class="nav-number">10.</span> <span class="nav-text">推荐阅读</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#官方文档"><span class="nav-number">2.</span> <span class="nav-text">官方文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo-和-nexT-的安装"><span class="nav-number">3.</span> <span class="nav-text">Hexo 和 nexT 的安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打开-GitHub-Pages"><span class="nav-number">4.</span> <span class="nav-text">打开 GitHub Pages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH-配置"><span class="nav-number">5.</span> <span class="nav-text">SSH 配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同步到GitHub"><span class="nav-number">6.</span> <span class="nav-text">同步到GitHub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绑定域名"><span class="nav-number">7.</span> <span class="nav-text">绑定域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nexT-主题配置"><span class="nav-number">8.</span> <span class="nav-text">nexT 主题配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加-README-md"><span class="nav-number">8.1.</span> <span class="nav-text">添加 README.md</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Schemes"><span class="nav-number">8.2.</span> <span class="nav-text">Schemes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#live2d"><span class="nav-number">8.3.</span> <span class="nav-text">live2d</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态背景"><span class="nav-number">8.4.</span> <span class="nav-text">动态背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#footer"><span class="nav-number">8.5.</span> <span class="nav-text">footer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#busuanzi访问人数"><span class="nav-number">8.6.</span> <span class="nav-text">busuanzi访问人数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示统计字数"><span class="nav-number">8.7.</span> <span class="nav-text">显示统计字数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#增加本地搜索功能"><span class="nav-number">8.8.</span> <span class="nav-text">增加本地搜索功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在文章底部增加版权信息"><span class="nav-number">8.9.</span> <span class="nav-text">在文章底部增加版权信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写文章"><span class="nav-number">9.</span> <span class="nav-text">写文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可添加内容"><span class="nav-number">10.</span> <span class="nav-text">可添加内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#网站分析"><span class="nav-number">10.1.</span> <span class="nav-text">网站分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#seo推广"><span class="nav-number">10.2.</span> <span class="nav-text">seo推广</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐阅读"><span class="nav-number">11.</span> <span class="nav-text">推荐阅读</span></a></li></ol></div>
             
 
           </div>
@@ -792,7 +822,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">1.0k</span>
+    <span title="Site words total count">1.9k</span>
   
 </div>
 
