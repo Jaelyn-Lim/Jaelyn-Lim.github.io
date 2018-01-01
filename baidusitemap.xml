@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://jaelyn.coding.me/2017/12/29/hexoleraningnote/</loc>
+    <lastmod>2018-01-01T01:26:17.032Z</lastmod>
+    <data>
+        <display>
+        <title>Hexo + nexT 学习笔记</title>
+        <pubTime>2017-12-29T05:40:19.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+         
+           
+             
+              <breadCrumb title="博客技术" url="http://jaelyn.coding.me/categories/%E5%8D%9A%E5%AE%A2%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://jaelyn.coding.me/2017/12/27/hellomyblog/</loc>
     <lastmod>2017-12-31T10:02:47.282Z</lastmod>
     <data>
@@ -17,26 +37,6 @@
            
              
               <breadCrumb title="diary" url="http://jaelyn.coding.me/categories/diary/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://jaelyn.coding.me/2017/12/29/hexoleraningnote/</loc>
-    <lastmod>2017-12-31T10:01:56.430Z</lastmod>
-    <data>
-        <display>
-        <title>Hexo + nexT 学习笔记</title>
-        <pubTime>2017-12-29T05:40:19.000Z</pubTime>
-        
-        <tag>hexo</tag>
-         
-         
-           
-             
-              <breadCrumb title="博客技术" url="http://jaelyn.coding.me/categories/%E5%8D%9A%E5%AE%A2%E6%8A%80%E6%9C%AF/"/>
           
         </display>
     </data>
