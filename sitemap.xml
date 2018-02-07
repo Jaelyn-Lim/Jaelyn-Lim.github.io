@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jaelyn.coding.me/2017/12/29/hexoleraningnote/</loc>
+    
+    <lastmod>2018-02-07T02:33:06.627Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jaelyn.coding.me/2018/02/07/byobu/</loc>
     
-    <lastmod>2018-02-07T02:14:53.217Z</lastmod>
+    <lastmod>2018-02-07T02:29:00.153Z</lastmod>
     
   </url>
   
@@ -12,13 +19,6 @@
     <loc>http://jaelyn.coding.me/2018/01/27/DjangoLearning1/</loc>
     
     <lastmod>2018-01-27T05:59:24.187Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jaelyn.coding.me/2017/12/29/hexoleraningnote/</loc>
-    
-    <lastmod>2018-01-01T01:26:17.032Z</lastmod>
     
   </url>
   

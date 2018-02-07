@@ -113,7 +113,7 @@
 <meta property="og:image" content="https://jaelyn-blog-txcos-1253450780.cos.ap-guangzhou.myqcloud.com/blog/pageimage2018/hexo-head.jpeg">
 <meta property="og:image" content="https://jaelyn-blog-txcos-1253450780.cos.ap-guangzhou.myqcloud.com/blog/pageimage2018/gitnpmnodeversion.png">
 <meta property="og:image" content="https://jaelyn-blog-txcos-1253450780.cos.ap-guangzhou.myqcloud.com/blog/pageimage2018/cname-dns.png">
-<meta property="og:updated_time" content="2018-01-01T01:26:17.032Z">
+<meta property="og:updated_time" content="2018-02-07T02:33:06.627Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo + nexT 学习笔记">
 <meta name="twitter:description" content="前言   本文内容主要是个人在学习hexo和next中所遇到的一些“坑”和解决方法,而详细的流程网上有很多，在文章的结尾我会贴出我在学习中查找到的比较好的文章。  注意本文不是详细操作步骤，如果需要详细步骤，请直接翻到文章结尾。">
@@ -373,8 +373,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-01-01T09:26:17+08:00">
-                2018-01-01
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-07T10:33:06+08:00">
+                2018-02-07
               </time>
             
           </span>
@@ -428,7 +428,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,860
+                  1,955
                 </span>
               
 
@@ -544,7 +544,17 @@
 <h3 id="显示统计字数"><a href="#显示统计字数" class="headerlink" title="显示统计字数"></a>显示统计字数</h3><p>在<code>主题文件</code>的<code>_config.xml</code>中搜索<code>post_wordcount</code>，修改配置，可以在网站底部和文章中显示所统计的字数，我的配置如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">post_wordcount:</span><br><span class="line">  item_text: true</span><br><span class="line">  wordcount: true</span><br><span class="line">  min2read: true</span><br><span class="line">  totalcount: true</span><br><span class="line">  separated_meta: true</span><br></pre></td></tr></table></figure></p>
 <h3 id="增加本地搜索功能"><a href="#增加本地搜索功能" class="headerlink" title="增加本地搜索功能"></a>增加本地搜索功能</h3><p>在<code>主题文件</code>的<code>_config.xml</code>中搜索<code>local_search</code>，设置为<code>true</code>。</p>
 <h3 id="在文章底部增加版权信息"><a href="#在文章底部增加版权信息" class="headerlink" title="在文章底部增加版权信息"></a>在文章底部增加版权信息</h3><p>在<code>主题文件</code>的<code>_config.xml</code>中搜索<code>post_copyright</code>，设置为<code>true</code>。</p>
-<h2 id="写文章"><a href="#写文章" class="headerlink" title="写文章"></a>写文章</h2><p>一般使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new xxx</span><br></pre></td></tr></table></figure></p>
+<h3 id="给文章加密"><a href="#给文章加密" class="headerlink" title="给文章加密"></a>给文章加密</h3><p>参考： <a href="https://github.com/MikeCoder/hexo-blog-encrypt/blob/master/ReadMe.zh.md" target="_blank" rel="noopener">hexo-blog-encrypt</a></p>
+<ul>
+<li>安装： <code>npm install hexo-blog-encrypt</code>  </li>
+<li>首先在 _config.yml 中启用该插件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Security</span><br><span class="line">##</span><br><span class="line">encrypt:</span><br><span class="line">    enable: true</span><br><span class="line">```  </span><br><span class="line">- 在你的文章的头部添加上对应的字段，如 password, abstract, message</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<p>title: hello world<br>date: 2016-03-30 21:18:02<br>tags:</p>
+<pre><code>- fdsafsdaf
+</code></pre><p>password: Mike<br>abstract: Welcome to my blog, enter password to read.</p>
+<h2 id="message-Welcome-to-my-blog-enter-password-to-read"><a href="#message-Welcome-to-my-blog-enter-password-to-read" class="headerlink" title="message: Welcome to my blog, enter password to read."></a>message: Welcome to my blog, enter password to read.</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 写文章</span><br><span class="line">一般使用</span><br><span class="line">```code</span><br><span class="line">hexo new xxx</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>xxx表示文件的名字，同时也会自动设置为文章标题（后面可改）<br>也可以之间创建<code>.md</code>文件，添加文章头信息：  </p>
 </blockquote>
@@ -797,7 +807,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#官方文档"><span class="nav-number">2.</span> <span class="nav-text">官方文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo-和-nexT-的安装"><span class="nav-number">3.</span> <span class="nav-text">Hexo 和 nexT 的安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打开-GitHub-Pages"><span class="nav-number">4.</span> <span class="nav-text">打开 GitHub Pages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH-配置"><span class="nav-number">5.</span> <span class="nav-text">SSH 配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同步到GitHub"><span class="nav-number">6.</span> <span class="nav-text">同步到GitHub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绑定域名"><span class="nav-number">7.</span> <span class="nav-text">绑定域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nexT-主题配置"><span class="nav-number">8.</span> <span class="nav-text">nexT 主题配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加-README-md"><span class="nav-number">8.1.</span> <span class="nav-text">添加 README.md</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Schemes"><span class="nav-number">8.2.</span> <span class="nav-text">Schemes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#live2d"><span class="nav-number">8.3.</span> <span class="nav-text">live2d</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态背景"><span class="nav-number">8.4.</span> <span class="nav-text">动态背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#footer"><span class="nav-number">8.5.</span> <span class="nav-text">footer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#busuanzi访问人数"><span class="nav-number">8.6.</span> <span class="nav-text">busuanzi访问人数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示统计字数"><span class="nav-number">8.7.</span> <span class="nav-text">显示统计字数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#增加本地搜索功能"><span class="nav-number">8.8.</span> <span class="nav-text">增加本地搜索功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在文章底部增加版权信息"><span class="nav-number">8.9.</span> <span class="nav-text">在文章底部增加版权信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写文章"><span class="nav-number">9.</span> <span class="nav-text">写文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可添加内容"><span class="nav-number">10.</span> <span class="nav-text">可添加内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#网站分析"><span class="nav-number">10.1.</span> <span class="nav-text">网站分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#seo推广"><span class="nav-number">10.2.</span> <span class="nav-text">seo推广</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐阅读"><span class="nav-number">11.</span> <span class="nav-text">推荐阅读</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#官方文档"><span class="nav-number">2.</span> <span class="nav-text">官方文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo-和-nexT-的安装"><span class="nav-number">3.</span> <span class="nav-text">Hexo 和 nexT 的安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打开-GitHub-Pages"><span class="nav-number">4.</span> <span class="nav-text">打开 GitHub Pages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH-配置"><span class="nav-number">5.</span> <span class="nav-text">SSH 配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同步到GitHub"><span class="nav-number">6.</span> <span class="nav-text">同步到GitHub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绑定域名"><span class="nav-number">7.</span> <span class="nav-text">绑定域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nexT-主题配置"><span class="nav-number">8.</span> <span class="nav-text">nexT 主题配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加-README-md"><span class="nav-number">8.1.</span> <span class="nav-text">添加 README.md</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Schemes"><span class="nav-number">8.2.</span> <span class="nav-text">Schemes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#live2d"><span class="nav-number">8.3.</span> <span class="nav-text">live2d</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态背景"><span class="nav-number">8.4.</span> <span class="nav-text">动态背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#footer"><span class="nav-number">8.5.</span> <span class="nav-text">footer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#busuanzi访问人数"><span class="nav-number">8.6.</span> <span class="nav-text">busuanzi访问人数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示统计字数"><span class="nav-number">8.7.</span> <span class="nav-text">显示统计字数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#增加本地搜索功能"><span class="nav-number">8.8.</span> <span class="nav-text">增加本地搜索功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在文章底部增加版权信息"><span class="nav-number">8.9.</span> <span class="nav-text">在文章底部增加版权信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#给文章加密"><span class="nav-number">8.10.</span> <span class="nav-text">给文章加密</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#message-Welcome-to-my-blog-enter-password-to-read"><span class="nav-number">9.</span> <span class="nav-text">message: Welcome to my blog, enter password to read.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可添加内容"><span class="nav-number">10.</span> <span class="nav-text">可添加内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#网站分析"><span class="nav-number">10.1.</span> <span class="nav-text">网站分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#seo推广"><span class="nav-number">10.2.</span> <span class="nav-text">seo推广</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐阅读"><span class="nav-number">11.</span> <span class="nav-text">推荐阅读</span></a></li></ol></div>
             
 
           </div>
@@ -831,7 +841,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">4.1k</span>
+    <span title="Site words total count">4.2k</span>
   
 </div>
 
