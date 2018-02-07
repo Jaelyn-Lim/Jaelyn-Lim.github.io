@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://jaelyn.coding.me/2018/01/27/DjangoLearning1/</loc>
+    <lastmod>2018-02-07T03:16:37.668Z</lastmod>
+    <data>
+        <display>
+        <title>Django 学习笔记—基础01</title>
+        <pubTime>2018-01-27T05:50:16.000Z</pubTime>
+        
+        <tag>Django</tag>
+         
+         
+           
+             
+              <breadCrumb title="Django" url="http://jaelyn.coding.me/categories/Django/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://jaelyn.coding.me/2017/12/29/hexoleraningnote/</loc>
     <lastmod>2018-02-07T02:33:06.627Z</lastmod>
     <data>
@@ -37,26 +57,6 @@
            
              
               <breadCrumb title="工具集" url="http://jaelyn.coding.me/categories/%E5%B7%A5%E5%85%B7%E9%9B%86/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://jaelyn.coding.me/2018/01/27/DjangoLearning1/</loc>
-    <lastmod>2018-01-27T05:59:24.187Z</lastmod>
-    <data>
-        <display>
-        <title>Django 学习笔记—基础01</title>
-        <pubTime>2018-01-27T05:50:16.000Z</pubTime>
-        
-        <tag>Django</tag>
-         
-         
-           
-             
-              <breadCrumb title="Django" url="http://jaelyn.coding.me/categories/Django/"/>
           
         </display>
     </data>
