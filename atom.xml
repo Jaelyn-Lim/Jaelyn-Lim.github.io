@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jaelyn.coding.me/"/>
-  <updated>2018-01-27T05:59:24.187Z</updated>
+  <updated>2018-02-07T02:10:18.596Z</updated>
   <id>http://jaelyn.coding.me/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Byobu &quot;多窗口&quot;的Terminal</title>
+    <link href="http://jaelyn.coding.me/2018/02/07/byobu/"/>
+    <id>http://jaelyn.coding.me/2018/02/07/byobu/</id>
+    <published>2018-02-07T01:52:59.000Z</published>
+    <updated>2018-02-07T02:10:18.596Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Byobu"><a href="#Byobu" class="headerlink" title="Byobu"></a>Byobu</h3><ul><li><a href="http://www.byobu.co/index.html" target="_blank" rel="noopener">Byobu.co</a></li></ul><h4 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h4><p>Byobu是一个日本术语，用于装饰、多面板屏幕，可作为折叠室的分隔物。作为一个开源软件项目，Byobu是一种优雅的功能，它是一种简单的、实用的、实用的GNU屏幕。Byobu包括了一个增强的概要文件、配置实用程序和GNU屏幕窗口管理器的系统状态通知，以及Tmux终端多路复用器。Byobu是在GPLv3下开发和发布的免费软件。</p><a id="more"></a><h4 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h4><table><thead><tr><th>系统</th><th>指令</th></tr></thead><tbody><tr><td>Alpine Linux</td><td><code>apk add byobu</code></td></tr><tr><td>Arch</td><td><code>pacman -Sy byobu</code></td></tr><tr><td>Debian</td><td><code>apt-get install byobu</code></td></tr><tr><td>Fedora</td><td><code>yum install byobu</code></td></tr><tr><td>Gentoo</td><td><code>emerge byobu</code></td></tr><tr><td>Mac OS</td><td><code>brew install byobu</code></td></tr><tr><td>Mint</td><td><code>sudo apt-get install byobu</code></td></tr><tr><td>Ubuntu</td><td><code>sudo apt-get install byobu</code></td></tr></tbody></table><h4 id="快捷操作"><a href="#快捷操作" class="headerlink" title="快捷操作"></a>快捷操作</h4><blockquote><p>在Terminal输入 <code>byobu --help</code> 可查看</p><ul><li><strong>F2</strong> - Create a new window</li><li><strong>F3</strong> - Move to previous window</li><li><strong>F4</strong> - Move to next window</li><li><strong>F5</strong> - Reload profile</li><li><strong>F6</strong> - Detach from this session</li><li><strong>F7</strong> - Enter copy/scrollback mode</li><li><strong>F8</strong> - Re-title a window</li><li><strong>F9</strong> - Configuration Menu</li><li><strong>F12</strong> -  Lock this terminal</li><li><strong>shift-F2</strong> - Split the screen horizontally</li><li><strong>ctrl-F2</strong> - Split the screen vertically</li><li><strong>shift-F3</strong> - Shift the focus to the previous split region</li><li><strong>shift-F4</strong> - Shift the focus to the next split region</li><li><strong>shift-F5</strong> - Join all splits</li><li><strong>ctrl-F6</strong> - Remove this split</li><li><strong>ctrl-F5</strong> - Reconnect GPG and SSH sockets</li><li><strong>shift-F6</strong> - Detach, but do not logout</li><li><strong>alt-pgup</strong> - Enter scrollback mode</li><li><strong>alt-pgdn</strong> - Enter scrollback mode</li><li><strong>Ctrl-a</strong> <strong>$</strong> - show detailed status</li><li><strong>Ctrl-a</strong> <strong>R</strong> - Reload profile</li><li><strong>Ctrl-a</strong> <strong>!</strong> - Toggle key bindings on and off</li><li><strong>Ctrl-a</strong> <strong>k</strong> - Kill the current window</li><li><strong>Ctrl-a</strong> <strong>~</strong> - Save the current window’s scrollback buffer</li></ul><p>安装完成之后键入<code>byobu</code>就能进到<strong>byobu</strong>页面使用</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Byobu&quot;&gt;&lt;a href=&quot;#Byobu&quot; class=&quot;headerlink&quot; title=&quot;Byobu&quot;&gt;&lt;/a&gt;Byobu&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.byobu.co/index.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Byobu.co&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;关于&quot;&gt;&lt;a href=&quot;#关于&quot; class=&quot;headerlink&quot; title=&quot;关于&quot;&gt;&lt;/a&gt;关于&lt;/h4&gt;&lt;p&gt;Byobu是一个日本术语，用于装饰、多面板屏幕，可作为折叠室的分隔物。作为一个开源软件项目，Byobu是一种优雅的功能，它是一种简单的、实用的、实用的GNU屏幕。Byobu包括了一个增强的概要文件、配置实用程序和GNU屏幕窗口管理器的系统状态通知，以及Tmux终端多路复用器。Byobu是在GPLv3下开发和发布的免费软件。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Django 学习笔记—基础01</title>
