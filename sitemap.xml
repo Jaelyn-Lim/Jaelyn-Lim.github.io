@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jaelyn.coding.me/2018/02/16/django-rest-vue02/</loc>
+    
+    <lastmod>2018-02-16T15:04:12.196Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jaelyn.coding.me/2018/02/14/django-rest-vue01/</loc>
     
     <lastmod>2018-02-14T13:24:36.441Z</lastmod>

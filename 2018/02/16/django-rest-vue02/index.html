@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  
+<script type="text/javascript">
+    var _speedMark = new Date();
+</script>
+
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=64866827" charset="UTF-8"></script>
+
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="HRlPcTjXKc" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/uploads/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/uploads/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/uploads/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/uploads/safari-pinned-tab.svg?v=5.1.3" color="#222">
+
+
+  <link rel="manifest" href="/images/uploads/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/uploads/browserconfig.xml" />
+
+
+
+  <meta name="keywords" content="Django, 学习笔记, 基础" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Jaelyn's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="参考：  Unofficial Windows Binaries for Python Extension Packages  Django REST framework 官网">
+<meta name="keywords" content="Django, 学习笔记, 基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django Rest framework + vue 笔记 02">
+<meta property="og:url" content="http://jaelyn.coding.me/2018/02/16/django-rest-vue02/index.html">
+<meta property="og:site_name" content="Jaelyn&#39;s Blog">
+<meta property="og:description" content="参考：  Unofficial Windows Binaries for Python Extension Packages  Django REST framework 官网">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://jaelyn-blog-txcos-1253450780.cos.ap-guangzhou.myqcloud.com/blog/pageimage2018/django_rest_vue01.png">
+<meta property="og:image" content="https://jaelyn-blog-txcos-1253450780.cos.ap-guangzhou.myqcloud.com/blog/pageimage2018/django_rest_vue02.png">
+<meta property="og:updated_time" content="2018-02-16T15:04:12.196Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Django Rest framework + vue 笔记 02">
+<meta name="twitter:description" content="参考：  Unofficial Windows Binaries for Python Extension Packages  Django REST framework 官网">
+<meta name="twitter:image" content="https://jaelyn-blog-txcos-1253450780.cos.ap-guangzhou.myqcloud.com/blog/pageimage2018/django_rest_vue01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'S2RJTOM4KM',
+      apiKey: '46aa43b4dc81f6d01e063ef5e5dba1a7',
+      indexName: 'blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://jaelyn.coding.me/2018/02/16/django-rest-vue02/"/>
+
+
+
+
+
+  <title>Django Rest framework + vue 笔记 02 | Jaelyn's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jaelyn's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">jaelyn-lim</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jaelyn.coding.me/2018/02/16/django-rest-vue02/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jaelyn">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jaelyn's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Django Rest framework + vue 笔记 02</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-16T22:58:48+08:00">
+                2018-02-16
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-16T23:04:12+08:00">
+                2018-02-16
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Django/" itemprop="url" rel="index">
+                    <span itemprop="name">Django</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 阅读次数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,501
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>参考：</p>
+<ul>
+<li><a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/" target="_blank" rel="noopener">Unofficial Windows Binaries for Python Extension Packages</a></li>
+</ul>
+<h3 id="Django-REST-framework"><a href="#Django-REST-framework" class="headerlink" title="Django REST framework"></a>Django REST framework</h3><ul>
+<li><a href="http://django-rest-framework.org" target="_blank" rel="noopener">官网</a></li>
+</ul>
+<a id="more"></a>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>进入到虚拟环境</p>
+<p><code>pip install djangorestframework</code></p>
+<p>安装Django，默认安装最新版本</p>
+<p><code>pip install -i https://pypi.douban.com/simple django</code> </p>
+<p>安装markdown，Markdown support for the browsable API.</p>
+<p><code>pip install markdown</code></p>
+<p>还需要安装</p>
+<p><code>pip install django-filter</code></p>
+<h3 id="使用mysql"><a href="#使用mysql" class="headerlink" title="使用mysql"></a>使用mysql</h3><h4 id="setting-py-文件中修改："><a href="#setting-py-文件中修改：" class="headerlink" title="setting.py 文件中修改："></a><strong>setting.py</strong> 文件中修改：</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">DATABASES = &#123;</span><br><span class="line">    <span class="string">'default'</span>: &#123;</span><br><span class="line">        <span class="string">'ENGINE'</span>: <span class="string">'django.db.backends.mysql'</span>,</span><br><span class="line">        <span class="string">'NAME'</span>: <span class="string">'teacherAndStudentSystem'</span>,</span><br><span class="line">        <span class="string">'USER'</span>: <span class="string">'root'</span>,</span><br><span class="line">        <span class="string">'PASSWORD'</span>: <span class="string">''</span>,</span><br><span class="line">        <span class="string">'HOST'</span>: <span class="string">'localhost'</span>,</span><br><span class="line">        <span class="string">'PORT'</span>: <span class="string">'3306'</span>,</span><br><span class="line">        <span class="string">'OPTIONS'</span>: &#123;</span><br><span class="line">            <span class="string">'charset'</span>: <span class="string">'utf8mb4'</span>, </span><br><span class="line">            <span class="string">'init_command'</span>: <span class="string">'SET default_storage_engine=INNODB;'</span></span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 MySQLWorkbench 中新建数据库</p>
+<h4 id="安装python的mysql驱动"><a href="#安装python的mysql驱动" class="headerlink" title="安装python的mysql驱动"></a>安装python的mysql驱动</h4><p><code>pip install mysqlclient</code></p>
+<blockquote>
+<p>运行发现报错 “django.db.utils.OperationalError: (1193, “Unknown system variable ‘storage_engine’”)”</p>
+<p>参考： </p>
+<ul>
+<li><a href="http://www.cnblogs.com/chenyang13677/p/7780799.html" target="_blank" rel="noopener">博客园</a></li>
+<li><a href="https://stackoverflow.com/questions/37175295/cant-migrate-django-databases-on-mysql-after-upgrading-to-ubuntu-16-04" target="_blank" rel="noopener">stackoverflow</a></li>
+</ul>
+<p>因为版本的关系，所以只需要改为 <code>SET default_storage_engine=INNODB;</code> 即可</p>
+<p>这个表示选择另一种连接方式，后面使用第三方登录的时候要用上</p>
+</blockquote>
+<h3 id="安装-pillow"><a href="#安装-pillow" class="headerlink" title="安装 pillow"></a>安装 pillow</h3><p><code>pip install pillow</code></p>
+<blockquote>
+<p>这个是图形第三方插件</p>
+</blockquote>
+<h3 id="创建apps的package"><a href="#创建apps的package" class="headerlink" title="创建apps的package"></a>创建apps的package</h3><p><strong>注意需要创建的是Python Package，而不是Directory</strong></p>
+<h4 id="修改setting"><a href="#修改setting" class="headerlink" title="修改setting"></a>修改setting</h4><p>将apps加入到python的根搜索路径下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="comment"># Build paths inside the project like this: os.path.join(BASE_DIR, ...)</span></span><br><span class="line">BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))</span><br><span class="line">sys.path.insert(<span class="number">0</span>, BASE_DIR)</span><br><span class="line">sys.path.insert(<span class="number">0</span>, os.path.join(BASE_DIR, <span class="string">'apps'</span>))</span><br><span class="line">sys.path.insert(<span class="number">0</span>, os.path.join(BASE_DIR, <span class="string">'extra_apps'</span>))</span><br></pre></td></tr></table></figure>
+<p>目前项目目录：</p>
+<p><img src="https://jaelyn-blog-txcos-1253450780.cos.ap-guangzhou.myqcloud.com/blog/pageimage2018/django_rest_vue01.png" alt="项目目录01"></p>
+<h3 id="vue项目"><a href="#vue项目" class="headerlink" title="vue项目"></a>vue项目</h3><h4 id="安装需要的包"><a href="#安装需要的包" class="headerlink" title="安装需要的包"></a>安装需要的包</h4><p>在vue项目的根目录下执行</p>
+<p><code>cnpm install</code> 或 <code>npm install</code></p>
+<p>会生成一个model_modules的文件夹</p>
+<h4 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h4><p><code>cnpm run dev</code> 或使用 <code>npm run dev</code></p>
+<h3 id="设计app和models"><a href="#设计app和models" class="headerlink" title="设计app和models"></a>设计app和models</h3><h4 id="富文本编辑器"><a href="#富文本编辑器" class="headerlink" title="富文本编辑器"></a>富文本编辑器</h4><p>Django-UEditor</p>
+<h5 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h5><ul>
+<li><a href="http://www.cnblogs.com/fengzheng/p/3822266.html" target="_blank" rel="noopener">Django集成百度富文本编辑器uEditor</a></li>
+</ul>
+<h5 id="对应代码应用"><a href="#对应代码应用" class="headerlink" title="对应代码应用"></a>对应代码应用</h5><ul>
+<li>把这第三方包复制到项目中</li>
+<li>在<strong>setting</strong>中设置，加入改包</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = [</span><br><span class="line">    <span class="string">'django.contrib.auth'</span>,</span><br><span class="line">    <span class="string">'django.contrib.contenttypes'</span>,</span><br><span class="line">    <span class="string">'django.contrib.sessions'</span>,</span><br><span class="line">    <span class="string">'django.contrib.messages'</span>,</span><br><span class="line">    <span class="string">'django.contrib.staticfiles'</span>,</span><br><span class="line">    <span class="string">'users.apps.UsersConfig'</span>,</span><br><span class="line">    <span class="string">'DjangoUeditor'</span>,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在模型类中导入</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> DjangoUeditor.models <span class="keyword">import</span> UEditorField</span><br></pre></td></tr></table></figure>
+<ul>
+<li>模型中使用</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">goods_desc = UEditorField(</span><br><span class="line">    verbose_name=<span class="string">u"内容"</span>, </span><br><span class="line">    imagePath=<span class="string">"goods/images/"</span>, </span><br><span class="line">    width=<span class="number">1000</span>, </span><br><span class="line">    height=<span class="number">300</span>, </span><br><span class="line">    filePath=<span class="string">"goods/files/"</span>, </span><br><span class="line">    default=<span class="string">''</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h4 id="模型类例子"><a href="#模型类例子" class="headerlink" title="模型类例子"></a>模型类例子</h4><p>在线购物平台的商品模型</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"><span class="keyword">from</span> DjangoUeditor.models <span class="keyword">import</span> UEditorField</span><br><span class="line"><span class="comment"># Create your models here.</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GoodsCategory</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    商品类别</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    CATEGORY_TYPE = (</span><br><span class="line">        (<span class="number">1</span>, <span class="string">"一级类目"</span>),</span><br><span class="line">        (<span class="number">2</span>, <span class="string">"二级类目"</span>),</span><br><span class="line">        (<span class="number">3</span>, <span class="string">"三级类目"</span>),</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    name = models.CharField(default=<span class="string">""</span>, max_length=<span class="number">30</span>, verbose_name=<span class="string">"类别名"</span>, help_text=<span class="string">"类别名"</span>)</span><br><span class="line">    code = models.CharField(default=<span class="string">""</span>, max_length=<span class="number">30</span>, verbose_name=<span class="string">"类别code"</span>, help_text=<span class="string">"类别code"</span>)</span><br><span class="line">    desc = models.TextField(default=<span class="string">""</span>, verbose_name=<span class="string">"类别描述"</span>, help_text=<span class="string">"类别描述"</span>)</span><br><span class="line">    category_type = models.IntegerField(choices=CATEGORY_TYPE, verbose_name=<span class="string">"类目级别"</span>, help_text=<span class="string">"类目级别"</span>)</span><br><span class="line">    parent_category = models.ForeignKey(<span class="string">"self"</span>, null=<span class="keyword">True</span>, blank=<span class="keyword">True</span>, verbose_name=<span class="string">"父类目级别"</span>, help_text=<span class="string">"父目录"</span>,</span><br><span class="line">                                        related_name=<span class="string">"sub_cat"</span>)</span><br><span class="line">    is_tab = models.BooleanField(default=<span class="keyword">False</span>, verbose_name=<span class="string">"是否导航"</span>, help_text=<span class="string">"是否导航"</span>)</span><br><span class="line">    add_time = models.DateTimeField(default=datetime.now, verbose_name=<span class="string">"添加时间"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        verbose_name = <span class="string">"商品类别"</span></span><br><span class="line">        verbose_name_plural = verbose_name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GoodsCategoryBrand</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    品牌名</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    category = models.ForeignKey(GoodsCategory, related_name=<span class="string">'brands'</span>, null=<span class="keyword">True</span>, blank=<span class="keyword">True</span>, verbose_name=<span class="string">"商品类目"</span>)</span><br><span class="line">    name = models.CharField(default=<span class="string">""</span>, max_length=<span class="number">30</span>, verbose_name=<span class="string">"品牌名"</span>, help_text=<span class="string">"品牌名"</span>)</span><br><span class="line">    desc = models.TextField(default=<span class="string">""</span>, max_length=<span class="number">200</span>, verbose_name=<span class="string">"品牌描述"</span>, help_text=<span class="string">"品牌描述"</span>)</span><br><span class="line">    image = models.ImageField(max_length=<span class="number">200</span>, upload_to=<span class="string">"brands/"</span>)</span><br><span class="line">    add_time = models.DateTimeField(default=datetime.now, verbose_name=<span class="string">"添加时间"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        verbose_name = <span class="string">"品牌"</span></span><br><span class="line">        verbose_name_plural = verbose_name</span><br><span class="line">        db_table = <span class="string">"goods_goodsbrand"</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Goods</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    商品</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    category = models.ForeignKey(GoodsCategory, verbose_name=<span class="string">"商品类目"</span>)</span><br><span class="line">    goods_sn = models.CharField(max_length=<span class="number">50</span>, default=<span class="string">""</span>, verbose_name=<span class="string">"商品唯一货号"</span>)</span><br><span class="line">    name = models.CharField(max_length=<span class="number">100</span>, verbose_name=<span class="string">"商品名"</span>)</span><br><span class="line">    click_num = models.IntegerField(default=<span class="number">0</span>, verbose_name=<span class="string">"点击数"</span>)</span><br><span class="line">    sold_num = models.IntegerField(default=<span class="number">0</span>, verbose_name=<span class="string">"商品销售量"</span>)</span><br><span class="line">    fav_num = models.IntegerField(default=<span class="number">0</span>, verbose_name=<span class="string">"收藏数"</span>)</span><br><span class="line">    goods_num = models.IntegerField(default=<span class="number">0</span>, verbose_name=<span class="string">"库存数"</span>)</span><br><span class="line">    market_price = models.FloatField(default=<span class="number">0</span>, verbose_name=<span class="string">"市场价格"</span>)</span><br><span class="line">    shop_price = models.FloatField(default=<span class="number">0</span>, verbose_name=<span class="string">"本店价格"</span>)</span><br><span class="line">    goods_brief = models.TextField(max_length=<span class="number">500</span>, verbose_name=<span class="string">"商品简短描述"</span>)</span><br><span class="line">    goods_desc = UEditorField(verbose_name=<span class="string">u"内容"</span>, imagePath=<span class="string">"goods/images/"</span>, width=<span class="number">1000</span>, height=<span class="number">300</span>,</span><br><span class="line">                              filePath=<span class="string">"goods/files/"</span>, default=<span class="string">''</span>)</span><br><span class="line">    ship_free = models.BooleanField(default=<span class="keyword">True</span>, verbose_name=<span class="string">"是否承担运费"</span>)</span><br><span class="line">    goods_front_image = models.ImageField(upload_to=<span class="string">"goods/images/"</span>, null=<span class="keyword">True</span>, blank=<span class="keyword">True</span>, verbose_name=<span class="string">"封面图"</span>)</span><br><span class="line">    is_new = models.BooleanField(default=<span class="keyword">False</span>, verbose_name=<span class="string">"是否新品"</span>)</span><br><span class="line">    is_hot = models.BooleanField(default=<span class="keyword">False</span>, verbose_name=<span class="string">"是否热销"</span>)</span><br><span class="line">    add_time = models.DateTimeField(default=datetime.now, verbose_name=<span class="string">"添加时间"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        verbose_name = <span class="string">'商品'</span></span><br><span class="line">        verbose_name_plural = verbose_name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IndexAd</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    category = models.ForeignKey(GoodsCategory, related_name=<span class="string">'category'</span>,verbose_name=<span class="string">"商品类目"</span>)</span><br><span class="line">    goods =models.ForeignKey(Goods, related_name=<span class="string">'goods'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        verbose_name = <span class="string">'首页商品类别广告'</span></span><br><span class="line">        verbose_name_plural = verbose_name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.goods.name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GoodsImage</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    商品轮播图</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    goods = models.ForeignKey(Goods, verbose_name=<span class="string">"商品"</span>, related_name=<span class="string">"images"</span>)</span><br><span class="line">    image = models.ImageField(upload_to=<span class="string">""</span>, verbose_name=<span class="string">"图片"</span>, null=<span class="keyword">True</span>, blank=<span class="keyword">True</span>)</span><br><span class="line">    add_time = models.DateTimeField(default=datetime.now, verbose_name=<span class="string">"添加时间"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        verbose_name = <span class="string">'商品图片'</span></span><br><span class="line">        verbose_name_plural = verbose_name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.goods.name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Banner</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    轮播的商品</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    goods = models.ForeignKey(Goods, verbose_name=<span class="string">"商品"</span>)</span><br><span class="line">    image = models.ImageField(upload_to=<span class="string">'banner'</span>, verbose_name=<span class="string">"轮播图片"</span>)</span><br><span class="line">    index = models.IntegerField(default=<span class="number">0</span>, verbose_name=<span class="string">"轮播顺序"</span>)</span><br><span class="line">    add_time = models.DateTimeField(default=datetime.now, verbose_name=<span class="string">"添加时间"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        verbose_name = <span class="string">'轮播商品'</span></span><br><span class="line">        verbose_name_plural = verbose_name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.goods.name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HotSearchWords</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    热搜词</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    keywords = models.CharField(default=<span class="string">""</span>, max_length=<span class="number">20</span>, verbose_name=<span class="string">"热搜词"</span>)</span><br><span class="line">    index = models.IntegerField(default=<span class="number">0</span>, verbose_name=<span class="string">"排序"</span>)</span><br><span class="line">    add_time = models.DateTimeField(default=datetime.now, verbose_name=<span class="string">"添加时间"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        verbose_name = <span class="string">'热搜词'</span></span><br><span class="line">        verbose_name_plural = verbose_name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.keywords</span><br></pre></td></tr></table></figure>
+<h3 id="自定义User类"><a href="#自定义User类" class="headerlink" title="自定义User类"></a>自定义User类</h3><ul>
+<li>在模型类中导入</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib.auth.models <span class="keyword">import</span> AbstractUser</span><br></pre></td></tr></table></figure>
+<ul>
+<li>继承该<code>AbstractUser</code>类</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserProfile</span><span class="params">(AbstractUser)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>引用外键</li>
+</ul>
+<p>在另一个模型类中导入</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib.auth <span class="keyword">import</span> get_user_model</span><br></pre></td></tr></table></figure>
+<p>在外键中使用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">User = get_user_model()</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ShoppingCart</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    购物车</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    user = models.ForeignKey(User, verbose_name=<span class="string">u"用户"</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="独立使用Django的model"><a href="#独立使用Django的model" class="headerlink" title="独立使用Django的model"></a>独立使用<strong>Django</strong>的model</h3><h4 id="进行一些初始化"><a href="#进行一些初始化" class="headerlink" title="进行一些初始化"></a>进行一些初始化</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">pwd = os.path.dirname(os.path.realpath(__file__))</span><br><span class="line">sys.path.append(pwd+<span class="string">"../"</span>)</span><br><span class="line">os.environ.setdefault(<span class="string">"DJANGO_SETTINGS_MODULE"</span>, <span class="string">"Project.settings"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> django</span><br><span class="line">django.setup()</span><br></pre></td></tr></table></figure>
+<h4 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> goods.models <span class="keyword">import</span> GoodsCategory</span><br><span class="line"></span><br><span class="line">all_categorys = GoodsCategory.objects.all()</span><br></pre></td></tr></table></figure>
+<p><em>顺序不能错</em></p>
+<h3 id="让Django识别媒体文件"><a href="#让Django识别媒体文件" class="headerlink" title="让Django识别媒体文件"></a>让Django识别媒体文件</h3><h4 id="在settings-py中设置"><a href="#在settings-py中设置" class="headerlink" title="在settings.py中设置"></a>在settings.py中设置</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MEDIA_URL = <span class="string">"/media/"</span></span><br><span class="line">MEDIA_ROOT = os.path.join(BASE_DIR, <span class="string">"media"</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="在urls-py中配置"><a href="#在urls-py中配置" class="headerlink" title="在urls.py中配置"></a>在urls.py中配置</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Project.settings <span class="keyword">import</span> MEDIA_ROOT</span><br><span class="line"><span class="keyword">from</span> django.views.static <span class="keyword">import</span> serve</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    <span class="comment"># ...more</span></span><br><span class="line">    url(<span class="string">r'^media/(?P&lt;path&gt;.*)$'</span>, serve, &#123;<span class="string">"document_root"</span>: MEDIA_ROOT&#125;),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="目前项目目录"><a href="#目前项目目录" class="headerlink" title="目前项目目录"></a>目前项目目录</h3><p><img src="https://jaelyn-blog-txcos-1253450780.cos.ap-guangzhou.myqcloud.com/blog/pageimage2018/django_rest_vue02.png" alt="项目目录02"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Jaelyn
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://jaelyn.coding.me/2018/02/16/django-rest-vue02/" title="Django Rest framework + vue 笔记 02">http://jaelyn.coding.me/2018/02/16/django-rest-vue02/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Django/" rel="tag"><i class="fa fa-tag"></i> Django</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/14/django-rest-vue01/" rel="next" title="Django Rest framework + vue 笔记 01">
+                <i class="fa fa-chevron-left"></i> Django Rest framework + vue 笔记 01
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="Jaelyn" />
+            
+              <p class="site-author-name" itemprop="name">Jaelyn</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Jaelyn-Lim" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/u/2660619527" target="_blank" title="微博">
+                    
+                      <i class="fa fa-fw fa-globe"></i>微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Django-REST-framework"><span class="nav-number">1.</span> <span class="nav-text">Django REST framework</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">1.1.</span> <span class="nav-text">安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用mysql"><span class="nav-number">2.</span> <span class="nav-text">使用mysql</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#setting-py-文件中修改："><span class="nav-number">2.1.</span> <span class="nav-text">setting.py 文件中修改：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装python的mysql驱动"><span class="nav-number">2.2.</span> <span class="nav-text">安装python的mysql驱动</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-pillow"><span class="nav-number">3.</span> <span class="nav-text">安装 pillow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建apps的package"><span class="nav-number">4.</span> <span class="nav-text">创建apps的package</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#修改setting"><span class="nav-number">4.1.</span> <span class="nav-text">修改setting</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue项目"><span class="nav-number">5.</span> <span class="nav-text">vue项目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装需要的包"><span class="nav-number">5.1.</span> <span class="nav-text">安装需要的包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运行"><span class="nav-number">5.2.</span> <span class="nav-text">运行</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设计app和models"><span class="nav-number">6.</span> <span class="nav-text">设计app和models</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#富文本编辑器"><span class="nav-number">6.1.</span> <span class="nav-text">富文本编辑器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#参考"><span class="nav-number">6.1.1.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对应代码应用"><span class="nav-number">6.1.2.</span> <span class="nav-text">对应代码应用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模型类例子"><span class="nav-number">6.2.</span> <span class="nav-text">模型类例子</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义User类"><span class="nav-number">7.</span> <span class="nav-text">自定义User类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#独立使用Django的model"><span class="nav-number">8.</span> <span class="nav-text">独立使用Django的model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#进行一些初始化"><span class="nav-number">8.1.</span> <span class="nav-text">进行一些初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调用"><span class="nav-number">8.2.</span> <span class="nav-text">调用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#让Django识别媒体文件"><span class="nav-number">9.</span> <span class="nav-text">让Django识别媒体文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#在settings-py中设置"><span class="nav-number">9.1.</span> <span class="nav-text">在settings.py中设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在urls-py中配置"><span class="nav-number">9.2.</span> <span class="nav-text">在urls.py中配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目前项目目录"><span class="nav-number">10.</span> <span class="nav-text">目前项目目录</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jaelyn</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">6.6k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+<script>
+  	var _mtac = {};
+  	(function() {
+  		var mta = document.createElement("script");
+  		mta.src = "https://pingjs.qq.com/h5/stats.js?v2.0.4";
+  		mta.setAttribute("name", "MTAH5");
+  		mta.setAttribute("sid", "500569228");
+
+  		var s = document.getElementsByTagName("script")[0];
+  		s.parentNode.insertBefore(mta, s);
+  	})();
+</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=64866827";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.3"></script>
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  
+<div id="hexo-helper-live2d">
+  <canvas id="live2dcanvas" width="150" height="300"></canvas>
+</div>
+<style>
+  #live2dcanvas{
+    position: fixed;
+    width: 150px;
+    height: 300px;
+    opacity:0.7;
+    right: 0px;
+    z-index: 999;
+    pointer-events: none;
+    bottom: -20px;
+  }
+</style>
+<script type="text/javascript" src="/live2d/device.min.js"></script>
+<script type="text/javascript">
+const loadScript = function loadScript(c,b){var a=document.createElement("script");a.type="text/javascript";"undefined"!=typeof b&&(a.readyState?a.onreadystatechange=function(){if("loaded"==a.readyState||"complete"==a.readyState)a.onreadystatechange=null,b()}:a.onload=function(){b()});a.src=c;document.body.appendChild(a)};
+(function(){
+  if((typeof(device) != 'undefined') && (device.mobile())){
+    document.getElementById("live2dcanvas").style.width = '75px';
+    document.getElementById("live2dcanvas").style.height = '150px';
+  }else
+    if (typeof(device) === 'undefined') console.error('Cannot find current-device script.');
+  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/z16.model.json", 0.5);});
+})();
+</script>
+
+
+  <script>
+    var _mtac = {};
+    (function() {
+      var mta = document.createElement("script");
+      mta.src = "http://pingjs.qq.com/h5/stats.js?v2.0.2";
+      mta.setAttribute("name", "MTAH5");
+      mta.setAttribute("sid", "500569228");
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(mta, s);
+    })();
+  </script>
+
+  <script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+  
+</body>
+</html>

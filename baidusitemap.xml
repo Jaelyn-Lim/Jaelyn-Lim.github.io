@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://jaelyn.coding.me/2018/02/16/django-rest-vue02/</loc>
+    <lastmod>2018-02-16T15:04:12.196Z</lastmod>
+    <data>
+        <display>
+        <title>Django Rest framework + vue 笔记 02</title>
+        <pubTime>2018-02-16T14:58:48.000Z</pubTime>
+        
+        <tag>Django</tag>
+         
+         
+           
+             
+              <breadCrumb title="Django" url="http://jaelyn.coding.me/categories/Django/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://jaelyn.coding.me/2018/02/14/django-rest-vue01/</loc>
     <lastmod>2018-02-14T13:24:36.441Z</lastmod>
     <data>
