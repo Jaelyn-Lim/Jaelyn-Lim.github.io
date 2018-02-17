@@ -3,179 +3,6 @@
   
     
     <entry>
-      <title><![CDATA[Hexo + nexT 学习笔记]]></title>
-      <url>/2018/02/17/HexoLearn-re/</url>
-      <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><img src="https://jaelyn-blog-txcos-1253450780.cos.ap-guangzhou.myqcloud.com/blog/pageimage2018/hexo-head.jpeg" alt="hexo-head"></p>
-<blockquote>
-<ul>
-<li>本文内容主要是个人在学习hexo和next中所遇到的一些“坑”和解决方法,而详细的流程网上有很多，在文章的结尾我会贴出我在学习中查找到的比较好的文章。</li>
-<li>注意本文不是详细操作步骤，如果需要详细步骤，请直接翻到文章结尾。</li>
-</ul>
-</blockquote>
-<a id="more"></a>
-<h2 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h2><ul>
-<li><a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">Hexo</a></li>
-<li><a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="noopener">nexT</a></li>
-</ul>
-<h2 id="Hexo-和-nexT-的安装"><a href="#Hexo-和-nexT-的安装" class="headerlink" title="Hexo 和 nexT 的安装"></a>Hexo 和 nexT 的安装</h2><blockquote>
-<p>在安装 Hexo 之前，需要确保电脑环境要有 <a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">Node.js</a> 和 <a href="https://git-scm.com/downloads" target="_blank" rel="noopener">Git</a> 环境, 当然，为了更好的安装 Hexo 还需要 <a href="https://www.npmjs.com" target="_blank" rel="noopener">npm</a>.</p>
-</blockquote>
-<p>下面是我所使用的版本：<br><img src="https://jaelyn-blog-txcos-1253450780.cos.ap-guangzhou.myqcloud.com/blog/pageimage2018/gitnpmnodeversion.png" alt="gitnpmnodeversion"></p>
-<p>安装之后，最常使用的指令如下：</p>
-<ol>
-<li>生成静态页面</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
-<ol>
-<li>在本地运行</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<ol>
-<li>部署到GitHub pages（coding）</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<ol>
-<li>清除生成的静态文件</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
-<h2 id="打开-GitHub-Pages"><a href="#打开-GitHub-Pages" class="headerlink" title="打开 GitHub Pages"></a>打开 GitHub Pages</h2><p>在第一次创建完仓库之后，打开settings选项，向下翻到GitHub Pages选项会发现不能打开，会有一个提示信息：</p>
-<blockquote>
-<p>GitHub Pages is currently disabled. You must first add content to your repository before you can publish a GitHub Pages site</p>
-</blockquote>
-<p>是因为该GitHub Pages没有内容，此时只要点击下面的Choose a theme按钮选择一个主题就可以打开和访问了。</p>
-<h2 id="SSH-配置"><a href="#SSH-配置" class="headerlink" title="SSH 配置"></a>SSH 配置</h2><ul>
-<li>先查看本机用户home目录下是否存在.ssh目录</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~/.ssh</span><br></pre></td></tr></table></figure>
-<ul>
-<li>如果有就不用再创建了，如果想重新创建，可以创建一个不同名字的，也可以将原来的删除，再创建。</li>
-<li>使用下面指令删除已存在的SSH：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-add -D</span><br><span class="line">rm -r ~/.ssh</span><br></pre></td></tr></table></figure>
-<ul>
-<li>再创建新的SSH密钥(keys)</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ssh-keygen -t rsa -C &quot;your_email@example.com&quot;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>这将按照你提供的邮箱地址，创建一对密钥</p>
-</blockquote>
-<ul>
-<li>将生成的<code>id_rsa.pub</code>文件里面的内容拷贝到GitHub 项目中添加公钥，这里推荐在对应 xxx.github.io 项目中加。（settings-&gt;deploy keys）</li>
-</ul>
-<ul>
-<li>最后再用下面指令测试是否连接成功</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>可参考<a href="https://www.zhihu.com/question/21402411" target="_blank" rel="noopener">github提示Permission denied (publickey)，如何才能解决？</a></p>
-</blockquote>
-<h2 id="同步到GitHub"><a href="#同步到GitHub" class="headerlink" title="同步到GitHub"></a>同步到GitHub</h2><ul>
-<li>配置<code>站点文件</code>下的<code>_config.xml</code>文件下的<code>deploy</code>信息。</li>
-</ul>
-<ul>
-<li>安装<code>hexo-deployer-git</code>插件</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>关于 https 的问题，如果需要使用自己的域名的话，GitHub pages 是不能打开 Enforce HTTPS 的。所以在配置<code>deploy</code>信息的时候就推荐使用 Clone with SSH 的链接。</p>
-</blockquote>
-<h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><ul>
-<li>在source文件夹下面创建<code>CNAME</code>文件（没有后缀），里面填上自己的域名。</li>
-<li>之后在自己的域名商将自己的域名用<code>CNAME</code>方式指向自己GitHub pages的域名。</li>
-</ul>
-<p><img src="https://jaelyn-blog-txcos-1253450780.cos.ap-guangzhou.myqcloud.com/blog/pageimage2018/cname-dns.png" alt="cname-dns"></p>
-<blockquote>
-<p>个人使用的是<a href="https://cloud.tencent.com" target="_blank" rel="noopener">腾讯云</a></p>
-</blockquote>
-<p>最后需要注意，需要在<code>站点文件</code>的<code>_config.xml</code>文件配置中的<code>skip_render</code>添加:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">skip_render:</span><br><span class="line"> - CNAME</span><br></pre></td></tr></table></figure>
-<p>表示跳过该文件的渲染。</p>
-<h2 id="nexT-主题配置"><a href="#nexT-主题配置" class="headerlink" title="nexT 主题配置"></a>nexT 主题配置</h2><p>一些我觉得比较实用的效果，参考<a href="https://segmentfault.com/a/1190000009544924" target="_blank" rel="noopener">hexo的next主题个性化配置教程</a>.</p>
-<h3 id="添加-README-md"><a href="#添加-README-md" class="headerlink" title="添加 README.md"></a>添加 README.md</h3><p>在<code>站点文件</code>的<code>source</code>目录下添加一个<code>README.md</code>文件，之后修改<code>站点文件</code>下的<code>_config.xml</code>，将<code>skip_render</code>添加<code>README.md</code>，跳过该文件的渲染。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">skip_render:</span><br><span class="line"> - CNAME</span><br><span class="line"> - README.md</span><br></pre></td></tr></table></figure>
-<h3 id="Schemes"><a href="#Schemes" class="headerlink" title="Schemes"></a>Schemes</h3><p>个人比较喜欢<code>Gemini</code>样式，相比<code>Pisces</code>样式，该样式不会每篇文章相连过于紧密，会以分块的形式显示出来，比较好看，特别在手机端上效果更显著。具体可以亲自去设置去看看效果。</p>
-<h3 id="live2d"><a href="#live2d" class="headerlink" title="live2d"></a>live2d</h3><p>就是网站右下角的“萌物”小人，具体可以参考<a href="https://github.com/EYHN/hexo-helper-live2d" target="_blank" rel="noopener">hexo-helper-live2d</a>。下面简要介绍我的做法：</p>
-<ol>
-<li>在<code>站点文件</code>打开终端输入</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-helper-live2d</span><br></pre></td></tr></table></figure>
-<ol>
-<li>在<code>站点文件</code>下的<code>_config.xml</code>最后配置：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">live2d:</span><br><span class="line">  model: z16</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>具体的配置可以看文档，可以修改挺多内容的。模型外观参考<a href="https://huaji8.top/post/live2d-plugin-2.0/" target="_blank" rel="noopener">截图预览</a>.</p>
-</blockquote>
-<h3 id="动态背景"><a href="#动态背景" class="headerlink" title="动态背景"></a>动态背景</h3><p>在<code>主题文件</code>的<code>_config.xml</code>中搜索<code>Canvas-nest</code>可以发现有4个动态背景，可以逐个尝试，也可以同时设置为<code>true</code>，个人只选择了<code>Canvas-nest</code>。</p>
-<h3 id="footer"><a href="#footer" class="headerlink" title="footer"></a>footer</h3><p>可以将网站最下的不想要显示的内容设置为<code>false</code>，在<code>主题文件</code>的<code>_config.xml</code>中搜索<code>footer</code>，我的设置如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">footer:</span><br><span class="line">  # Specify the date when the site was setup.</span><br><span class="line">  # If not defined, current year will be used.</span><br><span class="line">  since: 2017</span><br><span class="line"></span><br><span class="line">  # Icon between year and copyright info.</span><br><span class="line">  icon: user</span><br><span class="line"></span><br><span class="line">  # If not defined, will be used `author` from Hexo main config.</span><br><span class="line">  copyright:</span><br><span class="line">  # -------------------------------------------------------------</span><br><span class="line">  # Hexo link (Powered by Hexo).</span><br><span class="line">  powered: false</span><br><span class="line"></span><br><span class="line">  theme:</span><br><span class="line">    # Theme &amp; scheme info link (Theme - NexT.scheme).</span><br><span class="line">    enable: false</span><br><span class="line">    # Version info of NexT after scheme info (vX.X.X).</span><br><span class="line">    version: false</span><br></pre></td></tr></table></figure>
-<h3 id="busuanzi访问人数"><a href="#busuanzi访问人数" class="headerlink" title="busuanzi访问人数"></a>busuanzi访问人数</h3><p>在<code>主题文件</code>的<code>_config.xml</code>中搜索<code>busuanzi_count</code>，修改配置，可以在网站底部和文章中显示访问的人数，我的配置如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">busuanzi_count:</span><br><span class="line">  # count values only if the other configs are false</span><br><span class="line">  enable: true</span><br><span class="line">  # custom uv span for the whole site</span><br><span class="line">  site_uv: true</span><br><span class="line">  site_uv_header: &lt;i class=&quot;fa fa-user&quot;&gt;&lt;/i&gt; 访问人数</span><br><span class="line">  site_uv_footer: |</span><br><span class="line">  # custom pv span for the whole site</span><br><span class="line">  site_pv: true</span><br><span class="line">  site_pv_header: &lt;i class=&quot;fa fa-eye&quot;&gt;&lt;/i&gt; 访问总量</span><br><span class="line">  site_pv_footer:</span><br><span class="line">  # custom pv span for one page only</span><br><span class="line">  page_pv: true</span><br><span class="line">  page_pv_header: &lt;i class=&quot;fa fa-file-o&quot;&gt;&lt;/i&gt; 阅读次数</span><br><span class="line">  page_pv_footer:</span><br></pre></td></tr></table></figure>
-<h3 id="显示统计字数"><a href="#显示统计字数" class="headerlink" title="显示统计字数"></a>显示统计字数</h3><p>在<code>主题文件</code>的<code>_config.xml</code>中搜索<code>post_wordcount</code>，修改配置，可以在网站底部和文章中显示所统计的字数，我的配置如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">post_wordcount:</span><br><span class="line">  item_text: true</span><br><span class="line">  wordcount: true</span><br><span class="line">  min2read: true</span><br><span class="line">  totalcount: true</span><br><span class="line">  separated_meta: true</span><br></pre></td></tr></table></figure>
-<h3 id="增加本地搜索功能"><a href="#增加本地搜索功能" class="headerlink" title="增加本地搜索功能"></a>增加本地搜索功能</h3><p>在<code>主题文件</code>的<code>_config.xml</code>中搜索<code>local_search</code>，设置为<code>true</code>。</p>
-<h3 id="在文章底部增加版权信息"><a href="#在文章底部增加版权信息" class="headerlink" title="在文章底部增加版权信息"></a>在文章底部增加版权信息</h3><p>在<code>主题文件</code>的<code>_config.xml</code>中搜索<code>post_copyright</code>，设置为<code>true</code>。</p>
-<h3 id="给文章加密"><a href="#给文章加密" class="headerlink" title="给文章加密"></a>给文章加密</h3><p>参考： <a href="https://github.com/MikeCoder/hexo-blog-encrypt/blob/master/ReadMe.zh.md" target="_blank" rel="noopener">hexo-blog-encrypt</a></p>
-<ul>
-<li>安装： <code>npm install hexo-blog-encrypt</code>  </li>
-<li>首先在 _config.yml 中启用该插件</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Security</span><br><span class="line">encrypt:</span><br><span class="line">    enable: true</span><br></pre></td></tr></table></figure>
-<ul>
-<li>在你的文章的头部添加上对应的字段，如 password, abstract, message</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: hello world</span><br><span class="line">date: 2016-03-30 21:18:02</span><br><span class="line">tags:</span><br><span class="line">    - fdsafsdaf</span><br><span class="line">password: Mike</span><br><span class="line">abstract: Welcome to my blog, enter password to read.</span><br><span class="line">message: Welcome to my blog, enter password to read.</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<h2 id="写文章"><a href="#写文章" class="headerlink" title="写文章"></a>写文章</h2><p>一般使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new xxx</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>xxx表示文件的名字，同时也会自动设置为文章标题（后面可改）<br>以之间创建<code>.md</code>文件，添加文章头信息</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">title:  // 文章标题</span><br><span class="line">date: // 创建时间</span><br><span class="line">updated: //跟新文章的时间</span><br><span class="line">tags: // 文章的标签，如果有多个，[tags1, tags2, ...]</span><br><span class="line">categories: // 文章分类</span><br><span class="line">keywords: // 文章关键词，如果有多个，[key1, key2, ...]</span><br><span class="line">description: //文章描述</span><br></pre></td></tr></table></figure>
-<p>其中需要注意：</p>
-<ul>
-<li>如果想要有<code>updated</code>，需要在<code>主题文件</code>下的<code>_config.xml</code>文件中配置<code>post_meta</code>，将<code>updated_at</code>设置为<code>true</code>。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">post_meta:</span><br><span class="line">  item_text: true</span><br><span class="line">  created_at: true</span><br><span class="line">  updated_at: true</span><br><span class="line">  categories: true</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>keywords</code>和<code>description</code>的作用是为了搜索引擎寻找关键字。</li>
-<li>其中<code>description</code>关键字，在主页上显示的时候就会显示这里面的内容，而不是显示前150个字符。还有另一种方法推荐，就是不写<code>description</code>，而是在文章中插入<code>&lt;!-- more --&gt;</code>注释，这样主页就会显示该注释前的内容。</li>
-</ul>
-<h2 id="可添加内容"><a href="#可添加内容" class="headerlink" title="可添加内容"></a>可添加内容</h2><p>下面的内容是推广和维护网站相关。</p>
-<h3 id="网站分析"><a href="#网站分析" class="headerlink" title="网站分析"></a>网站分析</h3><p>个人使用的是<a href="http://mta.qq.com" target="_blank" rel="noopener">腾讯移动分析</a>，而且nexT也可以直接支持，在<code>主题文件</code>的<code>_config.xml</code>中搜索<code>Tencent MTA ID</code>，将自己在网站上注册的 ID 填写上去就可以统计了。</p>
-<h3 id="seo推广"><a href="#seo推广" class="headerlink" title="seo推广"></a>seo推广</h3><p>这里推荐参考<a href="http://harleywang93.com/2017/03/07/Hexo-GitHub-Coding-Pages-搭建博客/" target="_blank" rel="noopener">Hexo+nexT主题搭建个人博客</a>中seo推广部分。</p>
-<blockquote>
-<p>参考<a href="http://ziyuan.baidu.com" target="_blank" rel="noopener">百度搜索资源平台</a></p>
-</blockquote>
-<h2 id="推荐阅读"><a href="#推荐阅读" class="headerlink" title="推荐阅读"></a>推荐阅读</h2><ul>
-<li><a href="http://www.wuxubj.cn/2016/08/Hexo-nexT-build-personal-blog/index.html" target="_blank" rel="noopener">Hexo+nexT主题搭建个人博客</a></li>
-<li><a href="https://www.jianshu.com/p/e7c58f57f60e" target="_blank" rel="noopener">hexo初探—让写作飞起来</a></li>
-<li><a href="https://xuanwo.org/2015/03/26/hexo-intor/" target="_blank" rel="noopener">史上最详细的Hexo博客搭建图文教程</a></li>
-<li><a href="http://harleywang93.com/2017/03/07/Hexo-GitHub-Coding-Pages-搭建博客/" target="_blank" rel="noopener">Hexo + GitHub (Coding) Pages 搭建博客</a></li>
-<li><a href="http://col.dog/2015/11/12/hello-world/" target="_blank" rel="noopener">基于 Hexo 和 GitHub Pages 搭建博客</a></li>
-<li><a href="http://blog.csdn.net/xiaoliuge01/article/details/50997754" target="_blank" rel="noopener">Hexo搭建独立博客，托管到Github和Coding上教程</a></li>
-<li><a href="http://blog.junyu.io/posts/0008-blog-seo.html" target="_blank" rel="noopener">让更多人看到你的博客</a></li>
-<li><a href="http://blog.csdn.net/qq_21165007/article/details/72587999#git报错warning-lf-will-be-replaced-by-crlf问题" target="_blank" rel="noopener">在github上搭建个人网站</a></li>
-<li><a href="https://www.zhihu.com/question/30898326" target="_blank" rel="noopener">如何解决百度爬虫无法爬取搭建在Github上的个人博客的问题？</a></li>
-<li><a href="http://blog.niices.com/Hexo-Next-Algolia-Search/" target="_blank" rel="noopener">Hexo+Next主题集成Algolia搜索</a></li>
-</ul>
-]]></content>
-      
-        <categories>
-            
-            <category> 博客技术 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> hexo </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[Django Rest framework + vue 笔记 03]]></title>
       <url>/2018/02/17/django-rest-vue03/</url>
       <content type="html"><![CDATA[<h3 id="前后端分离的优缺点"><a href="#前后端分离的优缺点" class="headerlink" title="前后端分离的优缺点"></a>前后端分离的优缺点</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
@@ -552,7 +379,7 @@
     <entry>
       <title><![CDATA[Byobu "多窗口"的Terminal]]></title>
       <url>/2018/02/07/byobu/</url>
-      <content type="html"><![CDATA[<link href="/style.css" rel="stylesheet" type="text/css"><script src="/crypto-js.js"></script><script src="/mcommon.js"></script><script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> <div id="security"> <div> <div class="input-container"> <input type="password" class="form-control" id="pass" placeholder=" 测试密码工具，密码是： lim "/> <label for="pass"> 测试密码工具，密码是： lim </label> <div class="bottom-line"></div> </div> </div> </div> <div id="encrypt-blog" style="display:none"> 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 </div>]]></content>
+      <content type="html"><![CDATA[<link href="/style.css" rel="stylesheet" type="text/css"><script src="/crypto-js.js"></script><script src="/mcommon.js"></script><script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> <div id="security"> <div> <div class="input-container"> <input type="password" class="form-control" id="pass" placeholder=" 测试密码工具，密码是： lim "/> <label for="pass"> 测试密码工具，密码是： lim </label> <div class="bottom-line"></div> </div> </div> </div> <div id="encrypt-blog" style="display:none"> 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 </div>]]></content>
       
         <categories>
             
@@ -749,6 +576,183 @@
         <tags>
             
             <tag> Django </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Hexo + nexT 学习笔记]]></title>
+      <url>/2017/12/30/HexoLearn-re/</url>
+      <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><img src="https://jaelyn-blog-txcos-1253450780.cos.ap-guangzhou.myqcloud.com/blog/pageimage2018/hexo-head.jpeg" alt="hexo-head"></p>
+<blockquote>
+<ul>
+<li>本文内容主要是个人在学习hexo和next中所遇到的一些“坑”和解决方法,而详细的流程网上有很多，在文章的结尾我会贴出我在学习中查找到的比较好的文章。</li>
+<li>注意本文不是详细操作步骤，如果需要详细步骤，请直接翻到文章结尾。</li>
+</ul>
+</blockquote>
+<a id="more"></a>
+<h2 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h2><ul>
+<li><a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">Hexo</a></li>
+<li><a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="noopener">nexT</a></li>
+</ul>
+<h2 id="Hexo-和-nexT-的安装"><a href="#Hexo-和-nexT-的安装" class="headerlink" title="Hexo 和 nexT 的安装"></a>Hexo 和 nexT 的安装</h2><blockquote>
+<p>在安装 Hexo 之前，需要确保电脑环境要有 <a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">Node.js</a> 和 <a href="https://git-scm.com/downloads" target="_blank" rel="noopener">Git</a> 环境, 当然，为了更好的安装 Hexo 还需要 <a href="https://www.npmjs.com" target="_blank" rel="noopener">npm</a>.</p>
+</blockquote>
+<p>下面是我所使用的版本：<br><img src="https://jaelyn-blog-txcos-1253450780.cos.ap-guangzhou.myqcloud.com/blog/pageimage2018/gitnpmnodeversion.png" alt="gitnpmnodeversion"></p>
+<p>安装之后，最常使用的指令如下：</p>
+<ol>
+<li>生成静态页面</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+<ol>
+<li>在本地运行</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<ol>
+<li>部署到GitHub pages（coding）</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<ol>
+<li>清除生成的静态文件</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
+<h2 id="打开-GitHub-Pages"><a href="#打开-GitHub-Pages" class="headerlink" title="打开 GitHub Pages"></a>打开 GitHub Pages</h2><p>在第一次创建完仓库之后，打开settings选项，向下翻到GitHub Pages选项会发现不能打开，会有一个提示信息：</p>
+<blockquote>
+<p>GitHub Pages is currently disabled. You must first add content to your repository before you can publish a GitHub Pages site</p>
+</blockquote>
+<p>是因为该GitHub Pages没有内容，此时只要点击下面的Choose a theme按钮选择一个主题就可以打开和访问了。</p>
+<h2 id="SSH-配置"><a href="#SSH-配置" class="headerlink" title="SSH 配置"></a>SSH 配置</h2><ul>
+<li>先查看本机用户home目录下是否存在.ssh目录</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~/.ssh</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果有就不用再创建了，如果想重新创建，可以创建一个不同名字的，也可以将原来的删除，再创建。</li>
+<li>使用下面指令删除已存在的SSH：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-add -D</span><br><span class="line">rm -r ~/.ssh</span><br></pre></td></tr></table></figure>
+<ul>
+<li>再创建新的SSH密钥(keys)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ssh-keygen -t rsa -C &quot;your_email@example.com&quot;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这将按照你提供的邮箱地址，创建一对密钥</p>
+</blockquote>
+<ul>
+<li>将生成的<code>id_rsa.pub</code>文件里面的内容拷贝到GitHub 项目中添加公钥，这里推荐在对应 xxx.github.io 项目中加。（settings-&gt;deploy keys）</li>
+</ul>
+<ul>
+<li>最后再用下面指令测试是否连接成功</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>可参考<a href="https://www.zhihu.com/question/21402411" target="_blank" rel="noopener">github提示Permission denied (publickey)，如何才能解决？</a></p>
+</blockquote>
+<h2 id="同步到GitHub"><a href="#同步到GitHub" class="headerlink" title="同步到GitHub"></a>同步到GitHub</h2><ul>
+<li>配置<code>站点文件</code>下的<code>_config.xml</code>文件下的<code>deploy</code>信息。</li>
+</ul>
+<ul>
+<li>安装<code>hexo-deployer-git</code>插件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>关于 https 的问题，如果需要使用自己的域名的话，GitHub pages 是不能打开 Enforce HTTPS 的。所以在配置<code>deploy</code>信息的时候就推荐使用 Clone with SSH 的链接。</p>
+</blockquote>
+<h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><ul>
+<li>在source文件夹下面创建<code>CNAME</code>文件（没有后缀），里面填上自己的域名。</li>
+<li>之后在自己的域名商将自己的域名用<code>CNAME</code>方式指向自己GitHub pages的域名。</li>
+</ul>
+<p><img src="https://jaelyn-blog-txcos-1253450780.cos.ap-guangzhou.myqcloud.com/blog/pageimage2018/cname-dns.png" alt="cname-dns"></p>
+<blockquote>
+<p>个人使用的是<a href="https://cloud.tencent.com" target="_blank" rel="noopener">腾讯云</a></p>
+</blockquote>
+<p>最后需要注意，需要在<code>站点文件</code>的<code>_config.xml</code>文件配置中的<code>skip_render</code>添加:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">skip_render:</span><br><span class="line"> - CNAME</span><br></pre></td></tr></table></figure>
+<p>表示跳过该文件的渲染。</p>
+<h2 id="nexT-主题配置"><a href="#nexT-主题配置" class="headerlink" title="nexT 主题配置"></a>nexT 主题配置</h2><p>一些我觉得比较实用的效果，参考<a href="https://segmentfault.com/a/1190000009544924" target="_blank" rel="noopener">hexo的next主题个性化配置教程</a>.</p>
+<h3 id="添加-README-md"><a href="#添加-README-md" class="headerlink" title="添加 README.md"></a>添加 README.md</h3><p>在<code>站点文件</code>的<code>source</code>目录下添加一个<code>README.md</code>文件，之后修改<code>站点文件</code>下的<code>_config.xml</code>，将<code>skip_render</code>添加<code>README.md</code>，跳过该文件的渲染。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">skip_render:</span><br><span class="line"> - CNAME</span><br><span class="line"> - README.md</span><br></pre></td></tr></table></figure>
+<h3 id="Schemes"><a href="#Schemes" class="headerlink" title="Schemes"></a>Schemes</h3><p>个人比较喜欢<code>Gemini</code>样式，相比<code>Pisces</code>样式，该样式不会每篇文章相连过于紧密，会以分块的形式显示出来，比较好看，特别在手机端上效果更显著。具体可以亲自去设置去看看效果。</p>
+<h3 id="live2d"><a href="#live2d" class="headerlink" title="live2d"></a>live2d</h3><p>就是网站右下角的萌物”小人，具体可以参考<a href="https://github.com/EYHN/hexo-helper-live2d" target="_blank" rel="noopener">hexo-helper-live2d</a>。下面简要介绍我的做法：</p>
+<ol>
+<li>在<code>站点文件</code>打开终端输入</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-helper-live2d</span><br></pre></td></tr></table></figure>
+<ol>
+<li>在<code>站点文件</code>下的<code>_config.xml</code>最后配置：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">live2d:</span><br><span class="line">  model: z16</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>具体的配置可以看文档，可以修改挺多内容的。模型外观参考<a href="https://huaji8.top/post/live2d-plugin-2.0/" target="_blank" rel="noopener">截图预览</a>.</p>
+</blockquote>
+<h3 id="动态背景"><a href="#动态背景" class="headerlink" title="动态背景"></a>动态背景</h3><p>在<code>主题文件</code>的<code>_config.xml</code>中搜索<code>Canvas-nest</code>可以发现有4个动态背景，可以逐个尝试，也可以同时设置为<code>true</code>，个人只选择了<code>Canvas-nest</code>。</p>
+<h3 id="footer"><a href="#footer" class="headerlink" title="footer"></a>footer</h3><p>可以将网站最下的不想要显示的内容设置为<code>false</code>，在<code>主题文件</code>的<code>_config.xml</code>中搜索<code>footer</code>，我的设置如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">footer:</span><br><span class="line">  # Specify the date when the site was setup.</span><br><span class="line">  # If not defined, current year will be used.</span><br><span class="line">  since: 2017</span><br><span class="line"></span><br><span class="line">  # Icon between year and copyright info.</span><br><span class="line">  icon: user</span><br><span class="line"></span><br><span class="line">  # If not defined, will be used `author` from Hexo main config.</span><br><span class="line">  copyright:</span><br><span class="line">  # -------------------------------------------------------------</span><br><span class="line">  # Hexo link (Powered by Hexo).</span><br><span class="line">  powered: false</span><br><span class="line"></span><br><span class="line">  theme:</span><br><span class="line">    # Theme &amp; scheme info link (Theme - NexT.scheme).</span><br><span class="line">    enable: false</span><br><span class="line">    # Version info of NexT after scheme info (vX.X.X).</span><br><span class="line">    version: false</span><br></pre></td></tr></table></figure>
+<h3 id="busuanzi访问人数"><a href="#busuanzi访问人数" class="headerlink" title="busuanzi访问人数"></a>busuanzi访问人数</h3><p>在<code>主题文件</code>的<code>_config.xml</code>中搜索<code>busuanzi_count</code>，修改配置，可以在网站底部和文章中显示访问的人数，我的配置如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">busuanzi_count:</span><br><span class="line">  # count values only if the other configs are false</span><br><span class="line">  enable: true</span><br><span class="line">  # custom uv span for the whole site</span><br><span class="line">  site_uv: true</span><br><span class="line">  site_uv_header: &lt;i class=&quot;fa fa-user&quot;&gt;&lt;/i&gt; 访问人数</span><br><span class="line">  site_uv_footer: |</span><br><span class="line">  # custom pv span for the whole site</span><br><span class="line">  site_pv: true</span><br><span class="line">  site_pv_header: &lt;i class=&quot;fa fa-eye&quot;&gt;&lt;/i&gt; 访问总量</span><br><span class="line">  site_pv_footer:</span><br><span class="line">  # custom pv span for one page only</span><br><span class="line">  page_pv: true</span><br><span class="line">  page_pv_header: &lt;i class=&quot;fa fa-file-o&quot;&gt;&lt;/i&gt; 阅读次数</span><br><span class="line">  page_pv_footer:</span><br></pre></td></tr></table></figure>
+<h3 id="显示统计字数"><a href="#显示统计字数" class="headerlink" title="显示统计字数"></a>显示统计字数</h3><p>在<code>主题文件</code>的<code>_config.xml</code>中搜索<code>post_wordcount</code>，修改配置，可以在网站底部和文章中显示所统计的字数，我的配置如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">post_wordcount:</span><br><span class="line">  item_text: true</span><br><span class="line">  wordcount: true</span><br><span class="line">  min2read: true</span><br><span class="line">  totalcount: true</span><br><span class="line">  separated_meta: true</span><br></pre></td></tr></table></figure>
+<h3 id="增加本地搜索功能"><a href="#增加本地搜索功能" class="headerlink" title="增加本地搜索功能"></a>增加本地搜索功能</h3><p>在<code>主题文件</code>的<code>_config.xml</code>中搜索<code>local_search</code>，设置为<code>true</code>。</p>
+<p>参考：</p>
+<ul>
+<li><a href="http://www.sqlsec.com/2017/12/hexosearch.html" target="_blank" rel="noopener">Hexo博客无法搜索的终极解决方法</a></li>
+</ul>
+<h3 id="在文章底部增加版权信息"><a href="#在文章底部增加版权信息" class="headerlink" title="在文章底部增加版权信息"></a>在文章底部增加版权信息</h3><p>在<code>主题文件</code>的<code>_config.xml</code>中搜索<code>post_copyright</code>，设置为<code>true</code>。</p>
+<h3 id="给文章加密"><a href="#给文章加密" class="headerlink" title="给文章加密"></a>给文章加密</h3><p>参考： <a href="https://github.com/MikeCoder/hexo-blog-encrypt/blob/master/ReadMe.zh.md" target="_blank" rel="noopener">hexo-blog-encrypt</a></p>
+<ul>
+<li>安装： <code>npm install hexo-blog-encrypt</code>  </li>
+<li>首先在 _config.yml 中启用该插件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Security</span><br><span class="line">encrypt:</span><br><span class="line">    enable: true</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在你的文章的头部添加上对应的字段，如 password, abstract, message</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: hello world</span><br><span class="line">date: 2016-03-30 21:18:02</span><br><span class="line">tags:</span><br><span class="line">    - fdsafsdaf</span><br><span class="line">password: Mike</span><br><span class="line">abstract: Welcome to my blog, enter password to read.</span><br><span class="line">message: Welcome to my blog, enter password to read.</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<h2 id="写文章"><a href="#写文章" class="headerlink" title="写文章"></a>写文章</h2><p>一般使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new xxx</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>xxx表示文件的名字，同时也会自动设置为文章标题（后面可改）<br>以之间创建<code>.md</code>文件，添加文章头信息</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">title:  // 文章标题</span><br><span class="line">date: // 创建时间</span><br><span class="line">updated: //跟新文章的时间</span><br><span class="line">tags: // 文章的标签，如果有多个，[tags1, tags2, ...]</span><br><span class="line">categories: // 文章分类</span><br><span class="line">keywords: // 文章关键词，如果有多个，[key1, key2, ...]</span><br><span class="line">description: //文章描述</span><br></pre></td></tr></table></figure>
+<p>其中需要注意：</p>
+<ul>
+<li>如果想要有<code>updated</code>，需要在<code>主题文件</code>下的<code>_config.xml</code>文件中配置<code>post_meta</code>，将<code>updated_at</code>设置为<code>true</code>。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">post_meta:</span><br><span class="line">  item_text: true</span><br><span class="line">  created_at: true</span><br><span class="line">  updated_at: true</span><br><span class="line">  categories: true</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>keywords</code>和<code>description</code>的作用是为了搜索引擎寻找关键字。</li>
+<li>其中<code>description</code>关键字，在主页上显示的时候就会显示这里面的内容，而不是显示前150个字符。还有另一种方法推荐，就是不写<code>description</code>，而是在文章中插入<code>&lt;!-- more --&gt;</code>注释，这样主页就会显示该注释前的内容。</li>
+</ul>
+<h2 id="可添加内容"><a href="#可添加内容" class="headerlink" title="可添加内容"></a>可添加内容</h2><p>下面的内容是推广和维护网站相关。</p>
+<h3 id="网站分析"><a href="#网站分析" class="headerlink" title="网站分析"></a>网站分析</h3><p>个人使用的是<a href="http://mta.qq.com" target="_blank" rel="noopener">腾讯移动分析</a>，而且nexT也可以直接支持，在<code>主题文件</code>的<code>_config.xml</code>中搜索<code>Tencent MTA ID</code>，将自己在网站上注册的 ID 填写上去就可以统计了。</p>
+<h3 id="seo推广"><a href="#seo推广" class="headerlink" title="seo推广"></a>seo推广</h3><p>这里推荐参考<a href="http://harleywang93.com/2017/03/07/Hexo-GitHub-Coding-Pages-搭建博客/" target="_blank" rel="noopener">Hexo+nexT主题搭建个人博客</a>中seo推广部分。</p>
+<blockquote>
+<p>参考<a href="http://ziyuan.baidu.com" target="_blank" rel="noopener">百度搜索资源平台</a></p>
+</blockquote>
+<h2 id="推荐阅读"><a href="#推荐阅读" class="headerlink" title="推荐阅读"></a>推荐阅读</h2><ul>
+<li><a href="http://www.wuxubj.cn/2016/08/Hexo-nexT-build-personal-blog/index.html" target="_blank" rel="noopener">Hexo+nexT主题搭建个人博客</a></li>
+<li><a href="https://www.jianshu.com/p/e7c58f57f60e" target="_blank" rel="noopener">hexo初探—让写作飞起来</a></li>
+<li><a href="https://xuanwo.org/2015/03/26/hexo-intor/" target="_blank" rel="noopener">史上最详细的Hexo博客搭建图文教程</a></li>
+<li><a href="http://harleywang93.com/2017/03/07/Hexo-GitHub-Coding-Pages-搭建博客/" target="_blank" rel="noopener">Hexo + GitHub (Coding) Pages 搭建博客</a></li>
+<li><a href="http://col.dog/2015/11/12/hello-world/" target="_blank" rel="noopener">基于 Hexo 和 GitHub Pages 搭建博客</a></li>
+<li><a href="http://blog.csdn.net/xiaoliuge01/article/details/50997754" target="_blank" rel="noopener">Hexo搭建独立博客，托管到Github和Coding上教程</a></li>
+<li><a href="http://blog.junyu.io/posts/0008-blog-seo.html" target="_blank" rel="noopener">让更多人看到你的博客</a></li>
+<li><a href="http://blog.csdn.net/qq_21165007/article/details/72587999#git报错warning-lf-will-be-replaced-by-crlf问题" target="_blank" rel="noopener">在github上搭建个人网站</a></li>
+<li><a href="https://www.zhihu.com/question/30898326" target="_blank" rel="noopener">如何解决百度爬虫无法爬取搭建在Github上的个人博客的问题？</a></li>
+<li><a href="http://blog.niices.com/Hexo-Next-Algolia-Search/" target="_blank" rel="noopener">Hexo+Next主题集成Algolia搜索</a></li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> 博客技术 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> hexo </tag>
             
         </tags>
         
