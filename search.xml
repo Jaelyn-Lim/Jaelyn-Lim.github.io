@@ -1,106 +1,781 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title><![CDATA[Django Rest framework + vue 笔记 03]]></title>
-    <url>%2F2018%2F02%2F17%2Fdjango-rest-vue03%2F</url>
-    <content type="text"><![CDATA[前后端分离的优缺点优点 pc，app，pad多端适应 SPA开发模式开始流行 前后端开发职责不清 开发效率问题，前后端互相等待 前端一直配合着后端，能力受限 后端开发语言和模版高度耦合，导致开发语言依赖严重 缺点 前后端学习门槛增加 数据依赖导致文档重要性增加 前端工作量加大 SEO的难度加大 后端开发模式迁移增加成本 Restful API restful api目前是前后端分离最佳实践 轻量，直接通过http，不需要额外的协议，post/get/put/delete操作 面向资源，具有解释性 数据描述简单，一般通过json或者xml做数据通信 参考 理解RESTful架构 RESTful API 设计指南 几个概念前端工程化 浅析前端工程化 前端工程化小记 前端优化带来的思考，浅谈前端工程化 数据双向绑定 mvvm vue.js MVC，MVP 和 MVVM 的图示 组件化开发 前端组件化开发 什么叫组件化开发？ vue开发的几个概念webpack 本质上，webpack 是一个现代 JavaScript 应用程序的静态模块打包器(module bundler)。当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle。 中文官网 vue，vuex，vue-router，axios vue全家桶 vue.js ES6，babel ES6语法，babel可以将ES6转换成ES5 《ECMAScript 6 入门》]]></content>
-      <categories>
-        <category>Django</category>
-      </categories>
-      <tags>
-        <tag>Django</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Django Rest framework + vue 笔记 02]]></title>
-    <url>%2F2018%2F02%2F16%2Fdjango-rest-vue02%2F</url>
-    <content type="text"><![CDATA[参考： Unofficial Windows Binaries for Python Extension Packages Django REST framework 官网 安装进入到虚拟环境 pip install djangorestframework 安装Django，默认安装最新版本 pip install -i https://pypi.douban.com/simple django 安装markdown，Markdown support for the browsable API. pip install markdown 还需要安装 pip install django-filter 使用mysqlsetting.py 文件中修改：1234567891011121314DATABASES = &#123; 'default': &#123; 'ENGINE': 'django.db.backends.mysql', 'NAME': 'teacherAndStudentSystem', 'USER': 'root', 'PASSWORD': '', 'HOST': 'localhost', 'PORT': '3306', 'OPTIONS': &#123; 'charset': 'utf8mb4', 'init_command': 'SET default_storage_engine=INNODB;' &#125;, &#125;&#125; 在 MySQLWorkbench 中新建数据库 安装python的mysql驱动pip install mysqlclient 运行发现报错 “django.db.utils.OperationalError: (1193, “Unknown system variable ‘storage_engine’”)” 参考： 博客园 stackoverflow 因为版本的关系，所以只需要改为 SET default_storage_engine=INNODB; 即可 这个表示选择另一种连接方式，后面使用第三方登录的时候要用上 安装 pillowpip install pillow 这个是图形第三方插件 创建apps的package注意需要创建的是Python Package，而不是Directory 修改setting将apps加入到python的根搜索路径下 12345678import osimport sys# Build paths inside the project like this: os.path.join(BASE_DIR, ...)BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))sys.path.insert(0, BASE_DIR)sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps')) 目前项目目录： vue项目安装需要的包在vue项目的根目录下执行 cnpm install 或 npm install 会生成一个model_modules的文件夹 运行cnpm run dev 或使用 npm run dev 设计app和models富文本编辑器Django-UEditor 参考 Django集成百度富文本编辑器uEditor 对应代码应用 把这第三方包复制到项目中 在setting中设置，加入改包 123456789INSTALLED_APPS = [ 'django.contrib.auth', 'django.contrib.contenttypes', 'django.contrib.sessions', 'django.contrib.messages', 'django.contrib.staticfiles', 'users.apps.UsersConfig', 'DjangoUeditor',] 在模型类中导入 1from DjangoUeditor.models import UEditorField 模型中使用 12345678goods_desc = UEditorField( verbose_name=u"内容", imagePath="goods/images/", width=1000, height=300, filePath="goods/files/", default='') 模型类例子在线购物平台的商品模型 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142from datetime import datetimefrom django.db import modelsfrom DjangoUeditor.models import UEditorField# Create your models here.class GoodsCategory(models.Model): """ 商品类别 """ CATEGORY_TYPE = ( (1, "一级类目"), (2, "二级类目"), (3, "三级类目"), ) name = models.CharField(default="", max_length=30, verbose_name="类别名", help_text="类别名") code = models.CharField(default="", max_length=30, verbose_name="类别code", help_text="类别code") desc = models.TextField(default="", verbose_name="类别描述", help_text="类别描述") category_type = models.IntegerField(choices=CATEGORY_TYPE, verbose_name="类目级别", help_text="类目级别") parent_category = models.ForeignKey("self", null=True, blank=True, verbose_name="父类目级别", help_text="父目录", related_name="sub_cat") is_tab = models.BooleanField(default=False, verbose_name="是否导航", help_text="是否导航") add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间") class Meta: verbose_name = "商品类别" verbose_name_plural = verbose_name def __str__(self): return self.nameclass GoodsCategoryBrand(models.Model): """ 品牌名 """ category = models.ForeignKey(GoodsCategory, related_name='brands', null=True, blank=True, verbose_name="商品类目") name = models.CharField(default="", max_length=30, verbose_name="品牌名", help_text="品牌名") desc = models.TextField(default="", max_length=200, verbose_name="品牌描述", help_text="品牌描述") image = models.ImageField(max_length=200, upload_to="brands/") add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间") class Meta: verbose_name = "品牌" verbose_name_plural = verbose_name db_table = "goods_goodsbrand" def __str__(self): return self.nameclass Goods(models.Model): """ 商品 """ category = models.ForeignKey(GoodsCategory, verbose_name="商品类目") goods_sn = models.CharField(max_length=50, default="", verbose_name="商品唯一货号") name = models.CharField(max_length=100, verbose_name="商品名") click_num = models.IntegerField(default=0, verbose_name="点击数") sold_num = models.IntegerField(default=0, verbose_name="商品销售量") fav_num = models.IntegerField(default=0, verbose_name="收藏数") goods_num = models.IntegerField(default=0, verbose_name="库存数") market_price = models.FloatField(default=0, verbose_name="市场价格") shop_price = models.FloatField(default=0, verbose_name="本店价格") goods_brief = models.TextField(max_length=500, verbose_name="商品简短描述") goods_desc = UEditorField(verbose_name=u"内容", imagePath="goods/images/", width=1000, height=300, filePath="goods/files/", default='') ship_free = models.BooleanField(default=True, verbose_name="是否承担运费") goods_front_image = models.ImageField(upload_to="goods/images/", null=True, blank=True, verbose_name="封面图") is_new = models.BooleanField(default=False, verbose_name="是否新品") is_hot = models.BooleanField(default=False, verbose_name="是否热销") add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间") class Meta: verbose_name = '商品' verbose_name_plural = verbose_name def __str__(self): return self.nameclass IndexAd(models.Model): category = models.ForeignKey(GoodsCategory, related_name='category',verbose_name="商品类目") goods =models.ForeignKey(Goods, related_name='goods') class Meta: verbose_name = '首页商品类别广告' verbose_name_plural = verbose_name def __str__(self): return self.goods.nameclass GoodsImage(models.Model): """ 商品轮播图 """ goods = models.ForeignKey(Goods, verbose_name="商品", related_name="images") image = models.ImageField(upload_to="", verbose_name="图片", null=True, blank=True) add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间") class Meta: verbose_name = '商品图片' verbose_name_plural = verbose_name def __str__(self): return self.goods.nameclass Banner(models.Model): """ 轮播的商品 """ goods = models.ForeignKey(Goods, verbose_name="商品") image = models.ImageField(upload_to='banner', verbose_name="轮播图片") index = models.IntegerField(default=0, verbose_name="轮播顺序") add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间") class Meta: verbose_name = '轮播商品' verbose_name_plural = verbose_name def __str__(self): return self.goods.nameclass HotSearchWords(models.Model): """ 热搜词 """ keywords = models.CharField(default="", max_length=20, verbose_name="热搜词") index = models.IntegerField(default=0, verbose_name="排序") add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间") class Meta: verbose_name = '热搜词' verbose_name_plural = verbose_name def __str__(self): return self.keywords 自定义User类 在模型类中导入 1from django.contrib.auth.models import AbstractUser 继承该AbstractUser类 12class UserProfile(AbstractUser): pass 引用外键 在另一个模型类中导入 1from django.contrib.auth import get_user_model 在外键中使用 1234567User = get_user_model()class ShoppingCart(models.Model): """ 购物车 """ user = models.ForeignKey(User, verbose_name=u"用户") 独立使用Django的model进行一些初始化123456789import sysimport ospwd = os.path.dirname(os.path.realpath(__file__))sys.path.append(pwd+"../")os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Project.settings")import djangodjango.setup() 调用123from goods.models import GoodsCategoryall_categorys = GoodsCategory.objects.all() 顺序不能错 让Django识别媒体文件在settings.py中设置12MEDIA_URL = "/media/"MEDIA_ROOT = os.path.join(BASE_DIR, "media") 在urls.py中配置1234567from Project.settings import MEDIA_ROOTfrom django.views.static import serveurlpatterns = [ # ...more url(r'^media/(?P&lt;path&gt;.*)$', serve, &#123;"document_root": MEDIA_ROOT&#125;),] 目前项目目录]]></content>
-      <categories>
-        <category>Django</category>
-      </categories>
-      <tags>
-        <tag>Django</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Django Rest framework + vue 笔记 01]]></title>
-    <url>%2F2018%2F02%2F14%2Fdjango-rest-vue01%2F</url>
-    <content type="text"><![CDATA[需要下载的资源 Pycharm WebStorm Node.js Mysql Workbench Pycharm 快捷启动（Linux） vim ~/.bashrc alias pycharm=&quot;bash /hom/bobby/Downloads/pycharm-2016.3.2/bin/pycharm.sh&quot; source ~/.bashrc pycharm Mysql 管理工具 Navicat Mysql Workbench Mysql 安装（Linux）获取安装包sudo apt-get install mysql-server 查看mysql的状态ps aux|grep mysqld 看是否有启动成功，并且可以查看端口地址 进入mysql shell中mysql -uroot -p 之后输入登录密码 mysql shell 的一些操作显示数据库show databases; 退出exit; 配置mysqlvim /etc/mysql/mysql.conf.d/mysqld.cnf 修改其中的 bind-address 配置，将IP改为0.0.0.0 重启mysqlsudo service mysql restart 修改用户权限GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;%&#39; IDENTIFIED BY &#39;root&#39; WITH GR ANT OPTION; 刷新用户权限 flush privileges; 字符集及排序规则 使用 utf8 -- UTF-8 Unicode 以及 utf8_general_ci 安装python（Linux） 安装的时候可以使用 python 豆瓣镜像 -i https://pypi.douban.com/simple 获取python3版本sudo apt-get install python3.5 虚拟环境安装sudo apt-get install python-virtualenv 使用虚拟环境virtualenv py2_env 会创建目录为py2_env的文件夹在该目录下 ps: 移除文件夹 rm -r py2_env/或 rm -f py2_env移除文件，慎用rm -rf py2_env 进入虚拟环境source py2_env/bin/activate 退出虚拟环境deactivate 创建python3的虚拟环境virtualenv -p python3 py3_env 安装pip3版本sudo apt-get install python3-pip 遇到 “OSError: Command /home/ubuntu/Myvirtualenv/py2_env/bin/python2 - setuptools pkg_resources pip wheel failed with error code 1”这个问题，解决方法： export LC_ALL=&quot;en_US.UTF-8&quot; export LC_CTYPE=&quot;en_US.UTF-8&quot; pip install setuptools 参考： setuptools pkg_resources pip wheel failed with error code 1 更新pip版本pip install --upgrade pip 虚拟环境管理安装pip install virtualenvwrapper 查找路径sudo find / -name virtualenvwrapper.sh /home/ubuntu/.local/bin/virtualenvwrapper.sh 配置 进入vim ~/.bashrc 在最后一行添加 export WORKON_HOME=$HOME/.virtualenvssource /home/ubuntu/.local/bin/virtualenvwrapper.sh ESC :wq保存 source ~/.bashrc 运行生效 创建虚拟环境mkvirtualenv py2_workon_env 目录安装所在地cd ~/.virtualenvs 使用 workon 查找全部的虚拟目录 workon py2_workon_env 使用该虚拟目录 deactivate 退出虚拟环境 创建python3的虚拟环境mkvirtualenv --python=python3 py3_workon_env ubuntu@VM-65-204-ubuntu:~$ workonpy2_workon_envpy3_workon_env 安装 Node.js参考： https://nodejs.org/dist/v8.9.3/ nodejs download Linux（Ubuntu）下安装NodeJs linux下安装nodejs+express(最新版) Linux下nodejs的安装配置 安装依赖包 sudo apt-get install g++ sudo apt-get install libssl-dev sudo apt-get install build-essential 下载压缩包wget https://nodejs.org/dist/v8.9.3/node-v8.9.3.tar.gz 解压tar zxvf node-v8.9.3.tar.gz 移动文件 mv source_file new_file 编译文件 进入到node-v8.9.3文件里 ./configure make 安装make install 修改环境配置参考 尝试 sudo apt-get install nodejs-legacy sudo apt-get install npm cnpm 淘宝 NPM 镜像 可以使用这个代替npm，国内镜像，下载速度可以更快 安装htopsudo apt-get install htop 可以查看系统运行的状态]]></content>
-      <categories>
-        <category>Django</category>
-      </categories>
-      <tags>
-        <tag>Django</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Httpie]]></title>
-    <url>%2F2018%2F02%2F08%2Fhttpie%2F</url>
-    <content type="text"><![CDATA[关于 HTTPie （读aych-tee-tee-pie）是一个 HTTP 的命令行客户端。 其目标是让 CLI 和 web 服务之间的交互尽可能的人性化。 这个工具提供了简洁的 http 命令，允许通过自然的语法发送任意 HTTP 请求数据，展示色彩化的输出。 HTTPie 可用于与 HTTP 服务器做测试、调试和常规交互。 特点 直观的语法 格式化和色彩化的终端输出 内置 JSON 支持 支持上传表单和文件 HTTPS、代理和认证 任意请求数据 自定义头部 持久性会话 类 Wget 下载 支持 Python 2.6, 2.7 和 3.x 支持 Linux, Mac OS X 和 Windows 插件 文档 测试覆盖率 安装pip install httpie 参考 HTTPie 工具使用入门 官方文档]]></content>
-      <categories>
-        <category>工具集</category>
-      </categories>
-      <tags>
-        <tag>httpie</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Byobu "多窗口"的Terminal]]></title>
-    <url>%2F2018%2F02%2F07%2Fbyobu%2F</url>
-    <content type="text"><![CDATA[测试密码工具，密码是： lim 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]]></content>
-      <categories>
-        <category>工具集</category>
-      </categories>
-      <tags>
-        <tag>byobu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Django 学习笔记—基础01]]></title>
-    <url>%2F2018%2F01%2F27%2FDjangoLearning1%2F</url>
-    <content type="text"><![CDATA[参考 Django 1.8.2中文文档 Django 2.0 官方文档 Django 中文教学 自强学院 所需指令用指令创建项目django-admin startproject project 一般不用，直接用pycharm创建就行 运行应用python manage.py runserver 8080 运行后，才能根据所生成的网址，访问服务器，后面填写服务器的端口 也可以不写端口，如果没写端口，默认使用8000端口 创建一个应用python manage.py startapp djangoAppName(这里填写所需创建应用的名字)或django-admin startapp djangoAppName可以直接在apps目录下创建 有点类似于模块的意思，分模块开发项目，一个模块对应了view, model等内容，需要创建新的模块的时候，需要使用这个指令。 生成迁移（makemigrations）创建迁移文件 python manage.py makemigrations 创建之后，在所对应的migrations文件夹下面会多出一个.py文件 如果使用的是Django2.0 并且数据库model中使用了ForeignKey，需要在后面添加 on_delete 关键字 在使用这个命令的时候，需要在settings.py文件中的INSTALLED_APPS注册应用信息 执行迁移根据迁移文件，形成sql语句，创建对应的表 python manage.py migrate 创建超级管理员python manage.py createsuperuser 接下来按照提示填写用户名、邮箱、密码 后台URL: 在网址后面添加admin 显示所有的指令python manage.py 会显示所有的指令，并且在后面输入help name就可以查看对应指令的具体信息 Model创建 在对应的模版项目下的models.py文件下创建数据库模型文件 创建模型的时候不用创建主键id，系统会自动生成这个主键的列 Models.py1234567891011121314151617181920212223242526272829303132333435from django.db import modelsclass ModelName1(models.Model): title = models.CharField(max_length=20) date = models.DateTimeField() def __repr__(self): return 'title name is &#123;&#125;, crate at &#123;&#125;'.format(self.title, self.date) def __str__(self): return self.titleclass ModelName2(models.Model): hname = models.CharField(max_length=10) hgender = models.BooleanField() content = models.CharField(max_length=1000) modelName1ForeignKey = models.ForeignKey(ModelName1, on_delete=models.CASCADE) #外键 def __str__(self): return self.name def gender(self): if self.hgender: return '男' else: return '女' gender.short_description = '性别' def name(self): return self.hname name.short_description = '名字' Django2.0 ForeignKey 变化在创建外键的时候遇到报错： TypeError: __init__() missing 1 required positional argument: &#39;on_delete&#39; 查询一番后发现Django2.0版本创建外键时需要在后面加上on_delete 12345class Car(models.Model): manufacturer = models.ForeignKey( 'Manufacturer', on_delete=models.CASCADE, ) 站点管理界面本地化修改settings.py 12LANGUAGE_CODE = 'zh-Hans'TIME_ZONE = 'Asia/Shanghai' 修改语言和时区 向admin中注册应用在 booktest/admin.py 文件，注册模型 123from django.contrib import adminfrom models import ModelNameadmin.site.register(ModelName) 导入model 类 在admin中注册该模型类 admin.site.register(ModelName) 自定义管理页面 Django提供了admin.ModelAdmin类 通过定义ModelAdmin的子类，来定义模型在Admin界面的显示方式 1234567891011class ModelNameAdmin(admin.ModelAdmin): list_display = ['id', 'title', 'date'] list_filter = ['title'] search_fields = ['title'] list_per_page = 10 fieldsets = [ ('base',&#123;'fields':['title']&#125;), ('super',&#123;'fields':['date']&#125;) ]admin.site.register(BookInfo, BookInfoAdmin) 列表页属性list_display 显示字段，可以点击列头进行排序 1list_display = ['pk', 'title', 'date'] 列表里面填写的是字段的列表名字，表示要在后台页面中显示什么列表字段，先后顺序决定显示顺序 list_filter 过滤字段，过滤框会出现在右侧 1list_filter = ['title'] search_fields 搜索字段，搜索框会出现在上侧 1search_fields = ['title'] 支持模糊查询，根据列表中的字段进行查询 list_per_page 分页，分页框会出现在下侧 1list_per_page = 10 添加、修改页属性fields 属性的先后顺序 1fields = ['date', 'title'] fieldsets 属性分组 1234fieldsets = [ ('basic',&#123;'fields': ['title']&#125;), ('more', &#123;'fields': ['date']&#125;),] 关联对象 对于模型类，有两种注册方式 方式一：与传统模型类相同 方式二：关联注册 按照BookInfor的注册方式完成HeroInfo的注册 接下来实现关联注册 12345678910111213141516171819202122232425262728from django.contrib import adminfrom .models import *# StackedInline TabularInlineclass ModelName2Line(admin.TabularInline): model = HeroInfo extra = 1class ModelName1Admin(admin.ModelAdmin): list_display = ['id', 'title', 'date'] list_filter = ['title'] search_fields = ['title'] list_per_page = 10 fieldsets = [ ('base', &#123;'fields': ['title']&#125;), ('super', &#123;'fields': ['date']&#125;) ] inlines = [ModelName2Line]class ModelName2Admin(admin.ModelAdmin): list_display = ['id', 'name', 'gender', 'content', 'modelName1ForeignKey'] list_filter = ['hgender']admin.site.register(ModelName1, ModelName1Admin)admin.site.register(ModelName2, ModelName2Admin) 可以将内嵌的方式改为表格 1class ModelName2Line(admin.TabularInline) 布尔值的显示 发布性别的显示不是一个直观的结果，可以使用方法进行封装 123456def gender(self): if self.hgender: return '男' else: return '女'gender.short_description = '性别' 在admin注册中使用gender代替hgender 12class ModelName2Admin(admin.ModelAdmin): list_display = ['id', 'name', 'gender', 'content'] 视图 在django中，视图对WEB请求进行回应 视图接收reqeust对象作为第一个参数，包含了请求的信息 视图就是一个Python函数，被定义在views.py中 123456from django.http import HttpResponsedef index(request): return HttpResponse("index")def detail(request,id): return HttpResponse("detail %s" % id) 定义完成视图后，需要配置urls.py，否则无法处理请求 urls.py12345678from django.contrib import adminfrom django.urls import pathfrom DjangoLearn1 import viewsurlpatterns = [ path('admin/', admin.site.urls), path('',views.index)] 此时，就可以访问了，不过考虑到如果这样填写，模块一多，URL的量一大的话，就会出现多个路由，不方便配置，所以推荐如下 在对应模块里面创建一个 urls.py 的文件，将路由信息写到里面 1234567from django.urls import pathfrom . import viewsurlpatterns = [ path('', views.index, name='index'),] 之后，在向主urls.py文件中include进去 1234567from django.urls import include, pathfrom django.contrib import adminurlpatterns = [ path('', include('DjangoLearn1.urls')), path('admin/', admin.site.urls),] 模板 模板是html页面，可以根据视图中传递的数据填充值 在模板中访问视图传递的数据 12&#123;&#123; 输出值，可以是变量，也可以是对象.属性 &#125;&#125;&#123;% 执行代码段 %&#125; 定义HTML模板123456789101112131415161718&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt; &lt;title&gt;首页&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;列表&lt;/h1&gt;&lt;ul&gt;&#123;%for ModeleName1 in ModeleName1List%&#125;&lt;li&gt; &lt;a href="&#123;&#123;ModeleName1.id&#125;&#125;"&gt; &#123;&#123;ModeleName1.title&#125;&#125; &lt;/a&gt;&lt;/li&gt;&#123;%endfor%&#125;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt; 在模板中访问对象成员时，都以属性的方式访问，即方法也不能加括号 1234567891011121314&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt; &lt;title&gt;详细&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;&#123;&#123;ModeleName1.title&#125;&#125;&lt;/h1&gt;&lt;ul&gt; &#123;%for Modele in ModeleName1.ModelName2_set.all%&#125; &lt;li&gt;&#123;&#123;Modele.name&#125;&#125;---&#123;&#123;Modele.content&#125;&#125;&lt;/li&gt; &#123;%endfor%&#125;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt; 使用模板 编辑views.py文件，在方法中调用模板 Django提供了函数Render()简化视图调用模板、构造上下文 1234567891011from django.shortcuts import renderfrom models import ModeleName1def index(reqeust): ModeleName1List = ModeleName1.objects.all() return render(reqeust, 'booktest/index.html', &#123;'ModeleName1List': ModeleName1List&#125;)def detail(reqeust, id): ModeleName1 = ModeleName1.objects.get(pk=id) return render(reqeust, 'booktest/detail.html', &#123;'ModeleName1': ModeleName1&#125;) 总结 视图 Views： 接受请求，逻辑处理，调用数据，输出响应 配置ulr在自己的应用中匹配url 模型Model：负责与数据库交互 面向对象：模型对象，列表 定义模型类：指出属性及类型，以确定表的结构，迁移 后台管理：创建管理员，启动服务器，admin，注册admin.py 模版：定义显示的样子 加载：读取文件内容到内存 渲染：填内容]]></content>
-      <categories>
-        <category>Django</category>
-      </categories>
-      <tags>
-        <tag>Django</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hexo + nexT 学习笔记]]></title>
-    <url>%2F2017%2F12%2F29%2Fhexoleraningnote%2F</url>
-    <content type="text"><![CDATA[前言 本文内容主要是个人在学习hexo和next中所遇到的一些“坑”和解决方法,而详细的流程网上有很多，在文章的结尾我会贴出我在学习中查找到的比较好的文章。 注意本文不是详细操作步骤，如果需要详细步骤，请直接翻到文章结尾。 官方文档 Hexo nexT Hexo 和 nexT 的安装 在安装 Hexo 之前，需要确保电脑环境要有 Node.js 和 Git 环境, 当然，为了更好的安装 Hexo 还需要 npm. 下面是我所使用的版本： 安装之后，最常使用的指令如下： 生成静态页面 1hexo g 在本地运行 1hexo s 部署到GitHub pages（coding） 1hexo d 清除生成的静态文件 1hexo clean 打开 GitHub Pages在第一次创建完仓库之后，打开settings选项，向下翻到GitHub Pages选项会发现不能打开，会有一个提示信息： GitHub Pages is currently disabled. You must first add content to your repository before you can publish a GitHub Pages site 是因为该GitHub Pages没有内容，此时只要点击下面的Choose a theme按钮选择一个主题就可以打开和访问了。 SSH 配置先查看本机用户home目录下是否存在.ssh目录1cd ~/.ssh 如果有就不用再创建了，如果想重新创建，可以创建一个不同名字的，也可以将原来的删除，再创建。使用下面指令删除已存在的SSH：12ssh-add -Drm -r ~/.ssh 再创建新的SSH密钥(keys)1$ssh-keygen -t rsa -C &quot;your_email@example.com&quot; 这将按照你提供的邮箱地址，创建一对密钥 将生成的id_rsa.pub文件里面的内容拷贝到GitHub 项目中添加公钥，这里推荐在对应 xxx.github.io 项目中加。（settings-&gt;deploy keys） 最后再用下面指令测试是否连接成功1ssh -T git@github.com 可参考github提示Permission denied (publickey)，如何才能解决？ 同步到GitHub配置站点文件下的_config.xml文件下的deploy信息。 安装hexo-deployer-git插件1npm install hexo-deployer-git --save 关于 https 的问题，如果需要使用自己的域名的话，GitHub pages 是不能打开 Enforce HTTPS 的。所以在配置deploy信息的时候就推荐使用 Clone with SSH 的链接。 绑定域名在source文件夹下面创建CNAME文件（没有后缀），里面填上自己的域名。之后在自己的域名商将自己的域名用CNAME方式指向自己GitHub pages的域名。 个人使用的是腾讯云 最后需要注意，需要在站点文件的_config.xml文件配置中的skip_render添加:12skip_render: - CNAME 表示跳过该文件的渲染。 nexT 主题配置一些我觉得比较实用的效果，参考hexo的next主题个性化配置教程. 添加 README.md 在站点文件的source目录下添加一个README.md文件，之后修改站点文件下的_config.xml，将skip_render添加README.md，跳过该文件的渲染。 123skip_render: - CNAME - README.md Schemes个人比较喜欢Gemini样式，相比Pisces样式，该样式不会每篇文章相连过于紧密，会以分块的形式显示出来，比较好看，特别在手机端上效果更显著。具体可以亲自去设置去看看效果。 live2d就是网站右下角的“萌物”小人，具体可以参考hexo-helper-live2d。下面简要介绍我的做法： 在站点文件打开终端输入 1npm install --save hexo-helper-live2d 在站点文件下的_config.xml最后配置： 12live2d: model: z16 具体的配置可以看文档，可以修改挺多内容的。模型外观参考截图预览. 动态背景在主题文件的_config.xml中搜索Canvas-nest可以发现有4个动态背景，可以逐个尝试，也可以同时设置为true，个人只选择了Canvas-nest。 footer可以将网站最下的不想要显示的内容设置为false，在主题文件的_config.xml中搜索footer，我的设置如下：12345678910111213141516171819footer: # Specify the date when the site was setup. # If not defined, current year will be used. since: 2017 # Icon between year and copyright info. icon: user # If not defined, will be used `author` from Hexo main config. copyright: # ------------------------------------------------------------- # Hexo link (Powered by Hexo). powered: false theme: # Theme &amp; scheme info link (Theme - NexT.scheme). enable: false # Version info of NexT after scheme info (vX.X.X). version: false busuanzi访问人数在主题文件的_config.xml中搜索busuanzi_count，修改配置，可以在网站底部和文章中显示访问的人数，我的配置如下：123456789101112131415busuanzi_count: # count values only if the other configs are false enable: true # custom uv span for the whole site site_uv: true site_uv_header: &lt;i class=&quot;fa fa-user&quot;&gt;&lt;/i&gt; 访问人数 site_uv_footer: | # custom pv span for the whole site site_pv: true site_pv_header: &lt;i class=&quot;fa fa-eye&quot;&gt;&lt;/i&gt; 访问总量 site_pv_footer: # custom pv span for one page only page_pv: true page_pv_header: &lt;i class=&quot;fa fa-file-o&quot;&gt;&lt;/i&gt; 阅读次数 page_pv_footer: 显示统计字数在主题文件的_config.xml中搜索post_wordcount，修改配置，可以在网站底部和文章中显示所统计的字数，我的配置如下：123456post_wordcount: item_text: true wordcount: true min2read: true totalcount: true separated_meta: true 增加本地搜索功能在主题文件的_config.xml中搜索local_search，设置为true。 在文章底部增加版权信息在主题文件的_config.xml中搜索post_copyright，设置为true。 给文章加密参考： hexo-blog-encrypt 安装： npm install hexo-blog-encrypt 首先在 _config.yml 中启用该插件123456# Security##encrypt: enable: true``` - 在你的文章的头部添加上对应的字段，如 password, abstract, message title: hello worlddate: 2016-03-30 21:18:02tags: - fdsafsdaf password: Mikeabstract: Welcome to my blog, enter password to read. message: Welcome to my blog, enter password to read.12345## 写文章一般使用```codehexo new xxx xxx表示文件的名字，同时也会自动设置为文章标题（后面可改）也可以之间创建.md文件，添加文章头信息： 1234567title: // 文章标题date: // 创建时间updated: //跟新文章的时间tags: // 文章的标签，如果有多个，[tags1, tags2, ...]categories: // 文章分类keywords: // 文章关键词，如果有多个，[key1, key2, ...]description: //文章描述 其中需要注意： 如果想要有updated，需要在主题文件下的_config.xml文件中配置post_meta，将updated_at设置为true。 12345post_meta: item_text: true created_at: true updated_at: true categories: true keywords和description的作用是为了搜索引擎寻找关键字。 其中description关键字，在主页上显示的时候就会显示这里面的内容，而不是显示前150个字符。还有另一种方法推荐，就是不写description，而是在文章中插入&lt;!-- more --&gt;注释，这样主页就会显示该注释前的内容。 可添加内容下面的内容是推广和维护网站相关。 网站分析 个人使用的是腾讯移动分析，而且nexT也可以直接支持，在主题文件的_config.xml中搜索Tencent MTA ID，将自己在网站上注册的 ID 填写上去就可以统计了。 seo推广 这里推荐参考Hexo+nexT主题搭建个人博客中seo推广部分。 参考百度搜索资源平台 推荐阅读 Hexo+nexT主题搭建个人博客 hexo初探—让写作飞起来 史上最详细的Hexo博客搭建图文教程 Hexo + GitHub (Coding) Pages 搭建博客 基于 Hexo 和 GitHub Pages 搭建博客 Hexo搭建独立博客，托管到Github和Coding上教程 让更多人看到你的博客 在github上搭建个人网站 如何解决百度爬虫无法爬取搭建在Github上的个人博客的问题？ Hexo+Next主题集成Algolia搜索]]></content>
-      <categories>
-        <category>博客技术</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[今天算是把我的博客网站建立起来了]]></title>
-    <url>%2F2017%2F12%2F27%2Fhellomyblog%2F</url>
-    <content type="text"><![CDATA[花了三天时间，终于搞定了，这也表示我的文章之旅要开始了。enjoy it !]]></content>
-      <categories>
-        <category>diary</category>
-      </categories>
-      <tags>
-        <tag>diary</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[咸鱼王的逆袭之旅]]></title>
-    <url>%2Fabout%2Findex.html</url>
-    <content type="text"><![CDATA[当了太久的咸鱼王了，是时候翻身了！ 打算用此平台记录自己成长的点点滴滴。]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[分类]]></title>
-    <url>%2Fcategories%2Findex.html</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[标签]]></title>
-    <url>%2Ftags%2Findex.html</url>
-    <content type="text"></content>
-  </entry>
+<search> 
+  
+    
+    <entry>
+      <title><![CDATA[Hexo + nexT 学习笔记]]></title>
+      <url>/2018/02/17/HexoLearn-re/</url>
+      <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><img src="https://jaelyn-blog-txcos-1253450780.cos.ap-guangzhou.myqcloud.com/blog/pageimage2018/hexo-head.jpeg" alt="hexo-head"></p>
+<blockquote>
+<ul>
+<li>本文内容主要是个人在学习hexo和next中所遇到的一些“坑”和解决方法,而详细的流程网上有很多，在文章的结尾我会贴出我在学习中查找到的比较好的文章。</li>
+<li>注意本文不是详细操作步骤，如果需要详细步骤，请直接翻到文章结尾。</li>
+</ul>
+</blockquote>
+<a id="more"></a>
+<h2 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h2><ul>
+<li><a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">Hexo</a></li>
+<li><a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="noopener">nexT</a></li>
+</ul>
+<h2 id="Hexo-和-nexT-的安装"><a href="#Hexo-和-nexT-的安装" class="headerlink" title="Hexo 和 nexT 的安装"></a>Hexo 和 nexT 的安装</h2><blockquote>
+<p>在安装 Hexo 之前，需要确保电脑环境要有 <a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">Node.js</a> 和 <a href="https://git-scm.com/downloads" target="_blank" rel="noopener">Git</a> 环境, 当然，为了更好的安装 Hexo 还需要 <a href="https://www.npmjs.com" target="_blank" rel="noopener">npm</a>.</p>
+</blockquote>
+<p>下面是我所使用的版本：<br><img src="https://jaelyn-blog-txcos-1253450780.cos.ap-guangzhou.myqcloud.com/blog/pageimage2018/gitnpmnodeversion.png" alt="gitnpmnodeversion"></p>
+<p>安装之后，最常使用的指令如下：</p>
+<ol>
+<li>生成静态页面</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+<ol>
+<li>在本地运行</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<ol>
+<li>部署到GitHub pages（coding）</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<ol>
+<li>清除生成的静态文件</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
+<h2 id="打开-GitHub-Pages"><a href="#打开-GitHub-Pages" class="headerlink" title="打开 GitHub Pages"></a>打开 GitHub Pages</h2><p>在第一次创建完仓库之后，打开settings选项，向下翻到GitHub Pages选项会发现不能打开，会有一个提示信息：</p>
+<blockquote>
+<p>GitHub Pages is currently disabled. You must first add content to your repository before you can publish a GitHub Pages site</p>
+</blockquote>
+<p>是因为该GitHub Pages没有内容，此时只要点击下面的Choose a theme按钮选择一个主题就可以打开和访问了。</p>
+<h2 id="SSH-配置"><a href="#SSH-配置" class="headerlink" title="SSH 配置"></a>SSH 配置</h2><ul>
+<li>先查看本机用户home目录下是否存在.ssh目录</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~/.ssh</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果有就不用再创建了，如果想重新创建，可以创建一个不同名字的，也可以将原来的删除，再创建。</li>
+<li>使用下面指令删除已存在的SSH：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-add -D</span><br><span class="line">rm -r ~/.ssh</span><br></pre></td></tr></table></figure>
+<ul>
+<li>再创建新的SSH密钥(keys)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ssh-keygen -t rsa -C &quot;your_email@example.com&quot;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这将按照你提供的邮箱地址，创建一对密钥</p>
+</blockquote>
+<ul>
+<li>将生成的<code>id_rsa.pub</code>文件里面的内容拷贝到GitHub 项目中添加公钥，这里推荐在对应 xxx.github.io 项目中加。（settings-&gt;deploy keys）</li>
+</ul>
+<ul>
+<li>最后再用下面指令测试是否连接成功</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>可参考<a href="https://www.zhihu.com/question/21402411" target="_blank" rel="noopener">github提示Permission denied (publickey)，如何才能解决？</a></p>
+</blockquote>
+<h2 id="同步到GitHub"><a href="#同步到GitHub" class="headerlink" title="同步到GitHub"></a>同步到GitHub</h2><ul>
+<li>配置<code>站点文件</code>下的<code>_config.xml</code>文件下的<code>deploy</code>信息。</li>
+</ul>
+<ul>
+<li>安装<code>hexo-deployer-git</code>插件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>关于 https 的问题，如果需要使用自己的域名的话，GitHub pages 是不能打开 Enforce HTTPS 的。所以在配置<code>deploy</code>信息的时候就推荐使用 Clone with SSH 的链接。</p>
+</blockquote>
+<h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><ul>
+<li>在source文件夹下面创建<code>CNAME</code>文件（没有后缀），里面填上自己的域名。</li>
+<li>之后在自己的域名商将自己的域名用<code>CNAME</code>方式指向自己GitHub pages的域名。</li>
+</ul>
+<p><img src="https://jaelyn-blog-txcos-1253450780.cos.ap-guangzhou.myqcloud.com/blog/pageimage2018/cname-dns.png" alt="cname-dns"></p>
+<blockquote>
+<p>个人使用的是<a href="https://cloud.tencent.com" target="_blank" rel="noopener">腾讯云</a></p>
+</blockquote>
+<p>最后需要注意，需要在<code>站点文件</code>的<code>_config.xml</code>文件配置中的<code>skip_render</code>添加:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">skip_render:</span><br><span class="line"> - CNAME</span><br></pre></td></tr></table></figure>
+<p>表示跳过该文件的渲染。</p>
+<h2 id="nexT-主题配置"><a href="#nexT-主题配置" class="headerlink" title="nexT 主题配置"></a>nexT 主题配置</h2><p>一些我觉得比较实用的效果，参考<a href="https://segmentfault.com/a/1190000009544924" target="_blank" rel="noopener">hexo的next主题个性化配置教程</a>.</p>
+<h3 id="添加-README-md"><a href="#添加-README-md" class="headerlink" title="添加 README.md"></a>添加 README.md</h3><p>在<code>站点文件</code>的<code>source</code>目录下添加一个<code>README.md</code>文件，之后修改<code>站点文件</code>下的<code>_config.xml</code>，将<code>skip_render</code>添加<code>README.md</code>，跳过该文件的渲染。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">skip_render:</span><br><span class="line"> - CNAME</span><br><span class="line"> - README.md</span><br></pre></td></tr></table></figure>
+<h3 id="Schemes"><a href="#Schemes" class="headerlink" title="Schemes"></a>Schemes</h3><p>个人比较喜欢<code>Gemini</code>样式，相比<code>Pisces</code>样式，该样式不会每篇文章相连过于紧密，会以分块的形式显示出来，比较好看，特别在手机端上效果更显著。具体可以亲自去设置去看看效果。</p>
+<h3 id="live2d"><a href="#live2d" class="headerlink" title="live2d"></a>live2d</h3><p>就是网站右下角的“萌物”小人，具体可以参考<a href="https://github.com/EYHN/hexo-helper-live2d" target="_blank" rel="noopener">hexo-helper-live2d</a>。下面简要介绍我的做法：</p>
+<ol>
+<li>在<code>站点文件</code>打开终端输入</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-helper-live2d</span><br></pre></td></tr></table></figure>
+<ol>
+<li>在<code>站点文件</code>下的<code>_config.xml</code>最后配置：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">live2d:</span><br><span class="line">  model: z16</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>具体的配置可以看文档，可以修改挺多内容的。模型外观参考<a href="https://huaji8.top/post/live2d-plugin-2.0/" target="_blank" rel="noopener">截图预览</a>.</p>
+</blockquote>
+<h3 id="动态背景"><a href="#动态背景" class="headerlink" title="动态背景"></a>动态背景</h3><p>在<code>主题文件</code>的<code>_config.xml</code>中搜索<code>Canvas-nest</code>可以发现有4个动态背景，可以逐个尝试，也可以同时设置为<code>true</code>，个人只选择了<code>Canvas-nest</code>。</p>
+<h3 id="footer"><a href="#footer" class="headerlink" title="footer"></a>footer</h3><p>可以将网站最下的不想要显示的内容设置为<code>false</code>，在<code>主题文件</code>的<code>_config.xml</code>中搜索<code>footer</code>，我的设置如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">footer:</span><br><span class="line">  # Specify the date when the site was setup.</span><br><span class="line">  # If not defined, current year will be used.</span><br><span class="line">  since: 2017</span><br><span class="line"></span><br><span class="line">  # Icon between year and copyright info.</span><br><span class="line">  icon: user</span><br><span class="line"></span><br><span class="line">  # If not defined, will be used `author` from Hexo main config.</span><br><span class="line">  copyright:</span><br><span class="line">  # -------------------------------------------------------------</span><br><span class="line">  # Hexo link (Powered by Hexo).</span><br><span class="line">  powered: false</span><br><span class="line"></span><br><span class="line">  theme:</span><br><span class="line">    # Theme &amp; scheme info link (Theme - NexT.scheme).</span><br><span class="line">    enable: false</span><br><span class="line">    # Version info of NexT after scheme info (vX.X.X).</span><br><span class="line">    version: false</span><br></pre></td></tr></table></figure>
+<h3 id="busuanzi访问人数"><a href="#busuanzi访问人数" class="headerlink" title="busuanzi访问人数"></a>busuanzi访问人数</h3><p>在<code>主题文件</code>的<code>_config.xml</code>中搜索<code>busuanzi_count</code>，修改配置，可以在网站底部和文章中显示访问的人数，我的配置如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">busuanzi_count:</span><br><span class="line">  # count values only if the other configs are false</span><br><span class="line">  enable: true</span><br><span class="line">  # custom uv span for the whole site</span><br><span class="line">  site_uv: true</span><br><span class="line">  site_uv_header: &lt;i class=&quot;fa fa-user&quot;&gt;&lt;/i&gt; 访问人数</span><br><span class="line">  site_uv_footer: |</span><br><span class="line">  # custom pv span for the whole site</span><br><span class="line">  site_pv: true</span><br><span class="line">  site_pv_header: &lt;i class=&quot;fa fa-eye&quot;&gt;&lt;/i&gt; 访问总量</span><br><span class="line">  site_pv_footer:</span><br><span class="line">  # custom pv span for one page only</span><br><span class="line">  page_pv: true</span><br><span class="line">  page_pv_header: &lt;i class=&quot;fa fa-file-o&quot;&gt;&lt;/i&gt; 阅读次数</span><br><span class="line">  page_pv_footer:</span><br></pre></td></tr></table></figure>
+<h3 id="显示统计字数"><a href="#显示统计字数" class="headerlink" title="显示统计字数"></a>显示统计字数</h3><p>在<code>主题文件</code>的<code>_config.xml</code>中搜索<code>post_wordcount</code>，修改配置，可以在网站底部和文章中显示所统计的字数，我的配置如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">post_wordcount:</span><br><span class="line">  item_text: true</span><br><span class="line">  wordcount: true</span><br><span class="line">  min2read: true</span><br><span class="line">  totalcount: true</span><br><span class="line">  separated_meta: true</span><br></pre></td></tr></table></figure>
+<h3 id="增加本地搜索功能"><a href="#增加本地搜索功能" class="headerlink" title="增加本地搜索功能"></a>增加本地搜索功能</h3><p>在<code>主题文件</code>的<code>_config.xml</code>中搜索<code>local_search</code>，设置为<code>true</code>。</p>
+<h3 id="在文章底部增加版权信息"><a href="#在文章底部增加版权信息" class="headerlink" title="在文章底部增加版权信息"></a>在文章底部增加版权信息</h3><p>在<code>主题文件</code>的<code>_config.xml</code>中搜索<code>post_copyright</code>，设置为<code>true</code>。</p>
+<h3 id="给文章加密"><a href="#给文章加密" class="headerlink" title="给文章加密"></a>给文章加密</h3><p>参考： <a href="https://github.com/MikeCoder/hexo-blog-encrypt/blob/master/ReadMe.zh.md" target="_blank" rel="noopener">hexo-blog-encrypt</a></p>
+<ul>
+<li>安装： <code>npm install hexo-blog-encrypt</code>  </li>
+<li>首先在 _config.yml 中启用该插件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Security</span><br><span class="line">encrypt:</span><br><span class="line">    enable: true</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在你的文章的头部添加上对应的字段，如 password, abstract, message</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: hello world</span><br><span class="line">date: 2016-03-30 21:18:02</span><br><span class="line">tags:</span><br><span class="line">    - fdsafsdaf</span><br><span class="line">password: Mike</span><br><span class="line">abstract: Welcome to my blog, enter password to read.</span><br><span class="line">message: Welcome to my blog, enter password to read.</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<h2 id="写文章"><a href="#写文章" class="headerlink" title="写文章"></a>写文章</h2><p>一般使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new xxx</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>xxx表示文件的名字，同时也会自动设置为文章标题（后面可改）<br>以之间创建<code>.md</code>文件，添加文章头信息</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">title:  // 文章标题</span><br><span class="line">date: // 创建时间</span><br><span class="line">updated: //跟新文章的时间</span><br><span class="line">tags: // 文章的标签，如果有多个，[tags1, tags2, ...]</span><br><span class="line">categories: // 文章分类</span><br><span class="line">keywords: // 文章关键词，如果有多个，[key1, key2, ...]</span><br><span class="line">description: //文章描述</span><br></pre></td></tr></table></figure>
+<p>其中需要注意：</p>
+<ul>
+<li>如果想要有<code>updated</code>，需要在<code>主题文件</code>下的<code>_config.xml</code>文件中配置<code>post_meta</code>，将<code>updated_at</code>设置为<code>true</code>。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">post_meta:</span><br><span class="line">  item_text: true</span><br><span class="line">  created_at: true</span><br><span class="line">  updated_at: true</span><br><span class="line">  categories: true</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>keywords</code>和<code>description</code>的作用是为了搜索引擎寻找关键字。</li>
+<li>其中<code>description</code>关键字，在主页上显示的时候就会显示这里面的内容，而不是显示前150个字符。还有另一种方法推荐，就是不写<code>description</code>，而是在文章中插入<code>&lt;!-- more --&gt;</code>注释，这样主页就会显示该注释前的内容。</li>
+</ul>
+<h2 id="可添加内容"><a href="#可添加内容" class="headerlink" title="可添加内容"></a>可添加内容</h2><p>下面的内容是推广和维护网站相关。</p>
+<h3 id="网站分析"><a href="#网站分析" class="headerlink" title="网站分析"></a>网站分析</h3><p>个人使用的是<a href="http://mta.qq.com" target="_blank" rel="noopener">腾讯移动分析</a>，而且nexT也可以直接支持，在<code>主题文件</code>的<code>_config.xml</code>中搜索<code>Tencent MTA ID</code>，将自己在网站上注册的 ID 填写上去就可以统计了。</p>
+<h3 id="seo推广"><a href="#seo推广" class="headerlink" title="seo推广"></a>seo推广</h3><p>这里推荐参考<a href="http://harleywang93.com/2017/03/07/Hexo-GitHub-Coding-Pages-搭建博客/" target="_blank" rel="noopener">Hexo+nexT主题搭建个人博客</a>中seo推广部分。</p>
+<blockquote>
+<p>参考<a href="http://ziyuan.baidu.com" target="_blank" rel="noopener">百度搜索资源平台</a></p>
+</blockquote>
+<h2 id="推荐阅读"><a href="#推荐阅读" class="headerlink" title="推荐阅读"></a>推荐阅读</h2><ul>
+<li><a href="http://www.wuxubj.cn/2016/08/Hexo-nexT-build-personal-blog/index.html" target="_blank" rel="noopener">Hexo+nexT主题搭建个人博客</a></li>
+<li><a href="https://www.jianshu.com/p/e7c58f57f60e" target="_blank" rel="noopener">hexo初探—让写作飞起来</a></li>
+<li><a href="https://xuanwo.org/2015/03/26/hexo-intor/" target="_blank" rel="noopener">史上最详细的Hexo博客搭建图文教程</a></li>
+<li><a href="http://harleywang93.com/2017/03/07/Hexo-GitHub-Coding-Pages-搭建博客/" target="_blank" rel="noopener">Hexo + GitHub (Coding) Pages 搭建博客</a></li>
+<li><a href="http://col.dog/2015/11/12/hello-world/" target="_blank" rel="noopener">基于 Hexo 和 GitHub Pages 搭建博客</a></li>
+<li><a href="http://blog.csdn.net/xiaoliuge01/article/details/50997754" target="_blank" rel="noopener">Hexo搭建独立博客，托管到Github和Coding上教程</a></li>
+<li><a href="http://blog.junyu.io/posts/0008-blog-seo.html" target="_blank" rel="noopener">让更多人看到你的博客</a></li>
+<li><a href="http://blog.csdn.net/qq_21165007/article/details/72587999#git报错warning-lf-will-be-replaced-by-crlf问题" target="_blank" rel="noopener">在github上搭建个人网站</a></li>
+<li><a href="https://www.zhihu.com/question/30898326" target="_blank" rel="noopener">如何解决百度爬虫无法爬取搭建在Github上的个人博客的问题？</a></li>
+<li><a href="http://blog.niices.com/Hexo-Next-Algolia-Search/" target="_blank" rel="noopener">Hexo+Next主题集成Algolia搜索</a></li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> 博客技术 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> hexo </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Django Rest framework + vue 笔记 03]]></title>
+      <url>/2018/02/17/django-rest-vue03/</url>
+      <content type="html"><![CDATA[<h3 id="前后端分离的优缺点"><a href="#前后端分离的优缺点" class="headerlink" title="前后端分离的优缺点"></a>前后端分离的优缺点</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>pc，app，pad多端适应</li>
+<li>SPA开发模式开始流行</li>
+<li>前后端开发职责不清</li>
+<li>开发效率问题，前后端互相等待</li>
+<li>前端一直配合着后端，能力受限</li>
+<li>后端开发语言和模版高度耦合，导致开发语言依赖严重</li>
+</ul>
+<a id="more"></a>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>前后端学习门槛增加</li>
+<li>数据依赖导致文档重要性增加</li>
+<li>前端工作量加大</li>
+<li>SEO的难度加大</li>
+<li>后端开发模式迁移增加成本</li>
+</ul>
+<h3 id="Restful-API"><a href="#Restful-API" class="headerlink" title="Restful API"></a>Restful API</h3><blockquote>
+<p>restful api目前是前后端分离最佳实践</p>
+</blockquote>
+<ol>
+<li>轻量，直接通过http，不需要额外的协议，post/get/put/delete操作</li>
+<li>面向资源，具有解释性</li>
+<li>数据描述简单，一般通过json或者xml做数据通信</li>
+</ol>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><ul>
+<li><a href="http://www.ruanyifeng.com/blog/2011/09/restful.html" target="_blank" rel="noopener">理解RESTful架构</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html" target="_blank" rel="noopener">RESTful API 设计指南</a></li>
+</ul>
+<h3 id="几个概念"><a href="#几个概念" class="headerlink" title="几个概念"></a>几个概念</h3><h4 id="前端工程化"><a href="#前端工程化" class="headerlink" title="前端工程化"></a>前端工程化</h4><ul>
+<li><a href="http://www.cnblogs.com/ihardcoder/p/5378290.html" target="_blank" rel="noopener">浅析前端工程化</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/30192759" target="_blank" rel="noopener">前端工程化小记</a></li>
+<li><a href="http://www.cnblogs.com/yexiaochai/p/4901341.html" target="_blank" rel="noopener">前端优化带来的思考，浅谈前端工程化</a></li>
+</ul>
+<h4 id="数据双向绑定"><a href="#数据双向绑定" class="headerlink" title="数据双向绑定"></a>数据双向绑定</h4><ul>
+<li><a href="https://cn.vuejs.org/v2/guide/" target="_blank" rel="noopener">mvvm</a></li>
+<li><a href="https://cn.vuejs.org/v2/guide/" target="_blank" rel="noopener">vue.js</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2015/02/mvcmvp_mvvm.html" target="_blank" rel="noopener">MVC，MVP 和 MVVM 的图示</a></li>
+</ul>
+<h4 id="组件化开发"><a href="#组件化开发" class="headerlink" title="组件化开发"></a>组件化开发</h4><ul>
+<li><a href="http://blog.csdn.net/chenchun91/article/details/53375041" target="_blank" rel="noopener">前端组件化开发</a></li>
+<li><a href="https://www.zhihu.com/question/29735633" target="_blank" rel="noopener">什么叫组件化开发？</a></li>
+</ul>
+<h3 id="vue开发的几个概念"><a href="#vue开发的几个概念" class="headerlink" title="vue开发的几个概念"></a>vue开发的几个概念</h3><h4 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h4><blockquote>
+<p>本质上，<em>webpack</em> 是一个现代 JavaScript 应用程序的<em>静态模块打包器(module bundler)</em>。当 webpack 处理应用程序时，它会递归地构建一个<em>依赖关系图(dependency graph)</em>，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 <em>bundle</em>。</p>
+</blockquote>
+<ul>
+<li><a href="https://doc.webpack-china.org/concepts/" target="_blank" rel="noopener">中文官网</a></li>
+</ul>
+<h4 id="vue，vuex，vue-router，axios"><a href="#vue，vuex，vue-router，axios" class="headerlink" title="vue，vuex，vue-router，axios"></a>vue，vuex，vue-router，axios</h4><blockquote>
+<p>vue全家桶</p>
+</blockquote>
+<ul>
+<li><a href="https://cn.vuejs.org/v2/guide/" target="_blank" rel="noopener">vue.js</a></li>
+</ul>
+<h4 id="ES6，babel"><a href="#ES6，babel" class="headerlink" title="ES6，babel"></a>ES6，babel</h4><blockquote>
+<p>ES6语法，babel可以将ES6转换成ES5</p>
+</blockquote>
+<ul>
+<li><a href="http://es6.ruanyifeng.com" target="_blank" rel="noopener">《ECMAScript 6 入门》</a></li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> Django </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Django </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Django Rest framework + vue 笔记 02]]></title>
+      <url>/2018/02/16/django-rest-vue02/</url>
+      <content type="html"><![CDATA[<p>参考：</p>
+<ul>
+<li><a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/" target="_blank" rel="noopener">Unofficial Windows Binaries for Python Extension Packages</a></li>
+</ul>
+<h3 id="Django-REST-framework"><a href="#Django-REST-framework" class="headerlink" title="Django REST framework"></a>Django REST framework</h3><ul>
+<li><a href="http://django-rest-framework.org" target="_blank" rel="noopener">官网</a></li>
+</ul>
+<a id="more"></a>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>进入到虚拟环境</p>
+<p><code>pip install djangorestframework</code></p>
+<p>安装Django，默认安装最新版本</p>
+<p><code>pip install -i https://pypi.douban.com/simple django</code> </p>
+<p>安装markdown，Markdown support for the browsable API.</p>
+<p><code>pip install markdown</code></p>
+<p>还需要安装</p>
+<p><code>pip install django-filter</code></p>
+<h3 id="使用mysql"><a href="#使用mysql" class="headerlink" title="使用mysql"></a>使用mysql</h3><h4 id="setting-py-文件中修改："><a href="#setting-py-文件中修改：" class="headerlink" title="setting.py 文件中修改："></a><strong>setting.py</strong> 文件中修改：</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">DATABASES = &#123;</span><br><span class="line">    <span class="string">'default'</span>: &#123;</span><br><span class="line">        <span class="string">'ENGINE'</span>: <span class="string">'django.db.backends.mysql'</span>,</span><br><span class="line">        <span class="string">'NAME'</span>: <span class="string">'teacherAndStudentSystem'</span>,</span><br><span class="line">        <span class="string">'USER'</span>: <span class="string">'root'</span>,</span><br><span class="line">        <span class="string">'PASSWORD'</span>: <span class="string">''</span>,</span><br><span class="line">        <span class="string">'HOST'</span>: <span class="string">'localhost'</span>,</span><br><span class="line">        <span class="string">'PORT'</span>: <span class="string">'3306'</span>,</span><br><span class="line">        <span class="string">'OPTIONS'</span>: &#123;</span><br><span class="line">            <span class="string">'charset'</span>: <span class="string">'utf8mb4'</span>, </span><br><span class="line">            <span class="string">'init_command'</span>: <span class="string">'SET default_storage_engine=INNODB;'</span></span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 MySQLWorkbench 中新建数据库</p>
+<h4 id="安装python的mysql驱动"><a href="#安装python的mysql驱动" class="headerlink" title="安装python的mysql驱动"></a>安装python的mysql驱动</h4><p><code>pip install mysqlclient</code></p>
+<blockquote>
+<p>运行发现报错 “django.db.utils.OperationalError: (1193, “Unknown system variable ‘storage_engine’”)”</p>
+<p>参考： </p>
+<ul>
+<li><a href="http://www.cnblogs.com/chenyang13677/p/7780799.html" target="_blank" rel="noopener">博客园</a></li>
+<li><a href="https://stackoverflow.com/questions/37175295/cant-migrate-django-databases-on-mysql-after-upgrading-to-ubuntu-16-04" target="_blank" rel="noopener">stackoverflow</a></li>
+</ul>
+<p>因为版本的关系，所以只需要改为 <code>SET default_storage_engine=INNODB;</code> 即可</p>
+<p>这个表示选择另一种连接方式，后面使用第三方登录的时候要用上</p>
+</blockquote>
+<h3 id="安装-pillow"><a href="#安装-pillow" class="headerlink" title="安装 pillow"></a>安装 pillow</h3><p><code>pip install pillow</code></p>
+<blockquote>
+<p>这个是图形第三方插件</p>
+</blockquote>
+<h3 id="创建apps的package"><a href="#创建apps的package" class="headerlink" title="创建apps的package"></a>创建apps的package</h3><p><strong>注意需要创建的是Python Package，而不是Directory</strong></p>
+<h4 id="修改setting"><a href="#修改setting" class="headerlink" title="修改setting"></a>修改setting</h4><p>将apps加入到python的根搜索路径下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="comment"># Build paths inside the project like this: os.path.join(BASE_DIR, ...)</span></span><br><span class="line">BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))</span><br><span class="line">sys.path.insert(<span class="number">0</span>, BASE_DIR)</span><br><span class="line">sys.path.insert(<span class="number">0</span>, os.path.join(BASE_DIR, <span class="string">'apps'</span>))</span><br><span class="line">sys.path.insert(<span class="number">0</span>, os.path.join(BASE_DIR, <span class="string">'extra_apps'</span>))</span><br></pre></td></tr></table></figure>
+<p>目前项目目录：</p>
+<p><img src="https://jaelyn-blog-txcos-1253450780.cos.ap-guangzhou.myqcloud.com/blog/pageimage2018/django_rest_vue01.png" alt="项目目录01"></p>
+<h3 id="vue项目"><a href="#vue项目" class="headerlink" title="vue项目"></a>vue项目</h3><h4 id="安装需要的包"><a href="#安装需要的包" class="headerlink" title="安装需要的包"></a>安装需要的包</h4><p>在vue项目的根目录下执行</p>
+<p><code>cnpm install</code> 或 <code>npm install</code></p>
+<p>会生成一个model_modules的文件夹</p>
+<h4 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h4><p><code>cnpm run dev</code> 或使用 <code>npm run dev</code></p>
+<h3 id="设计app和models"><a href="#设计app和models" class="headerlink" title="设计app和models"></a>设计app和models</h3><h4 id="富文本编辑器"><a href="#富文本编辑器" class="headerlink" title="富文本编辑器"></a>富文本编辑器</h4><p>Django-UEditor</p>
+<h5 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h5><ul>
+<li><a href="http://www.cnblogs.com/fengzheng/p/3822266.html" target="_blank" rel="noopener">Django集成百度富文本编辑器uEditor</a></li>
+</ul>
+<h5 id="对应代码应用"><a href="#对应代码应用" class="headerlink" title="对应代码应用"></a>对应代码应用</h5><ul>
+<li>把这第三方包复制到项目中</li>
+<li>在<strong>setting</strong>中设置，加入改包</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = [</span><br><span class="line">    <span class="string">'django.contrib.auth'</span>,</span><br><span class="line">    <span class="string">'django.contrib.contenttypes'</span>,</span><br><span class="line">    <span class="string">'django.contrib.sessions'</span>,</span><br><span class="line">    <span class="string">'django.contrib.messages'</span>,</span><br><span class="line">    <span class="string">'django.contrib.staticfiles'</span>,</span><br><span class="line">    <span class="string">'users.apps.UsersConfig'</span>,</span><br><span class="line">    <span class="string">'DjangoUeditor'</span>,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在模型类中导入</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> DjangoUeditor.models <span class="keyword">import</span> UEditorField</span><br></pre></td></tr></table></figure>
+<ul>
+<li>模型中使用</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">goods_desc = UEditorField(</span><br><span class="line">    verbose_name=<span class="string">u"内容"</span>, </span><br><span class="line">    imagePath=<span class="string">"goods/images/"</span>, </span><br><span class="line">    width=<span class="number">1000</span>, </span><br><span class="line">    height=<span class="number">300</span>, </span><br><span class="line">    filePath=<span class="string">"goods/files/"</span>, </span><br><span class="line">    default=<span class="string">''</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h4 id="模型类例子"><a href="#模型类例子" class="headerlink" title="模型类例子"></a>模型类例子</h4><p>在线购物平台的商品模型</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"><span class="keyword">from</span> DjangoUeditor.models <span class="keyword">import</span> UEditorField</span><br><span class="line"><span class="comment"># Create your models here.</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GoodsCategory</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    商品类别</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    CATEGORY_TYPE = (</span><br><span class="line">        (<span class="number">1</span>, <span class="string">"一级类目"</span>),</span><br><span class="line">        (<span class="number">2</span>, <span class="string">"二级类目"</span>),</span><br><span class="line">        (<span class="number">3</span>, <span class="string">"三级类目"</span>),</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    name = models.CharField(default=<span class="string">""</span>, max_length=<span class="number">30</span>, verbose_name=<span class="string">"类别名"</span>, help_text=<span class="string">"类别名"</span>)</span><br><span class="line">    code = models.CharField(default=<span class="string">""</span>, max_length=<span class="number">30</span>, verbose_name=<span class="string">"类别code"</span>, help_text=<span class="string">"类别code"</span>)</span><br><span class="line">    desc = models.TextField(default=<span class="string">""</span>, verbose_name=<span class="string">"类别描述"</span>, help_text=<span class="string">"类别描述"</span>)</span><br><span class="line">    category_type = models.IntegerField(choices=CATEGORY_TYPE, verbose_name=<span class="string">"类目级别"</span>, help_text=<span class="string">"类目级别"</span>)</span><br><span class="line">    parent_category = models.ForeignKey(<span class="string">"self"</span>, null=<span class="keyword">True</span>, blank=<span class="keyword">True</span>, verbose_name=<span class="string">"父类目级别"</span>, help_text=<span class="string">"父目录"</span>,</span><br><span class="line">                                        related_name=<span class="string">"sub_cat"</span>)</span><br><span class="line">    is_tab = models.BooleanField(default=<span class="keyword">False</span>, verbose_name=<span class="string">"是否导航"</span>, help_text=<span class="string">"是否导航"</span>)</span><br><span class="line">    add_time = models.DateTimeField(default=datetime.now, verbose_name=<span class="string">"添加时间"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        verbose_name = <span class="string">"商品类别"</span></span><br><span class="line">        verbose_name_plural = verbose_name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GoodsCategoryBrand</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    品牌名</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    category = models.ForeignKey(GoodsCategory, related_name=<span class="string">'brands'</span>, null=<span class="keyword">True</span>, blank=<span class="keyword">True</span>, verbose_name=<span class="string">"商品类目"</span>)</span><br><span class="line">    name = models.CharField(default=<span class="string">""</span>, max_length=<span class="number">30</span>, verbose_name=<span class="string">"品牌名"</span>, help_text=<span class="string">"品牌名"</span>)</span><br><span class="line">    desc = models.TextField(default=<span class="string">""</span>, max_length=<span class="number">200</span>, verbose_name=<span class="string">"品牌描述"</span>, help_text=<span class="string">"品牌描述"</span>)</span><br><span class="line">    image = models.ImageField(max_length=<span class="number">200</span>, upload_to=<span class="string">"brands/"</span>)</span><br><span class="line">    add_time = models.DateTimeField(default=datetime.now, verbose_name=<span class="string">"添加时间"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        verbose_name = <span class="string">"品牌"</span></span><br><span class="line">        verbose_name_plural = verbose_name</span><br><span class="line">        db_table = <span class="string">"goods_goodsbrand"</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Goods</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    商品</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    category = models.ForeignKey(GoodsCategory, verbose_name=<span class="string">"商品类目"</span>)</span><br><span class="line">    goods_sn = models.CharField(max_length=<span class="number">50</span>, default=<span class="string">""</span>, verbose_name=<span class="string">"商品唯一货号"</span>)</span><br><span class="line">    name = models.CharField(max_length=<span class="number">100</span>, verbose_name=<span class="string">"商品名"</span>)</span><br><span class="line">    click_num = models.IntegerField(default=<span class="number">0</span>, verbose_name=<span class="string">"点击数"</span>)</span><br><span class="line">    sold_num = models.IntegerField(default=<span class="number">0</span>, verbose_name=<span class="string">"商品销售量"</span>)</span><br><span class="line">    fav_num = models.IntegerField(default=<span class="number">0</span>, verbose_name=<span class="string">"收藏数"</span>)</span><br><span class="line">    goods_num = models.IntegerField(default=<span class="number">0</span>, verbose_name=<span class="string">"库存数"</span>)</span><br><span class="line">    market_price = models.FloatField(default=<span class="number">0</span>, verbose_name=<span class="string">"市场价格"</span>)</span><br><span class="line">    shop_price = models.FloatField(default=<span class="number">0</span>, verbose_name=<span class="string">"本店价格"</span>)</span><br><span class="line">    goods_brief = models.TextField(max_length=<span class="number">500</span>, verbose_name=<span class="string">"商品简短描述"</span>)</span><br><span class="line">    goods_desc = UEditorField(verbose_name=<span class="string">u"内容"</span>, imagePath=<span class="string">"goods/images/"</span>, width=<span class="number">1000</span>, height=<span class="number">300</span>,</span><br><span class="line">                              filePath=<span class="string">"goods/files/"</span>, default=<span class="string">''</span>)</span><br><span class="line">    ship_free = models.BooleanField(default=<span class="keyword">True</span>, verbose_name=<span class="string">"是否承担运费"</span>)</span><br><span class="line">    goods_front_image = models.ImageField(upload_to=<span class="string">"goods/images/"</span>, null=<span class="keyword">True</span>, blank=<span class="keyword">True</span>, verbose_name=<span class="string">"封面图"</span>)</span><br><span class="line">    is_new = models.BooleanField(default=<span class="keyword">False</span>, verbose_name=<span class="string">"是否新品"</span>)</span><br><span class="line">    is_hot = models.BooleanField(default=<span class="keyword">False</span>, verbose_name=<span class="string">"是否热销"</span>)</span><br><span class="line">    add_time = models.DateTimeField(default=datetime.now, verbose_name=<span class="string">"添加时间"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        verbose_name = <span class="string">'商品'</span></span><br><span class="line">        verbose_name_plural = verbose_name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IndexAd</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    category = models.ForeignKey(GoodsCategory, related_name=<span class="string">'category'</span>,verbose_name=<span class="string">"商品类目"</span>)</span><br><span class="line">    goods =models.ForeignKey(Goods, related_name=<span class="string">'goods'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        verbose_name = <span class="string">'首页商品类别广告'</span></span><br><span class="line">        verbose_name_plural = verbose_name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.goods.name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GoodsImage</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    商品轮播图</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    goods = models.ForeignKey(Goods, verbose_name=<span class="string">"商品"</span>, related_name=<span class="string">"images"</span>)</span><br><span class="line">    image = models.ImageField(upload_to=<span class="string">""</span>, verbose_name=<span class="string">"图片"</span>, null=<span class="keyword">True</span>, blank=<span class="keyword">True</span>)</span><br><span class="line">    add_time = models.DateTimeField(default=datetime.now, verbose_name=<span class="string">"添加时间"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        verbose_name = <span class="string">'商品图片'</span></span><br><span class="line">        verbose_name_plural = verbose_name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.goods.name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Banner</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    轮播的商品</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    goods = models.ForeignKey(Goods, verbose_name=<span class="string">"商品"</span>)</span><br><span class="line">    image = models.ImageField(upload_to=<span class="string">'banner'</span>, verbose_name=<span class="string">"轮播图片"</span>)</span><br><span class="line">    index = models.IntegerField(default=<span class="number">0</span>, verbose_name=<span class="string">"轮播顺序"</span>)</span><br><span class="line">    add_time = models.DateTimeField(default=datetime.now, verbose_name=<span class="string">"添加时间"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        verbose_name = <span class="string">'轮播商品'</span></span><br><span class="line">        verbose_name_plural = verbose_name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.goods.name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HotSearchWords</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    热搜词</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    keywords = models.CharField(default=<span class="string">""</span>, max_length=<span class="number">20</span>, verbose_name=<span class="string">"热搜词"</span>)</span><br><span class="line">    index = models.IntegerField(default=<span class="number">0</span>, verbose_name=<span class="string">"排序"</span>)</span><br><span class="line">    add_time = models.DateTimeField(default=datetime.now, verbose_name=<span class="string">"添加时间"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        verbose_name = <span class="string">'热搜词'</span></span><br><span class="line">        verbose_name_plural = verbose_name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.keywords</span><br></pre></td></tr></table></figure>
+<h3 id="自定义User类"><a href="#自定义User类" class="headerlink" title="自定义User类"></a>自定义User类</h3><ul>
+<li>在模型类中导入</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib.auth.models <span class="keyword">import</span> AbstractUser</span><br></pre></td></tr></table></figure>
+<ul>
+<li>继承该<code>AbstractUser</code>类</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserProfile</span><span class="params">(AbstractUser)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>引用外键</li>
+</ul>
+<p>在另一个模型类中导入</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib.auth <span class="keyword">import</span> get_user_model</span><br></pre></td></tr></table></figure>
+<p>在外键中使用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">User = get_user_model()</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ShoppingCart</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    购物车</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    user = models.ForeignKey(User, verbose_name=<span class="string">u"用户"</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="独立使用Django的model"><a href="#独立使用Django的model" class="headerlink" title="独立使用Django的model"></a>独立使用<strong>Django</strong>的model</h3><h4 id="进行一些初始化"><a href="#进行一些初始化" class="headerlink" title="进行一些初始化"></a>进行一些初始化</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">pwd = os.path.dirname(os.path.realpath(__file__))</span><br><span class="line">sys.path.append(pwd+<span class="string">"../"</span>)</span><br><span class="line">os.environ.setdefault(<span class="string">"DJANGO_SETTINGS_MODULE"</span>, <span class="string">"Project.settings"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> django</span><br><span class="line">django.setup()</span><br></pre></td></tr></table></figure>
+<h4 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> goods.models <span class="keyword">import</span> GoodsCategory</span><br><span class="line"></span><br><span class="line">all_categorys = GoodsCategory.objects.all()</span><br></pre></td></tr></table></figure>
+<p><em>顺序不能错</em></p>
+<h3 id="让Django识别媒体文件"><a href="#让Django识别媒体文件" class="headerlink" title="让Django识别媒体文件"></a>让Django识别媒体文件</h3><h4 id="在settings-py中设置"><a href="#在settings-py中设置" class="headerlink" title="在settings.py中设置"></a>在settings.py中设置</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MEDIA_URL = <span class="string">"/media/"</span></span><br><span class="line">MEDIA_ROOT = os.path.join(BASE_DIR, <span class="string">"media"</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="在urls-py中配置"><a href="#在urls-py中配置" class="headerlink" title="在urls.py中配置"></a>在urls.py中配置</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Project.settings <span class="keyword">import</span> MEDIA_ROOT</span><br><span class="line"><span class="keyword">from</span> django.views.static <span class="keyword">import</span> serve</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    <span class="comment"># ...more</span></span><br><span class="line">    url(<span class="string">r'^media/(?P&lt;path&gt;.*)$'</span>, serve, &#123;<span class="string">"document_root"</span>: MEDIA_ROOT&#125;),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="目前项目目录"><a href="#目前项目目录" class="headerlink" title="目前项目目录"></a>目前项目目录</h3><p><img src="https://jaelyn-blog-txcos-1253450780.cos.ap-guangzhou.myqcloud.com/blog/pageimage2018/django_rest_vue02.png" alt="项目目录02"></p>
+]]></content>
+      
+        <categories>
+            
+            <category> Django </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Django </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Django Rest framework + vue 笔记 01]]></title>
+      <url>/2018/02/14/django-rest-vue01/</url>
+      <content type="html"><![CDATA[<p>需要下载的资源</p>
+<ul>
+<li><a href="https://www.jetbrains.com/pycharm-edu/download/#section=mac" target="_blank" rel="noopener">Pycharm</a></li>
+<li><a href="https://www.jetbrains.com/webstorm/download/#section=mac" target="_blank" rel="noopener">WebStorm</a></li>
+<li><a href="http://nodejs.cn" target="_blank" rel="noopener">Node.js</a></li>
+<li><a href="https://www.mysql.com/products/workbench/" target="_blank" rel="noopener">Mysql Workbench</a></li>
+</ul>
+<a id="more"></a>
+<h3 id="Pycharm-快捷启动（Linux）"><a href="#Pycharm-快捷启动（Linux）" class="headerlink" title="Pycharm 快捷启动（Linux）"></a>Pycharm 快捷启动（Linux）</h3><ol>
+<li><code>vim ~/.bashrc</code></li>
+<li><code>alias pycharm=&quot;bash /hom/bobby/Downloads/pycharm-2016.3.2/bin/pycharm.sh&quot;</code></li>
+<li><code>source ~/.bashrc</code></li>
+<li><code>pycharm</code></li>
+</ol>
+<h3 id="Mysql-管理工具"><a href="#Mysql-管理工具" class="headerlink" title="Mysql 管理工具"></a>Mysql 管理工具</h3><ul>
+<li><a href="https://navicat.com/en" target="_blank" rel="noopener">Navicat</a></li>
+<li><a href="https://www.mysql.com/products/workbench/" target="_blank" rel="noopener">Mysql Workbench</a></li>
+</ul>
+<h3 id="Mysql-安装（Linux）"><a href="#Mysql-安装（Linux）" class="headerlink" title="Mysql 安装（Linux）"></a>Mysql 安装（Linux）</h3><h4 id="获取安装包"><a href="#获取安装包" class="headerlink" title="获取安装包"></a>获取安装包</h4><p><code>sudo apt-get install mysql-server</code></p>
+<h4 id="查看mysql的状态"><a href="#查看mysql的状态" class="headerlink" title="查看mysql的状态"></a>查看mysql的状态</h4><p><code>ps aux|grep mysqld</code></p>
+<blockquote>
+<p>看是否有启动成功，并且可以查看端口地址</p>
+</blockquote>
+<h4 id="进入mysql-shell中"><a href="#进入mysql-shell中" class="headerlink" title="进入mysql shell中"></a>进入mysql shell中</h4><p><code>mysql -uroot -p</code> </p>
+<blockquote>
+<p>之后输入登录密码</p>
+</blockquote>
+<h4 id="mysql-shell-的一些操作"><a href="#mysql-shell-的一些操作" class="headerlink" title="mysql shell 的一些操作"></a>mysql shell 的一些操作</h4><h5 id="显示数据库"><a href="#显示数据库" class="headerlink" title="显示数据库"></a>显示数据库</h5><p><code>show databases;</code></p>
+<h5 id="退出"><a href="#退出" class="headerlink" title="退出"></a>退出</h5><p><code>exit;</code></p>
+<h5 id="配置mysql"><a href="#配置mysql" class="headerlink" title="配置mysql"></a>配置mysql</h5><p><code>vim /etc/mysql/mysql.conf.d/mysqld.cnf</code></p>
+<blockquote>
+<p>修改其中的 <strong>bind-address</strong> 配置，将IP改为<strong>0.0.0.0</strong></p>
+</blockquote>
+<h5 id="重启mysql"><a href="#重启mysql" class="headerlink" title="重启mysql"></a>重启mysql</h5><p><code>sudo service mysql restart</code></p>
+<h5 id="修改用户权限"><a href="#修改用户权限" class="headerlink" title="修改用户权限"></a>修改用户权限</h5><p><code>GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;%&#39; IDENTIFIED BY &#39;root&#39; WITH GR ANT OPTION;</code></p>
+<p>刷新用户权限</p>
+<p><code>flush privileges;</code></p>
+<h5 id="字符集及排序规则"><a href="#字符集及排序规则" class="headerlink" title="字符集及排序规则"></a>字符集及排序规则</h5><p> 使用 <code>utf8 -- UTF-8 Unicode</code> 以及 <code>utf8_general_ci</code></p>
+<h3 id="安装python（Linux）"><a href="#安装python（Linux）" class="headerlink" title="安装python（Linux）"></a>安装python（Linux）</h3><blockquote>
+<p>安装的时候可以使用 python 豆瓣镜像 <code>-i https://pypi.douban.com/simple</code></p>
+</blockquote>
+<h4 id="获取python3版本"><a href="#获取python3版本" class="headerlink" title="获取python3版本"></a>获取python3版本</h4><p><code>sudo apt-get install python3.5</code></p>
+<h4 id="虚拟环境"><a href="#虚拟环境" class="headerlink" title="虚拟环境"></a>虚拟环境</h4><h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><p><code>sudo apt-get install python-virtualenv</code></p>
+<h5 id="使用虚拟环境"><a href="#使用虚拟环境" class="headerlink" title="使用虚拟环境"></a>使用虚拟环境</h5><p><code>virtualenv py2_env</code></p>
+<blockquote>
+<p>会创建目录为py2_env的文件夹在该目录下</p>
+<p>ps: 移除文件夹 <code>rm -r py2_env/</code>或 <code>rm -f py2_env</code>移除文件，慎用<code>rm -rf py2_env</code></p>
+</blockquote>
+<h5 id="进入虚拟环境"><a href="#进入虚拟环境" class="headerlink" title="进入虚拟环境"></a>进入虚拟环境</h5><p><code>source py2_env/bin/activate</code></p>
+<h5 id="退出虚拟环境"><a href="#退出虚拟环境" class="headerlink" title="退出虚拟环境"></a>退出虚拟环境</h5><p><code>deactivate</code></p>
+<h5 id="创建python3的虚拟环境"><a href="#创建python3的虚拟环境" class="headerlink" title="创建python3的虚拟环境"></a>创建python3的虚拟环境</h5><p><code>virtualenv -p python3 py3_env</code></p>
+<h5 id="安装pip3版本"><a href="#安装pip3版本" class="headerlink" title="安装pip3版本"></a>安装pip3版本</h5><p><code>sudo apt-get install python3-pip</code></p>
+<blockquote>
+<p>遇到 “OSError: Command /home/ubuntu/Myvirtualenv/py2_env/bin/python2 - setuptools pkg_resources pip wheel failed with error code 1”这个问题，解决方法：</p>
+<ol>
+<li><code>export LC_ALL=&quot;en_US.UTF-8&quot;</code></li>
+<li><code>export LC_CTYPE=&quot;en_US.UTF-8&quot;</code></li>
+<li><code>pip install setuptools</code></li>
+</ol>
+<p>参考： <a href="https://github.com/certbot/certbot/issues/2883" target="_blank" rel="noopener">setuptools pkg_resources pip wheel failed with error code 1</a></p>
+</blockquote>
+<h5 id="更新pip版本"><a href="#更新pip版本" class="headerlink" title="更新pip版本"></a>更新pip版本</h5><p><code>pip install --upgrade pip</code></p>
+<h4 id="虚拟环境管理"><a href="#虚拟环境管理" class="headerlink" title="虚拟环境管理"></a>虚拟环境管理</h4><h5 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h5><p><code>pip install virtualenvwrapper</code></p>
+<h5 id="查找路径"><a href="#查找路径" class="headerlink" title="查找路径"></a>查找路径</h5><p><code>sudo find / -name virtualenvwrapper.sh</code></p>
+<blockquote>
+<p>/home/ubuntu/.local/bin/virtualenvwrapper.sh</p>
+</blockquote>
+<h5 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h5><ol>
+<li>进入<code>vim ~/.bashrc</code></li>
+<li>在最后一行添加</li>
+</ol>
+<blockquote>
+<p>export WORKON_HOME=$HOME/.virtualenvs<br>source /home/ubuntu/.local/bin/virtualenvwrapper.sh</p>
+</blockquote>
+<ol>
+<li>ESC <code>:wq</code>保存</li>
+<li><code>source ~/.bashrc</code> 运行生效</li>
+</ol>
+<h5 id="创建虚拟环境"><a href="#创建虚拟环境" class="headerlink" title="创建虚拟环境"></a>创建虚拟环境</h5><p><code>mkvirtualenv py2_workon_env</code></p>
+<h5 id="目录安装所在地"><a href="#目录安装所在地" class="headerlink" title="目录安装所在地"></a>目录安装所在地</h5><p><code>cd ~/.virtualenvs</code></p>
+<h5 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h5><ol>
+<li><code>workon</code> 查找全部的虚拟目录</li>
+<li><code>workon py2_workon_env</code> 使用该虚拟目录</li>
+<li><code>deactivate</code> 退出虚拟环境</li>
+</ol>
+<h5 id="创建python3的虚拟环境-1"><a href="#创建python3的虚拟环境-1" class="headerlink" title="创建python3的虚拟环境"></a>创建python3的虚拟环境</h5><p><code>mkvirtualenv --python=python3 py3_workon_env</code></p>
+<blockquote>
+<p>ubuntu@VM-65-204-ubuntu:~$ workon<br>py2_workon_env<br>py3_workon_env</p>
+</blockquote>
+<h3 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h3><p>参考：</p>
+<ul>
+<li><a href="https://nodejs.org/dist/v8.9.3/" target="_blank" rel="noopener">https://nodejs.org/dist/v8.9.3/</a></li>
+<li><a href="http://nodejs.cn/download/" target="_blank" rel="noopener">nodejs download</a></li>
+<li><a href="https://cnodejs.org/topic/53a92af6c3ee0b58203258fe" target="_blank" rel="noopener">Linux（Ubuntu）下安装NodeJs</a></li>
+<li><a href="https://cnodejs.org/topic/53cb1242c9507b40442875f6" target="_blank" rel="noopener">linux下安装nodejs+express(最新版)</a></li>
+<li><a href="https://jingyan.baidu.com/article/cdddd41ca7b87853cb00e1af.html" target="_blank" rel="noopener">Linux下nodejs的安装配置</a></li>
+</ul>
+<h4 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h4><ul>
+<li><code>sudo apt-get install g++</code></li>
+<li><code>sudo apt-get install libssl-dev</code></li>
+<li><code>sudo apt-get install build-essential</code></li>
+</ul>
+<h4 id="下载压缩包"><a href="#下载压缩包" class="headerlink" title="下载压缩包"></a>下载压缩包</h4><p><code>wget https://nodejs.org/dist/v8.9.3/node-v8.9.3.tar.gz</code></p>
+<h4 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h4><p><code>tar zxvf node-v8.9.3.tar.gz</code></p>
+<blockquote>
+<p>移动文件 mv source_file new_file</p>
+</blockquote>
+<h4 id="编译文件"><a href="#编译文件" class="headerlink" title="编译文件"></a>编译文件</h4><ol>
+<li>进入到<strong>node-v8.9.3</strong>文件里</li>
+<li><code>./configure</code></li>
+<li><code>make</code></li>
+</ol>
+<h4 id="安装-2"><a href="#安装-2" class="headerlink" title="安装"></a>安装</h4><p><code>make install</code></p>
+<h4 id="修改环境配置"><a href="#修改环境配置" class="headerlink" title="修改环境配置"></a>修改环境配置</h4><p>参考</p>
+<h4 id="尝试"><a href="#尝试" class="headerlink" title="尝试"></a>尝试</h4><ul>
+<li><code>sudo apt-get install nodejs-legacy</code></li>
+<li><code>sudo apt-get install npm</code></li>
+</ul>
+<h4 id="cnpm"><a href="#cnpm" class="headerlink" title="cnpm"></a>cnpm</h4><p> <a href="https://npm.taobao.org" target="_blank" rel="noopener">淘宝 NPM 镜像</a></p>
+<p>可以使用这个代替npm，国内镜像，下载速度可以更快</p>
+<h3 id="安装htop"><a href="#安装htop" class="headerlink" title="安装htop"></a>安装htop</h3><p><code>sudo apt-get install htop</code></p>
+<blockquote>
+<p>可以查看系统运行的状态</p>
+</blockquote>
+]]></content>
+      
+        <categories>
+            
+            <category> Django </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Django </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Httpie]]></title>
+      <url>/2018/02/08/httpie/</url>
+      <content type="html"><![CDATA[<h3 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h3><ul>
+<li>HTTPie （读aych-tee-tee-pie）是一个 HTTP 的命令行客户端。</li>
+<li>其目标是让 CLI 和 web 服务之间的交互尽可能的人性化。</li>
+<li>这个工具提供了简洁的 http 命令，允许通过自然的语法发送任意 HTTP 请求数据，展示色彩化的输出。</li>
+<li>HTTPie 可用于与 HTTP 服务器做测试、调试和常规交互。<a id="more"></a>
+</li>
+</ul>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>直观的语法</li>
+<li>格式化和色彩化的终端输出</li>
+<li>内置 JSON 支持</li>
+<li>支持上传表单和文件</li>
+<li>HTTPS、代理和认证</li>
+<li>任意请求数据</li>
+<li>自定义头部</li>
+<li>持久性会话</li>
+<li>类 Wget 下载</li>
+<li>支持 Python 2.6, 2.7 和 3.x</li>
+<li>支持 Linux, Mac OS X 和 Windows</li>
+<li>插件</li>
+<li>文档</li>
+<li>测试覆盖率</li>
+</ul>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><code>pip install httpie</code></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="http://blog.csdn.net/pzw_0612/article/details/46521965" target="_blank" rel="noopener">HTTPie 工具使用入门</a></li>
+<li><a href="https://httpie.org/doc" target="_blank" rel="noopener">官方文档</a></li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> 工具集 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> httpie </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Byobu "多窗口"的Terminal]]></title>
+      <url>/2018/02/07/byobu/</url>
+      <content type="html"><![CDATA[<link href="/style.css" rel="stylesheet" type="text/css"><script src="/crypto-js.js"></script><script src="/mcommon.js"></script><script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> <div id="security"> <div> <div class="input-container"> <input type="password" class="form-control" id="pass" placeholder=" 测试密码工具，密码是： lim "/> <label for="pass"> 测试密码工具，密码是： lim </label> <div class="bottom-line"></div> </div> </div> </div> <div id="encrypt-blog" style="display:none"> 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 </div>]]></content>
+      
+        <categories>
+            
+            <category> 工具集 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> byobu </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Django 学习笔记—基础01]]></title>
+      <url>/2018/01/27/DjangoLearning1/</url>
+      <content type="html"><![CDATA[<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="http://python.usyiyi.cn/translate/django_182/index.html" target="_blank" rel="noopener">Django 1.8.2中文文档</a></li>
+<li><a href="https://docs.djangoproject.com/en/2.0/" target="_blank" rel="noopener">Django 2.0 官方文档</a></li>
+<li><a href="https://code.ziqiangxuetang.com/django/django-tutorial.html" target="_blank" rel="noopener">Django 中文教学 自强学院</a></li>
+</ul>
+<a id="more"></a>
+<h2 id="所需指令"><a href="#所需指令" class="headerlink" title="所需指令"></a>所需指令</h2><h3 id="用指令创建项目"><a href="#用指令创建项目" class="headerlink" title="用指令创建项目"></a>用指令创建项目</h3><p><code>django-admin startproject project</code></p>
+<blockquote>
+<p>一般不用，直接用pycharm创建就行</p>
+</blockquote>
+<h3 id="运行应用"><a href="#运行应用" class="headerlink" title="运行应用"></a>运行应用</h3><p><code>python manage.py runserver 8080</code></p>
+<p>运行后，才能根据所生成的网址，访问服务器，后面填写服务器的端口</p>
+<blockquote>
+<p>也可以不写端口，如果没写端口，默认使用8000端口</p>
+</blockquote>
+<h3 id="创建一个应用"><a href="#创建一个应用" class="headerlink" title="创建一个应用"></a>创建一个应用</h3><p><code>python manage.py startapp djangoAppName(这里填写所需创建应用的名字)</code><br>或<br><code>django-admin startapp djangoAppName</code><br>可以直接在apps目录下创建</p>
+<blockquote>
+<p>有点类似于模块的意思，分模块开发项目，一个模块对应了view, model等内容，需要创建新的模块的时候，需要使用这个指令。</p>
+</blockquote>
+<h3 id="生成迁移（makemigrations）"><a href="#生成迁移（makemigrations）" class="headerlink" title="生成迁移（makemigrations）"></a>生成迁移（<code>makemigrations</code>）</h3><p>创建迁移文件</p>
+<p><code>python manage.py makemigrations</code></p>
+<blockquote>
+<p> 创建之后，在所对应的<code>migrations</code>文件夹下面会多出一个<code>.py</code>文件</p>
+</blockquote>
+<p><strong>如果使用的是Django2.0 并且数据库model中使用了<code>ForeignKey</code>，需要在后面添加 <code>on_delete</code> 关键字</strong></p>
+<blockquote>
+<p>在使用这个命令的时候，需要在<code>settings.py</code>文件中的<code>INSTALLED_APPS</code>注册应用信息</p>
+</blockquote>
+<h3 id="执行迁移"><a href="#执行迁移" class="headerlink" title="执行迁移"></a>执行迁移</h3><p>根据迁移文件，形成sql语句，创建对应的表</p>
+<p><code>python manage.py migrate</code></p>
+<h3 id="创建超级管理员"><a href="#创建超级管理员" class="headerlink" title="创建超级管理员"></a>创建超级管理员</h3><p><code>python manage.py createsuperuser</code></p>
+<p>接下来按照提示填写用户名、邮箱、密码</p>
+<blockquote>
+<p>后台URL: 在网址后面添加admin</p>
+</blockquote>
+<h3 id="显示所有的指令"><a href="#显示所有的指令" class="headerlink" title="显示所有的指令"></a>显示所有的指令</h3><p><code>python manage.py</code></p>
+<p>会显示所有的指令，并且在后面输入<code>help name</code>就可以查看对应指令的具体信息</p>
+<h2 id="Model创建"><a href="#Model创建" class="headerlink" title="Model创建"></a>Model创建</h2><ul>
+<li>在对应的模版项目下的<code>models.py</code>文件下创建数据库模型文件</li>
+<li>创建模型的时候不用创建主键id，系统会自动生成这个主键的列</li>
+</ul>
+<h3 id="Models-py"><a href="#Models-py" class="headerlink" title="Models.py"></a>Models.py</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ModelName1</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    title = models.CharField(max_length=<span class="number">20</span>)</span><br><span class="line">    date = models.DateTimeField()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">'title name is &#123;&#125;, crate at &#123;&#125;'</span>.format(self.title, self.date)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.title</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ModelName2</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    hname = models.CharField(max_length=<span class="number">10</span>)</span><br><span class="line">    hgender = models.BooleanField()</span><br><span class="line">    content = models.CharField(max_length=<span class="number">1000</span>)</span><br><span class="line">    modelName1ForeignKey = models.ForeignKey(ModelName1, on_delete=models.CASCADE) <span class="comment">#外键</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">gender</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.hgender:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">'男'</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">'女'</span></span><br><span class="line"></span><br><span class="line">    gender.short_description = <span class="string">'性别'</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">name</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.hname</span><br><span class="line"></span><br><span class="line">    name.short_description = <span class="string">'名字'</span></span><br></pre></td></tr></table></figure>
+<h3 id="Django2-0-ForeignKey-变化"><a href="#Django2-0-ForeignKey-变化" class="headerlink" title="Django2.0 ForeignKey 变化"></a>Django2.0 ForeignKey 变化</h3><p>在创建外键的时候遇到报错：</p>
+<p><code>TypeError: __init__() missing 1 required positional argument: &#39;on_delete&#39;</code></p>
+<p>查询一番后发现Django2.0版本创建外键时需要在后面加上<strong>on_delete</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    manufacturer = models.ForeignKey(</span><br><span class="line">        <span class="string">'Manufacturer'</span>,</span><br><span class="line">        on_delete=models.CASCADE,</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+<h2 id="站点管理"><a href="#站点管理" class="headerlink" title="站点管理"></a>站点管理</h2><h3 id="界面本地化"><a href="#界面本地化" class="headerlink" title="界面本地化"></a>界面本地化</h3><p>修改<code>settings.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LANGUAGE_CODE = <span class="string">'zh-Hans'</span></span><br><span class="line">TIME_ZONE = <span class="string">'Asia/Shanghai'</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>修改语言和时区</p>
+</blockquote>
+<h3 id="向admin中注册应用"><a href="#向admin中注册应用" class="headerlink" title="向admin中注册应用"></a>向admin中注册应用</h3><p>在 <strong>booktest/admin.py</strong> 文件，注册模型</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> models <span class="keyword">import</span> ModelName</span><br><span class="line">admin.site.register(ModelName)</span><br></pre></td></tr></table></figure>
+<ol>
+<li>导入<strong>model</strong> 类</li>
+<li>在admin中注册该模型类 <code>admin.site.register(ModelName)</code></li>
+</ol>
+<h3 id="自定义管理页面"><a href="#自定义管理页面" class="headerlink" title="自定义管理页面"></a>自定义管理页面</h3><ul>
+<li>Django提供了admin.ModelAdmin类</li>
+<li>通过定义ModelAdmin的子类，来定义模型在Admin界面的显示方式</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ModelNameAdmin</span><span class="params">(admin.ModelAdmin)</span>:</span></span><br><span class="line">    list_display = [<span class="string">'id'</span>, <span class="string">'title'</span>, <span class="string">'date'</span>]</span><br><span class="line">    list_filter = [<span class="string">'title'</span>]</span><br><span class="line">    search_fields = [<span class="string">'title'</span>]</span><br><span class="line">    list_per_page = <span class="number">10</span></span><br><span class="line">    fieldsets = [</span><br><span class="line">        (<span class="string">'base'</span>,&#123;<span class="string">'fields'</span>:[<span class="string">'title'</span>]&#125;),</span><br><span class="line">        (<span class="string">'super'</span>,&#123;<span class="string">'fields'</span>:[<span class="string">'date'</span>]&#125;)</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">admin.site.register(BookInfo, BookInfoAdmin)</span><br></pre></td></tr></table></figure>
+<h4 id="列表页属性"><a href="#列表页属性" class="headerlink" title="列表页属性"></a>列表页属性</h4><h5 id="list-display"><a href="#list-display" class="headerlink" title="list_display"></a>list_display</h5><ul>
+<li>显示字段，可以点击列头进行排序</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list_display = [<span class="string">'pk'</span>, <span class="string">'title'</span>, <span class="string">'date'</span>]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>列表里面填写的是字段的列表名字，表示要在后台页面中显示什么列表字段，先后顺序决定显示顺序</p>
+</blockquote>
+<h5 id="list-filter"><a href="#list-filter" class="headerlink" title="list_filter"></a>list_filter</h5><ul>
+<li>过滤字段，过滤框会出现在右侧</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list_filter = [<span class="string">'title'</span>]</span><br></pre></td></tr></table></figure>
+<h5 id="search-fields"><a href="#search-fields" class="headerlink" title="search_fields"></a>search_fields</h5><ul>
+<li>搜索字段，搜索框会出现在上侧</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">search_fields = [<span class="string">'title'</span>]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>支持模糊查询，根据列表中的字段进行查询</p>
+</blockquote>
+<h5 id="list-per-page"><a href="#list-per-page" class="headerlink" title="list_per_page"></a>list_per_page</h5><ul>
+<li>分页，分页框会出现在下侧</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list_per_page = <span class="number">10</span></span><br></pre></td></tr></table></figure>
+<h4 id="添加、修改页属性"><a href="#添加、修改页属性" class="headerlink" title="添加、修改页属性"></a>添加、修改页属性</h4><h5 id="fields"><a href="#fields" class="headerlink" title="fields"></a>fields</h5><ul>
+<li>属性的先后顺序</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fields = [<span class="string">'date'</span>, <span class="string">'title'</span>]</span><br></pre></td></tr></table></figure>
+<h5 id="fieldsets"><a href="#fieldsets" class="headerlink" title="fieldsets"></a>fieldsets</h5><ul>
+<li>属性分组</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fieldsets = [</span><br><span class="line">    (<span class="string">'basic'</span>,&#123;<span class="string">'fields'</span>: [<span class="string">'title'</span>]&#125;),</span><br><span class="line">    (<span class="string">'more'</span>, &#123;<span class="string">'fields'</span>: [<span class="string">'date'</span>]&#125;),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="关联对象"><a href="#关联对象" class="headerlink" title="关联对象"></a>关联对象</h3><ul>
+<li>对于模型类，有两种注册方式<ul>
+<li>方式一：与传统模型类相同</li>
+<li>方式二：关联注册</li>
+</ul>
+</li>
+<li>按照BookInfor的注册方式完成HeroInfo的注册</li>
+<li>接下来实现关联注册</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment"># StackedInline TabularInline</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ModelName2Line</span><span class="params">(admin.TabularInline)</span>:</span></span><br><span class="line">    model = HeroInfo</span><br><span class="line">    extra = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ModelName1Admin</span><span class="params">(admin.ModelAdmin)</span>:</span></span><br><span class="line">    list_display = [<span class="string">'id'</span>, <span class="string">'title'</span>, <span class="string">'date'</span>]</span><br><span class="line">    list_filter = [<span class="string">'title'</span>]</span><br><span class="line">    search_fields = [<span class="string">'title'</span>]</span><br><span class="line">    list_per_page = <span class="number">10</span></span><br><span class="line">    fieldsets = [</span><br><span class="line">        (<span class="string">'base'</span>, &#123;<span class="string">'fields'</span>: [<span class="string">'title'</span>]&#125;),</span><br><span class="line">        (<span class="string">'super'</span>, &#123;<span class="string">'fields'</span>: [<span class="string">'date'</span>]&#125;)</span><br><span class="line">    ]</span><br><span class="line">    inlines = [ModelName2Line]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ModelName2Admin</span><span class="params">(admin.ModelAdmin)</span>:</span></span><br><span class="line">    list_display = [<span class="string">'id'</span>, <span class="string">'name'</span>, <span class="string">'gender'</span>, <span class="string">'content'</span>, <span class="string">'modelName1ForeignKey'</span>]</span><br><span class="line">    list_filter = [<span class="string">'hgender'</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">admin.site.register(ModelName1, ModelName1Admin)</span><br><span class="line">admin.site.register(ModelName2, ModelName2Admin)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>可以将内嵌的方式改为表格</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ModelName2Line</span><span class="params">(admin.TabularInline)</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="布尔值的显示"><a href="#布尔值的显示" class="headerlink" title="布尔值的显示"></a>布尔值的显示</h3><ul>
+<li>发布性别的显示不是一个直观的结果，可以使用方法进行封装</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gender</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> self.hgender:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'男'</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'女'</span></span><br><span class="line">gender.short_description = <span class="string">'性别'</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>在admin注册中使用gender代替hgender</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ModelName2Admin</span><span class="params">(admin.ModelAdmin)</span>:</span></span><br><span class="line">    list_display = [<span class="string">'id'</span>, <span class="string">'name'</span>, <span class="string">'gender'</span>, <span class="string">'content'</span>]</span><br></pre></td></tr></table></figure>
+<h2 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h2><ul>
+<li>在django中，视图对WEB请求进行回应</li>
+<li>视图接收reqeust对象作为第一个参数，包含了请求的信息</li>
+<li>视图就是一个Python函数，被定义在views.py中</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">"index"</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">detail</span><span class="params">(request,id)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">"detail %s"</span> % id)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>定义完成视图后，需要配置<code>urls.py</code>，否则无法处理请求</li>
+</ul>
+<h3 id="urls-py"><a href="#urls-py" class="headerlink" title="urls.py"></a>urls.py</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"><span class="keyword">from</span> DjangoLearn1 <span class="keyword">import</span> views</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">'admin/'</span>, admin.site.urls),</span><br><span class="line">    path(<span class="string">''</span>,views.index)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>此时，就可以访问了，不过考虑到如果这样填写，模块一多，URL的量一大的话，就会出现多个路由，不方便配置，所以推荐如下</p>
+</blockquote>
+<ul>
+<li>在对应模块里面创建一个 urls.py 的文件，将路由信息写到里面</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> views</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">''</span>, views.index, name=<span class="string">'index'</span>),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>之后，在向主urls.py文件中include进去</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> include, path</span><br><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">''</span>, include(<span class="string">'DjangoLearn1.urls'</span>)),</span><br><span class="line">    path(<span class="string">'admin/'</span>, admin.site.urls),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><ul>
+<li><p>模板是html页面，可以根据视图中传递的数据填充值</p>
+</li>
+<li><p>在模板中访问视图传递的数据</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; 输出值，可以是变量，也可以是对象.属性 &#125;&#125;</span><br><span class="line">&#123;% 执行代码段 %&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="定义HTML模板"><a href="#定义HTML模板" class="headerlink" title="定义HTML模板"></a>定义HTML模板</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>列表<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">&#123;%for ModeleName1 in ModeleName1List%&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;&#123;ModeleName1.id&#125;&#125;"</span>&gt;</span></span><br><span class="line">    &#123;&#123;ModeleName1.title&#125;&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">&#123;%endfor%&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>在模板中访问对象成员时，都以属性的方式访问，即方法也不能加括号</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>详细<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123;ModeleName1.title&#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  &#123;%for Modele in ModeleName1.ModelName2_set.all%&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123;Modele.name&#125;&#125;---&#123;&#123;Modele.content&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  &#123;%endfor%&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="使用模板"><a href="#使用模板" class="headerlink" title="使用模板"></a>使用模板</h3><ul>
+<li>编辑views.py文件，在方法中调用模板</li>
+<li>Django提供了函数Render()简化视图调用模板、构造上下文</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"><span class="keyword">from</span> models <span class="keyword">import</span> ModeleName1</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">(reqeust)</span>:</span></span><br><span class="line">    ModeleName1List = ModeleName1.objects.all()</span><br><span class="line">    <span class="keyword">return</span> render(reqeust, <span class="string">'booktest/index.html'</span>, &#123;<span class="string">'ModeleName1List'</span>: ModeleName1List&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">detail</span><span class="params">(reqeust, id)</span>:</span></span><br><span class="line">    ModeleName1 = ModeleName1.objects.get(pk=id)</span><br><span class="line">    <span class="keyword">return</span> render(reqeust, <span class="string">'booktest/detail.html'</span>, &#123;<span class="string">'ModeleName1'</span>: ModeleName1&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>视图 Views： 接受请求，逻辑处理，调用数据，输出响应</li>
+<li>配置ulr在自己的应用中匹配url</li>
+<li>模型Model：负责与数据库交互</li>
+<li>面向对象：模型对象，列表</li>
+<li>定义模型类：指出属性及类型，以确定表的结构，迁移</li>
+<li>后台管理：创建管理员，启动服务器，admin，注册admin.py</li>
+<li>模版：定义显示的样子<ol>
+<li>加载：读取文件内容到内存</li>
+<li>渲染：填内容</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> Django </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Django </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[今天算是把我的博客网站建立起来了]]></title>
+      <url>/2017/12/27/hellomyblog/</url>
+      <content type="html"><![CDATA[<p>花了三天时间，终于搞定了，这也表示我的文章之旅要开始了。<br>enjoy it !</p>
+<a id="more"></a>
+]]></content>
+      
+        <categories>
+            
+            <category> diary </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> diary </tag>
+            
+        </tags>
+        
+    </entry>
+    
+  
+  
 </search>
