@@ -4,11 +4,93 @@
 
     
   <url>
-    <loc>http://jaelyn.coding.me/2018/02/20/django-rest-vue04/</loc>
-    <lastmod>2018-02-20T15:04:07.030Z</lastmod>
+    <loc>http://jaelyn.coding.me/2018/02/23/django-rest-vue05/</loc>
+    <lastmod>2018-02-23T09:44:06.688Z</lastmod>
     <data>
         <display>
-        <title>Django Rest framework + vue 笔记 04</title>
+        <title>Django Rest framework 学习笔记 05</title>
+        <pubTime>2018-02-23T09:21:17.000Z</pubTime>
+        
+        <tag>Django</tag>
+         
+        <tag>Django Rest Framework</tag>
+         
+         
+           
+             
+              <breadCrumb title="Django" url="http://jaelyn.coding.me/categories/Django/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://jaelyn.coding.me/2018/02/14/django-rest-vue01/</loc>
+    <lastmod>2018-02-23T09:42:03.260Z</lastmod>
+    <data>
+        <display>
+        <title>Django Rest framework 学习笔记 01</title>
+        <pubTime>2018-02-14T13:18:51.000Z</pubTime>
+        
+        <tag>Django</tag>
+         
+         
+           
+             
+              <breadCrumb title="Django" url="http://jaelyn.coding.me/categories/Django/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://jaelyn.coding.me/2018/02/16/django-rest-vue02/</loc>
+    <lastmod>2018-02-23T09:41:50.300Z</lastmod>
+    <data>
+        <display>
+        <title>Django Rest framework 学习笔记 02</title>
+        <pubTime>2018-02-16T14:58:48.000Z</pubTime>
+        
+        <tag>Django</tag>
+         
+         
+           
+             
+              <breadCrumb title="Django" url="http://jaelyn.coding.me/categories/Django/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://jaelyn.coding.me/2018/02/17/django-rest-vue03/</loc>
+    <lastmod>2018-02-23T09:41:42.015Z</lastmod>
+    <data>
+        <display>
+        <title>Django Rest framework 学习笔记 03</title>
+        <pubTime>2018-02-17T08:08:58.000Z</pubTime>
+        
+        <tag>Django</tag>
+         
+         
+           
+             
+              <breadCrumb title="Django" url="http://jaelyn.coding.me/categories/Django/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://jaelyn.coding.me/2018/02/20/django-rest-vue04/</loc>
+    <lastmod>2018-02-23T09:41:32.343Z</lastmod>
+    <data>
+        <display>
+        <title>Django Rest framework 学习笔记 04</title>
         <pubTime>2018-02-20T15:02:11.000Z</pubTime>
         
         <tag>Django</tag>
@@ -39,66 +121,6 @@
            
              
               <breadCrumb title="博客技术" url="http://jaelyn.coding.me/categories/%E5%8D%9A%E5%AE%A2%E6%8A%80%E6%9C%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://jaelyn.coding.me/2018/02/17/django-rest-vue03/</loc>
-    <lastmod>2018-02-17T08:10:22.202Z</lastmod>
-    <data>
-        <display>
-        <title>Django Rest framework + vue 笔记 03</title>
-        <pubTime>2018-02-17T08:08:58.000Z</pubTime>
-        
-        <tag>Django</tag>
-         
-         
-           
-             
-              <breadCrumb title="Django" url="http://jaelyn.coding.me/categories/Django/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://jaelyn.coding.me/2018/02/16/django-rest-vue02/</loc>
-    <lastmod>2018-02-16T15:04:12.196Z</lastmod>
-    <data>
-        <display>
-        <title>Django Rest framework + vue 笔记 02</title>
-        <pubTime>2018-02-16T14:58:48.000Z</pubTime>
-        
-        <tag>Django</tag>
-         
-         
-           
-             
-              <breadCrumb title="Django" url="http://jaelyn.coding.me/categories/Django/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://jaelyn.coding.me/2018/02/14/django-rest-vue01/</loc>
-    <lastmod>2018-02-14T13:24:36.441Z</lastmod>
-    <data>
-        <display>
-        <title>Django Rest framework + vue 笔记 01</title>
-        <pubTime>2018-02-14T13:18:51.000Z</pubTime>
-        
-        <tag>Django</tag>
-         
-         
-           
-             
-              <breadCrumb title="Django" url="http://jaelyn.coding.me/categories/Django/"/>
           
         </display>
     </data>

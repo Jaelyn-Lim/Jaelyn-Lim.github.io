@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  
+<script type="text/javascript">
+    var _speedMark = new Date();
+</script>
+
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=64866827" charset="UTF-8"></script>
+
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="HRlPcTjXKc" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/uploads/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/uploads/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/uploads/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/uploads/safari-pinned-tab.svg?v=5.1.3" color="#222">
+
+
+  <link rel="manifest" href="/images/uploads/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/uploads/browserconfig.xml" />
+
+
+
+  <meta name="keywords" content="Django, 学习笔记, 基础, Django Rest Framework" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Jaelyn's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="分类 view  123456789class CategoryViewset(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):    &quot;&quot;&quot;    list:        商品分类列表数据    retrieve:        获取商品分类详情    &quot;&quot;&quot;    queryset = Go">
+<meta name="keywords" content="Django, 学习笔记, 基础, Django Rest Framework">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django Rest framework 学习笔记 05">
+<meta property="og:url" content="http://jaelyn.coding.me/2018/02/23/django-rest-vue05/index.html">
+<meta property="og:site_name" content="Jaelyn&#39;s Blog">
+<meta property="og:description" content="分类 view  123456789class CategoryViewset(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):    &quot;&quot;&quot;    list:        商品分类列表数据    retrieve:        获取商品分类详情    &quot;&quot;&quot;    queryset = Go">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-23T09:44:06.688Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Django Rest framework 学习笔记 05">
+<meta name="twitter:description" content="分类 view  123456789class CategoryViewset(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):    &quot;&quot;&quot;    list:        商品分类列表数据    retrieve:        获取商品分类详情    &quot;&quot;&quot;    queryset = Go">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'S2RJTOM4KM',
+      apiKey: '46aa43b4dc81f6d01e063ef5e5dba1a7',
+      indexName: 'blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://jaelyn.coding.me/2018/02/23/django-rest-vue05/"/>
+
+
+
+
+
+  <title>Django Rest framework 学习笔记 05 | Jaelyn's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jaelyn's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">jaelyn-lim</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jaelyn.coding.me/2018/02/23/django-rest-vue05/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jaelyn">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jaelyn's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Django Rest framework 学习笔记 05</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-23T17:21:17+08:00">
+                2018-02-23
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-23T17:44:06+08:00">
+                2018-02-23
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Django/" itemprop="url" rel="index">
+                    <span itemprop="name">Django</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 阅读次数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,584
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><ul>
+<li>view</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CategoryViewset</span><span class="params">(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    list:</span></span><br><span class="line"><span class="string">        商品分类列表数据</span></span><br><span class="line"><span class="string">    retrieve:</span></span><br><span class="line"><span class="string">        获取商品分类详情</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    queryset = GoodsCategory.objects.filter(category_type=<span class="number">1</span>)</span><br><span class="line">    serializer_class = CategorySerializer</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li>Serializer</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CategorySerializer</span><span class="params">(serializers.ModelSerializer)</span>:</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        model = GoodsCategory</span><br><span class="line">        fields = <span class="string">"__all__"</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>url</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#配置category的url</span></span><br><span class="line">router.register(<span class="string">r'categorys'</span>, CategoryViewset, base_name=<span class="string">"categorys"</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="跨域问题"><a href="#跨域问题" class="headerlink" title="跨域问题"></a>跨域问题</h2><h3 id="django-cors-headers"><a href="#django-cors-headers" class="headerlink" title="django-cors-headers"></a>django-cors-headers</h3><ul>
+<li><a href="https://github.com/ottoyiu/django-cors-headers" target="_blank" rel="noopener">官网</a></li>
+</ul>
+<h4 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install django-cors-headers</span><br></pre></td></tr></table></figure>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><ol>
+<li>INSTALLED_APPS</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = (</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">'corsheaders'</span>,</span><br><span class="line">    ...</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<ol>
+<li>middleware</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MIDDLEWARE = [  <span class="comment"># Or MIDDLEWARE_CLASSES on Django &lt; 1.10</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="string">'corsheaders.middleware.CorsMiddleware'</span>, <span class="comment"># 只要添加这个</span></span><br><span class="line">    <span class="string">'django.middleware.common.CommonMiddleware'</span>,</span><br><span class="line">    ...</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>要放在CommonMiddleware前面</p>
+</blockquote>
+<ol>
+<li>设置CORS_ORIGIN_ALLOW_ALL</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CORS_ORIGIN_ALLOW_ALL = <span class="keyword">True</span></span><br></pre></td></tr></table></figure>
+<h2 id="用户登录和注册"><a href="#用户登录和注册" class="headerlink" title="用户登录和注册"></a>用户登录和注册</h2><h3 id="权限认证（DRF自带的token认证）"><a href="#权限认证（DRF自带的token认证）" class="headerlink" title="权限认证（DRF自带的token认证）"></a>权限认证（DRF自带的token认证）</h3><ul>
+<li><a href="http://www.django-rest-framework.org/api-guide/authentication/#authentication" target="_blank" rel="noopener">Authentication</a></li>
+</ul>
+<h4 id="setting"><a href="#setting" class="headerlink" title="setting"></a>setting</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">REST_FRAMEWORK = &#123;</span><br><span class="line">    <span class="string">'DEFAULT_AUTHENTICATION_CLASSES'</span>: (</span><br><span class="line">        <span class="string">'rest_framework.authentication.BasicAuthentication'</span>,</span><br><span class="line">        <span class="string">'rest_framework.authentication.SessionAuthentication'</span>,</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>对应的Authentication也有三种，<a href="http://www.django-rest-framework.org/api-guide/authentication/#tokenauthentication" target="_blank" rel="noopener">TokenAuthentication</a>在前后端分离的系统中比较常见</p>
+</blockquote>
+<ul>
+<li><a href="http://www.django-rest-framework.org/api-guide/authentication/#tokenauthentication" target="_blank" rel="noopener">TokenAuthentication</a></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = (</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">'rest_framework.authtoken'</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h4 id="创建对应的Token"><a href="#创建对应的Token" class="headerlink" title="创建对应的Token"></a>创建对应的Token</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> rest_framework.authtoken.models <span class="keyword">import</span> Token</span><br><span class="line"></span><br><span class="line">token = Token.objects.create(user=...)</span><br><span class="line"><span class="keyword">print</span> token.key</span><br></pre></td></tr></table></figure>
+<h4 id="获取token的URL配置"><a href="#获取token的URL配置" class="headerlink" title="获取token的URL配置"></a>获取token的URL配置</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> rest_framework.authtoken <span class="keyword">import</span> views</span><br><span class="line">urlpatterns += [</span><br><span class="line">    url(<span class="string">r'^api-token-auth/'</span>, views.obtain_auth_token)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在输入用户名密码后会返回对应的token，用于前端保存使用，并且在提交的时候将这个token附加在httpheader中，确保用户的登录并且用于权限认证</p>
+</blockquote>
+<h4 id="在httpheader中添加token"><a href="#在httpheader中添加token" class="headerlink" title="在httpheader中添加token"></a>在httpheader中添加token</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Authorization: Token <span class="number">9944</span>b09199c62bcf9418ad846dd0e4bbdfc6ee4b</span><br></pre></td></tr></table></figure>
+<h4 id="在setting中配置token的认证方式"><a href="#在setting中配置token的认证方式" class="headerlink" title="在setting中配置token的认证方式"></a>在setting中配置token的认证方式</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">REST_FRAMEWORK = &#123;</span><br><span class="line">    <span class="string">'DEFAULT_AUTHENTICATION_CLASSES'</span>: (</span><br><span class="line">        <span class="string">'rest_framework.authentication.BasicAuthentication'</span>,</span><br><span class="line">        <span class="string">'rest_framework.authentication.SessionAuthentication'</span>,</span><br><span class="line">        <span class="string">'rest_framework.authentication.TokenAuthentication'</span>,</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="将token认证放到view中"><a href="#将token认证放到view中" class="headerlink" title="将token认证放到view中"></a>将token认证放到view中</h3><ul>
+<li>将setting中的<code>&#39;rest_framework.authentication.TokenAuthentication&#39;</code>去除</li>
+<li>在view中添加认证<code>authentication_classes = (TokenAuthentication, )</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> rest_framework.authentication <span class="keyword">import</span> TokenAuthentication</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GoodsListViewSet</span><span class="params">(CacheResponseMixin, mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    商品列表页</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    queryset = Goods.objects.all()</span><br><span class="line">    serializer_class = GoodsSerializer</span><br><span class="line">    pagination_class = GoodsPagination</span><br><span class="line">    </span><br><span class="line">    authentication_classes = (TokenAuthentication, )</span><br></pre></td></tr></table></figure>
+<h3 id="JWT方式用户认证"><a href="#JWT方式用户认证" class="headerlink" title="JWT方式用户认证"></a>JWT方式用户认证</h3><h4 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h4><ul>
+<li><a href="https://www.jianshu.com/p/576dbf44b2ae" target="_blank" rel="noopener">什么是 JWT – JSON WEB TOKEN</a></li>
+<li><a href="http://blog.leapoahead.com/2015/09/06/understanding-jwt/" target="_blank" rel="noopener">JSON Web Token - 在Web应用间安全地传递信息</a></li>
+<li><a href="https://www.jianshu.com/p/180a870a308a" target="_blank" rel="noopener">前后端分离之JWT用户认证</a></li>
+<li><a href="http://getblimp.github.io/django-rest-framework-jwt/" target="_blank" rel="noopener">REST framework JWT Auth</a></li>
+</ul>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install djangorestframework-jwt</span><br></pre></td></tr></table></figure>
+<h4 id="支持"><a href="#支持" class="headerlink" title="支持"></a>支持</h4><blockquote>
+<ul>
+<li><p>Python (2.7, 3.3, 3.4, 3.5)</p>
+</li>
+<li><p>Django (1.8, 1.9, 1.10)</p>
+</li>
+<li>Django REST Framework (3.0, 3.1, 3.2, 3.3, 3.4, 3.5)</li>
+</ul>
+</blockquote>
+<h4 id="setting-1"><a href="#setting-1" class="headerlink" title="setting"></a>setting</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">REST_FRAMEWORK = &#123;</span><br><span class="line">    <span class="string">'DEFAULT_PERMISSION_CLASSES'</span>: (</span><br><span class="line">        <span class="string">'rest_framework.permissions.IsAuthenticated'</span>,</span><br><span class="line">    ),</span><br><span class="line">    <span class="string">'DEFAULT_AUTHENTICATION_CLASSES'</span>: (</span><br><span class="line">        <span class="string">'rest_framework_jwt.authentication.JSONWebTokenAuthentication'</span>,</span><br><span class="line">        <span class="string">'rest_framework.authentication.SessionAuthentication'</span>,</span><br><span class="line">        <span class="string">'rest_framework.authentication.BasicAuthentication'</span>,</span><br><span class="line">    ),</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="url"><a href="#url" class="headerlink" title="url"></a>url</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> rest_framework_jwt.views <span class="keyword">import</span> obtain_jwt_token</span><br><span class="line"><span class="comment">#...</span></span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    <span class="string">''</span>,</span><br><span class="line">    <span class="comment"># ...</span></span><br><span class="line"></span><br><span class="line">    url(<span class="string">r'^api-token-auth/'</span>, obtain_jwt_token),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h4 id="请求"><a href="#请求" class="headerlink" title="请求"></a>请求</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -H <span class="string">"Authorization: JWT &lt;your_token&gt;"</span> http://localhost:<span class="number">8000</span>/protected-url/</span><br></pre></td></tr></table></figure>
+<h4 id="配置-1"><a href="#配置-1" class="headerlink" title="配置"></a>配置</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line">JWT_AUTH = &#123;</span><br><span class="line">    <span class="string">'JWT_EXPIRATION_DELTA'</span>: datetime.timedelta(days=<span class="number">7</span>),</span><br><span class="line">    <span class="string">'JWT_AUTH_HEADER_PREFIX'</span>: <span class="string">'JWT'</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="自定义用户认证"><a href="#自定义用户认证" class="headerlink" title="自定义用户认证"></a>自定义用户认证</h3><ul>
+<li>setting</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">AUTHENTICATION_BACKENDS = (</span><br><span class="line">    <span class="string">'users.views.CustomBackend'</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>view 中的逻辑</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib.auth.backends <span class="keyword">import</span> ModelBackend</span><br><span class="line"><span class="keyword">from</span> django.contrib.auth <span class="keyword">import</span> get_user_model</span><br><span class="line"><span class="keyword">from</span> django.db.models <span class="keyword">import</span> Q</span><br><span class="line"></span><br><span class="line">User = get_user_model()</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CustomBackend</span><span class="params">(ModelBackend)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    自定义用户验证</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">authenticate</span><span class="params">(self, username=None, password=None, **kwargs)</span>:</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            user = User.objects.get(Q(username=username)|Q(mobile=username))</span><br><span class="line">            <span class="keyword">if</span> user.check_password(password):</span><br><span class="line">                <span class="keyword">return</span> user</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">None</span></span><br></pre></td></tr></table></figure>
+<h2 id="简单的信息发送"><a href="#简单的信息发送" class="headerlink" title="简单的信息发送"></a>简单的信息发送</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">YunPian</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, api_key)</span>:</span></span><br><span class="line">        self.api_key = api_key</span><br><span class="line">        self.single_send_url = <span class="string">"******"</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">send_sms</span><span class="params">(self, code, mobile)</span>:</span></span><br><span class="line">        parmas = &#123;</span><br><span class="line">            <span class="string">"apikey"</span>: self.api_key,</span><br><span class="line">            <span class="string">"mobile"</span>: mobile,</span><br><span class="line">            <span class="string">"text"</span>: <span class="string">"&#123;code&#125;。如非本人操作，请忽略本短信"</span>.format(code=code)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        response = requests.post(self.single_send_url, data=parmas)</span><br><span class="line">        re_dict = json.loads(response.text)</span><br><span class="line">        <span class="keyword">return</span> re_dict</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    yun_pian = YunPian(<span class="string">"****"</span>)</span><br><span class="line">    yun_pian.send_sms(<span class="string">"2017"</span>, <span class="string">"****"</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>可以直接在百度搜索本地ip，就能获得本机对外的ip地址</p>
+</blockquote>
+<h2 id="Serializer信息验证"><a href="#Serializer信息验证" class="headerlink" title="Serializer信息验证"></a>Serializer信息验证</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">code = serializers.CharField(required=<span class="keyword">True</span>, write_only=<span class="keyword">True</span>, max_length=<span class="number">4</span>, min_length=<span class="number">4</span>,label=<span class="string">"验证码"</span>,</span><br><span class="line">                                 error_messages=&#123;</span><br><span class="line">                                     <span class="string">"blank"</span>: <span class="string">"请输入验证码"</span>,</span><br><span class="line">                                     <span class="string">"required"</span>: <span class="string">"请输入验证码"</span>,</span><br><span class="line">                                     <span class="string">"max_length"</span>: <span class="string">"验证码格式错误"</span>,</span><br><span class="line">                                     <span class="string">"min_length"</span>: <span class="string">"验证码格式错误"</span></span><br><span class="line">                                 &#125;,</span><br><span class="line">                                 help_text=<span class="string">"验证码"</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="Validators"><a href="#Validators" class="headerlink" title="Validators"></a><a href="http://www.django-rest-framework.org/api-guide/validators/#validators" target="_blank" rel="noopener">Validators</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> rest_framework.validators <span class="keyword">import</span> UniqueValidator</span><br><span class="line"></span><br><span class="line">slug = SlugField(</span><br><span class="line">    max_length=<span class="number">100</span>,</span><br><span class="line">    validators=[UniqueValidator(queryset=BlogPost.objects.all())]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>例子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username = serializers.CharField(label=<span class="string">"用户名"</span>, help_text=<span class="string">"用户名"</span>, required=<span class="keyword">True</span>, allow_blank=<span class="keyword">False</span>, validators=[UniqueValidator(queryset=User.objects.all(), message=<span class="string">"用户已经存在"</span>)])</span><br></pre></td></tr></table></figure>
+<h2 id="信号量"><a href="#信号量" class="headerlink" title="信号量"></a>信号量</h2><h3 id="post-save-signal"><a href="#post-save-signal" class="headerlink" title="post_save signal"></a><code>post_save</code> signal</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.conf <span class="keyword">import</span> settings</span><br><span class="line"><span class="keyword">from</span> django.db.models.signals <span class="keyword">import</span> post_save</span><br><span class="line"><span class="keyword">from</span> django.dispatch <span class="keyword">import</span> receiver</span><br><span class="line"><span class="keyword">from</span> rest_framework.authtoken.models <span class="keyword">import</span> Token</span><br><span class="line"></span><br><span class="line"><span class="meta">@receiver(post_save, sender=settings.AUTH_USER_MODEL)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_auth_token</span><span class="params">(sender, instance=None, created=False, **kwargs)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> created:</span><br><span class="line">        Token.objects.create(user=instance)</span><br></pre></td></tr></table></figure>
+<p>例子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db.models.signals <span class="keyword">import</span> post_save</span><br><span class="line"><span class="keyword">from</span> django.dispatch <span class="keyword">import</span> receiver</span><br><span class="line"><span class="keyword">from</span> rest_framework.authtoken.models <span class="keyword">import</span> Token</span><br><span class="line"><span class="keyword">from</span> django.contrib.auth <span class="keyword">import</span> get_user_model</span><br><span class="line"></span><br><span class="line">User = get_user_model()</span><br><span class="line"></span><br><span class="line"><span class="meta">@receiver(post_save, sender=User)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_user</span><span class="params">(sender, instance=None, created=False, **kwargs)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> created:</span><br><span class="line">        password = instance.password</span><br><span class="line">        instance.set_password(password)</span><br><span class="line">        instance.save()</span><br></pre></td></tr></table></figure>
+<h3 id="CurrentUserDefault"><a href="#CurrentUserDefault" class="headerlink" title="CurrentUserDefault"></a><a href="http://www.django-rest-framework.org/api-guide/validators/#currentuserdefault" target="_blank" rel="noopener">CurrentUserDefault</a></h3><blockquote>
+<p>获取当前用户</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">owner = serializers.HiddenField(</span><br><span class="line">    default=serializers.CurrentUserDefault()</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="UniqueTogetherValidator"><a href="#UniqueTogetherValidator" class="headerlink" title="UniqueTogetherValidator"></a><a href="http://www.django-rest-framework.org/api-guide/validators/#uniquetogethervalidator" target="_blank" rel="noopener">UniqueTogetherValidator</a></h3><blockquote>
+<p>联合索引</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> rest_framework.validators <span class="keyword">import</span> UniqueTogetherValidator</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ExampleSerializer</span><span class="params">(serializers.Serializer)</span>:</span></span><br><span class="line">    <span class="comment"># ...</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        <span class="comment"># ToDo items belong to a parent list, and have an ordering defined</span></span><br><span class="line">        <span class="comment"># by the 'position' field. No two items in a given list may share</span></span><br><span class="line">        <span class="comment"># the same position.</span></span><br><span class="line">        validators = [</span><br><span class="line">            UniqueTogetherValidator(</span><br><span class="line">                queryset=ToDoItem.objects.all(),</span><br><span class="line">                fields=(<span class="string">'list'</span>, <span class="string">'position'</span>)</span><br><span class="line">                message=<span class="string">"巴拉巴拉"</span></span><br><span class="line">            )</span><br><span class="line">        ]</span><br></pre></td></tr></table></figure>
+<p>也可以在数据库中添加联合索引</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserFav</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    用户收藏</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    user = models.ForeignKey(User, verbose_name=<span class="string">"用户"</span>)</span><br><span class="line">    goods = models.ForeignKey(Goods, verbose_name=<span class="string">"商品"</span>, help_text=<span class="string">"商品id"</span>)</span><br><span class="line">    add_time = models.DateTimeField(default=datetime.now, verbose_name=<span class="string">u"添加时间"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        verbose_name = <span class="string">'用户收藏'</span></span><br><span class="line">        verbose_name_plural = verbose_name</span><br><span class="line">        unique_together = (<span class="string">"user"</span>, <span class="string">"goods"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.user.username</span><br></pre></td></tr></table></figure>
+<h3 id="用户权限认证"><a href="#用户权限认证" class="headerlink" title="用户权限认证"></a>用户权限认证</h3><h4 id="IsAuthenticated"><a href="#IsAuthenticated" class="headerlink" title="IsAuthenticated"></a>IsAuthenticated</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> rest_framework.permissions <span class="keyword">import</span> IsAuthenticated</span><br><span class="line"><span class="keyword">from</span> rest_framework.response <span class="keyword">import</span> Response</span><br><span class="line"><span class="keyword">from</span> rest_framework.views <span class="keyword">import</span> APIView</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ExampleView</span><span class="params">(APIView)</span>:</span></span><br><span class="line">    permission_classes = (IsAuthenticated,)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self, request, format=None)</span>:</span></span><br><span class="line">        content = &#123;</span><br><span class="line">            <span class="string">'status'</span>: <span class="string">'request was permitted'</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Response(content)</span><br></pre></td></tr></table></figure>
+<h4 id="自定义权限"><a href="#自定义权限" class="headerlink" title="自定义权限"></a>自定义权限</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> rest_framework <span class="keyword">import</span> permissions</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IsOwnerOrReadOnly</span><span class="params">(permissions.BasePermission)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Object-level permission to only allow owners of an object to edit it.</span></span><br><span class="line"><span class="string">    Assumes the model instance has an `owner` attribute.</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">has_object_permission</span><span class="params">(self, request, view, obj)</span>:</span></span><br><span class="line">        <span class="comment"># Read permissions are allowed to any request,</span></span><br><span class="line">        <span class="comment"># so we'll always allow GET, HEAD or OPTIONS requests.</span></span><br><span class="line">        <span class="keyword">if</span> request.method <span class="keyword">in</span> permissions.SAFE_METHODS:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># Instance must have an attribute named `owner`.</span></span><br><span class="line">        <span class="keyword">return</span> obj.owner == request.user</span><br></pre></td></tr></table></figure>
+<p>view:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserFavViewset</span><span class="params">(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.RetrieveModelMixin,</span></span></span><br><span class="line"><span class="class"><span class="params">                     mixins.DestroyModelMixin, viewsets.GenericViewSet)</span>:</span></span><br><span class="line"></span><br><span class="line">    permission_classes = (IsAuthenticated, IsOwnerOrReadOnly)</span><br><span class="line">    serializer_class = UserFavSerializer</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_queryset</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> UserFav.objects.filter(user=self.request.user)</span><br></pre></td></tr></table></figure>
+<h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><h3 id="DRF增强"><a href="#DRF增强" class="headerlink" title="DRF增强"></a><a href="https://chibisov.github.io/drf-extensions/docs/" target="_blank" rel="noopener">DRF增强</a></h3><h4 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install drf-extensions</span><br></pre></td></tr></table></figure>
+<p>在view中添加<code>CacheResponseMixin</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GoodsListViewSet</span><span class="params">(CacheResponseMixin, mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>setting的一些配置（过期时间）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">REST_FRAMEWORK_EXTENSIONS = &#123;</span><br><span class="line">    <span class="string">'DEFAULT_CACHE_RESPONSE_TIMEOUT'</span>: <span class="number">60</span> * <span class="number">15</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="django-redis"><a href="#django-redis" class="headerlink" title="django redis"></a>django redis</h3><p><a href="http://django-redis-chs.readthedocs.io/zh_CN/latest/" target="_blank" rel="noopener">django-redis 中文文档</a></p>
+<h2 id="API限速"><a href="#API限速" class="headerlink" title="API限速"></a>API限速</h2><p> <a href="http://www.django-rest-framework.org/api-guide/throttling/#throttling" target="_blank" rel="noopener">Throttling</a></p>
+<ul>
+<li>在setting中配置</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">REST_FRAMEWORK = &#123;</span><br><span class="line">    <span class="string">'DEFAULT_THROTTLE_CLASSES'</span>: (</span><br><span class="line">        <span class="string">'rest_framework.throttling.AnonRateThrottle'</span>,</span><br><span class="line">        <span class="string">'rest_framework.throttling.UserRateThrottle'</span></span><br><span class="line">    ),</span><br><span class="line">    <span class="string">'DEFAULT_THROTTLE_RATES'</span>: &#123;</span><br><span class="line">        <span class="string">'anon'</span>: <span class="string">'100/day'</span>,</span><br><span class="line">        <span class="string">'user'</span>: <span class="string">'1000/day'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在view中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> rest_framework.response <span class="keyword">import</span> Response</span><br><span class="line"><span class="keyword">from</span> rest_framework.throttling <span class="keyword">import</span> UserRateThrottle</span><br><span class="line"><span class="keyword">from</span> rest_framework.views <span class="keyword">import</span> APIView</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ExampleView</span><span class="params">(APIView)</span>:</span></span><br><span class="line">    throttle_classes = (UserRateThrottle,)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self, request, format=None)</span>:</span></span><br><span class="line">        content = &#123;</span><br><span class="line">            <span class="string">'status'</span>: <span class="string">'request was permitted'</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Response(content)</span><br></pre></td></tr></table></figure>
+<h2 id="sentry"><a href="#sentry" class="headerlink" title="sentry"></a>sentry</h2><p>错误日志</p>
+<ul>
+<li><a href="https://sentry.io/welcome/" target="_blank" rel="noopener">sentry</a></li>
+<li><a href="https://github.com/getsentry/raven-python" target="_blank" rel="noopener">sentry github</a></li>
+<li><a href="https://docs.sentry.io/clients/python/integrations/django/" target="_blank" rel="noopener">django sentry</a></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install raven --upgrade</span><br></pre></td></tr></table></figure>
+<p>setting</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = (</span><br><span class="line">    <span class="string">'raven.contrib.django.raven_compat'</span>,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> raven</span><br><span class="line"></span><br><span class="line">RAVEN_CONFIG = &#123;</span><br><span class="line">    <span class="string">'dsn'</span>: <span class="string">'https://&lt;key&gt;:&lt;secret&gt;@sentry.io/&lt;project&gt;'</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="celery"><a href="#celery" class="headerlink" title="celery"></a>celery</h2><p>异步</p>
+<ul>
+<li><a href="http://projectsedu.com/2017/02/08/django通过celery添加异步任务/" target="_blank" rel="noopener">django通过celery添加异步任务</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Jaelyn
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://jaelyn.coding.me/2018/02/23/django-rest-vue05/" title="Django Rest framework 学习笔记 05">http://jaelyn.coding.me/2018/02/23/django-rest-vue05/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Django/" rel="tag"><i class="fa fa-tag"></i> Django</a>
+          
+            <a href="/tags/Django-Rest-Framework/" rel="tag"><i class="fa fa-tag"></i> Django Rest Framework</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/20/django-rest-vue04/" rel="next" title="Django Rest framework 学习笔记 04">
+                <i class="fa fa-chevron-left"></i> Django Rest framework 学习笔记 04
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="Jaelyn" />
+            
+              <p class="site-author-name" itemprop="name">Jaelyn</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Jaelyn-Lim" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/u/2660619527" target="_blank" title="微博">
+                    
+                      <i class="fa fa-fw fa-globe"></i>微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#分类"><span class="nav-number">1.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跨域问题"><span class="nav-number">2.</span> <span class="nav-text">跨域问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#django-cors-headers"><span class="nav-number">2.1.</span> <span class="nav-text">django-cors-headers</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#下载安装"><span class="nav-number">2.1.1.</span> <span class="nav-text">下载安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置"><span class="nav-number">2.1.2.</span> <span class="nav-text">配置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户登录和注册"><span class="nav-number">3.</span> <span class="nav-text">用户登录和注册</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#权限认证（DRF自带的token认证）"><span class="nav-number">3.1.</span> <span class="nav-text">权限认证（DRF自带的token认证）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#setting"><span class="nav-number">3.1.1.</span> <span class="nav-text">setting</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建对应的Token"><span class="nav-number">3.1.2.</span> <span class="nav-text">创建对应的Token</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取token的URL配置"><span class="nav-number">3.1.3.</span> <span class="nav-text">获取token的URL配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在httpheader中添加token"><span class="nav-number">3.1.4.</span> <span class="nav-text">在httpheader中添加token</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在setting中配置token的认证方式"><span class="nav-number">3.1.5.</span> <span class="nav-text">在setting中配置token的认证方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将token认证放到view中"><span class="nav-number">3.2.</span> <span class="nav-text">将token认证放到view中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JWT方式用户认证"><span class="nav-number">3.3.</span> <span class="nav-text">JWT方式用户认证</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参考："><span class="nav-number">3.3.1.</span> <span class="nav-text">参考：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">3.3.2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#支持"><span class="nav-number">3.3.3.</span> <span class="nav-text">支持</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#setting-1"><span class="nav-number">3.3.4.</span> <span class="nav-text">setting</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#url"><span class="nav-number">3.3.5.</span> <span class="nav-text">url</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#请求"><span class="nav-number">3.3.6.</span> <span class="nav-text">请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置-1"><span class="nav-number">3.3.7.</span> <span class="nav-text">配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义用户认证"><span class="nav-number">3.4.</span> <span class="nav-text">自定义用户认证</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单的信息发送"><span class="nav-number">4.</span> <span class="nav-text">简单的信息发送</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Serializer信息验证"><span class="nav-number">5.</span> <span class="nav-text">Serializer信息验证</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Validators"><span class="nav-number">5.1.</span> <span class="nav-text">Validators</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信号量"><span class="nav-number">6.</span> <span class="nav-text">信号量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#post-save-signal"><span class="nav-number">6.1.</span> <span class="nav-text">post_save signal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CurrentUserDefault"><span class="nav-number">6.2.</span> <span class="nav-text">CurrentUserDefault</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UniqueTogetherValidator"><span class="nav-number">6.3.</span> <span class="nav-text">UniqueTogetherValidator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户权限认证"><span class="nav-number">6.4.</span> <span class="nav-text">用户权限认证</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#IsAuthenticated"><span class="nav-number">6.4.1.</span> <span class="nav-text">IsAuthenticated</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义权限"><span class="nav-number">6.4.2.</span> <span class="nav-text">自定义权限</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存"><span class="nav-number">7.</span> <span class="nav-text">缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DRF增强"><span class="nav-number">7.1.</span> <span class="nav-text">DRF增强</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装-1"><span class="nav-number">7.1.1.</span> <span class="nav-text">安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#django-redis"><span class="nav-number">7.2.</span> <span class="nav-text">django redis</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API限速"><span class="nav-number">8.</span> <span class="nav-text">API限速</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sentry"><span class="nav-number">9.</span> <span class="nav-text">sentry</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#celery"><span class="nav-number">10.</span> <span class="nav-text">celery</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jaelyn</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">10.9k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+<script>
+  	var _mtac = {};
+  	(function() {
+  		var mta = document.createElement("script");
+  		mta.src = "https://pingjs.qq.com/h5/stats.js?v2.0.4";
+  		mta.setAttribute("name", "MTAH5");
+  		mta.setAttribute("sid", "500569228");
+
+  		var s = document.getElementsByTagName("script")[0];
+  		s.parentNode.insertBefore(mta, s);
+  	})();
+</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=64866827";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  
+<div id="hexo-helper-live2d">
+  <canvas id="live2dcanvas" width="150" height="300"></canvas>
+</div>
+<style>
+  #live2dcanvas{
+    position: fixed;
+    width: 150px;
+    height: 300px;
+    opacity:0.7;
+    right: 0px;
+    z-index: 999;
+    pointer-events: none;
+    bottom: -20px;
+  }
+</style>
+<script type="text/javascript" src="/live2d/device.min.js"></script>
+<script type="text/javascript">
+const loadScript = function loadScript(c,b){var a=document.createElement("script");a.type="text/javascript";"undefined"!=typeof b&&(a.readyState?a.onreadystatechange=function(){if("loaded"==a.readyState||"complete"==a.readyState)a.onreadystatechange=null,b()}:a.onload=function(){b()});a.src=c;document.body.appendChild(a)};
+(function(){
+  if((typeof(device) != 'undefined') && (device.mobile())){
+    document.getElementById("live2dcanvas").style.width = '75px';
+    document.getElementById("live2dcanvas").style.height = '150px';
+  }else
+    if (typeof(device) === 'undefined') console.error('Cannot find current-device script.');
+  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/z16.model.json", 0.5);});
+})();
+</script>
+
+
+  <script>
+    var _mtac = {};
+    (function() {
+      var mta = document.createElement("script");
+      mta.src = "http://pingjs.qq.com/h5/stats.js?v2.0.2";
+      mta.setAttribute("name", "MTAH5");
+      mta.setAttribute("sid", "500569228");
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(mta, s);
+    })();
+  </script>
+
+  <script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+  
+</body>
+</html>
