@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://jaelyn.coding.me/2018/03/10/python-vertualenv/</loc>
+    <lastmod>2018-03-10T06:30:21.937Z</lastmod>
+    <data>
+        <display>
+        <title>python 虚拟环境</title>
+        <pubTime>2018-03-10T06:24:36.000Z</pubTime>
+        
+        <tag>virtualenv</tag>
+         
+        <tag>python</tag>
+         
+         
+           
+             
+              <breadCrumb title="python" url="http://jaelyn.coding.me/categories/python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://jaelyn.coding.me/2018/02/23/django-rest-vue05/</loc>
     <lastmod>2018-02-23T09:44:06.688Z</lastmod>
     <data>
