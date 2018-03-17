@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://jaelyn.coding.me/2018/02/14/django-rest-vue01/</loc>
+    <lastmod>2018-03-17T14:29:55.739Z</lastmod>
+    <data>
+        <display>
+        <title>Django Rest framework 学习笔记 01</title>
+        <pubTime>2018-02-14T13:18:51.000Z</pubTime>
+        
+        <tag>Django</tag>
+         
+         
+           
+             
+              <breadCrumb title="Django" url="http://jaelyn.coding.me/categories/Django/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://jaelyn.coding.me/2018/03/17/ssh-remote/</loc>
     <lastmod>2018-03-17T06:44:25.648Z</lastmod>
     <data>
@@ -58,26 +78,6 @@
         <tag>Django</tag>
          
         <tag>Django Rest Framework</tag>
-         
-         
-           
-             
-              <breadCrumb title="Django" url="http://jaelyn.coding.me/categories/Django/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://jaelyn.coding.me/2018/02/14/django-rest-vue01/</loc>
-    <lastmod>2018-02-23T09:42:03.260Z</lastmod>
-    <data>
-        <display>
-        <title>Django Rest framework 学习笔记 01</title>
-        <pubTime>2018-02-14T13:18:51.000Z</pubTime>
-        
-        <tag>Django</tag>
          
          
            
