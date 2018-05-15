@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jaelyn.coding.me/2018/02/07/byobu/</loc>
+    
+    <lastmod>2018-05-15T02:28:30.806Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jaelyn.coding.me/2018/05/02/ubuntu-code-learning/</loc>
     
     <lastmod>2018-05-02T07:55:34.372Z</lastmod>
@@ -89,13 +96,6 @@
     <loc>http://jaelyn.coding.me/2018/01/27/DjangoLearning1/</loc>
     
     <lastmod>2018-02-07T03:16:37.668Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jaelyn.coding.me/2018/02/07/byobu/</loc>
-    
-    <lastmod>2018-02-07T02:29:00.153Z</lastmod>
     
   </url>
   

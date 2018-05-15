@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://jaelyn.coding.me/2018/02/07/byobu/</loc>
+    <lastmod>2018-05-15T02:28:30.806Z</lastmod>
+    <data>
+        <display>
+        <title>Byobu "多窗口"的Terminal</title>
+        <pubTime>2018-02-07T01:52:59.000Z</pubTime>
+        
+        <tag>byobu</tag>
+         
+         
+           
+             
+              <breadCrumb title="工具集" url="http://jaelyn.coding.me/categories/%E5%B7%A5%E5%85%B7%E9%9B%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://jaelyn.coding.me/2018/05/02/ubuntu-code-learning/</loc>
     <lastmod>2018-05-02T07:55:34.372Z</lastmod>
     <data>
@@ -265,26 +285,6 @@
            
              
               <breadCrumb title="Django" url="http://jaelyn.coding.me/categories/Django/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://jaelyn.coding.me/2018/02/07/byobu/</loc>
-    <lastmod>2018-02-07T02:29:00.153Z</lastmod>
-    <data>
-        <display>
-        <title>Byobu "多窗口"的Terminal</title>
-        <pubTime>2018-02-07T01:52:59.000Z</pubTime>
-        
-        <tag>byobu</tag>
-         
-         
-           
-             
-              <breadCrumb title="工具集" url="http://jaelyn.coding.me/categories/%E5%B7%A5%E5%85%B7%E9%9B%86/"/>
           
         </display>
     </data>
