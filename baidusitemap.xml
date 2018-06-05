@@ -4,6 +4,32 @@
 
     
   <url>
+    <loc>http://jaelyn.coding.me/2018/06/05/mac-pycharm-quick-click/</loc>
+    <lastmod>2018-06-05T03:52:04.712Z</lastmod>
+    <data>
+        <display>
+        <title>Mac 下的 PyCharm 快捷键</title>
+        <pubTime>2018-06-05T03:45:48.000Z</pubTime>
+        
+        <tag>pycharm</tag>
+         
+        <tag>python</tag>
+         
+        <tag>快捷键</tag>
+         
+        <tag>Mac</tag>
+         
+         
+           
+             
+              <breadCrumb title="pycharm" url="http://jaelyn.coding.me/categories/pycharm/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://jaelyn.coding.me/2018/05/29/python-cookbook-learning/</loc>
     <lastmod>2018-05-29T10:01:49.375Z</lastmod>
     <data>
@@ -175,9 +201,9 @@
         <title>python 虚拟环境</title>
         <pubTime>2018-03-10T06:24:36.000Z</pubTime>
         
-        <tag>virtualenv</tag>
-         
         <tag>python</tag>
+         
+        <tag>virtualenv</tag>
          
          
            
