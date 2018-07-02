@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://jaelyn.coding.me/2018/05/29/python-cookbook-learning/</loc>
-    <lastmod>2018-06-13T03:41:44.750Z</lastmod>
+    <lastmod>2018-07-02T09:24:46.979Z</lastmod>
     <data>
         <display>
         <title>Python Cookbook 笔记</title>
@@ -33,9 +33,9 @@
         <title>Mac 下的 PyCharm 快捷键</title>
         <pubTime>2018-06-05T03:45:48.000Z</pubTime>
         
-        <tag>python</tag>
-         
         <tag>pycharm</tag>
+         
+        <tag>python</tag>
          
         <tag>快捷键</tag>
          
@@ -201,9 +201,9 @@
         <title>python 虚拟环境</title>
         <pubTime>2018-03-10T06:24:36.000Z</pubTime>
         
-        <tag>virtualenv</tag>
-         
         <tag>python</tag>
+         
+        <tag>virtualenv</tag>
          
          
            
