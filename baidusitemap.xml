@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://jaelyn.coding.me/2018/07/05/create-ubuntu-u/</loc>
+    <lastmod>2018-07-05T15:10:56.261Z</lastmod>
+    <data>
+        <display>
+        <title>Mac 下制作 Ubuntu 启动盘</title>
+        <pubTime>2018-07-05T15:07:43.000Z</pubTime>
+        
+        <tag>Mac</tag>
+         
+        <tag>ubuntu</tag>
+         
+         
+           
+             
+              <breadCrumb title="Ubuntu" url="http://jaelyn.coding.me/categories/Ubuntu/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://jaelyn.coding.me/2018/05/29/python-cookbook-learning/</loc>
     <lastmod>2018-07-02T09:24:46.979Z</lastmod>
     <data>
@@ -33,13 +55,13 @@
         <title>Mac 下的 PyCharm 快捷键</title>
         <pubTime>2018-06-05T03:45:48.000Z</pubTime>
         
-        <tag>pycharm</tag>
+        <tag>Mac</tag>
          
         <tag>python</tag>
          
-        <tag>快捷键</tag>
+        <tag>pycharm</tag>
          
-        <tag>Mac</tag>
+        <tag>快捷键</tag>
          
          
            
@@ -179,9 +201,9 @@
         <title>WARNING REMOTE HOST IDENTIFICATION HAS CHANGED!</title>
         <pubTime>2018-03-17T06:40:57.000Z</pubTime>
         
-        <tag>ssh</tag>
-         
         <tag>ubuntu</tag>
+         
+        <tag>ssh</tag>
          
          
            
@@ -201,9 +223,9 @@
         <title>python 虚拟环境</title>
         <pubTime>2018-03-10T06:24:36.000Z</pubTime>
         
-        <tag>python</tag>
-         
         <tag>virtualenv</tag>
+         
+        <tag>python</tag>
          
          
            
