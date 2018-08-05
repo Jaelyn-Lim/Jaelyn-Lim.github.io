@@ -1,3 +1,3 @@
-http://jaelyn.coding.me/2018/07/05/create-ubuntu-u/
-http://jaelyn.coding.me/2018/06/05/mac-pycharm-quick-click/
-http://jaelyn.coding.me/2018/05/29/python-cookbook-learning/
+http://jaelyn.coding.me/2018/07/31/ubuntu-backup/
+http://jaelyn.coding.me/2018/07/31/python-super-learning-02/
+http://jaelyn.coding.me/2018/07/25/mac-rebuild-record/

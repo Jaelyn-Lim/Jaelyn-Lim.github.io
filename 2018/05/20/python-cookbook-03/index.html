@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  
+<script type="text/javascript">
+    var _speedMark = new Date();
+</script>
+
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=64866827" charset="UTF-8"></script>
+
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="HRlPcTjXKc" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/uploads/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/uploads/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/uploads/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/uploads/safari-pinned-tab.svg?v=5.1.3" color="#222">
+
+
+  <link rel="manifest" href="/images/uploads/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/uploads/browserconfig.xml" />
+
+
+
+  <meta name="keywords" content="python3, Cookbook" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="《Python CookBook 3》  这个文章是在我学习这本书过程的笔记（复制粘贴），主要用于自己方便查看。还有记录了我的觉得比较有用（没学过）的操作。 数据编码和处理csv 读写CSV数据  csv 文件可以看成是逗号分隔文件（逗号分隔值文件格式），里面的数据会以纯文本形式存储表格数据（数字和文本）。当然也不一定要用逗号，也可以用别的字符进行分隔。 1234567Symbol,Price,">
+<meta name="keywords" content="python3, Cookbook">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python Cookbook 笔记 03">
+<meta property="og:url" content="http://jaelyn.coding.me/2018/05/20/python-cookbook-03/index.html">
+<meta property="og:site_name" content="Jaelyn&#39;s Blog">
+<meta property="og:description" content="《Python CookBook 3》  这个文章是在我学习这本书过程的笔记（复制粘贴），主要用于自己方便查看。还有记录了我的觉得比较有用（没学过）的操作。 数据编码和处理csv 读写CSV数据  csv 文件可以看成是逗号分隔文件（逗号分隔值文件格式），里面的数据会以纯文本形式存储表格数据（数字和文本）。当然也不一定要用逗号，也可以用别的字符进行分隔。 1234567Symbol,Price,">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-05T04:26:12.355Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python Cookbook 笔记 03">
+<meta name="twitter:description" content="《Python CookBook 3》  这个文章是在我学习这本书过程的笔记（复制粘贴），主要用于自己方便查看。还有记录了我的觉得比较有用（没学过）的操作。 数据编码和处理csv 读写CSV数据  csv 文件可以看成是逗号分隔文件（逗号分隔值文件格式），里面的数据会以纯文本形式存储表格数据（数字和文本）。当然也不一定要用逗号，也可以用别的字符进行分隔。 1234567Symbol,Price,">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'S2RJTOM4KM',
+      apiKey: '46aa43b4dc81f6d01e063ef5e5dba1a7',
+      indexName: 'blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://jaelyn.coding.me/2018/05/20/python-cookbook-03/"/>
+
+
+
+
+
+  <title>Python Cookbook 笔记 03 | Jaelyn's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jaelyn's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">jaelyn-lim</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jaelyn.coding.me/2018/05/20/python-cookbook-03/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jaelyn">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jaelyn's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Python Cookbook 笔记 03</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-20T11:15:05+08:00">
+                2018-05-20
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-05T12:26:12+08:00">
+                2018-08-05
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python3/" itemprop="url" rel="index">
+                    <span itemprop="name">python3</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 阅读次数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  11,529
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  49
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/preface.html" target="_blank" rel="noopener">《Python CookBook 3》</a></li>
+</ul>
+<p>这个文章是在我学习这本书过程的笔记（复制粘贴），主要用于自己方便查看。还有记录了我的觉得比较有用（没学过）的操作。</p>
+<h1 id="数据编码和处理"><a href="#数据编码和处理" class="headerlink" title="数据编码和处理"></a>数据编码和处理</h1><h2 id="csv"><a href="#csv" class="headerlink" title="csv"></a>csv</h2><ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c06/p01_read_write_csv_data.html" target="_blank" rel="noopener">读写CSV数据</a></li>
+</ul>
+<p>csv 文件可以看成是逗号分隔文件（逗号分隔值文件格式），里面的数据会以纯文本形式存储表格数据（数字和文本）。当然也不一定要用逗号，也可以用别的字符进行分隔。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Symbol,Price,Date,Time,Change,Volume</span><br><span class="line">&quot;AA&quot;,39.48,&quot;6/11/2007&quot;,&quot;9:36am&quot;,-0.18,181800</span><br><span class="line">&quot;AIG&quot;,71.38,&quot;6/11/2007&quot;,&quot;9:36am&quot;,-0.15,195500</span><br><span class="line">&quot;AXP&quot;,62.58,&quot;6/11/2007&quot;,&quot;9:36am&quot;,-0.46,935000</span><br><span class="line">&quot;BA&quot;,98.31,&quot;6/11/2007&quot;,&quot;9:36am&quot;,+0.12,104800</span><br><span class="line">&quot;C&quot;,53.08,&quot;6/11/2007&quot;,&quot;9:36am&quot;,-0.25,360900</span><br><span class="line">&quot;CAT&quot;,78.29,&quot;6/11/2007&quot;,&quot;9:36am&quot;,-0.23,225400</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>通过<code>csv</code>模块，可以将csv文件逐行读取。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'csv_file.csv'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f_csv = csv.reader(f)</span><br><span class="line">    headers = next(f_csv)</span><br><span class="line">    print(headers)</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> f_csv:</span><br><span class="line">        print(row)</span><br></pre></td></tr></table></figure>
+<p>但是为了更好的理解所获得值，可以使用<code>namedtuple</code>的方式，使用命名元组的形式。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> namedtuple</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'csv_file.csv'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f_csv = csv.reader(f)</span><br><span class="line">    headers = next(f_csv)</span><br><span class="line">    Row = namedtuple(<span class="string">'Row'</span>, headers)</span><br><span class="line">    print(headers)</span><br><span class="line">    <span class="keyword">for</span> r <span class="keyword">in</span> f_csv:</span><br><span class="line">        row = Row(*r)</span><br><span class="line">        print(row)</span><br></pre></td></tr></table></figure>
+<p>它允许你使用列名如 <code>row.Symbol</code> 和 <code>row.Change</code> 代替下标访问。 需要注意的是这个只有在列名是合法的Python标识符的时候才生效。如果不是的话， 你可能需要修改下原始的列名(如将非标识符字符替换成下划线之类的)。</p>
+<p>另外一个选择就是将数据读取到一个字典序列中去。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'csv_file.csv'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f_csv = csv.DictReader(f)</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> f_csv:</span><br><span class="line">        print(row[<span class="string">'Price'</span>])</span><br></pre></td></tr></table></figure>
+<p>这样就可以直接使用字典的名字去访问字段。例如：<code>row[&#39;Symbol&#39;]</code> 或者 <code>row[&#39;Change&#39;]</code></p>
+<p>如果要写入，也可以直接使用这个模块。</p>
+<p>不过这时候先创建一个 writer 对象。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">headers = [<span class="string">'Symbol'</span>,<span class="string">'Price'</span>,<span class="string">'Date'</span>,<span class="string">'Time'</span>,<span class="string">'Change'</span>,<span class="string">'Volume'</span>]</span><br><span class="line">rows = [(<span class="string">'AA'</span>, <span class="number">39.48</span>, <span class="string">'6/11/2007'</span>, <span class="string">'9:36am'</span>, <span class="number">-0.18</span>, <span class="number">181800</span>),</span><br><span class="line">         (<span class="string">'AIG'</span>, <span class="number">71.38</span>, <span class="string">'6/11/2007'</span>, <span class="string">'9:36am'</span>, <span class="number">-0.15</span>, <span class="number">195500</span>),</span><br><span class="line">         (<span class="string">'AXP'</span>, <span class="number">62.58</span>, <span class="string">'6/11/2007'</span>, <span class="string">'9:36am'</span>, <span class="number">-0.46</span>, <span class="number">935000</span>),</span><br><span class="line">       ]</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'stocks.csv'</span>,<span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f_csv = csv.writer(f)</span><br><span class="line">    f_csv.writerow(headers)</span><br><span class="line">    f_csv.writerows(rows)</span><br></pre></td></tr></table></figure>
+<p>如果有一个字典序列的数据，可以直接使用<code>csv.DictWriter</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">headers = [<span class="string">'Symbol'</span>, <span class="string">'Price'</span>, <span class="string">'Date'</span>, <span class="string">'Time'</span>, <span class="string">'Change'</span>, <span class="string">'Volume'</span>]</span><br><span class="line">rows = [&#123;<span class="string">'Symbol'</span>:<span class="string">'AA'</span>, <span class="string">'Price'</span>:<span class="number">39.48</span>, <span class="string">'Date'</span>:<span class="string">'6/11/2007'</span>,</span><br><span class="line">        <span class="string">'Time'</span>:<span class="string">'9:36am'</span>, <span class="string">'Change'</span>:<span class="number">-0.18</span>, <span class="string">'Volume'</span>:<span class="number">181800</span>&#125;,</span><br><span class="line">        &#123;<span class="string">'Symbol'</span>:<span class="string">'AIG'</span>, <span class="string">'Price'</span>: <span class="number">71.38</span>, <span class="string">'Date'</span>:<span class="string">'6/11/2007'</span>,</span><br><span class="line">        <span class="string">'Time'</span>:<span class="string">'9:36am'</span>, <span class="string">'Change'</span>:<span class="number">-0.15</span>, <span class="string">'Volume'</span>: <span class="number">195500</span>&#125;,</span><br><span class="line">        &#123;<span class="string">'Symbol'</span>:<span class="string">'AXP'</span>, <span class="string">'Price'</span>: <span class="number">62.58</span>, <span class="string">'Date'</span>:<span class="string">'6/11/2007'</span>,</span><br><span class="line">        <span class="string">'Time'</span>:<span class="string">'9:36am'</span>, <span class="string">'Change'</span>:<span class="number">-0.46</span>, <span class="string">'Volume'</span>: <span class="number">935000</span>&#125;,</span><br><span class="line">        ]</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'stocks.csv'</span>,<span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f_csv = csv.DictWriter(f, headers)</span><br><span class="line">    f_csv.writeheader()</span><br><span class="line">    f_csv.writerows(rows)</span><br></pre></td></tr></table></figure>
+<p>默认情况下，csv 库可识别Microsoft Excel所使用的CSV编码规则。 这或许也是最常见的形式，并且也会给你带来最好的兼容性。 然而，如果你查看csv的文档，就会发现有很多种方法将它应用到其他编码格式上(如修改分割字符等)。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Example of reading tab-separated values</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'stock.tsv'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f_tsv = csv.reader(f, delimiter=<span class="string">'\t'</span>)</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> f_tsv:</span><br><span class="line">        <span class="comment"># Process row</span></span><br><span class="line">        ...</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>最后，如果你读取CSV数据的目的是做数据分析和统计的话， 你可能需要看一看 Pandas 包。Pandas 包含了一个非常方便的函数叫 <code>pandas.read_csv()</code> ， 它可以加载CSV数据到一个 DataFrame 对象中去。 然后利用这个对象你就可以生成各种形式的统计、过滤数据以及执行其他高级操作了。</p>
+</blockquote>
+<h2 id="读写JSON数据"><a href="#读写JSON数据" class="headerlink" title="读写JSON数据"></a>读写JSON数据</h2><ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c06/p02_read-write_json_data.html" target="_blank" rel="noopener">读写JSON数据</a></li>
+</ul>
+<p><code>json.dumps()</code> 和 <code>json.loads()</code> 处理字符串的转换。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">data = &#123;</span><br><span class="line">    <span class="string">'name'</span> : <span class="string">'ACME'</span>,</span><br><span class="line">    <span class="string">'shares'</span> : <span class="number">100</span>,</span><br><span class="line">    <span class="string">'price'</span> : <span class="number">542.23</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">json_str = json.dumps(data)</span><br><span class="line"></span><br><span class="line">data = json.loads(json_str)</span><br></pre></td></tr></table></figure>
+<p><code>json.dump()</code> 和 <code>json.load()</code> 处理文件。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Writing JSON data</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'data.json'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    json.dump(data, f)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Reading data back</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'data.json'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    data = json.load(f)</span><br></pre></td></tr></table></figure>
+<p>JSON编码支持的基本数据类型为 <code>None</code> ， <code>bool</code> ， <code>int</code> ， <code>float</code> 和 <code>str</code> ， 以及包含这些类型数据的lists，tuples和dictionaries。 对于dictionaries，keys需要是字符串类型(字典中任何非字符串类型的key在编码时会先转换为字符串)。 为了遵循JSON规范，你应该只编码Python的<strong>lists</strong>和<strong>dictionaries</strong>。 而且，在web应用程序中，顶层对象被编码为一个字典是一个标准做法。</p>
+<blockquote>
+<p>JSON编码的格式对于Python语法而已几乎是完全一样的，除了一些小的差异之外。 比如，True会被映射为true，False被映射为false，而None会被映射为null。</p>
+</blockquote>
+<p>如果你试着去检查JSON解码后的数据，你通常很难通过简单的打印来确定它的结构， 特别是当数据的嵌套结构层次很深或者包含大量的字段时。 为了解决这个问题，可以考虑使用pprint模块的 <code>pprint()</code> 函数来代替普通的 <code>print()</code> 函数。 它会按照key的字母顺序并以一种更加美观的方式输出。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> json</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>u = urlopen(<span class="string">'http://search.twitter.com/search.json?q=python&amp;rpp=5'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>resp = json.loads(u.read().decode(<span class="string">'utf-8'</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> pprint <span class="keyword">import</span> pprint</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pprint(resp)</span><br><span class="line">&#123;<span class="string">'completed_in'</span>: <span class="number">0.074</span>,</span><br><span class="line"><span class="string">'max_id'</span>: <span class="number">264043230692245504</span>,</span><br><span class="line"><span class="string">'max_id_str'</span>: <span class="string">'264043230692245504'</span>,</span><br><span class="line"><span class="string">'next_page'</span>: <span class="string">'?page=2&amp;max_id=264043230692245504&amp;q=python&amp;rpp=5'</span>,</span><br><span class="line"><span class="string">'page'</span>: <span class="number">1</span>,</span><br><span class="line"><span class="string">'query'</span>: <span class="string">'python'</span>,</span><br><span class="line"><span class="string">'refresh_url'</span>: <span class="string">'?since_id=264043230692245504&amp;q=python'</span>,</span><br><span class="line"><span class="string">'results'</span>: [&#123;<span class="string">'created_at'</span>: <span class="string">'Thu, 01 Nov 2012 16:36:26 +0000'</span>,</span><br><span class="line">            <span class="string">'from_user'</span>: ...</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;<span class="string">'created_at'</span>: <span class="string">'Thu, 01 Nov 2012 16:36:14 +0000'</span>,</span><br><span class="line">            <span class="string">'from_user'</span>: ...</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;<span class="string">'created_at'</span>: <span class="string">'Thu, 01 Nov 2012 16:36:13 +0000'</span>,</span><br><span class="line">            <span class="string">'from_user'</span>: ...</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;<span class="string">'created_at'</span>: <span class="string">'Thu, 01 Nov 2012 16:36:07 +0000'</span>,</span><br><span class="line">            <span class="string">'from_user'</span>: ...</span><br><span class="line">            &#125;</span><br><span class="line">            &#123;<span class="string">'created_at'</span>: <span class="string">'Thu, 01 Nov 2012 16:36:04 +0000'</span>,</span><br><span class="line">            <span class="string">'from_user'</span>: ...</span><br><span class="line">            &#125;],</span><br><span class="line"><span class="string">'results_per_page'</span>: <span class="number">5</span>,</span><br><span class="line"><span class="string">'since_id'</span>: <span class="number">0</span>,</span><br><span class="line"><span class="string">'since_id_str'</span>: <span class="string">'0'</span>&#125;</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p>一般来讲，JSON解码会根据提供的数据创建dicts或lists。 如果你想要创建其他类型的对象，可以给 json.loads() 传递object_pairs_hook或object_hook参数。 例如，下面是演示如何解码JSON数据并在一个OrderedDict中保留其顺序的例子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = <span class="string">'&#123;"name": "ACME", "shares": 50, "price": 490.1&#125;'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> OrderedDict</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>data = json.loads(s, object_pairs_hook=OrderedDict)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>data</span><br><span class="line">OrderedDict([(<span class="string">'name'</span>, <span class="string">'ACME'</span>), (<span class="string">'shares'</span>, <span class="number">50</span>), (<span class="string">'price'</span>, <span class="number">490.1</span>)])</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p>将一个JSON字典转换为一个Python对象</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">JSONObject</span>:</span></span><br><span class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, d)</span>:</span></span><br><span class="line"><span class="meta">... </span>        self.__dict__ = d</span><br><span class="line">...</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>data = json.loads(s, object_hook=JSONObject)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>data.name</span><br><span class="line"><span class="string">'ACME'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>data.shares</span><br><span class="line"><span class="number">50</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>data.price</span><br><span class="line"><span class="number">490.1</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p>在编码JSON的时候，还有一些选项很有用。 如果你想获得漂亮的格式化字符串后输出，可以使用 json.dumps() 的indent参数。 它会使得输出和pprint()函数效果类似。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(json.dumps(data))</span><br><span class="line">&#123;<span class="string">"price"</span>: <span class="number">542.23</span>, <span class="string">"name"</span>: <span class="string">"ACME"</span>, <span class="string">"shares"</span>: <span class="number">100</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(json.dumps(data, indent=<span class="number">4</span>))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"price"</span>: <span class="number">542.23</span>,</span><br><span class="line">    <span class="string">"name"</span>: <span class="string">"ACME"</span>,</span><br><span class="line">    <span class="string">"shares"</span>: <span class="number">100</span></span><br><span class="line">&#125;</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p>一般来说，对象实例通常并不是JSON可序列化的。但是，可以提供一个函数，它的输入是一个实例，返回一个可序列化的字典。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">serialize_instance</span><span class="params">(obj)</span>:</span></span><br><span class="line">    d = &#123; <span class="string">'__classname__'</span> : type(obj).__name__ &#125;</span><br><span class="line">    d.update(vars(obj))</span><br><span class="line">    <span class="keyword">return</span> d</span><br></pre></td></tr></table></figure>
+<p>如果你想反过来获取这个实例，可以这样做：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Dictionary mapping names to known classes</span></span><br><span class="line">classes = &#123;</span><br><span class="line">    <span class="string">'Point'</span> : Point</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">unserialize_object</span><span class="params">(d)</span>:</span></span><br><span class="line">    clsname = d.pop(<span class="string">'__classname__'</span>, <span class="keyword">None</span>)</span><br><span class="line">    <span class="keyword">if</span> clsname:</span><br><span class="line">        cls = classes[clsname]</span><br><span class="line">        obj = cls.__new__(cls) <span class="comment"># Make instance without calling __init__</span></span><br><span class="line">        <span class="keyword">for</span> key, value <span class="keyword">in</span> d.items():</span><br><span class="line">            setattr(obj, key, value)</span><br><span class="line">        <span class="keyword">return</span> obj</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> d</span><br></pre></td></tr></table></figure>
+<p>使用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>p = Point(<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = json.dumps(p, default=serialize_instance)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s</span><br><span class="line"><span class="string">'&#123;"__classname__": "Point", "y": 3, "x": 2&#125;'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = json.loads(s, object_hook=unserialize_object)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a</span><br><span class="line">&lt;__main__.Point object at <span class="number">0x1017577d0</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.x</span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.y</span><br><span class="line"><span class="number">3</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="xml-etree-ElementTree"><a href="#xml-etree-ElementTree" class="headerlink" title="xml.etree.ElementTree"></a>xml.etree.ElementTree</h2><ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c06/p03_parse_simple_xml_data.html" target="_blank" rel="noopener">解析简单的XML数据</a></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">from</span> xml.etree.ElementTree <span class="keyword">import</span> parse</span><br><span class="line"></span><br><span class="line"><span class="comment"># Download the RSS feed and parse it</span></span><br><span class="line">u = urlopen(<span class="string">'http://planet.python.org/rss20.xml'</span>)</span><br><span class="line">doc = parse(u)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Extract and output tags of interest</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> doc.iterfind(<span class="string">'channel/item'</span>):</span><br><span class="line">    title = item.findtext(<span class="string">'title'</span>)</span><br><span class="line">    date = item.findtext(<span class="string">'pubDate'</span>)</span><br><span class="line">    link = item.findtext(<span class="string">'link'</span>)</span><br><span class="line"></span><br><span class="line">    print(title)</span><br><span class="line">    print(date)</span><br><span class="line">    print(link)</span><br><span class="line">    print()</span><br></pre></td></tr></table></figure>
+<p><code>xml.etree.ElementTree.parse()</code> 函数解析整个XML文档并将其转换成一个文档对象。 然后，你就能使用 <code>find()</code> 、<code>iterfind()</code> 和 <code>findtext()</code> 等方法来搜索特定的XML元素了。 这些函数的参数就是某个指定的标签名，例如 <code>channel/item</code> 或 <code>title</code> 。</p>
+<p>每次指定某个标签时，你需要遍历整个文档结构。每次搜索操作会从一个起始元素开始进行。 同样，每次操作所指定的标签名也是起始元素的相对路径。 例如，执行 <code>doc.iterfind(&#39;channel/item&#39;)</code> 来搜索所有在 <strong>channel</strong> 元素下面的 <strong>item</strong> 元素。 <strong>doc</strong> 代表文档的最顶层(也就是第一级的 <strong>rss</strong> 元素)。 然后接下来的调用 <code>item.findtext()</code> 会从已找到的 <strong>item</strong> 元素位置开始搜索。</p>
+<p>ElementTree 模块中的每个元素有一些重要的属性和方法，在解析的时候非常有用。 <code>tag</code> 属性包含了标签的名字，<code>text</code> 属性包含了内部的文本，而 <code>get()</code> 方法能获取属性值。</p>
+<ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c06/p04_parse_huge_xml_files_incrementally.html" target="_blank" rel="noopener">增量式解析大型XML文件</a></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> xml.etree.ElementTree <span class="keyword">import</span> iterparse</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_and_remove</span><span class="params">(filename, path)</span>:</span></span><br><span class="line">    path_parts = path.split(<span class="string">'/'</span>)</span><br><span class="line">    doc = iterparse(filename, (<span class="string">'start'</span>, <span class="string">'end'</span>))</span><br><span class="line">    <span class="comment"># Skip the root element</span></span><br><span class="line">    next(doc)</span><br><span class="line"></span><br><span class="line">    tag_stack = []</span><br><span class="line">    elem_stack = []</span><br><span class="line">    <span class="keyword">for</span> event, elem <span class="keyword">in</span> doc:</span><br><span class="line">        <span class="keyword">if</span> event == <span class="string">'start'</span>:</span><br><span class="line">            tag_stack.append(elem.tag)</span><br><span class="line">            elem_stack.append(elem)</span><br><span class="line">        <span class="keyword">elif</span> event == <span class="string">'end'</span>:</span><br><span class="line">            <span class="keyword">if</span> tag_stack == path_parts:</span><br><span class="line">                <span class="keyword">yield</span> elem</span><br><span class="line">                elem_stack[<span class="number">-2</span>].remove(elem)</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                tag_stack.pop()</span><br><span class="line">                elem_stack.pop()</span><br><span class="line">            <span class="keyword">except</span> IndexError:</span><br><span class="line">                <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这一节的技术会依赖 ElementTree 模块中的两个核心功能。 第一，<code>iterparse()</code> 方法允许对XML文档进行增量操作。 使用时，你需要提供文件名和一个包含下面一种或多种类型的事件列表： <strong>start</strong> , <strong>end</strong>, <strong>start-ns</strong> 和 <strong>end-ns</strong> 。 由 <code>iterparse()</code> 创建的迭代器会产生形如 <code>(event, elem)</code> 的元组， 其中 event 是上述事件列表中的某一个，而 elem 是相应的XML元素。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">pothole_by_zip = Counter()</span><br><span class="line"></span><br><span class="line">doc = parse(<span class="string">'potholes.xml'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> pothole <span class="keyword">in</span> doc.iterfind(<span class="string">'row/row'</span>):</span><br><span class="line">    pothole_by_zip[pothole.findtext(<span class="string">'zip'</span>)] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> zipcode, num <span class="keyword">in</span> pothole_by_zip.most_common():</span><br><span class="line">    print(zipcode, num)</span><br></pre></td></tr></table></figure>
+<p>使用这个方式的话（<code>doc.iterfind</code>），会将<code>xml</code>文件一次性全部读取出来，先将整个XML文件加载到内存中然后解析，这样会大量使用内存的资源。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">data = parse_and_remove(<span class="string">'potholes.xml'</span>, <span class="string">'row/row'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> pothole <span class="keyword">in</span> data:</span><br><span class="line">    pothole_by_zip[pothole.findtext(<span class="string">'zip'</span>)] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> zipcode, num <span class="keyword">in</span> pothole_by_zip.most_common():</span><br><span class="line">    print(zipcode, num)</span><br></pre></td></tr></table></figure>
+<p>这里调用了上面的函数 ，在队列中的保存找到的<strong>tag</strong>，之后在获得需要的标签后，就将结果返回，同时将结果删除（就是删除掉对应的标签），这样就能保证内存不会溢出，能保证系统在占用很小的内存的时候就能找到所需要的数据。</p>
+<p><code>start</code> 事件在某个元素第一次被创建并且还没有被插入其他数据(如子元素)时被创建。 而 <code>end</code> 事件在某个元素已经完成时被创建。 尽管没有在例子中演示， <code>start-ns</code> 和 <code>end-ns</code> 事件被用来处理XML文档命名空间的声明。</p>
+<p><code>start</code> 和 <code>end</code> 事件被用来管理元素和标签栈。 栈代表了文档被解析时的层次结构， 还被用来判断某个元素是否匹配传给函数 <code>parse_and_remove()</code> 的路径。 如果匹配，就利用 yield 语句向调用者返回这个元素。</p>
+<p>比较这两个版本，可以看出，第一个全部读取完的版本会比较占用内存，不过在效率上能得到很大的提高，如果更加注重内存的消耗，应该优先选择第二个版本，采用增量式的方式获得需要的节点。</p>
+<ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c06/p05_turning_dictionary_into_xml.html" target="_blank" rel="noopener">将字典转换为XML</a></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> xml.etree.ElementTree <span class="keyword">import</span> Element</span><br><span class="line"><span class="keyword">from</span> xml.etree.ElementTree <span class="keyword">import</span> tostring</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dict_to_xlm</span><span class="params">(tag, d)</span>:</span></span><br><span class="line">    elem = Element(tag)</span><br><span class="line">    <span class="keyword">for</span> key, val <span class="keyword">in</span> d.items():</span><br><span class="line">        child = Element(key)</span><br><span class="line">        child.text = str(val)</span><br><span class="line">        elem.append(child)</span><br><span class="line">    <span class="keyword">return</span> elem</span><br><span class="line"></span><br><span class="line">s = &#123;</span><br><span class="line">    <span class="string">'name'</span>: <span class="string">'GGO'</span>,</span><br><span class="line">    <span class="string">'status'</span>: <span class="number">100</span>,</span><br><span class="line">    <span class="string">'count'</span>: <span class="number">12</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">e = dict_to_xlm(<span class="string">'stock'</span>, s)</span><br><span class="line">print(e)</span><br><span class="line"><span class="comment"># &lt;Element 'stock' at 0x10400eb88&gt;</span></span><br><span class="line">string_stocks = tostring(e)</span><br><span class="line">print(string_stocks)</span><br><span class="line"><span class="comment"># b'&lt;stock&gt;&lt;name&gt;GGO&lt;/name&gt;&lt;status&gt;100&lt;/status&gt;&lt;count&gt;12&lt;/count&gt;&lt;/stock&gt;'</span></span><br><span class="line"></span><br><span class="line">e.set(<span class="string">'_id'</span>, <span class="string">'123456'</span>)</span><br><span class="line">string_stocks = tostring(e)</span><br><span class="line">print(string_stocks)</span><br><span class="line"><span class="comment"># b'&lt;stock _id="123456"&gt;&lt;name&gt;GGO&lt;/name&gt;&lt;status&gt;100&lt;/status&gt;&lt;count&gt;12&lt;/count&gt;&lt;/stock&gt;'</span></span><br></pre></td></tr></table></figure>
+<p>通过<code>Element</code>可以将元素设置为<code>tag</code>，之后用<code>child.text</code>的方法设置该标签的内容，这样就能获得一个<code>Element</code>元素，之后通过<code>tostring</code>函数，将<code>Element</code>转为字符串。</p>
+<p>也可以通过<code>set</code>函数为某个元素添加属性值。</p>
+<p>如果传入的内容中有特殊字符，会自动进行转译，例如：字符 ‘&lt;’ 和 ‘&gt;’ 被替换成了 <code>&amp;lt;</code> 和 <code>&amp;gt;</code>。</p>
+<p>如果你需要手动去转换这些字符， 可以使用 xml.sax.saxutils 中的 escape() 和 unescape() 函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> xml.sax.saxutils <span class="keyword">import</span> escape, unescape</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>escape(<span class="string">'&lt;spam&gt;'</span>)</span><br><span class="line"><span class="string">'&amp;lt;spam&amp;gt;'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>unescape(_)</span><br><span class="line"><span class="string">'&lt;spam&gt;'</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c06/p06_parse_modify_rewrite_xml.html" target="_blank" rel="noopener">解析和修改XML</a></li>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c06/p07_parse_xml_documents_with_namespaces.html" target="_blank" rel="noopener">利用命名空间解析XML文档</a></li>
+</ul>
+<h2 id="与关系型数据库的交互"><a href="#与关系型数据库的交互" class="headerlink" title="与关系型数据库的交互"></a><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c06/p08_interact_with_relational_database.html" target="_blank" rel="noopener">与关系型数据库的交互</a></h2><p>SQL语句字符串的构造。 你千万不要使用Python字符串格式化操作符(如%)或者 <code>.format()</code> 方法来创建这样的字符串。 如果传递给这些格式化操作符的值来自于用户的输入，那么你的程序就很有可能遭受SQL注入攻击(参考 <a href="http://xkcd.com/327" target="_blank" rel="noopener">http://xkcd.com/327</a> )。 查询语句中的通配符 ? 指示后台数据库使用它自己的字符串替换机制，这样更加的安全。</p>
+<p>不幸的是，不同的数据库后台对于通配符的使用是不一样的。大部分模块使用 <code>?</code> 或 <code>%s</code> ， 还有其他一些使用了不同的符号，比如:0或:1来指示参数。 同样的，你还是得去参考你使用的数据库模块相应的文档。 一个数据库模块的 <code>paramstyle</code> 属性包含了参数引用风格的信息。</p>
+<h2 id="base64"><a href="#base64" class="headerlink" title="base64"></a>base64</h2><ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c06/p09_decode_encode_hexadecimal_digits.html" target="_blank" rel="noopener">编码和解码十六进制数</a></li>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c06/p10_decode_encode_base64.html" target="_blank" rel="noopener">编码解码Base64数据</a></li>
+</ul>
+<p>简单的解码或编码一个十六进制的原始字符串</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line">s = <span class="string">b'hello'</span></span><br><span class="line"></span><br><span class="line">h = base64.b16encode(s)</span><br><span class="line">print(h)</span><br><span class="line"><span class="comment"># b'68656C6C6F'</span></span><br><span class="line">b = base64.b64encode(s)</span><br><span class="line">print(b)</span><br><span class="line"><span class="comment"># b'aGVsbG8='</span></span><br><span class="line"></span><br><span class="line">n = base64.b16decode(h)</span><br><span class="line">print(n)</span><br><span class="line"><span class="comment"># b'hello'</span></span><br><span class="line">m = base64.b64decode(b)</span><br><span class="line">print(m)</span><br><span class="line"><span class="comment"># b'hello'</span></span><br></pre></td></tr></table></figure>
+<h2 id="读取嵌套和可变长二进制数据"><a href="#读取嵌套和可变长二进制数据" class="headerlink" title="读取嵌套和可变长二进制数据"></a><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c06/p12_read_nested_and_variable_sized_binary_structures.html" target="_blank" rel="noopener">读取嵌套和可变长二进制数据</a></h2><p>二进制数据文件处理</p>
+<h2 id="pandas"><a href="#pandas" class="headerlink" title="pandas"></a>pandas</h2><p>对于任何涉及到统计、时间序列以及其他相关技术的数据分析问题，都可以考虑使用 Pandas库 。</p>
+<p>Pandas是一个拥有很多特性的大型函数库，我在这里不可能介绍完。 但是只要你需要去分析大型数据集合、对数据分组、计算各种统计量或其他类似任务的话，这个函数库真的值得你去看一看。</p>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="接受任意数量参数的函"><a href="#接受任意数量参数的函" class="headerlink" title="接受任意数量参数的函"></a>接受任意数量参数的函</h2><p>接收任意参数用<code>*</code>， 接收任意关键字参数用<code>**</code></p>
+<blockquote>
+<p>一个<em>参数只能出现在函数定义中最后一个位置参数后面，而 <code>**</code> 参数只能出现在最后一个参数。 有一点要注意的是，在</em>参数后面仍然可以定义其他参数。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">a</span><span class="params">(x, *args, y)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">b</span><span class="params">(x, *args, y, **kwargs)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c07/p02_functions_that_only_accept_keyword_arguments.html" target="_blank" rel="noopener">只接受关键字参数的函数</a></li>
+</ul>
+<p>将强制关键字参数放到某个<code>*</code>参数或者单个<code>*</code>后面就能达到这种效果。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">recv</span><span class="params">(maxsize, *, block)</span>:</span></span><br><span class="line">    <span class="string">'Receives a message'</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">recv(<span class="number">1024</span>, <span class="keyword">True</span>) <span class="comment"># TypeError</span></span><br><span class="line">recv(<span class="number">1024</span>, block=<span class="keyword">True</span>) <span class="comment"># Ok</span></span><br></pre></td></tr></table></figure>
+<p>我们可以在接受任意参数的函数中接受指定的关键字参数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mininum</span><span class="params">(*values, clip=None)</span>:</span></span><br><span class="line">    m = min(values)</span><br><span class="line">    <span class="keyword">if</span> clip <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">        m = clip <span class="keyword">if</span> clip &gt; m <span class="keyword">else</span> m</span><br><span class="line">    <span class="keyword">return</span> m</span><br><span class="line"></span><br><span class="line">minimum(<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">-5</span>, <span class="number">10</span>) <span class="comment"># Returns -5</span></span><br><span class="line">minimum(<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">-5</span>, <span class="number">10</span>, clip=<span class="number">0</span>) <span class="comment"># Returns 0</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>很多情况下，使用强制关键字参数会比使用位置参数表意更加清晰，程序也更加具有可读性。</p>
+</blockquote>
+<p>这样在使用<code>help</code>的时候也会使得函数更容易理解。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">help(recv)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">Help on function recv in module __main__:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">recv(maxsize, *, block)</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+<h2 id="给函数参数增加元信息"><a href="#给函数参数增加元信息" class="headerlink" title="给函数参数增加元信息"></a>给函数参数增加元信息</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x:int, y:int)</span> -&gt; int:</span></span><br><span class="line">    <span class="keyword">return</span> x + y</span><br></pre></td></tr></table></figure>
+<p>python解释器不会对这些注解添加任何的语义。它们不会被类型检查，运行时跟没有加注解之前的效果也没有任何差距。 然而，对于那些阅读源码的人来讲就很有帮助啦。第三方工具和框架可能会对这些注解添加语义。同时它们也会出现在文档中。</p>
+<blockquote>
+<p>尽管你可以使用任意类型的对象给函数添加注解(例如数字，字符串，对象实例等等)，不过通常来讲使用类或者字符串会比较好点。</p>
+</blockquote>
+<p>函数注解只存储在函数的 <code>__annotations__</code> 属性中。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(adda.__annotations__)</span><br><span class="line"><span class="comment"># &#123;'x': &lt;class 'int'&gt;, 'y': &lt;class 'int'&gt;, 'return': &lt;class 'int'&gt;&#125;</span></span><br></pre></td></tr></table></figure>
+<p>尽管注解的使用方法可能有很多种，但是它们的主要用途还是文档。 因为python并没有类型声明，通常来讲仅仅通过阅读源码很难知道应该传递什么样的参数给这个函数。 这时候使用注解就能给程序员更多的提示，让他们可以正确的使用函数。</p>
+<h2 id="定义有默认参数的函数"><a href="#定义有默认参数的函数" class="headerlink" title="定义有默认参数的函数"></a>定义有默认参数的函数</h2><ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c07/p05_define_functions_with_default_arguments.html" target="_blank" rel="noopener">定义有默认参数的函数</a></li>
+</ul>
+<p>默认参数的值仅仅在函数定义的时候赋值一次。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">42</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">spam</span><span class="params">(a, b=x)</span>:</span></span><br><span class="line">    print(a, b)</span><br><span class="line"></span><br><span class="line">spam(<span class="number">1</span>)</span><br><span class="line"><span class="comment"># 1 42</span></span><br><span class="line"></span><br><span class="line">x = <span class="number">12</span></span><br><span class="line">spam(<span class="number">1</span>)</span><br><span class="line"><span class="comment"># 1 42</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意到当我们改变x的值的时候对默认参数值并没有影响，这是因为在函数定义的时候就已经确定了它的默认值了。</p>
+</blockquote>
+<p>默认参数的值应该是不可变的对象，比如None、True、False、数字或字符串。</p>
+<p>注意在使用默认参数，使用None作为默认，并且对参数进行None判断的时候，应该使用<code>is not None</code>之类的，而不应该直接使用<code>not b</code>，尽管None值确实是被当成False， 但是还有其他的对象(比如长度为0的字符串、列表、元组、字典等)都会被当做False。 因此，上面的代码会误将一些其他输入也当成是没有输入。</p>
+<p>最后一个问题比较微妙，那就是一个函数需要测试某个可选参数是否被使用者传递进来。 这时候需要小心的是你不能用某个默认值比如None、 0或者False值来测试用户提供的值(因为这些值都是合法的值，是可能被用户传递进来的)。 因此，你需要其他的解决方案了。</p>
+<p>为了解决这个问题，你可以创建一个独一无二的私有对象实例，就像上面的_no_value变量那样。 在函数里面，你可以通过检查被传递参数值跟这个实例是否一样来判断。 这里的思路是用户不可能去传递这个_no_value实例作为输入。 因此，这里通过检查这个值就能确定某个参数是否被传递进来了。</p>
+<p>这里对 <code>object()</code> 的使用看上去有点不太常见。object 是python中所有类的基类。 你可以创建 object 类的实例，但是这些实例没什么实际用处，因为它并没有任何有用的方法， 也没有任何实例数据(因为它没有任何的实例字典，你甚至都不能设置任何属性值)。 你唯一能做的就是测试同一性。这个刚好符合我的要求，因为我在函数中就只是需要一个同一性的测试而已。</p>
+<h2 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">add = <span class="keyword">lambda</span> x, y: x+y</span><br><span class="line">print(add(<span class="number">1</span>, <span class="number">6</span>))</span><br><span class="line"><span class="comment"># 7</span></span><br></pre></td></tr></table></figure>
+<p>lambda表达式典型的使用场景是排序或数据reduce等。</p>
+<p>尽管lambda表达式允许你定义简单函数，但是它的使用是有限制的。 你只能指定单个表达式，它的值就是最后的返回值。也就是说不能包含其他的语言特性了， 包括多个语句、条件表达式、迭代以及异常处理等等。</p>
+<p>你可以不使用lambda表达式就能编写大部分python代码。 但是，当有人编写大量计算表达式值的短小函数或者需要用户提供回调函数的程序的时候， 你就会看到lambda表达式的身影了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">10</span></span><br><span class="line">a = <span class="keyword">lambda</span> y: x + y</span><br><span class="line">print(a(<span class="number">10</span>))</span><br><span class="line"><span class="comment"># 20</span></span><br><span class="line">x = <span class="number">20</span></span><br><span class="line">b = <span class="keyword">lambda</span> y: x + y</span><br><span class="line">print(a(<span class="number">10</span>))</span><br><span class="line"><span class="comment"># 30</span></span><br><span class="line">print(b(<span class="number">10</span>))</span><br><span class="line"><span class="comment"># 30</span></span><br></pre></td></tr></table></figure>
+<p>这其中的奥妙在于lambda表达式中的x是一个自由变量， 在运行时绑定值，而不是定义时就绑定，这跟函数的默认值参数定义是不同的。 因此，在调用这个lambda表达式的时候，x的值是执行时的值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>x = <span class="number">15</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a(<span class="number">10</span>)</span><br><span class="line"><span class="number">25</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x = <span class="number">3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a(<span class="number">10</span>)</span><br><span class="line"><span class="number">13</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p>如果需要在定义的时候就将变量<code>x</code>固定下来，就可以在定义<code>lambda</code>的时候使用<code>x=x</code>的方式。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>x = <span class="number">10</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="keyword">lambda</span> y, x=x: x + y</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x = <span class="number">20</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = <span class="keyword">lambda</span> y, x=x: x + y</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a(<span class="number">10</span>)</span><br><span class="line"><span class="number">20</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b(<span class="number">10</span>)</span><br><span class="line"><span class="number">30</span></span><br></pre></td></tr></table></figure>
+<p>如果需要在一开始的时候时候就开始使用所规定的值，就应该一开始就定义，不然在使用的时候就有可能在使用的时候，由于变量的改变，导致函数的变化，导致与期望的值不相符。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">funcs = [<span class="keyword">lambda</span> x: x+n <span class="keyword">for</span> n <span class="keyword">in</span> range(<span class="number">5</span>)]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> funcs:</span><br><span class="line">    print(i(<span class="number">0</span>), end=<span class="string">' '</span>)</span><br><span class="line">    <span class="comment"># 4 4 4 4 4</span></span><br><span class="line"></span><br><span class="line">print()</span><br><span class="line"></span><br><span class="line">funcs1 = [<span class="keyword">lambda</span> x, n=n: x+n <span class="keyword">for</span> n <span class="keyword">in</span> range(<span class="number">5</span>)]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> funcs1:</span><br><span class="line">    print(i(<span class="number">0</span>), end=<span class="string">' '</span>)</span><br><span class="line">    <span class="comment"># 0 1 2 3 4</span></span><br></pre></td></tr></table></figure>
+<p>使用的时候，第一种的<code>n</code>就只会保留最后一次的<code>4</code>，所以输出的时候都是<code>4</code>。</p>
+<h2 id="functools-partial"><a href="#functools-partial" class="headerlink" title="functools.partial"></a>functools.partial</h2><ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c07/p08_make_callable_with_fewer_arguments.html" target="_blank" rel="noopener">减少可调用对象的参数个数</a></li>
+</ul>
+<p><code>partial()</code> 函数允许你给一个或多个参数设置固定的值，减少接下来被调用时的参数个数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> functools <span class="keyword">import</span> partial</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1 = partial(spam, <span class="number">1</span>) <span class="comment"># a = 1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1(<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1(<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>)</span><br><span class="line"><span class="number">1</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s2 = partial(spam, d=<span class="number">42</span>) <span class="comment"># d = 42</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s2(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">42</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s2(<span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>)</span><br><span class="line"><span class="number">4</span> <span class="number">5</span> <span class="number">5</span> <span class="number">42</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s3 = partial(spam, <span class="number">1</span>, <span class="number">2</span>, d=<span class="number">42</span>) <span class="comment"># a = 1, b = 2, d = 42</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s3(<span class="number">3</span>)</span><br><span class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">42</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s3(<span class="number">4</span>)</span><br><span class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">4</span> <span class="number">42</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s3(<span class="number">5</span>)</span><br><span class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">5</span> <span class="number">42</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p>此外有很多功能看文档。</p>
+<h2 id="将单方法的类转换为函数"><a href="#将单方法的类转换为函数" class="headerlink" title="将单方法的类转换为函数"></a>将单方法的类转换为函数</h2><ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c07/p09_replace_single_method_classes_with_functions.html" target="_blank" rel="noopener">将单方法的类转换为函数</a></li>
+</ul>
+<p>你有一个除 <code>__init__()</code> 方法外只定义了一个方法的类。为了简化代码，你想将它转换成一个函数。</p>
+<p>大多数情况下，可以使用闭包来将单个方法的类转换成函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UrlTemplate</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, template)</span>:</span></span><br><span class="line">        self.template = template</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">open</span><span class="params">(self, **kwargs)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> urlopen(self.template.format_map(kwargs))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Example use. Download stock data from yahoo</span></span><br><span class="line">yahoo = UrlTemplate(<span class="string">'http://finance.yahoo.com/d/quotes.csv?s=&#123;names&#125;&amp;f=&#123;fields&#125;'</span>)</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> yahoo.open(names=<span class="string">'IBM,AAPL,FB'</span>, fields=<span class="string">'sl1c1v'</span>):</span><br><span class="line">    print(line.decode(<span class="string">'utf-8'</span>))</span><br></pre></td></tr></table></figure>
+<p>这个类可以被函数直接代替。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">urltemplate</span><span class="params">(template)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">opener</span><span class="params">(**kwargs)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> urlopen(template.format_map(kwargs))</span><br><span class="line">    <span class="keyword">return</span> opener</span><br><span class="line"></span><br><span class="line"><span class="comment"># Example use</span></span><br><span class="line">yahoo = urltemplate(<span class="string">'http://finance.yahoo.com/d/quotes.csv?s=&#123;names&#125;&amp;f=&#123;fields&#125;'</span>)</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> yahoo(names=<span class="string">'IBM,AAPL,FB'</span>, fields=<span class="string">'sl1c1v'</span>):</span><br><span class="line">    print(line.decode(<span class="string">'utf-8'</span>))</span><br></pre></td></tr></table></figure>
+<p>大部分情况下，你拥有一个单方法类的原因是需要存储某些额外的状态来给方法使用。 比如，定义UrlTemplate类的唯一目的就是先在某个地方存储模板值，以便将来可以在<code>open()</code>方法中使用。</p>
+<p>使用一个内部函数或者闭包的方案通常会更优雅一些。简单来讲，一个闭包就是一个函数， 只不过在函数内部带上了一个额外的变量环境。闭包关键特点就是它会记住自己被定义时的环境。 因此，在我们的解决方案中，<code>opener()</code> 函数记住了 <code>template</code> 参数的值，并在接下来的调用中使用它。</p>
+<p>任何时候只要你碰到需要给某个函数增加额外的状态信息的问题，都可以考虑使用闭包。 相比将你的函数转换成一个类而言，闭包通常是一种更加简洁和优雅的方案。</p>
+<h2 id="带额外状态信息的回调函数"><a href="#带额外状态信息的回调函数" class="headerlink" title="带额外状态信息的回调函数"></a>带额外状态信息的回调函数</h2><ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c07/p10_carry_extra_state_with_callback_functions.html" target="_blank" rel="noopener">带额外状态信息的回调函数</a></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">apply_async</span><span class="params">(func, args, *, callback)</span>:</span></span><br><span class="line">    <span class="comment"># Compute the result</span></span><br><span class="line">    result = func(*args)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Invoke the callback with the result</span></span><br><span class="line">    callback(result)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_result</span><span class="params">(result)</span>:</span></span><br><span class="line">    print(<span class="string">'Got: '</span>, result)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> a + b</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">apply_async(add, (<span class="number">2</span>, <span class="number">3</span>), callback=print_result)</span><br><span class="line"><span class="comment"># Got:  5</span></span><br><span class="line">apply_async(add, (<span class="string">'hello '</span>, <span class="string">'word'</span>), callback=print_result)</span><br><span class="line"><span class="comment"># Got:  hello word</span></span><br></pre></td></tr></table></figure>
+<p>注意到 <code>print_result()</code> 函数仅仅只接受一个参数 <code>result</code> 。不能再传入其他信息。 而当你想让回调函数访问其他变量或者特定环境的变量值的时候就会遇到麻烦。</p>
+<p>为了让回调函数访问外部信息，一种方法是使用一个绑定方法来代替一个简单函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ResultHandler</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.sequence = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">handler</span><span class="params">(self, result)</span>:</span></span><br><span class="line">        self.sequence += <span class="number">1</span></span><br><span class="line">        print(<span class="string">'[&#123;&#125;] Got: &#123;&#125;'</span>.format(self.sequence, result))</span><br></pre></td></tr></table></figure>
+<p>使用这个类的时候，你先创建一个类的实例，然后用它的 handler() 绑定方法来做为回调函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>r = ResultHandler()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>apply_async(add, (<span class="number">2</span>, <span class="number">3</span>), callback=r.handler)</span><br><span class="line">[<span class="number">1</span>] Got: <span class="number">5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>apply_async(add, (<span class="string">'hello'</span>, <span class="string">'world'</span>), callback=r.handler)</span><br><span class="line">[<span class="number">2</span>] Got: helloworld</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p>第二种方式，作为类的替代，可以使用一个闭包捕获状态值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_handler</span><span class="params">()</span>:</span></span><br><span class="line">    sequence = <span class="number">0</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">handler</span><span class="params">(result)</span>:</span></span><br><span class="line">        <span class="keyword">nonlocal</span> sequence</span><br><span class="line">        sequence += <span class="number">1</span></span><br><span class="line">        print(<span class="string">'[&#123;&#125;] Got: &#123;&#125;'</span>.format(sequence, result))</span><br><span class="line">    <span class="keyword">return</span> handler</span><br></pre></td></tr></table></figure>
+<p>使用闭包的例子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>handler = make_handler()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>apply_async(add, (<span class="number">2</span>, <span class="number">3</span>), callback=handler)</span><br><span class="line">[<span class="number">1</span>] Got: <span class="number">5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>apply_async(add, (<span class="string">'hello'</span>, <span class="string">'world'</span>), callback=handler)</span><br><span class="line">[<span class="number">2</span>] Got: helloworld</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p>或者使用协程的方式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_handler</span><span class="params">()</span>:</span></span><br><span class="line">    sequence = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        result = <span class="keyword">yield</span></span><br><span class="line">        sequence += <span class="number">1</span></span><br><span class="line">        print(<span class="string">'[&#123;&#125;] Got; &#123;&#125;'</span>.format(sequence, result))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">handler = make_handler()</span><br><span class="line">next(handler)</span><br><span class="line">apply_async(add, (<span class="number">2</span>, <span class="number">3</span>), callback=handler.send)</span><br><span class="line"><span class="comment"># [1] Got; 5</span></span><br><span class="line">apply_async(add, (<span class="string">'lalala '</span>, <span class="string">'hehehe'</span>), callback=handler.send)</span><br><span class="line"><span class="comment"># [2] Got; lalala hehehe</span></span><br></pre></td></tr></table></figure>
+<p>基于回调函数的软件通常都有可能变得非常复杂。一部分原因是回调函数通常会跟请求执行代码断开。 因此，请求执行和处理结果之间的执行环境实际上已经丢失了。如果你想让回调函数连续执行多步操作， 那你就必须去解决如何保存和恢复相关的状态信息了。</p>
+<p>至少有两种主要方式来捕获和保存状态信息，你可以在一个对象实例(通过一个绑定方法)或者在一个闭包中保存它。 两种方式相比，闭包或许是更加轻量级和自然一点，因为它们可以很简单的通过函数来构造。 它们还能自动捕获所有被使用到的变量。因此，你无需去担心如何去存储额外的状态信息(代码中自动判定)。</p>
+<blockquote>
+<p>如果使用闭包，你需要注意对那些可修改变量的操作。在上面的方案中， <code>nonlocal</code> 声明语句用来指示接下来的变量会在回调函数中被修改。如果没有这个声明，代码会报错。</p>
+</blockquote>
+<ul>
+<li><a href="http://codingpy.com/article/what-is-nonlocal-statement-in-python/" target="_blank" rel="noopener">python知识 什么是非局部语句</a></li>
+</ul>
+<p>而使用一个协程来作为一个回调函数就更有趣了，它跟闭包方法密切相关。 某种意义上来讲，它显得更加简洁，因为总共就一个函数而已。 并且，你可以很自由的修改变量而无需去使用 <code>nonlocal</code> 声明。 这种方式唯一缺点就是相对于其他Python技术而言或许比较难以理解。 另外还有一些比较难懂的部分，比如使用之前需要调用 <code>next()</code> ，实际使用时这个步骤很容易被忘记。 尽管如此，协程还有其他用处，比如作为一个内联回调函数的定义。</p>
+<h2 id="内联回调函数"><a href="#内联回调函数" class="headerlink" title="内联回调函数"></a>内联回调函数</h2><ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c07/p11_inline_callback_functions.html" target="_blank" rel="noopener">内联回调函数</a></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> queue <span class="keyword">import</span> Queue</span><br><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> wraps</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">apply_async</span><span class="params">(func, args, *, callback)</span>:</span></span><br><span class="line">    <span class="comment"># Compute the result</span></span><br><span class="line">    result = func(*args)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Invoke the callback with the result</span></span><br><span class="line">    callback(result)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Async</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, func, args)</span>:</span></span><br><span class="line">        self.func = func</span><br><span class="line">        self.args = args</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">inlined_async</span><span class="params">(func)</span>:</span></span><br><span class="line"><span class="meta">    @wraps(func)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args)</span>:</span></span><br><span class="line">        f = func(*args)</span><br><span class="line">        result_queue = Queue()</span><br><span class="line">        result_queue.put(<span class="keyword">None</span>)</span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">            result = result_queue.get()</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                a = f.send(result)</span><br><span class="line">                apply_async(a.func, a.args, callback=result_queue.put)</span><br><span class="line">            <span class="keyword">except</span> StopIteration:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> a+b</span><br><span class="line"></span><br><span class="line"><span class="meta">@inlined_async</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">lala_test</span><span class="params">()</span>:</span></span><br><span class="line">    r = <span class="keyword">yield</span> Async(add, (<span class="number">2</span>, <span class="number">3</span>))</span><br><span class="line">    print(r)</span><br><span class="line">    r = <span class="keyword">yield</span> Async(add, (<span class="string">'hello'</span>, <span class="string">'world'</span>))</span><br><span class="line">    print(r)</span><br><span class="line">    <span class="keyword">for</span> n <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">        r = <span class="keyword">yield</span> Async(add, (n, n))</span><br><span class="line">        print(r)</span><br><span class="line">    print(<span class="string">'Goodbye'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    lala_test()</span><br></pre></td></tr></table></figure>
+<p>首先，在需要使用到回调的代码中，关键点在于当前计算工作会挂起并在将来的某个时候重启(比如异步执行)。 当计算重启时，回调函数被调用来继续处理结果。<code>apply_async()</code> 函数演示了执行回调的实际逻辑， 尽管实际情况中它可能会更加复杂(包括线程、进程、事件处理器等等)。</p>
+<p>计算的暂停与重启思路跟生成器函数的执行模型不谋而合。 具体来讲，yield 操作会使一个生成器函数产生一个值并暂停。 接下来调用生成器的 <code>__next__()</code> 或 <code>send()</code> 方法又会让它从暂停处继续执行。</p>
+<p>根据这个思路，这一小节的核心就在 <code>inline_async()</code> 装饰器函数中了。 关键点就是，装饰器会逐步遍历生成器函数的所有 <code>yield</code> 语句，每一次一个。 为了这样做，刚开始的时候创建了一个 <code>result</code> 队列并向里面放入一个 <code>None</code> 值。 然后开始一个循环操作，从队列中取出结果值并发送给生成器，它会持续到下一个 <code>yield</code> 语句， 在这里一个 <code>Async</code> 的实例被接受到。然后循环开始检查函数和参数，并开始进行异步计算 <code>apply_async()</code> 。 然而，这个计算有个最诡异部分是它并没有使用一个普通的回调函数，而是用队列的 <code>put()</code> 方法来回调。</p>
+<p>主循环立即返回顶部并在队列上执行 <code>get()</code> 操作。 如果数据存在，它一定是 put() 回调存放的结果。如果没有数据，那么先暂停操作并等待结果的到来。 这个具体怎样实现是由 <code>apply_async()</code> 函数来决定的。</p>
+<ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c07/p12_access_variables_defined_inside_closure.html#id1" target="_blank" rel="noopener">访问闭包中定义的变量</a></li>
+</ul>
+<h1 id="类与对象"><a href="#类与对象" class="headerlink" title="类与对象"></a>类与对象</h1><h2 id="让对象支持上下文管理协议"><a href="#让对象支持上下文管理协议" class="headerlink" title="让对象支持上下文管理协议"></a>让对象支持上下文管理协议</h2><p>为了让一个对象兼容 with 语句，你需要实现 <code>__enter__()</code> 和 <code>__exit__()</code> 方法。</p>
+<p>一个网络连接的例子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> socket <span class="keyword">import</span> socket, AF_INET, SOCK_STREAM</span><br><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> partial</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LazyConnection</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, address, family=AF_INET, type=SOCK_STREAM)</span>:</span></span><br><span class="line">        self.address = address</span><br><span class="line">        self.family = family</span><br><span class="line">        self.type = type</span><br><span class="line">        self.sock = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__enter__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.sock <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">            <span class="keyword">raise</span> RuntimeError(<span class="string">'Already connected'</span>)</span><br><span class="line">        self.sock = socket(self.family, self.type)</span><br><span class="line">        self.sock.connect(self.address)</span><br><span class="line">        <span class="keyword">return</span> self.sock</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__exit__</span><span class="params">(self, exc_ty, exc_val, tb)</span>:</span></span><br><span class="line">        self.sock.close()</span><br><span class="line">        self.sock = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">conn = LazyConnection((<span class="string">'www.python.org'</span>, <span class="number">80</span>))</span><br><span class="line"><span class="comment"># Connection closed</span></span><br><span class="line"><span class="keyword">with</span> conn <span class="keyword">as</span> s:</span><br><span class="line">    <span class="comment"># conn.__enter__() executes: connection open</span></span><br><span class="line">    s.send(<span class="string">b'GET /index.html HTTP/1.0\r\n'</span>)</span><br><span class="line">    s.send(<span class="string">b'Host: www.python.org\r\n'</span>)</span><br><span class="line">    s.send(<span class="string">b'\r\n'</span>)</span><br><span class="line">    resp = <span class="string">b''</span>.join(iter(partial(s.recv, <span class="number">8192</span>), <span class="string">b''</span>))</span><br><span class="line">    <span class="comment"># conn.__exit__() executes: connection closed</span></span><br></pre></td></tr></table></figure>
+<p>编写上下文管理器的主要原理是你的代码会放到 <code>with</code> 语句块中执行。 当出现 <code>with</code> 语句的时候，对象的 <code>__enter__()</code> 方法被触发， 它返回的值(如果有的话)会被赋值给 <code>as</code> 声明的变量。然后，<code>with</code> 语句块里面的代码开始执行。 最后，<code>__exit__()</code> 方法被触发进行清理工作。</p>
+<p>不管 <code>with</code> 代码块中发生什么，上面的控制流都会执行完，就算代码块中发生了异常也是一样的。 事实上，<code>__exit__()</code> 方法的第三个参数包含了异常类型、异常值和追溯信息(如果有的话)。 <code>__exit__()</code> 方法能自己决定怎样利用这个异常信息，或者忽略它并返回一个<code>None</code>值。 如果 <code>__exit__()</code> 返回 <code>True</code> ，那么异常会被清空，就好像什么都没发生一样， <code>with</code> 语句后面的程序继续在正常执行。</p>
+<blockquote>
+<p>在需要管理一些资源比如文件、网络连接和锁的编程环境中，使用上下文管理器是很普遍的。 这些资源的一个主要特征是它们必须被手动的关闭或释放来确保程序的正确运行。 例如，如果你请求了一个锁，那么你必须确保之后释放了它，否则就可能产生死锁。 通过实现 <code>__enter__()</code> 和 <code>__exit__()</code> 方法并使用 with 语句可以很容易的避免这些问题， 因为 <code>__exit__()</code> 方法可以让你无需担心这些了。</p>
+</blockquote>
+<h2 id="slots"><a href="#slots" class="headerlink" title="slots"></a><strong>slots</strong></h2><p>主要是用来当成简单的数据结构的类而言，你可以通过给类添加 <code>__slots__</code> 属性来极大的减少实例所占的内存。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Date</span>:</span></span><br><span class="line">    __slots__ = [<span class="string">'year'</span>, <span class="string">'month'</span>, <span class="string">'day'</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, year, month, day)</span>:</span></span><br><span class="line">        self.year = year</span><br><span class="line">        self.month = month</span><br><span class="line">        self.day = day</span><br></pre></td></tr></table></figure>
+<p>当你定义 <code>__slots__</code> 后，Python就会为实例使用一种更加紧凑的内部表示。 实例通过一个很小的固定大小的数组来构建，而不是为每个实例定义一个字典，这跟元组或列表很类似。 在 <code>__slots__</code> 中列出的属性名在内部被映射到这个数组的指定小标上。 使用<code>slots</code>一个不好的地方就是我们不能再给实例添加新的属性了，只能使用在 <code>__slots__</code> 中定义的那些属性名。</p>
+<blockquote>
+<p>使用slots后节省的内存会跟存储属性的数量和类型有关。 不过，一般来讲，使用到的内存总量和将数据存储在一个元组中差不多。 为了给你一个直观认识，假设你不使用slots直接存储一个Date实例， 在64位的Python上面要占用428字节，而如果使用了slots，内存占用下降到156字节。 如果程序中需要同时创建大量的日期实例，那么这个就能极大的减小内存使用量了。</p>
+<p>尽管slots看上去是一个很有用的特性，很多时候你还是得减少对它的使用冲动。 Python的很多特性都依赖于普通的基于字典的实现。 另外，定义了slots后的类不再支持一些普通类特性了，比如多继承。 大多数情况下，你应该只在那些经常被使用到的用作数据结构的类上定义slots (比如在程序中需要创建某个类的几百万个实例对象)。</p>
+</blockquote>
+<p>关于 <code>__slots__</code> 的一个常见误区是它可以作为一个封装工具来防止用户给实例增加新的属性。 尽管使用slots可以达到这样的目的，但是这个并不是它的初衷。 <code>__slots__</code> 更多的是用来作为一个内存优化工具。</p>
+<h2 id="在类中封装属性名"><a href="#在类中封装属性名" class="headerlink" title="在类中封装属性名"></a>在类中封装属性名</h2><ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c08/p05_encapsulating_names_in_class.html" target="_blank" rel="noopener">在类中封装属性名</a></li>
+</ul>
+<p>大多数而言，你应该让你的非公共名称以单下划线开头。但是，如果你清楚你的代码会涉及到子类， 并且有些内部属性应该在子类中隐藏起来，那么才考虑使用双下划线方案。</p>
+<h2 id="创建可管理的属性"><a href="#创建可管理的属性" class="headerlink" title="创建可管理的属性"></a>创建可管理的属性</h2><ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c08/p06_create_managed_attributes.html" target="_blank" rel="noopener">创建可管理的属性</a></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, first_name)</span>:</span></span><br><span class="line">        self.first_name = first_name</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Getter function</span></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">first_name</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self._first_name</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Setter function</span></span><br><span class="line"><span class="meta">    @first_name.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">first_name</span><span class="params">(self, value)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> isinstance(value, str):</span><br><span class="line">            <span class="keyword">raise</span> TypeError(<span class="string">'Expected a string'</span>)</span><br><span class="line">        self._first_name = value</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Deleter function (optional)</span></span><br><span class="line"><span class="meta">    @first_name.deleter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">first_name</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">raise</span> AttributeError(<span class="string">"Can't delete attribute"</span>)</span><br></pre></td></tr></table></figure>
+<p>上述代码中有三个相关联的方法，这三个方法的名字都必须一样。 第一个方法是一个 <code>getter</code> 函数，它使得 <code>first_name</code> 成为一个属性。 其他两个方法给 <code>first_name</code> 属性添加了 <code>setter</code> 和 <code>deleter</code> 函数。 需要强调的是只有在 <code>first_name</code> 属性被创建后， 后面的两个装饰器 <code>@first_name.setter</code> 和 <code>@first_name.deleter</code> 才能被定义。</p>
+<p>在实现一个<code>property</code>的时候，底层数据(如果有的话)仍然需要存储在某个地方。 因此，在get和set方法中，你会看到对 <code>_first_name</code> 属性的操作，这也是实际数据保存的地方。 另外，你可能还会问为什么 <code>__init__()</code> 方法中设置了 <code>self.first_name</code> 而不是 <code>self._first_name</code> 。 在这个例子中，我们创建一个<code>property</code>的目的就是在设置<code>attribute</code>的时候进行检查。 因此，你可能想在初始化的时候也进行这种类型检查。通过设置 <code>self.first_name</code> ，自动调用 <code>setter</code> 方法， 这个方法里面会进行参数的检查，否则就是直接访问 <code>self._first_name</code> 了。</p>
+<blockquote>
+<p>Properties还是一种定义动态计算attribute的方法。 这种类型的attributes并不会被实际的存储，而是在需要的时候计算出来。</p>
+</blockquote>
+<h2 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h2><p>对于你定义的每一个类，Python会计算出一个所谓的方法解析顺序(MRO)列表。 这个MRO列表就是一个简单的所有基类的线性顺序表。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'Base.__init__'</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(Base)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        super().__init__()</span><br><span class="line">        print(<span class="string">'A.__init__'</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span><span class="params">(Base)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        super().__init__()</span><br><span class="line">        print(<span class="string">'B.__init__'</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span><span class="params">(A,B)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        super().__init__()  <span class="comment"># Only one call to super() here</span></span><br><span class="line">        print(<span class="string">'C.__init__'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># c = C()</span></span><br><span class="line">print(C.__mro__)</span><br><span class="line"><span class="comment"># (&lt;class '__main__.C'&gt;, &lt;class '__main__.A'&gt;, &lt;class '__main__.B'&gt;, &lt;class '__main__.Base'&gt;, &lt;class 'object'&gt;)</span></span><br></pre></td></tr></table></figure>
+<p>为了实现继承，Python会在MRO列表上从左到右开始查找基类，直到找到第一个匹配这个属性的类为止。</p>
+<p>而这个MRO列表的构造是通过一个C3线性化算法来实现的。</p>
+<p>它实际上就是合并所有父类的MRO列表并遵循如下三条准则：</p>
+<ul>
+<li>子类会先于父类被检查</li>
+<li>多个父类会根据它们在列表中的顺序被检查</li>
+<li>如果对下一个类存在两个合法的选择，选择第一个父类</li>
+</ul>
+<p>老实说，你所要知道的就是MRO列表中的类顺序会让你定义的任意类层级关系变得有意义。</p>
+<p>当你使用 <code>super()</code> 函数时，Python会在MRO列表上继续搜索下一个类。 只要每个重定义的方法统一使用 <code>super()</code> 并只调用它一次， 那么控制流最终会遍历完整个MRO列表，每个方法也只会被调用一次。</p>
+<ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c08/p08_extending_property_in_subclass.html" target="_blank" rel="noopener">子类中扩展property</a></li>
+</ul>
+<p>在子类中扩展父类的功能，需要函数前面加上装饰器。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SubPerson</span><span class="params">(Person)</span>:</span></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">name</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'Getting name'</span>)</span><br><span class="line">        <span class="keyword">return</span> super(SubPerson, self).name</span><br><span class="line"></span><br><span class="line"><span class="meta">    @name.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">name</span><span class="params">(self, value)</span>:</span></span><br><span class="line">        print(<span class="string">'Setting name'</span>)</span><br><span class="line">        super(SubPerson, SubPerson).name.__set__(self, value)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @name.deleter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">name</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'Deleting name'</span>)</span><br><span class="line">        super(SubPerson, SubPerson).name.__delete__(self)</span><br></pre></td></tr></table></figure>
+<p>如果只是扩展其中的一个方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SubPerson1</span><span class="params">(Person)</span>:</span></span><br><span class="line"><span class="meta">    @Person.name.getter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">name</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'Lalala'</span>)</span><br><span class="line">        <span class="keyword">return</span> super().name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SubPerson</span><span class="params">(Person)</span>:</span></span><br><span class="line"><span class="meta">    @Person.name.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">name</span><span class="params">(self, value)</span>:</span></span><br><span class="line">        print(<span class="string">'Setting name to'</span>, value)</span><br><span class="line">        super(SubPerson, SubPerson).name.__set__(self, value)</span><br></pre></td></tr></table></figure>
+<p>在子类中扩展一个property可能会引起很多不易察觉的问题， 因为一个property其实是 <code>getter</code>、<code>setter</code> 和 <code>deleter</code> 方法的集合，而不是单个方法。 因此，当你扩展一个property的时候，你需要先确定你是否要重新定义所有的方法还是说只修改其中某一个。</p>
+<p>在第一个例子中，所有的property方法都被重新定义。 在每一个方法中，使用了 <code>super()</code> 来调用父类的实现。 在 setter 函数中使用 <code>super(SubPerson, SubPerson).name.__set__(self, value)</code> 的语句是没有错的。 为了委托给之前定义的<code>setter</code>方法，需要将控制权传递给之前定义的name属性的 <code>__set__()</code> 方法。 不过，获取这个方法的唯一途径是使用类变量而不是实例变量来访问它。 这也是为什么我们要使用 <code>super(SubPerson, SubPerson)</code> 的原因。</p>
+<ul>
+<li><a href="https://mozillazg.com/2016/12/python-super-is-not-as-simple-as-you-thought.html" target="_blank" rel="noopener">Python: super 没那么简单</a></li>
+</ul>
+<h2 id="创建新的类或实例属性"><a href="#创建新的类或实例属性" class="headerlink" title="创建新的类或实例属性"></a>创建新的类或实例属性</h2><ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c08/p09_create_new_kind_of_class_or_instance_attribute.html" target="_blank" rel="noopener">创建新的类或实例属性</a></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Integer</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__get__</span><span class="params">(self, instance, cls)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> instance <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">            <span class="keyword">return</span> self</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> instance.__dict__[self.name]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__set__</span><span class="params">(self, instance, value)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> isinstance(value, int):</span><br><span class="line">            <span class="keyword">raise</span> TypeError(<span class="string">'Expected an int'</span>)</span><br><span class="line">        instance.__dict__[self.name] = value</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__delete__</span><span class="params">(self, instance)</span>:</span></span><br><span class="line">        <span class="keyword">del</span> instance.__dict__[self.name]</span><br></pre></td></tr></table></figure>
+<p>一个描述器就是一个实现了三个核心的属性访问操作(get, set, delete)的类， 分别为 <code>__get__()</code> 、<code>__set__()</code> 和 <code>__delete__()</code> 这三个特殊的方法。 这些方法接受一个实例作为输入，之后相应的操作实例底层的字典。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span>:</span></span><br><span class="line">    x = Integer(<span class="string">'x'</span>)</span><br><span class="line">    y = Integer(<span class="string">'y'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">        self.x = x</span><br><span class="line">        self.y = y</span><br></pre></td></tr></table></figure>
+<p>描述器可实现大部分Python类特性中的底层魔法， 包括 <code>@classmethod</code> 、<code>@staticmethod</code> 、<code>@property</code> ，甚至是 <code>__slots__</code> 特性。</p>
+<p>通过定义一个描述器，你可以在底层捕获核心的实例操作(get, set, delete)，并且可完全自定义它们的行为。 这是一个强大的工具，有了它你可以实现很多高级功能，并且它也是很多高级库和框架中的重要工具之一。</p>
+<blockquote>
+<p>描述器的一个比较困惑的地方是它只能在类级别被定义，而不能为每个实例单独定义。</p>
+</blockquote>
+<h2 id="使用延迟计算属性"><a href="#使用延迟计算属性" class="headerlink" title="使用延迟计算属性"></a>使用延迟计算属性</h2><p>你想将一个只读属性定义成一个property，并且只在访问的时候才会计算结果。 但是一旦被访问后，你希望结果值被缓存起来，不用每次都去计算。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">lazyproperty</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, func)</span>:</span></span><br><span class="line">        self.func = func</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__get__</span><span class="params">(self, instance, owner)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> instance <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">            <span class="keyword">return</span> self</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            value = self.func(instance)</span><br><span class="line">            setattr(instance, self.func.__name__, value)</span><br><span class="line">            <span class="comment"># 设置属性值</span></span><br><span class="line">            <span class="keyword">return</span> value</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Circle</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, radius)</span>:</span></span><br><span class="line">        self.radius = radius</span><br><span class="line"></span><br><span class="line"><span class="meta">    @lazyproperty</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">area</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'Computing area'</span>)</span><br><span class="line">        <span class="keyword">return</span> math.pi * self.radius ** <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @lazyproperty</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">perimeter</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'Computing permeter'</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span> * math.pi * self.radius</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">c = Circle(<span class="number">4.0</span>)</span><br><span class="line">print(c.radius)</span><br><span class="line"><span class="comment"># 4.0</span></span><br><span class="line">print(c.area)</span><br><span class="line"><span class="comment"># Computing area</span></span><br><span class="line"><span class="comment"># 50.26548245743669</span></span><br><span class="line">print(c.area)</span><br><span class="line"><span class="comment"># 50.26548245743669</span></span><br><span class="line">print(c.perimeter)</span><br><span class="line"><span class="comment"># Computing permeter</span></span><br><span class="line"><span class="comment"># 25.132741228718345</span></span><br><span class="line">print(c.perimeter)</span><br><span class="line"><span class="comment"># 25.132741228718345</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>Computing area</code> 和 <code>Computing perimeter</code> 仅仅出现一次。</p>
+</blockquote>
+<p>很多时候，构造一个延迟计算属性的主要目的是为了提升性能。 例如，你可以避免计算这些属性值，除非你真的需要它们。 这里演示的方案就是用来实现这样的效果的， 只不过它是通过以非常高效的方式使用描述器的一个精妙特性来达到这种效果的。</p>
+<p>当一个描述器被放入一个类的定义时， 每次访问属性时它的 <code>__get__()</code> 、<code>__set__()</code> 和 <code>__delete__()</code> 方法就会被触发。 不过，如果一个描述器仅仅只定义了一个 <code>__get__()</code> 方法的话，它比通常的具有更弱的绑定。 特别地，只有当被访问属性不在实例底层的字典中时 <code>__get__()</code> 方法才会被触发。</p>
+<p><code>lazyproperty</code> 类利用这一点，使用 <code>__get__()</code> 方法在实例中存储计算出来的值， 这个实例使用相同的名字作为它的property。 这样一来，结果值被存储在实例字典中并且以后就不需要再去计算这个property了。</p>
+<h2 id="简化数据结构的初始化"><a href="#简化数据结构的初始化" class="headerlink" title="简化数据结构的初始化"></a>简化数据结构的初始化</h2><ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c08/p11_simplify_initialization_of_data_structure.html" target="_blank" rel="noopener">简化数据结构的初始化</a></li>
+</ul>
+<p>写一个公共的类，定义<code>__init__</code>方法，之后的类继承该类。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Structure1</span>:</span></span><br><span class="line">    <span class="comment"># Class variable that specifies expected fields</span></span><br><span class="line">    _fields = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, *args)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> len(args) != len(self._fields):</span><br><span class="line">            <span class="keyword">raise</span> TypeError(<span class="string">'Expected &#123;&#125; arguments'</span>.format(len(self._fields)))</span><br><span class="line">        <span class="comment"># Set the arguments</span></span><br><span class="line">        <span class="keyword">for</span> name, value <span class="keyword">in</span> zip(self._fields, args):</span><br><span class="line">            setattr(self, name, value)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Example class definitions</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stock</span><span class="params">(Structure1)</span>:</span></span><br><span class="line">    _fields = [<span class="string">'name'</span>, <span class="string">'shares'</span>, <span class="string">'price'</span>]</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span><span class="params">(Structure1)</span>:</span></span><br><span class="line">    _fields = [<span class="string">'x'</span>, <span class="string">'y'</span>]</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Circle</span><span class="params">(Structure1)</span>:</span></span><br><span class="line">    _fields = [<span class="string">'radius'</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">area</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> math.pi * self.radius ** <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<h2 id="abc"><a href="#abc" class="headerlink" title="abc"></a>abc</h2><p>定义接口或者抽象基类</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> abc <span class="keyword">import</span> ABCMeta, abstractmethod</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IStream</span><span class="params">(metaclass=ABCMeta)</span>:</span></span><br><span class="line"><span class="meta">    @abstractmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">read</span><span class="params">(self, maxbytes=<span class="number">-1</span>)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @abstractmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">write</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>抽象基类的一个主要用途是在代码中检查某些类是否为特定类型，实现了特定接口。</p>
+<blockquote>
+<p>尽管ABCs可以让我们很方便的做类型检查，但是我们在代码中最好不要过多的使用它。 因为Python的本质是一门动态编程语言，其目的就是给你更多灵活性， 强制类型检查或让你代码变得更复杂，这样做无异于舍本求末。</p>
+</blockquote>
+<h2 id="实现数据模型的类型约束"><a href="#实现数据模型的类型约束" class="headerlink" title="实现数据模型的类型约束"></a>实现数据模型的类型约束</h2><ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c08/p13_implementing_data_model_or_type_system.html" target="_blank" rel="noopener"> 实现数据模型的类型约束</a></li>
+</ul>
+<p>定义某些在属性赋值上面有限制的数据结构。</p>
+<h2 id="collections"><a href="#collections" class="headerlink" title="collections"></a>collections</h2><p>collections 定义了很多抽象基类，当你想自定义容器类的时候它们会非常有用。</p>
+<ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c08/p14_implementing_custom_containers.html" target="_blank" rel="noopener">实现自定义容器</a></li>
+</ul>
+<h2 id="functools-total-ordering"><a href="#functools-total-ordering" class="headerlink" title="functools.total_ordering"></a>functools.total_ordering</h2><ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c08/p24_making_classes_support_comparison_operations.html" target="_blank" rel="noopener">让类支持比较操作</a></li>
+</ul>
+<p>让某个类的实例支持标准的比较运算(比如&gt;=,!=,&lt;=,&lt;等)，但是又不想去实现那一大丢的特殊方法。</p>
+<p>装饰器 <code>functools.total_ordering</code> 就是用来简化这个处理的。 使用它来装饰一个来，你只需定义一个 <code>__eq__()</code> 方法， 外加其他方法(<code>__lt__</code>, <code>__le__</code>, <code>__gt__</code>, or <code>__ge__</code>)中的一个即可。 然后装饰器会自动为你填充其它比较方法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> total_ordering</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Room</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, length, width)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.length = length</span><br><span class="line">        self.width = width</span><br><span class="line">        self.square_feet = self.length * self.width</span><br><span class="line"></span><br><span class="line"><span class="meta">@total_ordering</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">House</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, style)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.style = style</span><br><span class="line">        self.rooms = list()</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">living_space_footage</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> sum(r.square_feet <span class="keyword">for</span> r <span class="keyword">in</span> self.rooms)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add_room</span><span class="params">(self, room)</span>:</span></span><br><span class="line">        self.rooms.append(room)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">'&#123;&#125;: &#123;&#125; square foot &#123;&#125;'</span>.format(self.name,</span><br><span class="line">                self.living_space_footage,</span><br><span class="line">                self.style)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__eq__</span><span class="params">(self, other)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.living_space_footage == other.living_space_footage</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__lt__</span><span class="params">(self, other)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.living_space_footage &lt; other.living_space_footage</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Jaelyn
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://jaelyn.coding.me/2018/05/20/python-cookbook-03/" title="Python Cookbook 笔记 03">http://jaelyn.coding.me/2018/05/20/python-cookbook-03/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python3/" rel="tag"><i class="fa fa-tag"></i> python3</a>
+          
+            <a href="/tags/Cookbook/" rel="tag"><i class="fa fa-tag"></i> Cookbook</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/15/supervisor-learn/" rel="next" title="Supervisor 指令学习">
+                <i class="fa fa-chevron-left"></i> Supervisor 指令学习
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/05/mac-pycharm-quick-click/" rel="prev" title="Mac 下的 PyCharm 快捷键">
+                Mac 下的 PyCharm 快捷键 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="Jaelyn" />
+            
+              <p class="site-author-name" itemprop="name">Jaelyn</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Jaelyn-Lim" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/u/2660619527" target="_blank" title="微博">
+                    
+                      <i class="fa fa-fw fa-globe"></i>微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据编码和处理"><span class="nav-number">1.</span> <span class="nav-text">数据编码和处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#csv"><span class="nav-number">1.1.</span> <span class="nav-text">csv</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读写JSON数据"><span class="nav-number">1.2.</span> <span class="nav-text">读写JSON数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xml-etree-ElementTree"><span class="nav-number">1.3.</span> <span class="nav-text">xml.etree.ElementTree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#与关系型数据库的交互"><span class="nav-number">1.4.</span> <span class="nav-text">与关系型数据库的交互</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#base64"><span class="nav-number">1.5.</span> <span class="nav-text">base64</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读取嵌套和可变长二进制数据"><span class="nav-number">1.6.</span> <span class="nav-text">读取嵌套和可变长二进制数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pandas"><span class="nav-number">1.7.</span> <span class="nav-text">pandas</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数"><span class="nav-number">2.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#接受任意数量参数的函"><span class="nav-number">2.1.</span> <span class="nav-text">接受任意数量参数的函</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#给函数参数增加元信息"><span class="nav-number">2.2.</span> <span class="nav-text">给函数参数增加元信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义有默认参数的函数"><span class="nav-number">2.3.</span> <span class="nav-text">定义有默认参数的函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lambda表达式"><span class="nav-number">2.4.</span> <span class="nav-text">lambda表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#functools-partial"><span class="nav-number">2.5.</span> <span class="nav-text">functools.partial</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将单方法的类转换为函数"><span class="nav-number">2.6.</span> <span class="nav-text">将单方法的类转换为函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#带额外状态信息的回调函数"><span class="nav-number">2.7.</span> <span class="nav-text">带额外状态信息的回调函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内联回调函数"><span class="nav-number">2.8.</span> <span class="nav-text">内联回调函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类与对象"><span class="nav-number">3.</span> <span class="nav-text">类与对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#让对象支持上下文管理协议"><span class="nav-number">3.1.</span> <span class="nav-text">让对象支持上下文管理协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#slots"><span class="nav-number">3.2.</span> <span class="nav-text">slots</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在类中封装属性名"><span class="nav-number">3.3.</span> <span class="nav-text">在类中封装属性名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建可管理的属性"><span class="nav-number">3.4.</span> <span class="nav-text">创建可管理的属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类的继承"><span class="nav-number">3.5.</span> <span class="nav-text">类的继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建新的类或实例属性"><span class="nav-number">3.6.</span> <span class="nav-text">创建新的类或实例属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用延迟计算属性"><span class="nav-number">3.7.</span> <span class="nav-text">使用延迟计算属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简化数据结构的初始化"><span class="nav-number">3.8.</span> <span class="nav-text">简化数据结构的初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#abc"><span class="nav-number">3.9.</span> <span class="nav-text">abc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现数据模型的类型约束"><span class="nav-number">3.10.</span> <span class="nav-text">实现数据模型的类型约束</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#collections"><span class="nav-number">3.11.</span> <span class="nav-text">collections</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#functools-total-ordering"><span class="nav-number">3.12.</span> <span class="nav-text">functools.total_ordering</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jaelyn</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">79.2k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+<script>
+  	var _mtac = {};
+  	(function() {
+  		var mta = document.createElement("script");
+  		mta.src = "https://pingjs.qq.com/h5/stats.js?v2.0.4";
+  		mta.setAttribute("name", "MTAH5");
+  		mta.setAttribute("sid", "500569228");
+
+  		var s = document.getElementsByTagName("script")[0];
+  		s.parentNode.insertBefore(mta, s);
+  	})();
+</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=64866827";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  undefined
+
+  <script>
+    var _mtac = {};
+    (function() {
+      var mta = document.createElement("script");
+      mta.src = "http://pingjs.qq.com/h5/stats.js?v2.0.2";
+      mta.setAttribute("name", "MTAH5");
+      mta.setAttribute("sid", "500569228");
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(mta, s);
+    })();
+  </script>
+
+  <script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+  
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"z16","log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

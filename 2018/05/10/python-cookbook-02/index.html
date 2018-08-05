@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  
+<script type="text/javascript">
+    var _speedMark = new Date();
+</script>
+
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=64866827" charset="UTF-8"></script>
+
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="HRlPcTjXKc" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/uploads/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/uploads/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/uploads/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/uploads/safari-pinned-tab.svg?v=5.1.3" color="#222">
+
+
+  <link rel="manifest" href="/images/uploads/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/uploads/browserconfig.xml" />
+
+
+
+  <meta name="keywords" content="python3, Cookbook" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="《Python CookBook 3》  这个文章是在我学习这本书过程的笔记（复制粘贴），主要用于自己方便查看。还有记录了我的觉得比较有用（没学过）的操作。 数字日期和时间round-数字的四舍五入 对浮点数执行指定精度的舍入运算。对于简单的舍入运算，使用内置的 round(value, ndigits) 函数即可。 123456print(round(1.23, 1))# 1.2print(r">
+<meta name="keywords" content="python3, Cookbook">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python Cookbook 笔记 02">
+<meta property="og:url" content="http://jaelyn.coding.me/2018/05/10/python-cookbook-02/index.html">
+<meta property="og:site_name" content="Jaelyn&#39;s Blog">
+<meta property="og:description" content="《Python CookBook 3》  这个文章是在我学习这本书过程的笔记（复制粘贴），主要用于自己方便查看。还有记录了我的觉得比较有用（没学过）的操作。 数字日期和时间round-数字的四舍五入 对浮点数执行指定精度的舍入运算。对于简单的舍入运算，使用内置的 round(value, ndigits) 函数即可。 123456print(round(1.23, 1))# 1.2print(r">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-05T04:26:08.662Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python Cookbook 笔记 02">
+<meta name="twitter:description" content="《Python CookBook 3》  这个文章是在我学习这本书过程的笔记（复制粘贴），主要用于自己方便查看。还有记录了我的觉得比较有用（没学过）的操作。 数字日期和时间round-数字的四舍五入 对浮点数执行指定精度的舍入运算。对于简单的舍入运算，使用内置的 round(value, ndigits) 函数即可。 123456print(round(1.23, 1))# 1.2print(r">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'S2RJTOM4KM',
+      apiKey: '46aa43b4dc81f6d01e063ef5e5dba1a7',
+      indexName: 'blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://jaelyn.coding.me/2018/05/10/python-cookbook-02/"/>
+
+
+
+
+
+  <title>Python Cookbook 笔记 02 | Jaelyn's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jaelyn's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">jaelyn-lim</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jaelyn.coding.me/2018/05/10/python-cookbook-02/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jaelyn">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jaelyn's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Python Cookbook 笔记 02</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-10T11:15:05+08:00">
+                2018-05-10
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-05T12:26:08+08:00">
+                2018-08-05
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python3/" itemprop="url" rel="index">
+                    <span itemprop="name">python3</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 阅读次数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  11,008
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  46
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/preface.html" target="_blank" rel="noopener">《Python CookBook 3》</a></li>
+</ul>
+<p>这个文章是在我学习这本书过程的笔记（复制粘贴），主要用于自己方便查看。还有记录了我的觉得比较有用（没学过）的操作。</p>
+<h1 id="数字日期和时间"><a href="#数字日期和时间" class="headerlink" title="数字日期和时间"></a>数字日期和时间</h1><h2 id="round"><a href="#round" class="headerlink" title="round"></a>round</h2><p>-<a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c03/p01_round_number.html" target="_blank" rel="noopener">数字的四舍五入</a></p>
+<p>对浮点数执行指定精度的舍入运算。<br>对于简单的舍入运算，使用内置的 <code>round(value, ndigits)</code> 函数即可。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">print(round(<span class="number">1.23</span>, <span class="number">1</span>))</span><br><span class="line"><span class="comment"># 1.2</span></span><br><span class="line">print(round(<span class="number">1.27</span>, <span class="number">1</span>))</span><br><span class="line"><span class="comment"># 1.3</span></span><br><span class="line">print(round(<span class="number">1.25361</span>,<span class="number">3</span>))</span><br><span class="line"><span class="comment"># 1.254</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<blockquote>
+<p>当一个值刚好在两个边界的中间的时候， <code>round</code> 函数返回离它最近的偶数。 也就是说，对1.5或者2.5的舍入运算都会得到2。</p>
+</blockquote>
+<p>传给 <code>round()</code> 函数的 <code>ndigits</code> 参数可以是负数，这种情况下， 舍入运算会作用在十位、百位、千位等上面。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1627731</span></span><br><span class="line">print(round(a, <span class="number">-1</span>))</span><br><span class="line"><span class="comment"># 1627730</span></span><br><span class="line">print(round(a, <span class="number">-2</span>))</span><br><span class="line"><span class="comment"># 1627700</span></span><br><span class="line">print(round(a, <span class="number">-3</span>))</span><br><span class="line"><span class="comment"># 1628000</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>不要将舍入和格式化输出搞混淆了。 如果你的目的只是简单的输出一定宽度的数，你不需要使用 <code>round()</code> 函数。 而仅仅只需要在格式化的时候指定精度即可。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">1.23456</span></span><br><span class="line">print(format(x, <span class="string">'0.2f'</span>))</span><br><span class="line"><span class="comment"># 1.23</span></span><br></pre></td></tr></table></figure>
+<h2 id="decimal"><a href="#decimal" class="headerlink" title="decimal"></a>decimal</h2><p>-<a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c03/p02_accurate_decimal_calculations.html" target="_blank" rel="noopener">执行精确的浮点数运算</a></p>
+<p>对浮点数执行精确的计算操作，并且不希望有任何小误差的出现。</p>
+<blockquote>
+<p>浮点数的一个普遍问题是它们并不能精确的表示十进制数。 并且，即使是最简单的数学运算也会产生小的误差。这些错误是由底层<strong>CPU</strong>和<strong>IEEE 754标准</strong>通过自己的浮点单位去执行算术时的特征。 由于Python的浮点数据类型使用底层表示存储数据，因此你没办法去避免这样的误差。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> decimal <span class="keyword">import</span> Decimal</span><br><span class="line"></span><br><span class="line">a = Decimal(<span class="string">'4.2'</span>)</span><br><span class="line">b = Decimal(<span class="string">'2.1'</span>)</span><br><span class="line">print(a + b)</span><br><span class="line"><span class="comment"># 6.3</span></span><br><span class="line">print((a + b) == Decimal(<span class="string">'6.3'</span>))</span><br><span class="line"><span class="comment"># True</span></span><br></pre></td></tr></table></figure>
+<p>初看起来，上面的代码好像有点奇怪，比如我们用字符串来表示数字。 然而， <code>Decimal</code> 对象会像普通浮点数一样的工作(支持所有的常用数学运算)。 如果你打印它们或者在字符串格式化函数中使用它们，看起来跟普通数字没什么两样。</p>
+<blockquote>
+<p>Python新手会倾向于使用 <code>decimal</code> 模块来处理浮点数的精确运算。 然而，先理解你的应用程序目的是非常重要的。 如果你是在做科学计算或工程领域的计算、电脑绘图，或者是科学领域的大多数运算， 那么使用普通的浮点类型是比较普遍的做法。 其中一个原因是，在真实世界中很少会要求精确到普通浮点数能提供的17位精度。 因此，计算过程中的那么一点点的误差是被允许的。 第二点就是，原生的浮点数计算要快的多-有时候你在执行大量运算的时候速度也是非常重要的。</p>
+</blockquote>
+<p>总的来说， <code>decimal</code> 模块主要用在涉及到金融的领域。 在这类程序中，哪怕是一点小小的误差在计算过程中蔓延都是不允许的。 因此， <code>decimal</code> 模块为解决这类问题提供了方法。 当Python和数据库打交道的时候也通常会遇到 <code>Decimal</code> 对象，并且，通常也是在处理金融数据的时候。</p>
+<h2 id="fractions"><a href="#fractions" class="headerlink" title="fractions"></a>fractions</h2><p>-<a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c03/p08_calculating_with_fractions.html" target="_blank" rel="noopener">分数运算</a></p>
+<p>用来执行包含分数的数学运算。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> fractions <span class="keyword">import</span> Fraction</span><br><span class="line"></span><br><span class="line">a = Fraction(<span class="number">5</span>, <span class="number">4</span>)</span><br><span class="line">b = Fraction(<span class="number">7</span>, <span class="number">16</span>)</span><br><span class="line">print(a + b)</span><br><span class="line"><span class="comment"># 27/16</span></span><br></pre></td></tr></table></figure>
+<p>也可以用 <code>numerator</code> 显示分子，用<code>denominator</code>显示分母。或者也可以使用<code>float</code>函数显示分数的浮点类型。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">c = a * b</span><br><span class="line">print(c)</span><br><span class="line"><span class="comment"># 35/64</span></span><br><span class="line">print(c.numerator)</span><br><span class="line"><span class="comment"># 35</span></span><br><span class="line">print(c.denominator)</span><br><span class="line"><span class="comment"># 64</span></span><br><span class="line"></span><br><span class="line">print(float(c))</span><br><span class="line"><span class="comment"># 0.546875</span></span><br></pre></td></tr></table></figure>
+<p>这个函数同样也有很多用法，例如，求出一个分数，该分数的分母不超过所设定的数，并且该分数的值最接近所求的浮点数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(c.limit_denominator(<span class="number">10</span>))</span><br><span class="line"><span class="comment"># 5/9</span></span><br></pre></td></tr></table></figure>
+<p>或者给出一个小数，求原来的分数，当然，求出来的值是最为接近的值，不代表完全一致。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">3.75</span></span><br><span class="line">y = Fraction(*x.as_integer_ratio())</span><br><span class="line">print(y)</span><br><span class="line"><span class="comment"># 15/4</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在大多数程序中一般不会出现分数的计算问题，但是有时候还是需要用到的。 比如，在一个允许接受分数形式的测试单位并以分数形式执行运算的程序中， 直接使用分数可以减少手动转换为小数或浮点数的工作。</p>
+</blockquote>
+<h2 id="NumPy"><a href="#NumPy" class="headerlink" title="NumPy"></a>NumPy</h2><p>-<a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c03/p09_calculating_with_large_num_arrays.html" target="_blank" rel="noopener">大型数组运算</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">y = [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>]</span><br><span class="line">print(x * <span class="number">2</span>)</span><br><span class="line"><span class="comment"># [1, 2, 3, 4, 1, 2, 3, 4]</span></span><br><span class="line">print(x + y)</span><br><span class="line"><span class="comment"># [1, 2, 3, 4, 5, 6, 7, 8]</span></span><br></pre></td></tr></table></figure>
+<p>由此我们可以看出，python 原生的对与数列的处理就是普通的对于数列上的操作，由此看来，像 <code>*</code> 、 <code>+</code> 等操作，是以整个数列为最小单位的操作。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">ax = np.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line">ay = np.array([<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>])</span><br><span class="line">print(ax * <span class="number">2</span>)</span><br><span class="line"><span class="comment"># [2 4 6 8]</span></span><br><span class="line">print(ax + <span class="number">10</span>)</span><br><span class="line"><span class="comment"># [11 12 13 14]</span></span><br><span class="line">print(ax + ay)</span><br><span class="line"><span class="comment"># [ 6  8 10 12]</span></span><br><span class="line">print(ax * ay)</span><br><span class="line"><span class="comment"># [ 5 12 21 32]</span></span><br></pre></td></tr></table></figure>
+<p>与原生的不同，<code>numpy</code> 的数列操作则是对应里面的每一个元素的操作。</p>
+<p><code>NumPy</code> 中的标量运算(比如 <code>ax * 2</code> 或 <code>ax + 10</code> )会作用在每一个元素上。 另外，当两个操作数都是数组的时候执行元素对等位置计算，并最终生成一个新的数组。</p>
+<blockquote>
+<p>NumPy 还为数组操作提供了大量的通用函数，这些函数可以作为 math 模块中类似函数的替代。</p>
+</blockquote>
+<p>使用这些通用函数要比循环数组并使用 math 模块中的函数执行计算要快的多。 因此，只要有可能的话尽量选择 NumPy 的数组方案。</p>
+<blockquote>
+<p>底层实现中， NumPy 数组使用了C或者Fortran语言的机制分配内存。 也就是说，它们是一个非常大的连续的并由同类型数据组成的内存区域。 所以，你可以构造一个比普通Python列表大的多的数组。</p>
+</blockquote>
+<p>NumPy 是Python领域中很多科学与工程库的基础，同时也是被广泛使用的最大最复杂的模块。 即便如此，在刚开始的时候通过一些简单的例子和玩具程序也能帮我们完成一些有趣的事情。</p>
+<p>通常我们导入 NumPy 模块的时候会使用语句 import numpy as np 。 这样的话你就不用再你的程序里面一遍遍的敲入 numpy ，只需要输入 np 就行了，节省了不少时间。</p>
+<p>-<a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c03/p10_matrix_and_linear_algebra_calculation.html" target="_blank" rel="noopener">矩阵与线性代数运算</a></p>
+<p>NumPy 库有一个矩阵对象可以用来解决这个问题。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">m = np.matrix([[<span class="number">1</span>, <span class="number">-2</span>, <span class="number">3</span>], [<span class="number">0</span>, <span class="number">4</span>, <span class="number">5</span>], [<span class="number">7</span>, <span class="number">8</span>, <span class="number">-9</span>]])</span><br><span class="line">print(m)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">[[ 1 -2  3]</span></span><br><span class="line"><span class="string"> [ 0  4  5]</span></span><br><span class="line"><span class="string"> [ 7  8 -9]]</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">print(m.T)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string"># 输出矩阵的转置</span></span><br><span class="line"><span class="string">[[ 1  0  7]</span></span><br><span class="line"><span class="string"> [-2  4  8]</span></span><br><span class="line"><span class="string"> [ 3  5 -9]]</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+<p>可以在 <code>numpy.linalg</code> 子包中找到更多的操作函数。</p>
+<p>这个函数有很多强大的功能，如果需要用到一些关于矩阵和线性代数相关的知识和运算的时候，可以参考这个函数，能轻松解决很多问题。</p>
+<h2 id="random"><a href="#random" class="headerlink" title="random"></a>random</h2><p>-<a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c03/p11_pick_things_at_random.html" target="_blank" rel="noopener">随机选择</a></p>
+<p>主要用于生成随机数的函数。</p>
+<p><code>random</code> 模块有大量的函数用来产生随机数和随机选择元素。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">values = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在列表中随机生成一个数字</span></span><br><span class="line">a = random.choice(values)</span><br><span class="line">print(a)</span><br><span class="line"><span class="comment"># 1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在列表中随机生成多个数字组成的新列表</span></span><br><span class="line">b = random.sample(values, <span class="number">2</span>)</span><br><span class="line">print(b)</span><br><span class="line"><span class="comment"># [1, 2]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 随机打乱列表的位置，没有返回值，会直接在原来的数组上修改，属于原地操作</span></span><br><span class="line">random.shuffle(values)</span><br><span class="line">print(values)</span><br><span class="line"><span class="comment"># [6, 5, 1, 2, 3, 4]</span></span><br><span class="line">print(values[<span class="number">0</span>])</span><br><span class="line"><span class="comment"># 6</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在1到10之间随机生成一个数字</span></span><br><span class="line">c = random.randint(<span class="number">1</span>, <span class="number">10</span>)</span><br><span class="line">print(c)</span><br><span class="line"><span class="comment"># 9</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在0到1之间随机生成浮点数</span></span><br><span class="line">d = random.random()</span><br><span class="line">print(d)</span><br><span class="line"><span class="comment"># 0.19051868016253204</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取N位随机位(二进制)的整数</span></span><br><span class="line">e = random.getrandbits(<span class="number">20</span>)</span><br><span class="line">print(e)</span><br><span class="line"><span class="comment"># 293829</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>random 模块使用 Mersenne Twister 算法来计算生成随机数。</p>
+</blockquote>
+<p>除了上述介绍的功能，<code>random</code>模块还包含基于均匀分布、高斯分布和其他分布的随机数生成函数。 比如， <code>random.uniform()</code> 计算均匀分布随机数， <code>random.gauss()</code> 计算正态分布随机数。</p>
+<p>在 <code>random</code> 模块中的函数不应该用在和密码学相关的程序中。 如果你确实需要类似的功能，可以使用<code>ssl</code>模块中相应的函数。 比如， <code>ssl.RAND_bytes()</code> 可以用来生成一个安全的随机字节序列。</p>
+<h2 id="datetime-amp-timedelta"><a href="#datetime-amp-timedelta" class="headerlink" title="datetime &amp; timedelta"></a>datetime &amp; timedelta</h2><p>-<a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c03/p12_convert_days_to_seconds_and_others.html" target="_blank" rel="noopener">基本的日期与时间转换</a></p>
+<p>执行不同时间单位的转换和计算，请使用 <code>datetime</code> 模块。</p>
+<p>如果你想表示指定的日期和时间，先创建一个 <code>datetime</code> 实例然后使用标准的数学运算来操作它们。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> timedelta</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line">a = timedelta(days=<span class="number">2</span>, hours=<span class="number">6</span>)</span><br><span class="line">b = timedelta(hours=<span class="number">4.5</span>)</span><br><span class="line">c = a + b</span><br><span class="line">print(c)</span><br><span class="line"><span class="comment"># 2 days, 10:30:00</span></span><br><span class="line">print(c.days)</span><br><span class="line"><span class="comment"># 2</span></span><br><span class="line">print(c.seconds)</span><br><span class="line"><span class="comment"># 37800</span></span><br><span class="line">print(c.microseconds)</span><br><span class="line"><span class="comment"># 0</span></span><br><span class="line">print(c.total_seconds())</span><br><span class="line"><span class="comment"># 210600.0</span></span><br><span class="line"></span><br><span class="line">a = datetime(<span class="number">2012</span>, <span class="number">9</span>, <span class="number">23</span>)</span><br><span class="line">print(a + timedelta(days=<span class="number">10</span>))</span><br><span class="line"><span class="comment"># 2012-10-03 00:00:00</span></span><br><span class="line"></span><br><span class="line">b = datetime(<span class="number">2012</span>, <span class="number">12</span>, <span class="number">21</span>)</span><br><span class="line">d = b - a</span><br><span class="line">print(d.days)</span><br><span class="line"><span class="comment"># 89</span></span><br><span class="line">now = datetime.today()</span><br><span class="line">print(now)</span><br><span class="line"><span class="comment"># 2018-05-28 18:44:35.190897</span></span><br><span class="line">print(now + timedelta(minutes=<span class="number">10</span>))</span><br><span class="line"><span class="comment"># 2018-05-28 18:54:35.190897</span></span><br><span class="line"></span><br><span class="line">a = datetime(<span class="number">2012</span>, <span class="number">3</span>, <span class="number">1</span>)</span><br><span class="line">b = datetime(<span class="number">2012</span>, <span class="number">2</span>, <span class="number">28</span>)</span><br><span class="line">print(a - b)</span><br><span class="line"><span class="comment"># 2 days, 0:00:00</span></span><br><span class="line">print((a-b).days)</span><br><span class="line"><span class="comment"># 2</span></span><br></pre></td></tr></table></figure>
+<p>在计算的时候，需要注意的是 <code>datetime</code> 会自动处理闰年。</p>
+<p>对大多数基本的日期和时间处理问题， <code>datetime</code> 模块已经足够了。 如果你需要执行更加复杂的日期操作，比如处理时区，模糊时间范围，节假日计算等等， 可以考虑使用 <code>dateutil</code> 模块。</p>
+<blockquote>
+<p>如果要执行大量的日期计算的话，最好安装第三方包 <code>python-dateutil</code> 来代替。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">from</span> dateutil.relativedelta <span class="keyword">import</span> relativedelta</span><br><span class="line"><span class="keyword">from</span> dateutil.rrule <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">d = datetime.now()</span><br><span class="line">print(d)</span><br><span class="line"><span class="comment"># 2018-05-28 23:39:37.526316</span></span><br><span class="line">print(d + relativedelta(weekday=FR))</span><br><span class="line"><span class="comment"># 2018-06-01 23:39:37.526316</span></span><br><span class="line">print(d + relativedelta(weekday=FR(<span class="number">-1</span>)))</span><br><span class="line"><span class="comment"># 2018-05-25 23:39:37.526316</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c03/p14_date_range_for_current_month.html" target="_blank" rel="noopener">计算当前月份的日期范围</a></li>
+</ul>
+<p>计算对应的月份的天数，可以用到<code>calendar.monthrange()</code>函数，这个函数会根据所传入的年份和月数量，返回一个元组，包括对应月份的的星期和天数。</p>
+<p>这样的话就可以使用循环等操作，获得当月份的所有日期。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime, date, timedelta</span><br><span class="line"><span class="keyword">import</span> calendar</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_month_range</span><span class="params">(start_date=None)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> start_date <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">        start_date = date.today().replace(month=<span class="number">2</span>, day=<span class="number">1</span>)</span><br><span class="line">    <span class="comment"># Return weekday (0-6 ~ Mon-Sun) and number of days (28-31) for year, month.</span></span><br><span class="line">    temp, days_in_month = calendar.monthrange(start_date.year, start_date.month)</span><br><span class="line">    print(temp)</span><br><span class="line">    <span class="comment"># 3</span></span><br><span class="line">    print(days_in_month)</span><br><span class="line">    <span class="comment"># 28</span></span><br><span class="line">    end_date = start_date + timedelta(days=days_in_month)</span><br><span class="line">    <span class="keyword">return</span> (start_date, end_date)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a_day = timedelta(days=<span class="number">1</span>)</span><br><span class="line">first_day, last_day = get_month_range()</span><br><span class="line"><span class="keyword">while</span> first_day &lt; last_day:</span><br><span class="line">    print(first_day)</span><br><span class="line">    first_day += a_day</span><br></pre></td></tr></table></figure>
+<p>同样的，也可以采用生成器的方式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">date_range</span><span class="params">(start, stop, step)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> start &lt; stop:</span><br><span class="line">        <span class="keyword">yield</span> start</span><br><span class="line">        start += step</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> d <span class="keyword">in</span> date_range(datetime(<span class="number">2012</span>, <span class="number">9</span>, <span class="number">1</span>), datetime(<span class="number">2012</span>, <span class="number">10</span>, <span class="number">1</span>), timedelta(hours=<span class="number">6</span>)):</span><br><span class="line">    print(d)</span><br></pre></td></tr></table></figure>
+<p>-<a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c03/p15_convert_strings_into_datetimes.html" target="_blank" rel="noopener">字符串转换为日期</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">text = <span class="string">'2012-09-20'</span></span><br><span class="line">y = datetime.strptime(text, <span class="string">'%Y-%m-%d'</span>)</span><br><span class="line">z = datetime.now()</span><br><span class="line">diff = z- y</span><br><span class="line">print(diff)</span><br><span class="line"><span class="comment"># 2077 days, 11:13:12.631424</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>datetime.strptime()</code> 方法支持很多的格式化代码， 比如 <code>%Y</code> 代表4位数年份， <code>%m</code> 代表两位数月份。 还有一点值得注意的是这些格式化占位符也可以反过来使用，将日期输出为指定的格式字符串形式。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">z = datetime.now()</span><br><span class="line">nice_z = datetime.strftime(z, <span class="string">'%Y年%m月%d日'</span>)</span><br><span class="line">print(nice_z)</span><br><span class="line"><span class="comment"># 2018年05月29日</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>还有一点需要注意的是， <code>strptime()</code> 的性能要比你想象中的差很多， 因为它是使用纯Python实现，并且必须处理所有的系统本地设置。 如果你要在代码中需要解析大量的日期并且已经知道了日期字符串的确切格式，可以自己实现一套解析方案来获取更好的性能。</p>
+</blockquote>
+<ul>
+<li><code>datetime.strptime(text, &#39;%Y-%m-%d&#39;)</code> 将字符串转为日期格式。</li>
+<li><code>datetime.strftime(z, &#39;%Y年%m月%d日&#39;)</code> 将日期格式按照自己所设定的格式转为字符串。（这个函数运行的会很慢，如果需要大量的对字符串的操作，并且有很多格式相似，可以自己用字符串拆分等方式，拆字符串拼接，这样的方式可以比这个函数快7倍）</li>
+</ul>
+<p>-<a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c03/p16_manipulate_dates_involving_timezone.html" target="_blank" rel="noopener">结合时区的日期操作</a></p>
+<p><code>pytz</code> 模块一个主要用途是将 <code>datetime</code> 库创建的简单日期对象本地化。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">from</span> pytz <span class="keyword">import</span> timezone</span><br><span class="line"></span><br><span class="line">d = datetime(<span class="number">2018</span>, <span class="number">5</span>, <span class="number">28</span>, <span class="number">11</span>, <span class="number">22</span>, <span class="number">41</span>)</span><br><span class="line">print(d)</span><br><span class="line">d = datetime.now()</span><br><span class="line"></span><br><span class="line">central = timezone(<span class="string">'Asia/Shanghai'</span>)</span><br><span class="line">loc_d = central.localize(d)</span><br><span class="line">print(loc_d)</span><br><span class="line"><span class="comment"># 2018-05-29 11:28:56.614715+08:00</span></span><br><span class="line"></span><br><span class="line">bang_d = loc_d.astimezone(timezone(<span class="string">'US/Central'</span>))</span><br><span class="line">print(bang_d)</span><br><span class="line"><span class="comment"># 2018-05-28 22:28:56.614715-05:00</span></span><br></pre></td></tr></table></figure>
+<p>首先需要先本地化时间（<code>localize</code>方法），之后再调用 <code>astimezone</code> 方法用于切换时区时间。</p>
+<blockquote>
+<p>在使用的时候需要注意，在本地化时间上操作的时候，要考虑到夏令时的相关问题，不然会出现时间差 1 小时的情况。</p>
+</blockquote>
+<p>在使用的时候，如果不记得时区的表达方式，可以使用 <code>country_timezones</code> 来获得时区。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pytz</span><br><span class="line"></span><br><span class="line">p = pytz.country_timezones[<span class="string">'IN'</span>]</span><br><span class="line">print(p)</span><br><span class="line"><span class="comment"># ['Asia/Kolkata']</span></span><br><span class="line"></span><br><span class="line">p = pytz.country_timezones[<span class="string">'CN'</span>]</span><br><span class="line">print(p)</span><br><span class="line"><span class="comment"># ['Asia/Shanghai', 'Asia/Urumqi']</span></span><br></pre></td></tr></table></figure>
+<h1 id="迭代器和生成器"><a href="#迭代器和生成器" class="headerlink" title="迭代器和生成器"></a>迭代器和生成器</h1><h2 id="next"><a href="#next" class="headerlink" title="next()"></a>next()</h2><p>遍历迭代下一个元素，在文件中表示一行。在执行的时候，如果捕获到最后一行，或者捕获到自定义的结束字符的时候，就会返回<code>StopIteration</code>异常，结束读取。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">items = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">it = iter(items)</span><br><span class="line">print(next(it))</span><br><span class="line"><span class="comment"># 1</span></span><br><span class="line">print(next(it))</span><br><span class="line"><span class="comment"># 2</span></span><br><span class="line">print(next(it))</span><br><span class="line"><span class="comment"># 3</span></span><br><span class="line">print(next(it))</span><br><span class="line"><span class="comment"># StopIteration</span></span><br></pre></td></tr></table></figure>
+<h2 id="iter"><a href="#iter" class="headerlink" title="iter()"></a><strong>iter</strong>()</h2><p>-<a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c04/p02_delegating_iteration.html" target="_blank" rel="noopener">代理迭代</a></p>
+<p>如果在自己定义的类中需要有自己的定义的迭代，可以定义一个 <code>__iter__()</code> 方法，将迭代操作代理到容器内部的对象上去。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, value)</span>:</span></span><br><span class="line">        self._value = value</span><br><span class="line">        self._children = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></span><br><span class="line">	    <span class="comment"># &#123;!r&#125; 其中 “!r” 对应 repr()； “!s” 对应 str(); “!a” 对应 ascii()。</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">'Node(&#123;!r&#125;)'</span>.format(self._value)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add_children</span><span class="params">(self, node)</span>:</span></span><br><span class="line">        self._children.append(node)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__iter__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> iter(self._children)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    root = Node(<span class="number">0</span>)</span><br><span class="line">    child1 = Node(<span class="number">1</span>)</span><br><span class="line">    child2 = Node(<span class="number">2</span>)</span><br><span class="line">    root.add_children(child1)</span><br><span class="line">    root.add_children(child2)</span><br><span class="line">    <span class="keyword">for</span> ch <span class="keyword">in</span> root:</span><br><span class="line">        print(ch)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这里的 <code>iter()</code> 函数的使用简化了代码， <code>iter(s)</code> 只是简单的通过调用 <code>s.__iter__()</code> 方法来返回对应的迭代器对象， 就跟 <code>len(s)</code> 会调用 <code>s.__len__()</code> 原理是一样的。</p>
+</blockquote>
+<h2 id="实现深度优先的遍历的树形结构"><a href="#实现深度优先的遍历的树形结构" class="headerlink" title="实现深度优先的遍历的树形结构"></a>实现深度优先的遍历的树形结构</h2><blockquote>
+<p>可以在类中迭代方法的方式</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, value)</span>:</span></span><br><span class="line">        self._value = value</span><br><span class="line">        self._children = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">'Node(&#123;!r&#125;)'</span>.format(self._value)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add_child</span><span class="params">(self, node)</span>:</span></span><br><span class="line">        self._children.append(node)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__iter__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> iter(self._children)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">depth_first</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">yield</span> self</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> self:</span><br><span class="line">            <span class="keyword">yield</span> <span class="keyword">from</span> c.depth_first()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    root = Node(<span class="number">0</span>)</span><br><span class="line">    child1 = Node(<span class="number">1</span>)</span><br><span class="line">    child2 = Node(<span class="number">2</span>)</span><br><span class="line">    root.add_child(child1)</span><br><span class="line">    root.add_child(child2)</span><br><span class="line">    child1.add_child(Node(<span class="number">3</span>))</span><br><span class="line">    child1.add_child(Node(<span class="number">4</span>))</span><br><span class="line">    child2.add_child(Node(<span class="number">5</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> ch <span class="keyword">in</span> root.depth_first():</span><br><span class="line">        print(ch)</span><br></pre></td></tr></table></figure>
+<p>在 <code>depth_first</code> 方法中，首先迭代自己，之后在 <code>__iter__</code> 的迭代中，开始迭代自己的下级，最后在循环中，<code>yield from c.depth_first()</code>放回自己的下级。</p>
+<blockquote>
+<p>在这段代码中，<code>depth_first()</code> 方法简单直观。 它首先返回自己本身并迭代每一个子节点并 通过调用子节点的 <code>depth_first()</code> 方法(使用 <code>yield from</code> 语句)返回对应元素。</p>
+</blockquote>
+<h2 id="reversed"><a href="#reversed" class="headerlink" title="reversed()"></a>reversed()</h2><p>-<a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c04/p05_iterating_in_reverse.html" target="_blank" rel="noopener">反向迭代</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> reversed(a):</span><br><span class="line">    print(i, end=<span class="string">' '</span>)</span><br><span class="line">    <span class="comment"># 4 3 2 1</span></span><br></pre></td></tr></table></figure>
+<p>反向迭代仅仅当对象的大小可预先确定或者对象实现了 <code>__reversed__()</code> 的特殊方法时才能生效。 如果两者都不符合，那必须先将对象转换为一个列表才行。</p>
+<blockquote>
+<p>可以通过在自定义类上实现 <code>__reversed__()</code> 方法来实现反向迭代。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Countdown</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, start)</span>:</span></span><br><span class="line">        self.start = start</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Forward iterator</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__iter__</span><span class="params">(self)</span>:</span></span><br><span class="line">        n = self.start</span><br><span class="line">        <span class="keyword">while</span> n &gt; <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">yield</span> n</span><br><span class="line">            n -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Reverse iterator</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__reversed__</span><span class="params">(self)</span>:</span></span><br><span class="line">        n = <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> n &lt;= self.start:</span><br><span class="line">            <span class="keyword">yield</span> n</span><br><span class="line">            n += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> rr <span class="keyword">in</span> reversed(Countdown(<span class="number">30</span>)):</span><br><span class="line">    print(rr)</span><br><span class="line"><span class="keyword">for</span> rr <span class="keyword">in</span> Countdown(<span class="number">30</span>):</span><br><span class="line">    print(rr)</span><br></pre></td></tr></table></figure>
+<p>定义一个反向迭代器可以使得代码非常的高效， 因为它不再需要将数据填充到一个列表中然后再去反向迭代这个列表。</p>
+<h2 id="带有外部状态的生成器函数"><a href="#带有外部状态的生成器函数" class="headerlink" title="带有外部状态的生成器函数"></a>带有外部状态的生成器函数</h2><p>-<a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c04/p06_define_generator_func_with_extra_state.html" target="_blank" rel="noopener">带有外部状态的生成器函数</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">linehistory</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, lines, histlen=<span class="number">3</span>)</span>:</span></span><br><span class="line">        self.lines = lines</span><br><span class="line">        self.history = deque(maxlen=histlen)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__iter__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> lineno, line <span class="keyword">in</span> enumerate(self.lines, <span class="number">1</span>):</span><br><span class="line">            self.history.append((lineno, line))</span><br><span class="line">            <span class="keyword">yield</span> line</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">clear</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.history.clear()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'somefile.txt'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    lines = linehistory(f)</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">        <span class="keyword">if</span> <span class="string">'python'</span> <span class="keyword">in</span> line:</span><br><span class="line">            <span class="keyword">for</span> lineno, hline <span class="keyword">in</span> lines.history:</span><br><span class="line">                print(<span class="string">'&#123;&#125;:&#123;&#125;'</span>.format(lineno, hline), end=<span class="string">''</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>为了使用这个类，你可以将它当做是一个普通的生成器函数。 然而，由于可以创建一个实例对象，于是你可以访问内部属性值， 比如 <code>history</code> 属性或者是 <code>clear()</code> 方法。</p>
+</blockquote>
+<p>一个需要注意的小地方是，如果你在迭代操作时不使用for循环语句，那么你得先调用 <code>iter()</code> 函数。</p>
+<h2 id="itertools-islice"><a href="#itertools-islice" class="headerlink" title="itertools.islice()"></a>itertools.islice()</h2><ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c04/p07_taking_slice_of_iterator.html" target="_blank" rel="noopener">迭代器切片</a></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> itertools</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count</span><span class="params">(n, end=<span class="number">10</span>)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> n &lt; end:</span><br><span class="line">        <span class="keyword">yield</span> n</span><br><span class="line">        n += <span class="number">1</span></span><br><span class="line">    <span class="keyword">yield</span> end</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">c = count(<span class="number">1</span>, end=<span class="number">20</span>)</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> itertools.islice(c, <span class="number">2</span>, <span class="number">100</span>):</span><br><span class="line">    print(x)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>itertools.islice</code>表示对迭代器或者生成器进行切片，不过不能使用标准的切片方法，标准的切片方法是基于原来的数组是固定长度的情况下才能使用的。这个切片是以函数的形式，接收开始的值和结束的值，位置（长度），之后将切片之后的迭代器返回。</p>
+</blockquote>
+<p>迭代器和生成器不能使用标准的切片操作，因为它们的长度事先我们并不知道(并且也没有实现索引)。 函数 <code>islice()</code> 返回一个可以生成指定元素的迭代器，它通过遍历并丢弃直到切片开始索引位置的所有元素。 然后才开始一个个的返回元素，并直到切片结束索引位置。</p>
+<p><strong>这里要着重强调的一点是 <code>islice()</code> 会消耗掉传入的迭代器中的数据。 必须考虑到迭代器是不可逆的这个事实。 所以如果你需要之后再次访问这个迭代器的话，那你就得先将它里面的数据放入一个列表中。</strong></p>
+<h2 id="itertools-dropwhile"><a href="#itertools-dropwhile" class="headerlink" title="itertools.dropwhile"></a>itertools.dropwhile</h2><p><code>itertools.dropwhile()</code> 函数。使用时，传递一个函数对象和一个可迭代对象。会返回一个迭代器对象，丢弃原有序列中直到函数返回<code>Flase</code>之前的所有元素，然后返回后面所有元素。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> dropwhile</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'__init__.py'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> dropwhile(<span class="keyword">lambda</span> line: line.startswith(<span class="string">'#'</span>), f):</span><br><span class="line">        print(line, end=<span class="string">' '</span>)</span><br></pre></td></tr></table></figure>
+<p>如果已经明确知道了要跳过的元素的个数的话，那么可以使用 <code>itertools.islice()</code> 来代替。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> islice</span><br><span class="line">items = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">10</span>, <span class="number">15</span>]</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> islice(items, <span class="number">3</span>, <span class="keyword">None</span>):</span><br><span class="line">    print(x)</span><br></pre></td></tr></table></figure>
+<p>这个函数会根据所传入的参数，跳过前面几个迭代。<code>islice()</code> 函数最后那个 <code>None</code> 参数指定了你要获取从第3个到最后的所有元素， 如果 <code>None</code> 和3的位置对调，意思就是仅仅获取前三个元素恰恰相反， (这个跟切片的相反操作 [3:] 和 [:3] 原理是一样的)。</p>
+<blockquote>
+<p>解决方案是仅仅跳过开始部分满足测试条件的行，在那以后，所有的元素不再进行测试和过滤了。</p>
+</blockquote>
+<h2 id="itertools-permutations-和-itertools-combinations"><a href="#itertools-permutations-和-itertools-combinations" class="headerlink" title="itertools.permutations 和 itertools.combinations"></a>itertools.permutations 和 itertools.combinations</h2><p>对数列进行排列组合</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> permutations</span><br><span class="line"></span><br><span class="line">items = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> p <span class="keyword">in</span> permutations(items):</span><br><span class="line">    print(p)</span><br></pre></td></tr></table></figure>
+<p><code>itertools.permutations()</code> ， 它接受一个集合并产生一个元组序列，每个元组由集合中所有元素的一个可能排列组成。 也就是说通过打乱集合中元素排列顺序生成一个元组。</p>
+<p>如果想得到指定长度的所有排列，可以传递一个可选的长度参数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> combinations</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> p <span class="keyword">in</span> combinations(items, <span class="number">3</span>):</span><br><span class="line">    print(p)</span><br><span class="line">    <span class="comment"># ('a', 'b', 'c')</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> p <span class="keyword">in</span> combinations(items, <span class="number">2</span>):</span><br><span class="line">    print(p)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">('a', 'b')</span></span><br><span class="line"><span class="string">('a', 'c')</span></span><br><span class="line"><span class="string">('b', 'c')</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> p <span class="keyword">in</span> combinations(items, <span class="number">1</span>):</span><br><span class="line">    print(p)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">('a',)</span></span><br><span class="line"><span class="string">('b',)</span></span><br><span class="line"><span class="string">('c',)</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+<p>对于 <code>combinations()</code> 来讲，元素的顺序已经不重要了。 也就是说，组合 (‘a’, ‘b’) 跟 (‘b’, ‘a’) 其实是一样的(最终只会输出其中一个)。</p>
+<blockquote>
+<p>在计算组合的时候，一旦元素被选取就会从候选中剔除掉(比如如果元素’a’已经被选取了，那么接下来就不会再考虑它了)。 而函数 <code>itertools.combinations_with_replacement()</code> 允许同一个元素被选择多次。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> combinations_with_replacement</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> p <span class="keyword">in</span> combinations_with_replacement(items, <span class="number">3</span>):</span><br><span class="line">    print(p)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">('a', 'a', 'a')</span></span><br><span class="line"><span class="string">('a', 'a', 'b')</span></span><br><span class="line"><span class="string">('a', 'a', 'c')</span></span><br><span class="line"><span class="string">('a', 'b', 'b')</span></span><br><span class="line"><span class="string">('a', 'b', 'c')</span></span><br><span class="line"><span class="string">('a', 'c', 'c')</span></span><br><span class="line"><span class="string">('b', 'b', 'b')</span></span><br><span class="line"><span class="string">('b', 'b', 'c')</span></span><br><span class="line"><span class="string">('b', 'c', 'c')</span></span><br><span class="line"><span class="string">('c', 'c', 'c')</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+<h2 id="enumerate"><a href="#enumerate" class="headerlink" title="enumerate"></a>enumerate</h2><p>在迭代的时候，获得迭代的索引。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">my_list = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> idx, val <span class="keyword">in</span> enumerate(my_list):</span><br><span class="line">    print(idx, val)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">0 a</span></span><br><span class="line"><span class="string">1 b</span></span><br><span class="line"><span class="string">2 c</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> idx, val <span class="keyword">in</span> enumerate(my_list, <span class="number">1</span>):</span><br><span class="line">    print(idx, val)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">1 a</span></span><br><span class="line"><span class="string">2 b</span></span><br><span class="line"><span class="string">3 c</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果加入一个参数，则会当作索引的开始。这样在例如有错误的时候，就能很快速的定位错误所在。</p>
+</blockquote>
+<p><code>enumerate()</code> 函数返回的是一个 <code>enumerate</code> 对象实例， 它是一个迭代器，返回连续的包含一个计数和一个值的元组， 元组中的值通过在传入序列上调用 <code>next()</code> 返回。</p>
+<blockquote>
+<p>还有一点可能并不很重要，但是也值得注意， 有时候在一个已经解压后的元组序列上使用 <code>enumerate()</code> 函数时很容易调入陷阱。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">data = [ (<span class="number">1</span>, <span class="number">2</span>), (<span class="number">3</span>, <span class="number">4</span>), (<span class="number">5</span>, <span class="number">6</span>), (<span class="number">7</span>, <span class="number">8</span>) ]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> n, (x, y) <span class="keyword">in</span> enumerate(data):</span><br><span class="line">    print(n, x, y)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">0 1 2</span></span><br><span class="line"><span class="string">1 3 4</span></span><br><span class="line"><span class="string">2 5 6</span></span><br><span class="line"><span class="string">3 7 8</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+<h2 id="同时迭代多个序列"><a href="#同时迭代多个序列" class="headerlink" title="同时迭代多个序列"></a>同时迭代多个序列</h2><p>-<a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c04/p11_iterate_over_multiple_sequences_simultaneously.html" target="_blank" rel="noopener">同时迭代多个序列</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">xpts = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">10</span>, <span class="number">7</span>]</span><br><span class="line">ypts = [<span class="number">101</span>, <span class="number">78</span>, <span class="number">37</span>, <span class="number">15</span>, <span class="number">62</span>, <span class="number">99</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> x, y <span class="keyword">in</span> zip(xpts, ypts):</span><br><span class="line">    print(x, y)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">1 101</span></span><br><span class="line"><span class="string">5 78</span></span><br><span class="line"><span class="string">4 37</span></span><br><span class="line"><span class="string">2 15</span></span><br><span class="line"><span class="string">10 62</span></span><br><span class="line"><span class="string">7 99</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+<p><code>zip(a, b)</code> 会生成一个可返回元组 (x, y) 的迭代器，其中x来自a，y来自b。 一旦其中某个序列到底结尾，迭代宣告结束。 因此迭代长度跟参数中最短序列长度一致。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">b = [<span class="string">'w'</span>, <span class="string">'x'</span>, <span class="string">'y'</span>, <span class="string">'z'</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> zip(a, b):</span><br><span class="line">    print(i)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">(1, 'w')</span></span><br><span class="line"><span class="string">(2, 'x')</span></span><br><span class="line"><span class="string">(3, 'y')</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+<p>如果需要以最长的字段输出，可以采用<code>itertools.zip_longest</code>的方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> zip_longest</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> zip_longest(a, b):</span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> zip_longest(a, b, fillvalue=<span class="number">0</span>):</span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> zip_longest(a, b, fillvalue=<span class="string">"asd"</span>):</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果没有指定填充值（<code>fillvalue</code>）的话，就会以<code>None</code>的方式代替，可以采用指定<code>fillvalue</code>的方式填充。</p>
+</blockquote>
+<p>在处理成对的数据的时候，<code>zip</code>会变得很有用，他可以把两个列表编程字典的形式。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">headers = [<span class="string">'name'</span>, <span class="string">'shares'</span>, <span class="string">'price'</span>]</span><br><span class="line">values = [<span class="string">'ACME'</span>, <span class="number">100</span>, <span class="number">490.1</span>]</span><br><span class="line"></span><br><span class="line">coll_dict = dict(zip(headers, values))</span><br><span class="line"></span><br><span class="line">print(coll_dict)</span><br><span class="line"><span class="comment"># &#123;'name': 'ACME', 'shares': 100, 'price': 490.1&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> h, v <span class="keyword">in</span> zip(headers, values):</span><br><span class="line">    print(h, <span class="string">' = '</span>, v)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>当然，<code>zip</code>可以接收多余两个列表的参数。</p>
+</blockquote>
+<p> <code>zip()</code> 会创建一个迭代器来作为结果返回。 如果你需要将结对的值存储在列表中，要使用 <code>list()</code> 函数。</p>
+<h2 id="itertools-chain"><a href="#itertools-chain" class="headerlink" title="itertools.chain"></a>itertools.chain</h2><ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c04/p12_iterate_on_items_in_separate_containers.html" target="_blank" rel="noopener">不同集合上元素的迭代</a></li>
+</ul>
+<p>这个函数可以让我们在操作几个数列的时候，进行相同操作的时候，使得我们的代码会更加优雅，减少循环的次数，减少多余的代码。</p>
+<p>函数<code>itertools.chain</code>可以将所传入的函数连接成链表一样，在操作循环的时候，代码在不失可读性的情况下避免写重复的循环。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> chain</span><br><span class="line"></span><br><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">b = [<span class="string">'x'</span>, <span class="string">'y'</span>, <span class="string">'z'</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> chain(a, b):</span><br><span class="line">    print(i, end=<span class="string">' '</span>)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">1 2 3 4 x y z</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>itertools.chain()</code> 接受一个或多个可迭代对象作为输入参数。 然后创建一个迭代器，依次连续的返回每个可迭代对象中的元素。 这种方式要比先将序列合并再迭代要高效的多。</p>
+</blockquote>
+<p>在使用<code>itertools.chain</code>的时候，会比直接将两个列表进行相加（a + b）这样的操作的效率会更高，这种相加的操作会生成一个新的列表，而使用<code>itertools.chain</code>会将不仅效率更高，对于两个不同对象的列表也能很好的进行操作。</p>
+<h2 id="yield-from"><a href="#yield-from" class="headerlink" title="yield from"></a>yield from</h2><ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c04/p14_flattening_nested_sequence.html" target="_blank" rel="noopener">展开嵌套的序列</a></li>
+</ul>
+<blockquote>
+<p>将一个多层嵌套的序列展开成一个单层列表</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Iterable</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">flatten</span><span class="params">(items, ignore_types=<span class="params">(str, bytes)</span>)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> items:</span><br><span class="line">        <span class="keyword">if</span> isinstance(x, Iterable) <span class="keyword">and</span> <span class="keyword">not</span> isinstance(x, ignore_types):</span><br><span class="line">            <span class="keyword">yield</span> <span class="keyword">from</span> flatten(x)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">yield</span> x</span><br><span class="line"></span><br><span class="line">items = [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>, [<span class="number">5</span>, <span class="number">6</span>], <span class="number">7</span>], <span class="number">8</span>]</span><br><span class="line"><span class="comment"># Produces 1 2 3 4 5 6 7 8</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> flatten(items):</span><br><span class="line">    print(x)</span><br></pre></td></tr></table></figure>
+<p>在上面代码中， <code>isinstance(x, Iterable)</code> 检查某个元素是否是可迭代的。 如果是的话， <code>yield from</code> 就会返回所有子例程的值。最终返回结果就是一个没有嵌套的简单序列了。</p>
+<blockquote>
+<p>在上面代码中， <code>isinstance(x, Iterable)</code> 检查某个元素是否是可迭代的。 如果是的话， <code>yield from</code> 就会返回所有子例程的值。最终返回结果就是一个没有嵌套的简单序列了。</p>
+</blockquote>
+<p>额外的参数 <code>ignore_types</code> 和检测语句 <code>isinstance(x, ignore_types)</code> 用来将字符串和字节排除在可迭代对象外，防止将它们再展开成单个的字符。 这样的话字符串数组就能最终返回我们所期望的结果了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">items = [<span class="string">'Dave'</span>, <span class="string">'Paula'</span>, [<span class="string">'Thomas'</span>, <span class="string">'Lewis'</span>]]</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> flatten(items):</span><br><span class="line">    print(x, end=<span class="string">' '</span>)</span><br><span class="line"><span class="comment"># Dave Paula Thomas Lewis</span></span><br></pre></td></tr></table></figure>
+<p>语句 yield from 在你想在生成器中调用其他生成器作为子例程的时候非常有用。</p>
+<p>如果你不使用它的话，那么就必须写额外的 for 循环了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">flatten</span><span class="params">(items, ignore_types=<span class="params">(str, bytes)</span>)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> items:</span><br><span class="line">        <span class="keyword">if</span> isinstance(x, Iterable) <span class="keyword">and</span> <span class="keyword">not</span> isinstance(x, ignore_types):</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> flatten(x):</span><br><span class="line">                <span class="keyword">yield</span> i</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">yield</span> x</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>最后要注意的一点是， <code>yield from</code> 在涉及到基于协程和生成器的并发编程中扮演着更加重要的角色。</p>
+</blockquote>
+<h2 id="heapq-merge"><a href="#heapq-merge" class="headerlink" title="heapq.merge"></a>heapq.merge</h2><ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c04/p15_iterate_in_sorted_order_over_merged_sorted_iterables.html" target="_blank" rel="noopener">顺序迭代合并后的排序迭代对象</a></li>
+</ul>
+<p>将两个列表合成一个列表，并且排序。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> heapq</span><br><span class="line"></span><br><span class="line">a = [<span class="number">1</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">10</span>]</span><br><span class="line">b = [<span class="number">2</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">11</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> c <span class="keyword">in</span> heapq.merge(a, b):</span><br><span class="line">    print(c)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>heapq.merge</code> 可迭代特性意味着它不会立马读取所有序列。 这就意味着你可以在非常长的序列中使用它，而不会有太大的开销。</p>
+</blockquote>
+<p>有一点要强调的是 <code>heapq.merge()</code> 需要所有输入序列必须是排过序的。 特别的，它并不会预先读取所有数据到堆栈中或者预先排序，也不会对输入做任何的排序检测。 它仅仅是检查所有序列的开始部分并返回最小的那个，这个过程一直会持续直到所有输入序列中的元素都被遍历完。</p>
+<h2 id="迭代器代替while无限循环"><a href="#迭代器代替while无限循环" class="headerlink" title="迭代器代替while无限循环"></a>迭代器代替while无限循环</h2><p>一般的IO操作可能会用到while循环。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CHUNKSIZE = <span class="number">8192</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">reader</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        data = s.recv(CHUNKSIZE)</span><br><span class="line">        <span class="keyword">if</span> data == <span class="string">b''</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        process_data(data)</span><br></pre></td></tr></table></figure>
+<p>这种代码通常可以使用 <code>iter()</code> 来代替。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">reader2</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> chunk <span class="keyword">in</span> iter(<span class="keyword">lambda</span>: s.recv(CHUNKSIZE), <span class="string">b''</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">        <span class="comment"># process_data(data)</span></span><br></pre></td></tr></table></figure>
+<p><code>iter</code> 函数一个鲜为人知的特性是它接受一个可选的 <code>callable</code> 对象和一个标记(结尾)值作为输入参数。 当以这种方式使用的时候，它会创建一个迭代器， 这个迭代器会不断调用 <code>callable</code> 对象直到返回值和标记值相等为止。</p>
+<blockquote>
+<p>这种特殊的方法对于一些特定的会被重复调用的函数很有效果，比如涉及到I/O调用的函数。 举例来讲，如果你想从套接字或文件中以数据块的方式读取数据，通常你得要不断重复的执行 <code>read()</code> 或 <code>recv()</code> ， 并在后面紧跟一个文件结尾测试来决定是否终止。这节中的方案使用一个简单的 <code>iter()</code> 调用就可以将两者结合起来了。 其中 <code>lambda</code> 函数参数是为了创建一个无参的 <code>callable</code> 对象，并为 <code>recv</code> 或 <code>read()</code> 方法提供了 <code>size</code> 参数。</p>
+</blockquote>
+<h1 id="文件与IO"><a href="#文件与IO" class="headerlink" title="文件与IO"></a>文件与IO</h1><h2 id="读写文本数据"><a href="#读写文本数据" class="headerlink" title="读写文本数据"></a>读写文本数据</h2><ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c05/p01_read_write_text_data.html" target="_blank" rel="noopener">读写文本数据</a></li>
+</ul>
+<p>使用带有 <code>rt</code> 模式的 <code>open()</code> 函数读取文本文件。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">'somefile.txt'</span>, <span class="string">'rt'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    data = f.read()</span><br></pre></td></tr></table></figure>
+<p>类似的，为了写入一个文本文件，使用带有 <code>wt</code> 模式的 <code>open()</code> 函数， 如果之前文件内容存在则清除并覆盖掉。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">'somefile.txt'</span>, <span class="string">'wt'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(text1)</span><br><span class="line">    f.write(text2)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果是在已存在文件中添加内容，使用模式为 <code>at</code> 的 <code>open()</code> 函数。</p>
+</blockquote>
+<p>文件的读写操作默认使用系统编码，可以通过调用 <code>sys.getdefaultencoding()</code> 来得到。 在大多数机器上面都是utf-8编码。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">s = sys.getdefaultencoding()</span><br><span class="line">print(s)</span><br><span class="line"><span class="comment"># utf-8</span></span><br></pre></td></tr></table></figure>
+<p>如果你已经知道你要读写的文本是其他编码方式， 那么可以通过传递一个可选的 encoding 参数给<code>open()</code>函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">'somefile.txt'</span>, <span class="string">'rt'</span>, encoding=<span class="string">'latin-1'</span>) <span class="keyword">as</span> f:</span><br><span class="line">	<span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Python支持非常多的文本编码。几个常见的编码是ascii, latin-1, utf-8和utf-16。 在web应用程序中通常都使用的是UTF-8。 ascii对应从U+0000到U+007F范围内的7位字符。 latin-1是字节0-255到U+0000至U+00FF范围内Unicode字符的直接映射。<br>当读取一个未知编码的文本时使用latin-1编码永远不会产生解码错误。 使用latin-1编码读取一个文件的时候也许不能产生完全正确的文本解码数据， 但是它也能从中提取出足够多的有用数据。同时，如果你之后将数据回写回去，原先的数据还是会保留的。</p>
+</blockquote>
+<p>读写文本文件一般来讲是比较简单的。但是也几点是需要注意的。 首先，在例子程序中的with语句给被使用到的文件创建了一个上下文环境， 但 with 控制块结束时，文件会自动关闭。你也可以不使用 with 语句，但是这时候你就必须记得手动关闭文件：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f = open(<span class="string">'somefile.txt'</span>, <span class="string">'rt'</span>)</span><br><span class="line">data = f.read()</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+<p>另外一个问题是关于换行符的识别问题，在Unix和Windows中是不一样的(分别是 \n 和 \r\n )。 默认情况下，Python会以统一模式处理换行符。 这种模式下，在读取文本的时候，Python可以识别所有的普通换行符并将其转换为单个 \n 字符。 类似的，在输出时会将换行符 \n 转换为系统默认的换行符。 如果你不希望这种默认的处理方式，可以给 open() 函数传入参数 newline=’’ ，就像下面这样：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Read with disabled newline translation</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'somefile.txt'</span>, <span class="string">'rt'</span>, newline=<span class="string">''</span>) <span class="keyword">as</span> f:</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<p>如果出现编码错误的时候，优先去查看文件的编码，用<code>encoding</code>指定相对应的编码进行文件的读取，如果编码错误还是存在的话，你可以给 <code>open()</code> 函数传递一个可选的 <code>errors</code> 参数来处理这些错误。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">f = open(<span class="string">'sample.txt'</span>, <span class="string">'rt'</span>, encoding=<span class="string">'ascii'</span>, errors=<span class="string">'replace'</span>)</span><br><span class="line">	<span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">f = open(<span class="string">'sample.txt'</span>, <span class="string">'rt'</span>, encoding=<span class="string">'ascii'</span>, errors=<span class="string">'ignore'</span>)</span><br><span class="line">	<span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果想用<code>print()</code>函数将结果输入到一个文件中，可以在<code>print</code>函数中指定<code>file</code>的参数。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">'d:/work/test.txt'</span>, <span class="string">'wt'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    print(<span class="string">'Hello World!'</span>, file=f)</span><br></pre></td></tr></table></figure>
+<h2 id="sep"><a href="#sep" class="headerlink" title="sep"></a>sep</h2><p>在<code>print</code>函数中指定两个输出的连接。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">    print(i, i, sep=<span class="string">'+'</span>, end=<span class="string">' '</span>)</span><br><span class="line"><span class="comment"># 0+0 1+1 2+2 3+3 4+4 5+5 6+6 7+7 8+8 9+9</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果想要用<code>str.join()</code>的方式连接的话，就应该要注意，这种连接需要在保证输出的内容是字符串，也就是说如果输出内容不是字符串类型的时候，需要多一个步骤去转换。</p>
+</blockquote>
+<h2 id="读写字节数据"><a href="#读写字节数据" class="headerlink" title="读写字节数据"></a>读写字节数据</h2><p>读写二进制文件，比如图片，声音文件等等，使用模式为 <code>rb</code> 或 <code>wb</code> 的 <code>open()</code> 函数来读取或写入二进制数据。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">'somefile.bin'</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    data = f.read()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'somefile.bin'</span>, <span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(<span class="string">b'Hello World'</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在读取二进制数据时，需要指明的是所有返回的数据都是字节字符串格式的，而不是文本字符串。 类似的，在写入的时候，必须保证参数是以字节形式对外暴露数据的对象(比如字节字符串，字节数组对象等)。</p>
+</blockquote>
+<p>如果你想从二进制模式的文件中读取或写入文本数据，必须确保要进行解码和编码操作。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">'somefile.bin'</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    data = f.read(<span class="number">16</span>)</span><br><span class="line">    text = data.decode(<span class="string">'utf-8'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'somefile.bin'</span>, <span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    text = <span class="string">'Hello World'</span></span><br><span class="line">    f.write(text.encode(<span class="string">'utf-8'</span>))</span><br></pre></td></tr></table></figure>
+<h2 id="io-StringIO-和-io-BytesIO"><a href="#io-StringIO-和-io-BytesIO" class="headerlink" title="io.StringIO 和 io.BytesIO"></a>io.StringIO 和 io.BytesIO</h2><ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c05/p06_io_operations_on_string.html" target="_blank" rel="noopener">字符串的I/O操作</a></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> io</span><br><span class="line"></span><br><span class="line">s = io.StringIO()</span><br><span class="line">s.write(<span class="string">'Hello World\n'</span>)</span><br><span class="line">print(<span class="string">'This is a test'</span>, file=s)</span><br><span class="line"></span><br><span class="line">print(s.getvalue())</span><br><span class="line"><span class="comment"># Hello World</span></span><br><span class="line"><span class="comment"># This is a test</span></span><br><span class="line"></span><br><span class="line">s = io.StringIO(<span class="string">'Hello\nWorld\n'</span>)</span><br><span class="line">print(s.read(<span class="number">4</span>))</span><br><span class="line"><span class="comment"># Hell</span></span><br><span class="line">print(s.read())</span><br><span class="line"><span class="comment"># o</span></span><br><span class="line"><span class="comment"># World</span></span><br></pre></td></tr></table></figure>
+<p>当你想模拟一个普通的文件的时候 StringIO 和 BytesIO 类是很有用的。 比如，在单元测试中，你可以使用 StringIO 来创建一个包含测试数据的类文件对象， 这个对象可以被传给某个参数为普通文件对象的函数。</p>
+<h2 id="gzip-和-bz2"><a href="#gzip-和-bz2" class="headerlink" title="gzip 和 bz2"></a>gzip 和 bz2</h2><ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c05/p07_read_write_compressed_datafiles.html" target="_blank" rel="noopener">读写压缩文件</a></li>
+</ul>
+<p>读写一个gzip或bz2格式的压缩文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 读取</span></span><br><span class="line"><span class="comment"># gzip compression</span></span><br><span class="line"><span class="keyword">import</span> gzip</span><br><span class="line"><span class="keyword">with</span> gzip.open(<span class="string">'somefile.gz'</span>, <span class="string">'rt'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    text = f.read()</span><br><span class="line"></span><br><span class="line"><span class="comment"># bz2 compression</span></span><br><span class="line"><span class="keyword">import</span> bz2</span><br><span class="line"><span class="keyword">with</span> bz2.open(<span class="string">'somefile.bz2'</span>, <span class="string">'rt'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    text = f.read()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 写入</span></span><br><span class="line"><span class="comment"># gzip compression</span></span><br><span class="line"><span class="keyword">import</span> gzip</span><br><span class="line"><span class="keyword">with</span> gzip.open(<span class="string">'somefile.gz'</span>, <span class="string">'wt'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(text)</span><br><span class="line"></span><br><span class="line"><span class="comment"># bz2 compression</span></span><br><span class="line"><span class="keyword">import</span> bz2</span><br><span class="line"><span class="keyword">with</span> bz2.open(<span class="string">'somefile.bz2'</span>, <span class="string">'wt'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(text)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>当写入压缩数据时，可以使用 compresslevel 这个可选的关键字参数来指定一个压缩级别。</p>
+</blockquote>
+<h2 id="functools-partial"><a href="#functools-partial" class="headerlink" title="functools.partial"></a>functools.partial</h2><ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c05/p08_iterate_over_fixed_sized_records.html" target="_blank" rel="noopener">固定大小记录的文件迭代</a></li>
+</ul>
+<p>在固定长度记录或者数据块的集合上迭代，而不是在一个文件中一行一行的迭代。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> partial</span><br><span class="line"></span><br><span class="line">RECORD_SIZE = <span class="number">32</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'somefile.txt'</span>, <span class="string">'rt'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    records = iter(partial(f.read, RECORD_SIZE), <span class="string">""</span>)</span><br><span class="line">    <span class="keyword">for</span> r <span class="keyword">in</span> records:</span><br><span class="line">        print(r, <span class="string">'\n\n\n'</span>)</span><br></pre></td></tr></table></figure>
+<p>这个例子中的 <code>records</code> 对象是一个可迭代对象，它会不断的产生固定大小的数据块，直到文件末尾。 要注意的是如果总记录大小不是块大小的整数倍的话，最后一个返回元素的字节数会比期望值少。</p>
+<p><code>iter()</code> 函数有一个鲜为人知的特性就是，如果你给它传递一个可调用对象和一个标记值，它会创建一个迭代器。 这个迭代器会一直调用传入的可调用对象直到它返回标记值为止，这时候迭代终止。</p>
+<p>在例子中， <code>functools.partial</code> 用来创建一个每次被调用时从文件中读取固定数目字节的可调用对象。 标记值 “” 就是当到达文件结尾时的返回值。</p>
+<p>一般来说，这种读取固定大小的做法对于读取二进制文件来说比较普遍，对于读取文本文件，更多的做法是一行行读取。</p>
+<h2 id="os-path"><a href="#os-path" class="headerlink" title="os.path"></a>os.path</h2><ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c05/p11_manipulating_pathnames.html" target="_blank" rel="noopener">文件路径名的操作</a></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">path = <span class="string">'/Users/beazley/Data/data.csv'</span></span><br><span class="line">s1 = os.path.basename(path)</span><br><span class="line">print(s1)</span><br><span class="line"><span class="comment"># data.csv</span></span><br><span class="line">s2 = os.path.dirname(path)</span><br><span class="line">print(s2)</span><br><span class="line"><span class="comment"># /Users/beazley/Data</span></span><br><span class="line">s3 = os.path.join(<span class="string">'tmp'</span>, <span class="string">'data'</span>, os.path.basename(path))</span><br><span class="line">print(s3)</span><br><span class="line"><span class="comment"># tmp/data/data.csv</span></span><br><span class="line">path = <span class="string">'~/Data/data.csv'</span></span><br><span class="line">s4 = os.path.expanduser(path)</span><br><span class="line">print(s4)</span><br><span class="line"><span class="comment"># /Users/apple/Data/data.csv</span></span><br><span class="line">s5 = os.path.splitext(path)</span><br><span class="line">print(s5)</span><br><span class="line"><span class="comment"># ('~/Data/data', '.csv')</span></span><br></pre></td></tr></table></figure>
+<p>对于任何的文件名的操作，你都应该使用 <code>os.path</code> 模块，而不是使用标准字符串操作来构造自己的代码。 特别是为了可移植性考虑的时候更应如此， 因为 <code>os.path</code> 模块知道<strong>Unix</strong>和<strong>Windows</strong>系统之间的差异并且能够可靠地处理类似 <code>Data/data.csv</code> 和 <code>Data\data.csv</code> 这样的文件名。 其次，你真的不应该浪费时间去重复造轮子。通常最好是直接使用已经为你准备好的功能。</p>
+<p>测试一个文件或目录是否存在。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> os</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.exists(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.exists(<span class="string">'/tmp/spam'</span>)</span><br><span class="line"><span class="keyword">False</span></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># Is a regular file</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.isfile(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># Is a directory</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.isdir(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="keyword">False</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># Is a symbolic link</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.islink(<span class="string">'/usr/local/bin/python3'</span>)</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># Get the file linked to</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.realpath(<span class="string">'/usr/local/bin/python3'</span>)</span><br><span class="line"><span class="string">'/usr/local/bin/python3.3'</span></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.getsize(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="number">3669</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.getmtime(<span class="string">'/etc/passwd'</span>)</span><br><span class="line"><span class="number">1272478234.0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> time</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>time.ctime(os.path.getmtime(<span class="string">'/etc/passwd'</span>))</span><br><span class="line"><span class="string">'Wed Apr 28 13:10:34 2010'</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="os-listdir"><a href="#os-listdir" class="headerlink" title="os.listdir"></a>os.listdir</h2><p>获取文件系统中某个目录下的所有文件列表。</p>
+<p>使用 <code>os.listdir()</code> 函数来获取某个目录中的文件列表：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">names = os.listdir(<span class="string">'somedir'</span>)</span><br></pre></td></tr></table></figure>
+<p>结果会返回目录中所有文件列表，包括所有文件，子目录，符号链接等等。 如果你需要通过某种方式过滤数据，可以考虑结合 os.path 库中的一些函数来使用列表推导。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os.path</span><br><span class="line"></span><br><span class="line"><span class="comment"># Get all regular files</span></span><br><span class="line">names = [name <span class="keyword">for</span> name <span class="keyword">in</span> os.listdir(<span class="string">'somedir'</span>)</span><br><span class="line">        <span class="keyword">if</span> os.path.isfile(os.path.join(<span class="string">'somedir'</span>, name))]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Get all dirs</span></span><br><span class="line">dirnames = [name <span class="keyword">for</span> name <span class="keyword">in</span> os.listdir(<span class="string">'somedir'</span>)</span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(os.path.join(<span class="string">'somedir'</span>, name))]</span><br></pre></td></tr></table></figure>
+<p>字符串的 <code>startswith()</code> 和 <code>endswith()</code> 方法对于过滤一个目录的内容也是很有用的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pyfiles = [name <span class="keyword">for</span> name <span class="keyword">in</span> os.listdir(<span class="string">'somedir'</span>)</span><br><span class="line">            <span class="keyword">if</span> name.endswith(<span class="string">'.py'</span>)]</span><br></pre></td></tr></table></figure>
+<p>文件名的匹配，也可以考虑用 <code>glob</code> 或者 <code>fnmatch</code> 模块。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> glob</span><br><span class="line">pyfiles = glob.glob(<span class="string">'somedir/*.py'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> fnmatch <span class="keyword">import</span> fnmatch</span><br><span class="line">pyfiles = [name <span class="keyword">for</span> name <span class="keyword">in</span> os.listdir(<span class="string">'somedir'</span>)</span><br><span class="line">            <span class="keyword">if</span> fnmatch(name, <span class="string">'*.py'</span>)]</span><br></pre></td></tr></table></figure>
+<h2 id="tempfile"><a href="#tempfile" class="headerlink" title="tempfile"></a>tempfile</h2><ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c05/p19_make_temporary_files_and_directories.html" target="_blank" rel="noopener">创建临时文件和文件夹</a></li>
+</ul>
+<p>用于创建一个临时的文件或文件夹。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tempfile <span class="keyword">import</span> TemporaryFile</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> TemporaryFile(<span class="string">'w+t'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="comment"># Read/write to the file</span></span><br><span class="line">    f.write(<span class="string">'Hello World\n'</span>)</span><br><span class="line">    f.write(<span class="string">'Testing\n'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Seek back to beginning and read the data</span></span><br><span class="line">    f.seek(<span class="number">0</span>)</span><br><span class="line">    data = f.read()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Temporary file is destroyed</span></span><br></pre></td></tr></table></figure>
+<p><code>TemporaryFile()</code> 的第一个参数是文件模式，通常来讲文本模式使用 <strong>w+t</strong> ，二进制模式使用 <strong>w+b</strong> 。 这个模式同时支持读和写操作，在这里是很有用的，因为当你关闭文件去改变模式的时候，文件实际上已经不存在了。</p>
+<p><code>TemporaryFile()</code> 另外还支持跟内置的 open() 函数一样的参数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> TemporaryFile(<span class="string">'w+t'</span>, encoding=<span class="string">'utf-8'</span>, errors=<span class="string">'ignore'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<p>为了创建一个临时目录，可以使用 <code>tempfile.TemporaryDirectory()</code> 。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tempfile <span class="keyword">import</span> TemporaryDirectory</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> TemporaryDirectory() <span class="keyword">as</span> dirname:</span><br><span class="line">    print(<span class="string">'dirname is:'</span>, dirname)</span><br><span class="line">    <span class="comment"># Use the directory</span></span><br><span class="line">    ...</span><br><span class="line"><span class="comment"># Directory and all contents destroyed</span></span><br></pre></td></tr></table></figure>
+<h2 id="pickle"><a href="#pickle" class="headerlink" title="pickle"></a>pickle</h2><ul>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c05/p21_serializing_python_objects.html" target="_blank" rel="noopener">序列化Python对象</a></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">person</span><span class="params">()</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, age)</span>:</span></span><br><span class="line">        self.age = age</span><br><span class="line"></span><br><span class="line">data = person(<span class="number">12</span>)</span><br><span class="line">f = open(<span class="string">'data_file'</span>, <span class="string">'wb'</span>)</span><br><span class="line">pickle.dump(data, f)</span><br></pre></td></tr></table></figure>
+<p>如果要将对象转为字符串，可以使用 <code>pickle.dumps()</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = pickle.dumps(data)</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure>
+<p>为了从字节流中恢复一个对象，使用 <code>pickle.load()</code> 或 <code>pickle.loads()</code> 函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Restore from a file</span></span><br><span class="line">f = open(<span class="string">'somefile'</span>, <span class="string">'rb'</span>)</span><br><span class="line">data = pickle.load(f)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Restore from a string</span></span><br><span class="line">data = pickle.loads(s)</span><br></pre></td></tr></table></figure>
+<p>对于大多数应用程序来讲，<code>dump()</code> 和 <code>load()</code> 函数的使用就是你有效使用 <code>pickle</code> 模块所需的全部了。 它可适用于绝大部分Python数据类型和用户自定义类的对象实例。 如果你碰到某个库可以让你在数据库中保存/恢复Python对象或者是通过网络传输对象的话， 那么很有可能这个库的底层就使用了 pickle 模块。</p>
+<p><code>pickle</code> 是一种Python特有的自描述的数据编码。 通过自描述，被序列化后的数据包含每个对象开始和结束以及它的类型信息。 因此，你无需担心对象记录的定义，它总是能工作。</p>
+<p>当数据反序列化回来的时候，会先假定所有的源数据时可用的。 模块、类和函数会自动按需导入进来。对于Python数据被不同机器上的解析器所共享的应用程序而言， 数据的保存可能会有问题，因为所有的机器都必须访问同一个源代码。</p>
+<blockquote>
+<p>千万不要对不信任的数据使用<code>pickle.load()</code>。<strong>pickle</strong>在加载时有一个副作用就是它会自动加载相应模块并构造实例对象。但是某个坏人如果知道<strong>pickle</strong>的工作原理，他就可以创建一个恶意的数据导致Python执行随意指定的系统命令。因此，一定要保证<strong>pickle</strong>只在相互之间可以认证对方的解析器的内部使用。</p>
+</blockquote>
+<p>有些类型的对象是不能被序列化的。这些通常是那些依赖外部系统状态的对象， 比如打开的文件，网络连接，线程，进程，栈帧等等。 用户自定义类可以通过提供 <code>__getstate__()</code> 和 <code>__setstate__()</code> 方法来绕过这些限制。 如果定义了这两个方法，<code>pickle.dump()</code> 就会调用 <code>__getstate__()</code> 获取序列化的对象。 类似的，<code>__setstate__()</code> 在反序列化时被调用。</p>
+<p><strong>pickle</strong> 对于大型的数据结构比如使用 <strong>array</strong> 或 <strong>numpy</strong> 模块创建的二进制数组效率并不是一个高效的编码方式。 如果你需要移动大量的数组数据，你最好是先在一个文件中将其保存为数组数据块或使用更高级的标准编码方式如HDF5 (需要第三方库的支持)。</p>
+<p>由于 <strong>pickle</strong> 是Python特有的并且附着在源码上，所有如果需要长期存储数据的时候不应该选用它。 例如，如果源码变动了，你所有的存储数据可能会被破坏并且变得不可读取。 坦白来讲，对于在数据库和存档文件中存储数据时，你最好使用更加标准的数据编码格式如XML，CSV或JSON。 这些编码格式更标准，可以被不同的语言支持，并且也能很好的适应源码变更。</p>
+<p>最后一点要注意的是 <strong>pickle</strong> 有大量的配置选项和一些棘手的问题。 对于最常见的使用场景，你不需要去担心这个，但是如果你要在一个重要的程序中使用pickle去做序列化的话， 最好去查阅一下 <a href="https://docs.python.org/3/library/pickle.html" target="_blank" rel="noopener">官方文档</a> 。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Jaelyn
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://jaelyn.coding.me/2018/05/10/python-cookbook-02/" title="Python Cookbook 笔记 02">http://jaelyn.coding.me/2018/05/10/python-cookbook-02/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python3/" rel="tag"><i class="fa fa-tag"></i> python3</a>
+          
+            <a href="/tags/Cookbook/" rel="tag"><i class="fa fa-tag"></i> Cookbook</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/05/python-cookbook-01/" rel="next" title="Python Cookbook 笔记 01">
+                <i class="fa fa-chevron-left"></i> Python Cookbook 笔记 01
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/15/supervisor-learn/" rel="prev" title="Supervisor 指令学习">
+                Supervisor 指令学习 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="Jaelyn" />
+            
+              <p class="site-author-name" itemprop="name">Jaelyn</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Jaelyn-Lim" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/u/2660619527" target="_blank" title="微博">
+                    
+                      <i class="fa fa-fw fa-globe"></i>微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数字日期和时间"><span class="nav-number">1.</span> <span class="nav-text">数字日期和时间</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#round"><span class="nav-number">1.1.</span> <span class="nav-text">round</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#decimal"><span class="nav-number">1.2.</span> <span class="nav-text">decimal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fractions"><span class="nav-number">1.3.</span> <span class="nav-text">fractions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NumPy"><span class="nav-number">1.4.</span> <span class="nav-text">NumPy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#random"><span class="nav-number">1.5.</span> <span class="nav-text">random</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#datetime-amp-timedelta"><span class="nav-number">1.6.</span> <span class="nav-text">datetime &amp; timedelta</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#迭代器和生成器"><span class="nav-number">2.</span> <span class="nav-text">迭代器和生成器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#next"><span class="nav-number">2.1.</span> <span class="nav-text">next()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iter"><span class="nav-number">2.2.</span> <span class="nav-text">iter()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现深度优先的遍历的树形结构"><span class="nav-number">2.3.</span> <span class="nav-text">实现深度优先的遍历的树形结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reversed"><span class="nav-number">2.4.</span> <span class="nav-text">reversed()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#带有外部状态的生成器函数"><span class="nav-number">2.5.</span> <span class="nav-text">带有外部状态的生成器函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#itertools-islice"><span class="nav-number">2.6.</span> <span class="nav-text">itertools.islice()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#itertools-dropwhile"><span class="nav-number">2.7.</span> <span class="nav-text">itertools.dropwhile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#itertools-permutations-和-itertools-combinations"><span class="nav-number">2.8.</span> <span class="nav-text">itertools.permutations 和 itertools.combinations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#enumerate"><span class="nav-number">2.9.</span> <span class="nav-text">enumerate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同时迭代多个序列"><span class="nav-number">2.10.</span> <span class="nav-text">同时迭代多个序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#itertools-chain"><span class="nav-number">2.11.</span> <span class="nav-text">itertools.chain</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yield-from"><span class="nav-number">2.12.</span> <span class="nav-text">yield from</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#heapq-merge"><span class="nav-number">2.13.</span> <span class="nav-text">heapq.merge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代器代替while无限循环"><span class="nav-number">2.14.</span> <span class="nav-text">迭代器代替while无限循环</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件与IO"><span class="nav-number">3.</span> <span class="nav-text">文件与IO</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#读写文本数据"><span class="nav-number">3.1.</span> <span class="nav-text">读写文本数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sep"><span class="nav-number">3.2.</span> <span class="nav-text">sep</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读写字节数据"><span class="nav-number">3.3.</span> <span class="nav-text">读写字节数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#io-StringIO-和-io-BytesIO"><span class="nav-number">3.4.</span> <span class="nav-text">io.StringIO 和 io.BytesIO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gzip-和-bz2"><span class="nav-number">3.5.</span> <span class="nav-text">gzip 和 bz2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#functools-partial"><span class="nav-number">3.6.</span> <span class="nav-text">functools.partial</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#os-path"><span class="nav-number">3.7.</span> <span class="nav-text">os.path</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#os-listdir"><span class="nav-number">3.8.</span> <span class="nav-text">os.listdir</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tempfile"><span class="nav-number">3.9.</span> <span class="nav-text">tempfile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pickle"><span class="nav-number">3.10.</span> <span class="nav-text">pickle</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jaelyn</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">79.2k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+<script>
+  	var _mtac = {};
+  	(function() {
+  		var mta = document.createElement("script");
+  		mta.src = "https://pingjs.qq.com/h5/stats.js?v2.0.4";
+  		mta.setAttribute("name", "MTAH5");
+  		mta.setAttribute("sid", "500569228");
+
+  		var s = document.getElementsByTagName("script")[0];
+  		s.parentNode.insertBefore(mta, s);
+  	})();
+</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=64866827";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  undefined
+
+  <script>
+    var _mtac = {};
+    (function() {
+      var mta = document.createElement("script");
+      mta.src = "http://pingjs.qq.com/h5/stats.js?v2.0.2";
+      mta.setAttribute("name", "MTAH5");
+      mta.setAttribute("sid", "500569228");
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(mta, s);
+    })();
+  </script>
+
+  <script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+  
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":"z16","log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
