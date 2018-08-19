@@ -89,7 +89,7 @@
 
 
 
-  <meta name="keywords" content="python3, Collections" />
+  <meta name="keywords" content="Django, Questions" />
 
 
 
@@ -100,18 +100,18 @@
 
 
 
-<meta name="description" content="tuple是一个不可变元组（不可变对象），同时也是 iterable 对象，表示可迭代的对象，可以进行迭代。 123name_list = (&apos;lim&apos;, &apos;lim2&apos;)for name in name_list:    print(name) 在对象中实现了 __iter__ 和 __getitem__ 这两个魔法函数，就可以被认为是可迭代的对象，就可以使用 for in 的方式去迭代对象。">
-<meta name="keywords" content="python3, Collections">
+<meta name="description" content="记录自己在使用 Django 过程中遇到的问题，以及在使用过程中对 Django 框架的深入认识。当然还有在使用过程中遇到的一些问题以及查阅资料后的一些解决办法。">
+<meta name="keywords" content="Django, Questions">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python 中 Collections 模块">
-<meta property="og:url" content="http://jaelyn.coding.me/2018/07/20/python-collection/index.html">
+<meta property="og:title" content="Django 学习及问题记录">
+<meta property="og:url" content="http://jaelyn.coding.me/2018/08/19/django-questiong-learning/index.html">
 <meta property="og:site_name" content="Jaelyn&#39;s Blog">
-<meta property="og:description" content="tuple是一个不可变元组（不可变对象），同时也是 iterable 对象，表示可迭代的对象，可以进行迭代。 123name_list = (&apos;lim&apos;, &apos;lim2&apos;)for name in name_list:    print(name) 在对象中实现了 __iter__ 和 __getitem__ 这两个魔法函数，就可以被认为是可迭代的对象，就可以使用 for in 的方式去迭代对象。">
+<meta property="og:description" content="记录自己在使用 Django 过程中遇到的问题，以及在使用过程中对 Django 框架的深入认识。当然还有在使用过程中遇到的一些问题以及查阅资料后的一些解决办法。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-05T04:41:59.417Z">
+<meta property="og:updated_time" content="2018-08-19T07:52:19.027Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python 中 Collections 模块">
-<meta name="twitter:description" content="tuple是一个不可变元组（不可变对象），同时也是 iterable 对象，表示可迭代的对象，可以进行迭代。 123name_list = (&apos;lim&apos;, &apos;lim2&apos;)for name in name_list:    print(name) 在对象中实现了 __iter__ 和 __getitem__ 这两个魔法函数，就可以被认为是可迭代的对象，就可以使用 for in 的方式去迭代对象。">
+<meta name="twitter:title" content="Django 学习及问题记录">
+<meta name="twitter:description" content="记录自己在使用 Django 过程中遇到的问题，以及在使用过程中对 Django 框架的深入认识。当然还有在使用过程中遇到的一些问题以及查阅资料后的一些解决办法。">
 
 
 
@@ -141,13 +141,13 @@
 
 
 
-  <link rel="canonical" href="http://jaelyn.coding.me/2018/07/20/python-collection/"/>
+  <link rel="canonical" href="http://jaelyn.coding.me/2018/08/19/django-questiong-learning/"/>
 
 
 
 
 
-  <title>Python 中 Collections 模块 | Jaelyn's Blog</title>
+  <title>Django 学习及问题记录 | Jaelyn's Blog</title>
   
 
 
@@ -318,7 +318,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jaelyn.coding.me/2018/07/20/python-collection/">
+    <link itemprop="mainEntityOfPage" href="http://jaelyn.coding.me/2018/08/19/django-questiong-learning/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jaelyn">
@@ -335,7 +335,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Python 中 Collections 模块</h2>
+          <h2 class="post-title" itemprop="name headline">Django 学习及问题记录</h2>
         
 
         <div class="post-meta">
@@ -347,8 +347,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-20T11:17:17+08:00">
-                2018-07-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-19T15:50:33+08:00">
+                2018-08-19
               </time>
             
 
@@ -363,8 +363,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-08-05T12:41:59+08:00">
-                2018-08-05
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-19T15:52:19+08:00">
+                2018-08-19
               </time>
             
           </span>
@@ -382,8 +382,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python3/" itemprop="url" rel="index">
-                    <span itemprop="name">python3</span>
+                  <a href="/categories/Django/" itemprop="url" rel="index">
+                    <span itemprop="name">Django</span>
                   </a>
                 </span>
 
@@ -418,7 +418,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,058
+                  963
                 </span>
               
 
@@ -434,7 +434,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  9
+                  4
                 </span>
               
             </div>
@@ -455,77 +455,36 @@
       
 
       
-        <h2 id="tuple"><a href="#tuple" class="headerlink" title="tuple"></a>tuple</h2><p>是一个不可变元组（不可变对象），同时也是 <code>iterable</code> 对象，表示可迭代的对象，可以进行迭代。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name_list = (<span class="string">'lim'</span>, <span class="string">'lim2'</span>)</span><br><span class="line"><span class="keyword">for</span> name <span class="keyword">in</span> name_list:</span><br><span class="line">    print(name)</span><br></pre></td></tr></table></figure>
-<p>在对象中实现了 <code>__iter__</code> 和 <code>__getitem__</code> 这两个魔法函数，就可以被认为是可迭代的对象，就可以使用 <code>for in</code> 的方式去迭代对象。</p>
-<p> 如果尝试去修改的话就会报错：</p>
+        <p>记录自己在使用 Django 过程中遇到的问题，以及在使用过程中对 Django 框架的深入认识。当然还有在使用过程中遇到的一些问题以及查阅资料后的一些解决办法。</p>
  <a id="more"></a>
-<p><code>TypeError: &#39;tuple&#39; object does not support item assignment</code></p>
-<p>还有一个用法是拆包。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name1, name2 = name_list</span><br><span class="line">print(name1, name2)</span><br></pre></td></tr></table></figure>
-<p>可以表明属性信息。（位置信息关系）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">people_tuple = (<span class="string">'lim'</span>, <span class="string">'jaelyn'</span>, <span class="number">12</span>, <span class="string">'diqiu'</span>)</span><br><span class="line">first_name, name, age, addr = people_tuple</span><br><span class="line">print(first_name, name, age, addr)</span><br><span class="line"><span class="comment"># lim jaelyn 12 diqiu</span></span><br><span class="line">name, *other = people_tuple</span><br><span class="line">print(name, other)</span><br><span class="line"><span class="comment"># lim ['jaelyn', 12, 'diqiu']</span></span><br></pre></td></tr></table></figure>
-<p>也可以使用星号通配符了来一次性匹配多个信息。</p>
-<blockquote>
-<p>这里需要注意，这种星号表达式只是在 Python3 才开始使用的，在 Python2 中是不支持的。</p>
+<h2 id="URL-中自定义-DRF-的URL映射"><a href="#URL-中自定义-DRF-的URL映射" class="headerlink" title="URL 中自定义 DRF 的URL映射"></a>URL 中自定义 DRF 的URL映射</h2><blockquote>
+<p>在使用的时候，对于DRF自己本身的URL的设计会有些杂乱，有时候会直接在 Django 层面上进行URL的设计，这时候如果又继续想要用 DRF 的一些特性的时候，就需要在URL进行映射。</p>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">name_tuple = (<span class="string">'lim'</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line">print(name_tuple)</span><br><span class="line"><span class="comment"># ('lim', [1, 2, 3])</span></span><br><span class="line">name_tuple[<span class="number">1</span>].append(<span class="number">22</span>)</span><br><span class="line">print(name_tuple)</span><br><span class="line"><span class="comment"># ('lim', [1, 2, 3, 22])</span></span><br></pre></td></tr></table></figure>
-<p><code>tuple</code>  这个对象里面的内容一般，来说是不允许修改的，但这个只是相对来说的，不是绝对的，添加到 <code>tuple</code> 里的值的时候注重的是内容的 <code>id</code> ，而不是具体里面的内容，例如上面的例子，只是修改了里面<code>list</code>中的内容，但是并没有改变这个<code>list</code>的<code>id</code>，所以<code>tuple</code>允许这样的修改。</p>
-<p>如果尝试直接修改，导致修改了里面元素的id的话，就会报错：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name_tuple[<span class="number">1</span>] = [<span class="number">123</span>]</span><br><span class="line"><span class="comment"># TypeError: 'tuple' object does not support item assignment</span></span><br></pre></td></tr></table></figure>
-<p>所以，对于一些可变的的数据变量的话，就不推荐这么使用，会使得<code>tuple</code>的不可变性失去意义。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">name_tuple = (<span class="number">1</span>, <span class="string">'j'</span>)</span><br><span class="line">user_info_dict = &#123;&#125;</span><br><span class="line">user_info_dict[name_tuple] = <span class="string">'lim'</span></span><br><span class="line">print(user_info_dict)</span><br><span class="line"><span class="comment"># &#123;(1, 'j'): 'lim'&#125;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">name_tuple = [<span class="number">1</span>, <span class="string">'j'</span>]</span><br><span class="line">user_info_dict[name_tuple] = <span class="string">'lim'</span></span><br><span class="line"><span class="comment"># unhashable type: 'list'</span></span><br></pre></td></tr></table></figure>
-<p>这样就可以看出，在使用 <code>tuple</code> 的时候，作为一个可哈希的对象，允许作为字典中的key来使用。</p>
-<h2 id="namedtuple"><a href="#namedtuple" class="headerlink" title="namedtuple"></a>namedtuple</h2><p>通过这个可以实现一个类。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> namedtuple</span><br><span class="line"></span><br><span class="line">User = namedtuple(<span class="string">"User"</span>, [<span class="string">'name'</span>, <span class="string">'age'</span>, <span class="string">'height'</span>])</span><br><span class="line">user = User(name=<span class="string">'lim'</span>, age=<span class="number">12</span>, height=<span class="number">120</span>)</span><br><span class="line">print(user)</span><br><span class="line"><span class="comment"># User(name='lim', age=12, height=120)</span></span><br><span class="line">print(type(user))</span><br><span class="line"><span class="comment"># &lt;class '__main__.User'&gt;</span></span><br><span class="line">print(user.name, user.age, user.height)</span><br><span class="line"><span class="comment"># lim 12 120</span></span><br></pre></td></tr></table></figure>
-<p>这样就可以看出，这个模块就可以简化我们创建一个类，并且在构造函数中赋值的操作，并且返回的类是一个真正可以使用的类。这一种写法适用于没有函数的类，这一种写法的好处：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">url(<span class="string">r'^order/$'</span>, OrderListViewSet.as_view(&#123;<span class="string">'get'</span>: <span class="string">'list'</span>&#125;)),</span><br><span class="line">   url(<span class="string">r'^order/(?P&lt;pk&gt;\d+)/$'</span>, OrderListViewSet.as_view(&#123;<span class="string">'get'</span>: <span class="string">'retrieve'</span>&#125;)),</span><br></pre></td></tr></table></figure>
+<p>原本使用 DRF 的 router 的话就可以直接使用<code>router.register(r&#39;order&#39;, OrderListViewSet)</code>就搞定了，不过如果要在 Django 的层面上使用的时候，就需要分别把 <code>get</code> 请求映射到<code>list</code>和<code>retrieve</code>上，特别的，在使用类似于<code>retrieve</code>等需要特指某个具体对象的时候，就需要指明参数，表明是依照这个参数寻找数据库的值的，默认是按照数据库的主键进行查询的。如果需要按照别的字段进行查询，需要使用<code>lookup_field</code>来定义，所定义的字段可以不在<code>Serializer</code>中，不过必须是数据库中的某列字段。</p>
+<blockquote>
+<p>在使用 URL 的时候，可以发现，<code>r&#39;^order/(?P&lt;pk&gt;\d+)/$&#39;</code>，这样的表达式表示在 Django 匹配的时候，如果匹配到形如<strong>order/12/</strong>这样的URL的时候，就会把捕获到的值放到名为<strong>pk</strong>的关键字参数中。<br>但是，在试图中，就需要在参数列表中定义一样名字的参数，<code>def order(request, pk):</code></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GenericAPIView</span><span class="params">(views.APIView)</span>:</span></span><br><span class="line">	<span class="comment"># ****</span></span><br><span class="line">    <span class="comment"># If you want to use object lookups other than pk, set 'lookup_field'.</span></span><br><span class="line">    <span class="comment"># For more complex lookup requirements override `get_object()`.</span></span><br><span class="line">    lookup_field = <span class="string">'pk'</span></span><br><span class="line">    lookup_url_kwarg = <span class="keyword">None</span></span><br><span class="line">	<span class="comment"># ****</span></span><br></pre></td></tr></table></figure>
+<p>总结一下，在URL中使用参数并且采用将获得的值赋值到一个参数变量这一方法的时候（推荐这种赋值的做法，当我们的URL参数很多的时候，我们就能很好的区别各个不同的参数，避免调用错误，也方便阅读），同时，在<strong>view</strong>视图中，需要我们在参数列表中定义相同名字的变量。如果要使用 DRF 的功能，就需要在<strong>ViewSet</strong>中定义<code>lookup_field</code>，默认是<strong>pk</strong>，表示数据库的主键，同样也可以改为别的值（不过最好就是使用能表示唯一性的主键<strong>pk</strong>）。</p>
+<p>参考：</p>
 <ul>
-<li>简单，可以很快的就实现一个简单的类，并且按照正常类的用法来使用。</li>
-<li>省空间，相比较于创建一个新的类，这一种写法可以省去类中的其他不必要的默认函数和变量。</li>
+<li><a href="https://www.jianshu.com/p/55f54bacb910" target="_blank" rel="noopener">Django入门学习Day10：URL 调度</a></li>
 </ul>
-<p>用作数据处理的时候会很大用处。</p>
-<p>同样，也可以在初始化这个类的时候，采用 <code>tuple</code> 作为参数，以这样的方式传递参数创建一个对象。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user_tuple = (<span class="string">'lim'</span>, <span class="number">12</span>, <span class="number">13</span>)</span><br><span class="line">user = User(*user_tuple)</span><br></pre></td></tr></table></figure>
-<p>这样的话，参数就可以按照顺序映射在参数上。</p>
-<p>官方文档也有 <code>tuple</code> 的用法：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""Returns a new subclass of tuple with named fields.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; Point = namedtuple('Point', ['x', 'y'])</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; Point.__doc__                   # docstring for the new class</span></span><br><span class="line"><span class="string">    'Point(x, y)'</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; p = Point(11, y=22)             # instantiate with positional args or keywords</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; p[0] + p[1]                     # indexable like a plain tuple</span></span><br><span class="line"><span class="string">    33</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; x, y = p                        # unpack like a regular tuple</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; x, y</span></span><br><span class="line"><span class="string">    (11, 22)</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; p.x + p.y                       # fields also accessible by name</span></span><br><span class="line"><span class="string">    33</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; d = p._asdict()                 # convert to a dictionary</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; d['x']</span></span><br><span class="line"><span class="string">    11</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; Point(**d)                      # convert from a dictionary</span></span><br><span class="line"><span class="string">    Point(x=11, y=22)</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; p._replace(x=100)               # _replace() is like str.replace() but targets named fields</span></span><br><span class="line"><span class="string">    Point(x=100, y=22)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    """</span></span><br></pre></td></tr></table></figure>
-<p>由源码也可以看出，在 <code>namedtuple</code> 创建的时候，会执行一个 <code>exec()</code> 语句，这是Python的内置函数，可以将字符串单做代码来行，从中可以看出，在执行的时候，会执行 <code>_class_template</code> 这个模板类，这个就是<code>namedtuple</code>可以生成类的原因。在这个模板中，也可以看出，有些内置的函数也会执行。</p>
-<p>例如其中的 <code>_make()</code> 方法，可以传递一个可迭代对象，实现对象的创建。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user_new = User._make(user_tuple)</span><br><span class="line">print(user_new)</span><br></pre></td></tr></table></figure>
-<p>其中，参数只要是可迭代的对象都可以。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">user_info_dict = user_new._asdict()</span><br><span class="line">print(user_info_dict)</span><br><span class="line"><span class="comment"># OrderedDict([('name', 'lim'), ('age', 12), ('height', 13)])</span></span><br></pre></td></tr></table></figure>
-<p>还有 <code>_asdict()</code> 方法，可以将 <code>tuple</code> 对象装换成 <code>OrderedDict</code> 。</p>
-<p>并且，这个生成的类是继承 <code>tuple</code> 的，一样可以进行拆包。</p>
-<h2 id="defaultdict"><a href="#defaultdict" class="headerlink" title="defaultdict"></a>defaultdict</h2><p>这个模块是用 C 语言实现的一个类，所以性能上来说是很高的。</p>
-<p>当我们需要在一个列表中使用统计列表中元素的出现次数的时候，我们就可以采用这中方式。这样可以避免做过多的统计逻辑。如果没有使用这个模块的话，正常的操作：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">user_dict = &#123;&#125;</span><br><span class="line">users = [<span class="string">'lim'</span>, <span class="string">'jaelyn'</span>, <span class="string">'1'</span>, <span class="string">'jaelyn'</span>, <span class="string">'1'</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> user <span class="keyword">in</span> users:</span><br><span class="line">    user_dict.setdefault(user, <span class="number">0</span>)</span><br><span class="line">    user_dict[user] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">print(user_dict)</span><br><span class="line"><span class="comment"># &#123;'lim': 1, 'jaelyn': 2, '1': 2&#125;</span></span><br></pre></td></tr></table></figure>
-<p>使用这个模块的时候，需要传递一个参数表明初始化类型。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">default_dict = defaultdict(int)</span><br><span class="line"><span class="keyword">for</span> user <span class="keyword">in</span> users:</span><br><span class="line">    default_dict[user] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">print(default_dict)</span><br><span class="line"><span class="comment"># defaultdict(&lt;class 'int'&gt;, &#123;'lim': 1, 'jaelyn': 2, '1': 2&#125;)</span></span><br></pre></td></tr></table></figure>
-<p>这个模块会在没有这个 <code>key</code> 的时候，根据一开始传递的类型而进行初始化操作。这样可以避免再我们没有创建这个 <code>key</code> 而去用的时候的报错。</p>
-<h2 id="deque"><a href="#deque" class="headerlink" title="deque"></a>deque</h2><p>双端队列。</p>
-<p>相对于普通的 <code>list</code> ，这个模块可以对这个队列的两端进行操作，不当当只是对队列的右端进行操作。其中的 <code>pop</code> , <code>append</code>, <code>extend</code> 等，都相对应的有左边的操作。</p>
-<p>注意其中的 <code>extend</code> 这个函数只是对当前元素进行修改，而不会返回一个新的对象。还有 <code>reverse</code> 也是这样。</p>
-<p>应用场景：我们使用的 <code>from queue import Queue</code> 中的队列就是双端队列。</p>
-<p>最重要的一点，<code>deque</code> 是线程安全的，而 <code>list</code> 不是线程安全的。<code>deque</code> 是通过 GIL 全局锁进行保护的。</p>
-<h2 id="Counter"><a href="#Counter" class="headerlink" title="Counter"></a>Counter</h2><p>进行数据统计使用。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"></span><br><span class="line">users = [<span class="string">'lim'</span>, <span class="string">'jaelyn'</span>, <span class="string">'1'</span>, <span class="string">'jaelyn'</span>, <span class="string">'1'</span>]</span><br><span class="line"></span><br><span class="line">user_counter = Counter(users)</span><br><span class="line">print(user_counter)</span><br><span class="line"><span class="comment"># Counter(&#123;'jaelyn': 2, '1': 2, 'lim': 1&#125;)</span></span><br></pre></td></tr></table></figure>
-<p>这个模块可以根据我们传递的参数队列，统计里面的数量 ，并且按照统计结果，按照数量大小顺序排列。</p>
-<p>也可以使用 <code>update</code> 方法，更行统计的信息。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user_counter.update([<span class="string">"lim"</span>])</span><br></pre></td></tr></table></figure>
-<p>而 <code>Counter</code>  对象来说，本身就是一个可迭代的对象，还可以这样使用，将 <code>Counter</code> 对象当做参数传递到 <code>update</code> 方法中使用。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">user_counter = Counter(users)</span><br><span class="line">user_counter02 = Counter([<span class="string">"jaelyn"</span>])</span><br><span class="line">user_counter.update([<span class="string">"lim"</span>])</span><br><span class="line">user_counter.update(user_counter02)</span><br><span class="line">print(user_counter)</span><br></pre></td></tr></table></figure>
-<p>还有一个常用的函数： <code>most_common</code> 可以统计前 n 个出现次数最多的元素。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(user_counter.most_common(<span class="number">200</span>))</span><br><span class="line"><span class="comment"># [('jaelyn', 3), ('lim', 2), ('1', 2)]</span></span><br></pre></td></tr></table></figure>
-<p>使用的是堆的数据结构，来实现最大统计问题。</p>
-<h2 id="OrderedDict"><a href="#OrderedDict" class="headerlink" title="OrderedDict"></a>OrderedDict</h2><p>作为 dict  的子类，有其中的所有方法。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> OrderedDict</span><br><span class="line"></span><br><span class="line">user_dict = OrderedDict()</span><br><span class="line">user_dict[<span class="string">'b'</span>] = <span class="string">'lim1'</span></span><br><span class="line">user_dict[<span class="string">'a'</span>] = <span class="string">'lim2'</span></span><br><span class="line">user_dict[<span class="string">'c'</span>] = <span class="string">'lim3'</span></span><br><span class="line">print(user_dict)</span><br><span class="line"><span class="comment"># OrderedDict([('b', 'lim1'), ('a', 'lim2'), ('c', 'lim3')])</span></span><br></pre></td></tr></table></figure>
-<p>可以按照添加进去的顺序进行。这里需要注意，在 Python3 中，dict 也是有序的，也就会会按照添加元素的顺序进行排序，但是在 Python2 中，是无序的。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">print(user_dict)</span><br><span class="line"><span class="comment"># OrderedDict([('b', 'lim1'), ('a', 'lim2'), ('c', 'lim3')])</span></span><br><span class="line">print(user_dict.popitem())</span><br><span class="line"><span class="comment"># ('c', 'lim3')</span></span><br><span class="line">print(user_dict)</span><br><span class="line"><span class="comment"># OrderedDict([('b', 'lim1'), ('a', 'lim2')])</span></span><br><span class="line">print(user_dict.pop(<span class="string">'b'</span>))</span><br><span class="line"><span class="comment"># lim1</span></span><br><span class="line">print(user_dict)</span><br><span class="line">user_dict.move_to_end(<span class="string">'a'</span>) <span class="comment"># 将key所对应的items移动到最后一个</span></span><br></pre></td></tr></table></figure>
-<h2 id="ChainMap"><a href="#ChainMap" class="headerlink" title="ChainMap"></a>ChainMap</h2><p>方便便利多个 dict 。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> ChainMap</span><br><span class="line"></span><br><span class="line">user_dict1 = &#123;<span class="string">'a'</span>: <span class="string">'lim'</span>, <span class="string">'b'</span>: <span class="string">'lim1'</span>&#125;</span><br><span class="line">user_dict2 = &#123;<span class="string">'aa'</span>: <span class="string">'lim'</span>, <span class="string">'bb'</span>: <span class="string">'lim1'</span>&#125;</span><br><span class="line">new_dict = ChainMap(user_dict1, user_dict2)</span><br><span class="line"><span class="keyword">for</span> key, value <span class="keyword">in</span> new_dict.items():</span><br><span class="line">    print(key, value)</span><br><span class="line"><span class="comment"># bb lim1</span></span><br><span class="line"><span class="comment"># aa lim</span></span><br><span class="line"><span class="comment"># a lim</span></span><br><span class="line"><span class="comment"># b lim1</span></span><br></pre></td></tr></table></figure>
-<p>可以将多个 dict 连接在一起，方便我们进行统一的操作。</p>
-<p>如果有多个相同的 key 的话，就只会取第一个 key 的字典，后面的不会取。</p>
-<p>这个模块并没有将参数中的dict的内容拷贝到一个新的数据结构里面，而是在其中添加了一个迭代器，方便我们进行操作。</p>
+<h2 id="pipreqs"><a href="#pipreqs" class="headerlink" title="pipreqs"></a>pipreqs</h2><p>创建环境依赖包的列表文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install pipreqs</span><br><span class="line"></span><br><span class="line">pipreqs - Generate pip requirements.txt file based on imports</span><br></pre></td></tr></table></figure>
+<p>此工具是基于 <code>imports</code>，这是什么意思呢，即你的项目引入了哪个包，此工具才会把引入的包写到 <code>requirements.txt</code> 中，是不是觉得要比 <code>pip freeze</code> 干净，注意生成的是 <code>requirements.txt</code> 文件，而不是 <code>requirement.txt</code></p>
+<p><strong>例子</strong></p>
+<p>执行 <code>pipreqs --use-local ./</code> 生成 <code>requirements.txt</code></p>
+<p>因为项目只引入了 <code>django</code> 和 <code>pygments</code> , 此时 <code>cat requirements.txt</code>, 文件中只包含了两条数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Django == 1.8.3</span><br><span class="line">Pygments == 2.0.2</span><br></pre></td></tr></table></figure></p>
+<p>引入不是很完整，比如数据库依赖包，就不会包含进来</p>
+<ul>
+<li><a href="https://segmentfault.com/a/1190000003050954" target="_blank" rel="noopener">Django | requirement.txt 生成</a></li>
+</ul>
+<h2 id="django-core-exceptions-ImproperlyConfigured-Error-loading-MySQLdb-module-No-module-named-MySQLdb-处理办法"><a href="#django-core-exceptions-ImproperlyConfigured-Error-loading-MySQLdb-module-No-module-named-MySQLdb-处理办法" class="headerlink" title="django.core.exceptions.ImproperlyConfigured: Error loading MySQLdb module: No module named MySQLdb 处理办法"></a>django.core.exceptions.ImproperlyConfigured: Error loading MySQLdb module: No module named MySQLdb 处理办法</h2><p>造成这个错的原因很明显，是少了包，不过这个包在国内很难下载到，并且比较习惯使用的包是 <strong>pymysql</strong> ，所以有个比较巧妙的方案就是在项目文件中的 <code>__init__</code> 中加上：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line">pymysql.install_as_MySQLdb()</span><br></pre></td></tr></table></figure></p>
+<p>具体添加的地方参考：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- Project</span><br><span class="line">	- APP</span><br><span class="line">	- Project</span><br><span class="line">		- __init__.py  <span class="comment">## 就加在这</span></span><br><span class="line">		-settings.py</span><br><span class="line">		-urls.py</span><br><span class="line">		...</span><br></pre></td></tr></table></figure></p>
+<p>也可以在机器上安装两个包之后再来解决<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get install libmysqlclient-dev</span><br><span class="line">apt-get install python-dev</span><br></pre></td></tr></table></figure></p>
+<p>之后在正常安装就行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install MySQL-python</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -546,7 +505,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://jaelyn.coding.me/2018/07/20/python-collection/" title="Python 中 Collections 模块">http://jaelyn.coding.me/2018/07/20/python-collection/</a>
+    <a href="http://jaelyn.coding.me/2018/08/19/django-questiong-learning/" title="Django 学习及问题记录">http://jaelyn.coding.me/2018/08/19/django-questiong-learning/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -561,7 +520,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/python3/" rel="tag"><i class="fa fa-tag"></i> python3</a>
+            <a href="/tags/Django/" rel="tag"><i class="fa fa-tag"></i> Django</a>
           
         </div>
       
@@ -574,8 +533,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/05/create-ubuntu-u/" rel="next" title="Mac 下制作 Ubuntu 启动盘">
-                <i class="fa fa-chevron-left"></i> Mac 下制作 Ubuntu 启动盘
+              <a href="/2018/08/19/vim-git-log/" rel="next" title="解决 vim 乱码 和 git log  乱码问题">
+                <i class="fa fa-chevron-left"></i> 解决 vim 乱码 和 git log  乱码问题
               </a>
             
           </div>
@@ -583,10 +542,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/25/mac-rebuild-record/" rel="prev" title="Mac 重装记录">
-                Mac 重装记录 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -738,7 +693,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tuple"><span class="nav-number">1.</span> <span class="nav-text">tuple</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#namedtuple"><span class="nav-number">2.</span> <span class="nav-text">namedtuple</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#defaultdict"><span class="nav-number">3.</span> <span class="nav-text">defaultdict</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deque"><span class="nav-number">4.</span> <span class="nav-text">deque</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Counter"><span class="nav-number">5.</span> <span class="nav-text">Counter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OrderedDict"><span class="nav-number">6.</span> <span class="nav-text">OrderedDict</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ChainMap"><span class="nav-number">7.</span> <span class="nav-text">ChainMap</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#URL-中自定义-DRF-的URL映射"><span class="nav-number">1.</span> <span class="nav-text">URL 中自定义 DRF 的URL映射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pipreqs"><span class="nav-number">2.</span> <span class="nav-text">pipreqs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#django-core-exceptions-ImproperlyConfigured-Error-loading-MySQLdb-module-No-module-named-MySQLdb-处理办法"><span class="nav-number">3.</span> <span class="nav-text">django.core.exceptions.ImproperlyConfigured: Error loading MySQLdb module: No module named MySQLdb 处理办法</span></a></li></ol></div>
             
 
           </div>
